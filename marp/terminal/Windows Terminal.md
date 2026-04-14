@@ -26,9 +26,11 @@ style: |
   }
 
   section::after {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  content: '@juliusdarang  ·  ' attr(data-marpit-pagination);
+  position: absolute;
   }
 
   h1 {
