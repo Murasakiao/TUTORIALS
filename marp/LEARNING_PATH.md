@@ -1,6 +1,6 @@
 # Tutorial Learning Path
 
-A structured mini-course from beginner to advanced.
+A structured mini-course from beginner to AI developer.
 
 **Legend**: 🟢 Beginner | 🟡 Intermediate | 🔴 Advanced
 
@@ -103,7 +103,7 @@ A structured mini-course from beginner to advanced.
 
 ---
 
-## Phase 9: Career & Content
+## Bonus: Career & Content
 ### Career
 - [ ] 🟢 Build Portfolio
 - [ ] 🟢 LinkedIn for Developers
@@ -132,9 +132,9 @@ A structured mini-course from beginner to advanced.
 | 6 | AI Agents | 1 | 4 | 0 | 5 |
 | 7 | Agentic Coding | 1 | 3 | 1 | 5 |
 | 8 | Automations | 0 | 5 | 0 | 5 |
-| 9 | Career | 6 | 1 | 0 | 7 |
-| 9 | Content | 2 | 1 | 0 | 3 |
-| **Total** | | **28** | **32** | **2** | **62** |
+| — | Bonus: Career | 6 | 1 | 0 | 7 |
+| — | Bonus: Content | 2 | 1 | 0 | 3 |
+| **Main Course Total** | | **20** | **30** | **2** | **52** |
 
 ---
 
@@ -154,5 +154,5 @@ For total beginners who want the fastest path to building something:
 
 ## Created
 - 18 existing tutorials
-- 44 new placeholder tutorials
-- 62 total tutorials
+- 34 new placeholder tutorials
+- 52 main course tutorials (+ 10 bonus)
