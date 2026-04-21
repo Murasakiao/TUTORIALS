@@ -895,7 +895,7 @@ A tool is a function the agent can call to interact with the world. Without tool
     <span class="td-punct">{</span><br>
     &nbsp;&nbsp;<span class="td-key">"name"</span><span class="td-punct">:</span>        <span class="td-str">"web_search"</span><span class="td-punct">,</span><br>
     &nbsp;&nbsp;<span class="td-key">"description"</span><span class="td-punct">:</span> <span class="td-str">"Search the web for current information. Use when you need facts not in your training data."</span><span class="td-punct">,</span><br>
-    &nbsp;&nbsp;<span class="td-key">"parameters"</span><span class="td-punct">: {</span><br>
+    &nbsp;&nbsp;<span class="td-key">"parameters"</span><span class="td-punct">: {</span>
     &nbsp;&nbsp;&nbsp;&nbsp;<span class="td-key">"query"</span><span class="td-punct">:</span> <span class="td-punct">{</span> <span class="td-key">"type"</span><span class="td-punct">:</span> <span class="td-type">"string"</span><span class="td-punct">,</span> <span class="td-key">"description"</span><span class="td-punct">:</span> <span class="td-str">"The search query"</span> <span class="td-punct">}</span><br>
     &nbsp;&nbsp;<span class="td-punct">},</span><br>
     &nbsp;&nbsp;<span class="td-key">"required"</span><span class="td-punct">:</span> <span class="td-punct">[</span><span class="td-str">"query"</span><span class="td-punct">]</span><br>
