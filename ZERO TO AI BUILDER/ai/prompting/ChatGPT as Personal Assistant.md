@@ -526,26 +526,27 @@ Tell it about you once — so you never have to repeat yourself.
 <div class="context-block">
   <div class="cb-label">📋 Custom Instructions — About You (bottom box)</div>
   <div class="context-row">
-    <span class="cr-key">Role:</span>
-    <span class="cr-val">Registered Electrical Engineer, specialising in renewable energy and power systems.</span>
+    <span class="cr-key">Profession:</span>
+    <span class="cr-val">Knowledge worker managing multiple cross-functional projects.</span>
   </div>
   <div class="context-row">
-    <span class="cr-key">Stack:</span>
-    <span class="cr-val">Python, pandas, Flask, DIgSILENT PowerFactory, ETAP, pandapower.</span>
+    <span class="cr-key">Toolkit:</span>
+    <span class="cr-val">Notion, Slack, Google Workspace, and basic project management software.</span>
   </div>
   <div class="context-row">
     <span class="cr-key">Writing:</span>
-    <span class="cr-val">Building a Substack — conversational, no hype, influenced by Dan Koe and Naval.</span>
+    <span class="cr-val">Professional yet conversational. Clear, active voice without fluff or buzzwords.</span>
   </div>
   <div class="context-row">
     <span class="cr-key">Preferences:</span>
-    <span class="cr-val">Direct answers. Short sentences. No motivational language. Code with comments.</span>
+    <span class="cr-val">Direct answers. Scannable formatting. Bolded key terms. No motivational commentary.</span>
   </div>
   <div class="context-row">
     <span class="cr-key">Avoid:</span>
-    <span class="cr-val">Explaining things I already know. Suggesting frameworks I haven't asked about.</span>
+    <span class="cr-val">Suggesting overly complex frameworks or tools I didn't ask for.</span>
   </div>
 </div>
+
 
 This context lives in ChatGPT's Custom Instructions and applies silently to every conversation — no repasting needed.
 
