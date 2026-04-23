@@ -534,7 +534,7 @@ style: |
 
 &nbsp;
 
-**Code without documentation is a mystery. Add 20 minutes. Save everyone hours.**
+**Code without documentation is a mystery.** Add 20 minutes. Save everyone hours.
 
 `README` · `comments` · `changelog` · `setup` · `examples`
 

@@ -95,7 +95,7 @@ style: |
   }
 
   section.cover h1 { color: var(--white); font-size: 46px; }
-  section.cover h2 { color: var(--white); border-bottom-color: #374151; }
+  section.cover h2 { color: #93c5fd; border-bottom-color: #374151; }
   section.cover p  { color: #9ca3af; }
   section.cover strong { color: #60a5fa; }
   section.cover code { background: #1e3a5f; color: #93c5fd; }
@@ -424,7 +424,7 @@ style: |
 
 &nbsp;
 
-**This isn't theory. This is a real workflow I run every week.**
+**This isn't theory.** This is a real workflow I run every week.
 
 `Claude` · `Python` · `pandas` · `n8n` · `Substack`
 

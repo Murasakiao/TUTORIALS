@@ -582,7 +582,7 @@ style: |
 <!-- _class: cover -->
 
 # How to Choose What
-# to Learn Next
+## to Learn Next
 
 &nbsp;
 

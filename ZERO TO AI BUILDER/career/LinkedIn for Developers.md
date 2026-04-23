@@ -95,7 +95,7 @@ style: |
   }
 
   section.cover h1 { color: var(--white); font-size: 46px; }
-  section.cover h2 { color: var(--white); border-bottom-color: #374151; }
+  section.cover h2 { color: #93c5fd; border-bottom-color: #374151; }
   section.cover p  { color: #9ca3af; }
   section.cover strong { color: #60a5fa; }
   section.cover code { background: #1e3a5f; color: #93c5fd; }
@@ -466,7 +466,7 @@ style: |
 
 &nbsp;
 
-**You don't need to perform. You need to be findable and credible.**
+**You don't need to perform.** You need to be findable and credible.
 
 `headline` · `featured` · `posting` · `connections` · `consistency`
 
