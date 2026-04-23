@@ -1,0 +1,2 @@
+Part 3 — Designing the Specialists
+Slides: What changes about specialist design at this level → Defining clear input/output contracts for each specialist → How specialists report back to the orchestrator → The handoff pattern: how agents pass work cleanly → State management: what the orchestrator needs to remember across calls

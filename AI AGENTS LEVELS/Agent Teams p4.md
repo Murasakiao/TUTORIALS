@@ -1,0 +1,2 @@
+Part 4 — Scaling Decisions and Full Example
+Slides: Frameworks vs raw Python at team scale (CrewAI, LangGraph, raw) → The cost of complexity: why teams are a last resort → Scaling checklist: questions to answer before you build a team → Full end-to-end example: one prompt triggers Content Team + Engineering Team → CTA: map your entire workflow to a team architecture before writing a single line of code

@@ -1,0 +1,2 @@
+Part 4 — Debugging and Failure Handling
+Slides: Reading the chain of artifacts to find problems → What happens when one agent in the chain fails → Error handling strategies → Logging each agent's output for traceability → Common pipeline failure modes and how to fix them → CTA: map one multi-step task you do manually to a pipeline

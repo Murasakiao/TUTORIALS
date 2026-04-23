@@ -1,0 +1,2 @@
+Part 2 — Designing the Agents in Your Pipeline
+Slides: The Researcher agent: role, input, output → The Writer agent: consuming structured research, producing a draft → The Critic/Editor agent: scoring against rules, producing feedback → The Refiner agent: applying feedback, producing final output → How to write a system prompt for a specialist

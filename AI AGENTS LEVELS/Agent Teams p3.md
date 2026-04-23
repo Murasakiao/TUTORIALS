@@ -1,0 +1,2 @@
+Part 3 — Control, Safety, and Observability
+Slides: Human-in-the-loop: where to put approval checkpoints → Guardrails: keeping agents inside their boundaries → Monitoring: knowing what your team is doing at any moment → Logging and tracing decisions across multiple orchestrators → What to do when a team produces a wrong or incomplete result

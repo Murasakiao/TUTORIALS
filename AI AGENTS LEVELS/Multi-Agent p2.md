@@ -1,0 +1,2 @@
+Part 2 — Designing the Orchestrator
+Slides: Anatomy of an orchestrator agent → Writing the orchestrator system prompt → How the orchestrator parses intent → How it selects the right pipeline → How it handles the result and passes it back → Keeping the orchestrator from becoming a worker

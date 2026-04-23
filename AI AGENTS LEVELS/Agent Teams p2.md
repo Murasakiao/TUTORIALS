@@ -1,0 +1,2 @@
+Part 2 — Designing Teams and Handoffs
+Slides: Anatomy of a team (team orchestrator + specialists) → Designing inter-team handoffs: when and how teams pass work → Shared context and memory across teams → State isolation: preventing context rot between runs → The Generator + Critic pattern at team scale

@@ -1,0 +1,2 @@
+Part 3 — Connecting the Pipeline in Code
+Slides: Designing output contracts (JSON, markdown, structured text) → Passing state between agents in Python → Sequential vs parallel pipelines: when to use each → Project structure for a multi-agent pipeline → Live walkthrough: chaining two agents together
