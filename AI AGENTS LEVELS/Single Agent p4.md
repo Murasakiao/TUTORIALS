@@ -1,0 +1,2 @@
+Part 4 — Knowing Its Limits
+Slides: When a single agent is enough → Signs your agent is doing too much → Common failure modes (vague prompts, no output format, too many jobs) → The upgrade trigger: when to move to Level 2 → CTA: build one agent for one task you do manually today

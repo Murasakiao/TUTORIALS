@@ -3,17 +3,19 @@ marp: true
 theme: default
 paginate: true
 style: |
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap');
 
   :root {
-    --blue: #2563eb;
-    --blue-light: #eff6ff;
-    --blue-mid: #bfdbfe;
-    --text: #111827;
-    --muted: #6b7280;
-    --border: #e5e7eb;
+    --amber: #d97706;
+    --amber-light: #fffbeb;
+    --amber-mid: #fde68a;
+    --amber-dim: #b45309;
+    --text: #1c1917;
+    --muted: #78716c;
+    --border: #e7e5e4;
     --white: #ffffff;
-    --off-white: #f9fafb;
+    --off-white: #fafaf9;
+    --slate: #44403c;
   }
 
   section {
@@ -22,12 +24,12 @@ style: |
     color: var(--text);
     padding: 52px 64px;
     font-size: 18px;
-    line-height: 1.6;
+    line-height: 1.65;
   }
 
   section::after {
     font-family: 'DM Mono', monospace;
-    font-size: 12px;
+    font-size: 11px;
     color: var(--muted);
   }
 
@@ -36,96 +38,107 @@ style: |
     font-size: 42px;
     font-weight: 600;
     color: var(--text);
-    line-height: 1.2;
+    line-height: 1.15;
     margin-bottom: 0.4em;
+    letter-spacing: -0.5px;
   }
 
   h2 {
     font-family: 'DM Sans', sans-serif;
-    font-size: 28px;
+    font-size: 27px;
     font-weight: 600;
     color: var(--text);
-    border-bottom: 2px solid var(--blue);
+    border-bottom: 1.5px solid var(--border);
     padding-bottom: 10px;
-    margin-bottom: 24px;
+    margin-bottom: 22px;
+    letter-spacing: -0.3px;
   }
 
   h3 {
     font-family: 'DM Sans', sans-serif;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 500;
-    color: var(--blue);
+    color: var(--amber);
     margin-bottom: 8px;
   }
 
   p { color: var(--text); margin: 0.4em 0; }
   ul { padding-left: 1.4em; }
   li { margin-bottom: 10px; color: var(--text); }
-  strong { color: var(--blue); font-weight: 600; }
+  strong { color: var(--amber-dim); font-weight: 600; }
 
   code {
     font-family: 'DM Mono', monospace;
-    background: var(--blue-light);
-    color: var(--blue);
+    background: var(--amber-light);
+    color: var(--amber-dim);
     padding: 2px 8px;
     border-radius: 4px;
-    font-size: 0.88em;
+    font-size: 0.87em;
   }
 
   blockquote {
-    border-left: 4px solid var(--blue);
-    background: var(--blue-light);
+    border-left: 3px solid var(--amber);
+    background: var(--amber-light);
     padding: 16px 20px;
     margin: 20px 0;
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 6px 6px 0;
     font-family: 'DM Mono', monospace;
     font-size: 0.82em;
-    color: #1e40af;
+    color: #92400e;
     line-height: 1.6;
   }
 
-  blockquote p { color: #1e40af; margin: 0; }
+  blockquote p { color: #92400e; margin: 0; }
 
+  /* ── Cover ── */
   section.cover {
-    background: var(--text);
+    background: #1c1917;
     color: var(--white);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
   }
 
-  section.cover h1 { color: var(--white); font-size: 44px; }
-  section.cover h2 {
-    color: #93c5fd;
-    border-bottom-color: #374151;
-    font-size: 20px;
-    font-weight: 400;
+  section.cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 80% 20%, rgba(217,119,6,0.08) 0%, transparent 55%),
+      radial-gradient(ellipse at 10% 85%, rgba(217,119,6,0.05) 0%, transparent 45%);
+    pointer-events: none;
   }
-  section.cover p  { color: #9ca3af; }
-  section.cover strong { color: #60a5fa; }
-  section.cover code { background: #1e3a5f; color: #93c5fd; }
 
-  .series-badge {
+  section.cover h1 { color: var(--white); font-size: 44px; letter-spacing: -0.8px; }
+  section.cover h2 { color: #a8a29e; border-bottom-color: #44403c; font-size: 20px; font-weight: 400; letter-spacing: 0; }
+  section.cover p  { color: #78716c; }
+  section.cover strong { color: #fbbf24; }
+  section.cover code { background: #292524; color: #fbbf24; border: 1px solid #44403c; }
+
+  section.cover .series-badge {
     display: inline-block;
-    background: #1e3a5f;
-    color: #93c5fd;
+    background: #292524;
+    color: #d97706;
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 500;
     padding: 5px 14px;
-    border-radius: 999px;
-    margin-bottom: 20px;
-    letter-spacing: 0.07em;
-    border: 1px solid #2563eb;
+    border-radius: 4px;
+    margin-bottom: 22px;
+    letter-spacing: 0.1em;
+    border: 1px solid #44403c;
+    width: fit-content;
   }
 
   section.step { background: var(--off-white); }
 
   .highlight {
-    background: var(--blue-light);
-    border: 1px solid var(--blue-mid);
-    border-radius: 10px;
-    padding: 18px 24px;
+    background: var(--amber-light);
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    padding: 16px 22px;
     margin: 16px 0;
   }
 
@@ -139,7 +152,7 @@ style: |
   .tool-card {
     background: var(--off-white);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 16px 20px;
   }
 
@@ -149,66 +162,41 @@ style: |
 
   .step-badge {
     display: inline-block;
-    background: var(--blue);
+    background: var(--text);
     color: white;
     font-family: 'DM Mono', monospace;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
-    padding: 4px 14px;
-    border-radius: 999px;
+    padding: 4px 12px;
+    border-radius: 3px;
     margin-bottom: 12px;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
   }
 
   section.final {
-    background: var(--blue);
+    background: #1c1917;
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-  }
-
-  section.final h1 { color: white; font-size: 40px; }
-  section.final p  { color: #bfdbfe; font-size: 18px; }
-  section.final strong { color: white; }
-  section.final em { color: #bfdbfe; }
-
-  /* ── Code block ── */
-  .code-block {
-    background: #111827;
-    border-radius: 10px;
+    position: relative;
     overflow: hidden;
-    margin: 14px 0;
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
   }
 
-  .code-block .cb-bar {
-    background: #1f2937;
-    padding: 8px 16px;
-    font-size: 11.5px;
-    color: #6b7280;
-    letter-spacing: 0.04em;
+  section.final::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(217,119,6,0.10) 0%, transparent 65%);
+    pointer-events: none;
   }
 
-  .code-block .cb-body {
-    padding: 14px 20px;
-    line-height: 2;
-  }
+  section.final h1 { color: white; font-size: 40px; letter-spacing: -0.5px; }
+  section.final p  { color: #a8a29e; font-size: 18px; }
+  section.final strong { color: #fbbf24; }
+  section.final em { color: #a8a29e; }
 
-  .cb-kw     { color: #c084fc; }
-  .cb-fn     { color: #60a5fa; }
-  .cb-str    { color: #fde68a; }
-  .cb-num    { color: #fb923c; }
-  .cb-cmt    { color: #4b5563; font-style: italic; }
-  .cb-var    { color: #f9fafb; }
-  .cb-prop   { color: #34d399; }
-  .cb-op     { color: #6b7280; }
-  .cb-hi     { color: #34d399; }
-  .cb-key    { color: #93c5fd; }
-
-  /* ── Two-column layout ── */
   .two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -219,16 +207,16 @@ style: |
   .col-card {
     background: var(--off-white);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 16px 20px;
   }
 
   .col-card .label {
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
+    font-size: 10.5px;
     color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     margin-bottom: 8px;
   }
 
@@ -241,49 +229,50 @@ style: |
   }
 
   .anat-layer {
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 13px 18px;
     display: flex;
     align-items: center;
     gap: 16px;
-    border: 2px solid transparent;
+    border: 1.5px solid transparent;
   }
 
-  .anat-layer.sys    { background: #f5f3ff; border-color: #c4b5fd; }
-  .anat-layer.ctx    { background: #f0fdf4; border-color: #86efac; }
-  .anat-layer.inp    { background: var(--blue-light); border-color: var(--blue-mid); }
-  .anat-layer.out    { background: #fef3c7; border-color: #fde68a; }
+  .anat-layer.sys { background: var(--amber-light); border-color: var(--amber-mid); }
+  .anat-layer.ctx { background: #f0fdf4; border-color: #86efac; }
+  .anat-layer.inp { background: #eff6ff; border-color: #bfdbfe; }
+  .anat-layer.out { background: #fdf4ff; border-color: #e9d5ff; }
 
-  .anat-layer .al-icon  { font-size: 24px; flex-shrink: 0; }
-  .anat-layer .al-num   {
+  .anat-layer .al-icon  { font-size: 22px; flex-shrink: 0; }
+
+  .anat-layer .al-num {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
     font-weight: 600;
     width: 22px;
     height: 22px;
-    border-radius: 999px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     color: white;
-    background: var(--blue);
   }
-  .anat-layer.sys .al-num { background: #7c3aed; }
+
+  .anat-layer.sys .al-num { background: var(--amber); }
   .anat-layer.ctx .al-num { background: #16a34a; }
-  .anat-layer.inp .al-num { background: var(--blue); }
-  .anat-layer.out .al-num { background: #d97706; }
+  .anat-layer.inp .al-num { background: #2563eb; }
+  .anat-layer.out .al-num { background: #7c3aed; }
 
   .anat-layer .al-name {
     font-weight: 700;
     font-size: 14.5px;
-    color: var(--text);
     min-width: 130px;
   }
-  .anat-layer.sys .al-name { color: #4c1d95; }
+
+  .anat-layer.sys .al-name { color: var(--amber-dim); }
   .anat-layer.ctx .al-name { color: #14532d; }
   .anat-layer.inp .al-name { color: #1e3a8a; }
-  .anat-layer.out .al-name { color: #78350f; }
+  .anat-layer.out .al-name { color: #4c1d95; }
 
   .anat-layer .al-desc {
     font-size: 13px;
@@ -292,35 +281,38 @@ style: |
     line-height: 1.5;
   }
 
-  /* ── System prompt anatomy ── */
+  /* ── System prompt block ── */
   .sp-block {
-    background: #111827;
-    border-radius: 10px;
+    background: #1c1917;
+    border-radius: 8px;
     overflow: hidden;
     margin: 14px 0;
     font-family: 'DM Mono', monospace;
     font-size: 12.5px;
+    border: 1px solid #292524;
   }
 
   .sp-block .sb-bar {
-    background: #1f2937;
+    background: #292524;
     padding: 8px 16px;
-    font-size: 11.5px;
-    color: #6b7280;
-    letter-spacing: 0.04em;
+    font-size: 11px;
+    color: #78716c;
+    letter-spacing: 0.06em;
     display: flex;
     align-items: center;
     gap: 8px;
+    border-bottom: 1px solid #44403c;
   }
 
   .sp-block .sb-bar .sb-badge {
-    font-size: 10px;
+    font-size: 9.5px;
     padding: 2px 8px;
-    border-radius: 4px;
-    background: #f5f3ff;
-    color: #5b21b6;
-    border: 1px solid #ddd6fe;
+    border-radius: 3px;
+    background: #292524;
+    color: #d97706;
+    border: 1px solid #44403c;
     font-weight: 600;
+    letter-spacing: 0.08em;
   }
 
   .sp-block .sb-body {
@@ -329,12 +321,12 @@ style: |
   }
 
   .sp-section { margin-bottom: 6px; }
-  .sp-section .sps-label { color: #4b5563; font-size: 11px; font-style: italic; }
-  .sp-role    { color: #c084fc; }
-  .sp-rule    { color: #f9fafb; }
+  .sp-section .sps-label { color: #44403c; font-size: 11px; font-style: italic; }
+  .sp-role    { color: #a8a29e; }
+  .sp-rule    { color: #e7e5e4; }
   .sp-tool    { color: #34d399; }
-  .sp-format  { color: #60a5fa; }
-  .sp-limit   { color: #fb923c; }
+  .sp-format  { color: #93c5fd; }
+  .sp-limit   { color: #fbbf24; }
 
   /* ── Context injection diagram ── */
   .ctx-diagram {
@@ -363,22 +355,22 @@ style: |
   }
 
   .ctx-source .cs-icon { font-size: 18px; flex-shrink: 0; }
-  .ctx-source .cs-name { font-weight: 600; color: var(--text); }
-  .ctx-source .cs-desc { font-size: 12px; color: var(--muted); margin-top: 1px; }
+  .ctx-source .cs-name { font-weight: 600; color: var(--text); font-size: 13px; }
+  .ctx-source .cs-desc { font-size: 11.5px; color: var(--muted); margin-top: 1px; }
 
   .ctx-arrow {
     display: flex;
     align-items: center;
     padding: 0 14px;
     font-size: 22px;
-    color: var(--blue);
+    color: var(--amber);
     flex-shrink: 0;
   }
 
   .ctx-window {
-    background: #f5f3ff;
-    border: 2px solid #c4b5fd;
-    border-radius: 10px;
+    background: var(--amber-light);
+    border: 1.5px solid var(--amber-mid);
+    border-radius: 8px;
     padding: 14px 16px;
     display: flex;
     flex-direction: column;
@@ -388,55 +380,25 @@ style: |
 
   .ctx-window .cw-label {
     font-family: 'DM Mono', monospace;
-    font-size: 10.5px;
-    color: #5b21b6;
+    font-size: 10px;
+    color: var(--amber-dim);
     text-transform: uppercase;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.1em;
     margin-bottom: 4px;
     font-weight: 600;
   }
 
   .ctx-slot {
-    border-radius: 5px;
+    border-radius: 4px;
     padding: 5px 10px;
     font-family: 'DM Mono', monospace;
     font-size: 11px;
   }
 
-  .ctx-slot.sys  { background: #ede9fe; color: #5b21b6; }
+  .ctx-slot.sys  { background: #fef3c7; color: #92400e; }
   .ctx-slot.mem  { background: #dcfce7; color: #166534; }
   .ctx-slot.hist { background: #dbeafe; color: #1e40af; }
-  .ctx-slot.msg  { background: #fef9c3; color: #854d0e; }
-
-  /* ── Tool definition card ── */
-  .tool-def {
-    background: #111827;
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 14px 0;
-    font-family: 'DM Mono', monospace;
-    font-size: 12.5px;
-  }
-
-  .tool-def .td-bar {
-    background: #1f2937;
-    padding: 8px 16px;
-    font-size: 11.5px;
-    color: #6b7280;
-    letter-spacing: 0.04em;
-  }
-
-  .tool-def .td-body {
-    padding: 14px 18px;
-    line-height: 2;
-  }
-
-  .td-key   { color: #93c5fd; }
-  .td-str   { color: #fde68a; }
-  .td-type  { color: #c084fc; }
-  .td-bool  { color: #34d399; }
-  .td-punct { color: #4b5563; }
-  .td-cmt   { color: #374151; font-style: italic; }
+  .ctx-slot.msg  { background: #fdf4ff; color: #6b21a8; }
 
   /* ── Tool flow diagram ── */
   .tool-flow {
@@ -448,7 +410,7 @@ style: |
   }
 
   .tf-node {
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 12px 14px;
     text-align: center;
     min-width: 100px;
@@ -459,15 +421,15 @@ style: |
   .tf-node .tfn-label { font-weight: 600; font-size: 12.5px; }
   .tf-node .tfn-sub   { font-family: 'DM Mono', monospace; font-size: 10px; opacity: 0.75; margin-top: 2px; }
 
-  .tf-node.model  { background: #f5f3ff; border: 2px solid #c4b5fd; }
-  .tf-node.call   { background: var(--blue-light); border: 2px solid var(--blue-mid); }
-  .tf-node.exec   { background: #fef3c7; border: 2px solid #fde68a; }
-  .tf-node.result { background: #f0fdf4; border: 2px solid #86efac; }
+  .tf-node.model  { background: var(--amber-light); border: 1.5px solid var(--amber-mid); }
+  .tf-node.call   { background: #eff6ff; border: 1.5px solid #bfdbfe; }
+  .tf-node.exec   { background: #f0fdf4; border: 1.5px solid #86efac; }
+  .tf-node.result { background: #fdf4ff; border: 1.5px solid #e9d5ff; }
 
-  .tf-node.model  .tfn-label { color: #5b21b6; }
+  .tf-node.model  .tfn-label { color: var(--amber-dim); }
   .tf-node.call   .tfn-label { color: #1e40af; }
-  .tf-node.exec   .tfn-label { color: #92400e; }
-  .tf-node.result .tfn-label { color: #166534; }
+  .tf-node.exec   .tfn-label { color: #166534; }
+  .tf-node.result .tfn-label { color: #6b21a8; }
 
   .tf-arrow {
     display: flex;
@@ -485,9 +447,41 @@ style: |
     white-space: nowrap;
   }
 
-  .tf-arrow .tfa-line { font-size: 18px; color: var(--blue); }
+  .tf-arrow .tfa-line { font-size: 18px; color: var(--amber); }
 
-  /* ── Input / output contract ── */
+  /* ── Tool definition block ── */
+  .tool-def {
+    background: #1c1917;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 14px 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 12.5px;
+    border: 1px solid #292524;
+  }
+
+  .tool-def .td-bar {
+    background: #292524;
+    padding: 8px 16px;
+    font-size: 11px;
+    color: #78716c;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid #44403c;
+  }
+
+  .tool-def .td-body {
+    padding: 14px 18px;
+    line-height: 2;
+  }
+
+  .td-key   { color: #93c5fd; }
+  .td-str   { color: var(--amber-mid); }
+  .td-type  { color: #c084fc; }
+  .td-bool  { color: #34d399; }
+  .td-punct { color: #44403c; }
+  .td-cmt   { color: #44403c; font-style: italic; }
+
+  /* ── Contract grid ── */
   .contract-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -496,7 +490,7 @@ style: |
   }
 
   .contract-side {
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: hidden;
     border: 1px solid var(--border);
   }
@@ -511,17 +505,14 @@ style: |
     border-bottom: 1px solid var(--border);
   }
 
-  .contract-side.input-side  .cs-header { background: var(--blue-light); color: #1e40af; border-color: var(--blue-mid); }
-  .contract-side.output-side .cs-header { background: #fef3c7; color: #92400e; border-color: #fde68a; }
-  .contract-side.input-side             { border-color: var(--blue-mid); }
-  .contract-side.output-side            { border-color: #fde68a; }
+  .contract-side.input-side  .cs-header { background: var(--amber-light); color: var(--amber-dim); border-color: var(--amber-mid); }
+  .contract-side.output-side .cs-header { background: #fdf4ff; color: #6b21a8; border-color: #e9d5ff; }
+  .contract-side.input-side             { border-color: var(--amber-mid); }
+  .contract-side.output-side            { border-color: #e9d5ff; }
 
   .contract-side .cs-body {
     padding: 10px 14px;
     background: var(--white);
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.6;
   }
 
   .contract-side .cs-rule {
@@ -534,16 +525,19 @@ style: |
   }
 
   .contract-side .cs-rule:last-child { border-bottom: none; }
+
   .contract-side .cs-rule .cr-key {
     font-family: 'DM Mono', monospace;
     font-size: 11.5px;
-    color: var(--blue);
+    color: var(--amber-dim);
     font-weight: 500;
     min-width: 100px;
     flex-shrink: 0;
   }
 
-  /* ── Bad/good contract comparison ── */
+  .contract-side.output-side .cs-rule .cr-key { color: #6b21a8; }
+
+  /* ── Bad / good contract compare ── */
   .contract-compare {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -552,7 +546,7 @@ style: |
   }
 
   .cc-col {
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: hidden;
     border: 1px solid var(--border);
   }
@@ -560,7 +554,7 @@ style: |
   .cc-col .ccl-label {
     padding: 8px 14px;
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.07em;
@@ -573,7 +567,7 @@ style: |
   .cc-col.good            { border-color: #bbf7d0; }
 
   .cc-col .ccl-body {
-    background: #111827;
+    background: #1c1917;
     padding: 12px 16px;
     font-family: 'DM Mono', monospace;
     font-size: 12px;
@@ -581,19 +575,19 @@ style: |
   }
 
   .jb-key   { color: #93c5fd; }
-  .jb-str   { color: #fde68a; }
+  .jb-str   { color: var(--amber-mid); }
   .jb-str-b { color: #34d399; }
   .jb-num   { color: #fb923c; }
   .jb-bool  { color: #c084fc; }
   .jb-null  { color: #f87171; }
-  .jb-punct { color: #4b5563; }
-  .jb-cmt   { color: #374151; font-style: italic; }
+  .jb-punct { color: #44403c; }
+  .jb-cmt   { color: #44403c; font-style: italic; }
 
   /* ── Cheatsheet table ── */
   .cheat-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 13.5px;
+    font-size: 13px;
     margin: 12px 0;
   }
 
@@ -603,15 +597,16 @@ style: |
     padding: 8px 14px;
     text-align: left;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 11.5px;
     font-family: 'DM Mono', monospace;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.07em;
   }
 
   .cheat-table td {
     padding: 9px 14px;
     border-bottom: 1px solid var(--border);
     color: var(--text);
+    font-size: 13px;
   }
 
   .cheat-table tr:last-child td { border-bottom: none; }
@@ -619,7 +614,7 @@ style: |
 
   .cheat-table .mono {
     font-family: 'DM Mono', monospace;
-    color: var(--blue);
+    color: var(--amber-dim);
     font-size: 12.5px;
   }
 
@@ -640,14 +635,14 @@ style: |
 
   .step-list li::before {
     content: counter(steps);
-    background: var(--blue);
+    background: var(--amber);
     color: white;
     font-family: 'DM Mono', monospace;
     font-size: 12px;
     font-weight: 500;
     min-width: 24px;
     height: 24px;
-    border-radius: 999px;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -658,14 +653,14 @@ style: |
 
 <!-- _class: cover -->
 
-<div class="series-badge">SINGLE AGENT SERIES · PART 2 OF N</div>
+<div class="series-badge">SINGLE AGENT SERIES · PART 2 OF 4</div>
 
 # Anatomy of an Agent
 ## The Four Parts of Every Agent
 
 &nbsp;
 
-**Understanding the structure is what separates guessing from engineering.**
+**Understanding the structure** is what separates guessing from engineering.
 
 `system prompt` · `context` · `tools` · `input` · `output contract`
 
@@ -895,7 +890,7 @@ A tool is a function the agent can call to interact with the world. Without tool
     <span class="td-punct">{</span><br>
     &nbsp;&nbsp;<span class="td-key">"name"</span><span class="td-punct">:</span>        <span class="td-str">"web_search"</span><span class="td-punct">,</span><br>
     &nbsp;&nbsp;<span class="td-key">"description"</span><span class="td-punct">:</span> <span class="td-str">"Search the web for current information. Use when you need facts not in your training data."</span><span class="td-punct">,</span><br>
-    &nbsp;&nbsp;<span class="td-key">"parameters"</span><span class="td-punct">: {</span>
+    &nbsp;&nbsp;<span class="td-key">"parameters"</span><span class="td-punct">: {</span><br>
     &nbsp;&nbsp;&nbsp;&nbsp;<span class="td-key">"query"</span><span class="td-punct">:</span> <span class="td-punct">{</span> <span class="td-key">"type"</span><span class="td-punct">:</span> <span class="td-type">"string"</span><span class="td-punct">,</span> <span class="td-key">"description"</span><span class="td-punct">:</span> <span class="td-str">"The search query"</span> <span class="td-punct">}</span><br>
     &nbsp;&nbsp;<span class="td-punct">},</span><br>
     &nbsp;&nbsp;<span class="td-key">"required"</span><span class="td-punct">:</span> <span class="td-punct">[</span><span class="td-str">"query"</span><span class="td-punct">]</span><br>
@@ -972,51 +967,51 @@ A contract is a **strict agreement** about what goes in and what comes out. Agen
 ## Part 2 Quick Reference
 
 <table class="cheat-table">
-  <tr>
-    <th>Part</th>
-    <th>What it is</th>
-    <th>Key rule</th>
-  </tr>
-  <tr>
-    <td><strong>System prompt</strong></td>
-    <td>The agent's standing instructions — role, rules, tools, format, limits</td>
-    <td>Write it first. Be explicit. Always include output format and step limit.</td>
-  </tr>
-  <tr>
-    <td><strong>Context</strong></td>
-    <td>Everything injected before the user message — memory, history, retrieved docs, tool results</td>
-    <td>You control what goes in. If it's not injected, the agent doesn't know it.</td>
-  </tr>
-  <tr>
-    <td><strong>Input</strong></td>
-    <td>The current goal or message — what the agent is asked to do right now</td>
-    <td>Be specific. Vague goals produce vague actions. Include constraints per-run.</td>
-  </tr>
-  <tr>
-    <td><strong>Output</strong></td>
-    <td>Tool call (act) or final answer (done) — always one or the other, never both</td>
-    <td>Define the exact shape in the system prompt. Validate with Pydantic downstream.</td>
-  </tr>
-  <tr>
-    <td><strong>Tool definition</strong></td>
-    <td>Name, description, parameter schema — how you tell the model a tool exists</td>
-    <td>The description decides when the model uses it. Make it unambiguous.</td>
-  </tr>
-  <tr>
-    <td><strong>Tool call flow</strong></td>
-    <td>Model outputs JSON → your code runs the function → result appended to context</td>
-    <td>The model never runs tools directly. Your loop controller executes them.</td>
-  </tr>
-  <tr>
-    <td><strong>Input contract</strong></td>
-    <td>Defined schema for what goes into the agent each run</td>
-    <td>Consistent input structure makes agents debuggable and testable.</td>
-  </tr>
-  <tr>
-    <td><strong>Output contract</strong></td>
-    <td>Defined schema for what the agent always returns</td>
-    <td>Same shape every run. Include status and confidence — not just the result.</td>
-  </tr>
+  <thead>
+    <tr><th>Part</th><th>What it is</th><th>Key rule</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="mono">System prompt</span></td>
+      <td>The agent's standing instructions — role, rules, tools, format, limits</td>
+      <td>Write it first. Be explicit. Always include output format and step limit.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">Context</span></td>
+      <td>Everything injected before the user message — memory, history, retrieved docs, tool results</td>
+      <td>You control what goes in. If it's not injected, the agent doesn't know it.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">Input</span></td>
+      <td>The current goal or message — what the agent is asked to do right now</td>
+      <td>Be specific. Vague goals produce vague actions. Include constraints per-run.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">Output</span></td>
+      <td>Tool call (act) or final answer (done) — always one or the other, never both</td>
+      <td>Define the exact shape in the system prompt. Validate with Pydantic downstream.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">Tool definition</span></td>
+      <td>Name, description, parameter schema — how you tell the model a tool exists</td>
+      <td>The description decides when the model uses it. Make it unambiguous.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">Tool call flow</span></td>
+      <td>Model outputs JSON → your code runs the function → result appended to context</td>
+      <td>The model never runs tools directly. Your loop controller executes them.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">Input contract</span></td>
+      <td>Defined schema for what goes into the agent each run</td>
+      <td>Consistent input structure makes agents debuggable and testable.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">Output contract</span></td>
+      <td>Defined schema for what the agent always returns</td>
+      <td>Same shape every run. Include status and confidence — not just the result.</td>
+    </tr>
+  </tbody>
 </table>
 
 ---

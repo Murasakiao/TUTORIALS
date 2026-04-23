@@ -3,17 +3,19 @@ marp: true
 theme: default
 paginate: true
 style: |
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap');
 
   :root {
-    --blue: #2563eb;
-    --blue-light: #eff6ff;
-    --blue-mid: #bfdbfe;
-    --text: #111827;
-    --muted: #6b7280;
-    --border: #e5e7eb;
+    --amber: #d97706;
+    --amber-light: #fffbeb;
+    --amber-mid: #fde68a;
+    --amber-dim: #b45309;
+    --text: #1c1917;
+    --muted: #78716c;
+    --border: #e7e5e4;
     --white: #ffffff;
-    --off-white: #f9fafb;
+    --off-white: #fafaf9;
+    --slate: #44403c;
   }
 
   section {
@@ -22,12 +24,12 @@ style: |
     color: var(--text);
     padding: 52px 64px;
     font-size: 18px;
-    line-height: 1.6;
+    line-height: 1.65;
   }
 
   section::after {
     font-family: 'DM Mono', monospace;
-    font-size: 12px;
+    font-size: 11px;
     color: var(--muted);
   }
 
@@ -36,92 +38,107 @@ style: |
     font-size: 42px;
     font-weight: 600;
     color: var(--text);
-    line-height: 1.2;
+    line-height: 1.15;
     margin-bottom: 0.4em;
+    letter-spacing: -0.5px;
   }
 
   h2 {
     font-family: 'DM Sans', sans-serif;
-    font-size: 28px;
+    font-size: 27px;
     font-weight: 600;
     color: var(--text);
-    border-bottom: 2px solid var(--blue);
+    border-bottom: 1.5px solid var(--border);
     padding-bottom: 10px;
-    margin-bottom: 24px;
+    margin-bottom: 22px;
+    letter-spacing: -0.3px;
   }
 
   h3 {
     font-family: 'DM Sans', sans-serif;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 500;
-    color: var(--blue);
+    color: var(--amber);
     margin-bottom: 8px;
   }
 
   p { color: var(--text); margin: 0.4em 0; }
   ul { padding-left: 1.4em; }
   li { margin-bottom: 10px; color: var(--text); }
-  strong { color: var(--blue); font-weight: 600; }
+  strong { color: var(--amber-dim); font-weight: 600; }
 
   code {
     font-family: 'DM Mono', monospace;
-    background: var(--blue-light);
-    color: var(--blue);
+    background: var(--amber-light);
+    color: var(--amber-dim);
     padding: 2px 8px;
     border-radius: 4px;
-    font-size: 0.88em;
+    font-size: 0.87em;
   }
 
   blockquote {
-    border-left: 4px solid var(--blue);
-    background: var(--blue-light);
+    border-left: 3px solid var(--amber);
+    background: var(--amber-light);
     padding: 16px 20px;
     margin: 20px 0;
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 6px 6px 0;
     font-family: 'DM Mono', monospace;
     font-size: 0.82em;
-    color: #1e40af;
+    color: #92400e;
     line-height: 1.6;
   }
 
-  blockquote p { color: #1e40af; margin: 0; }
+  blockquote p { color: #92400e; margin: 0; }
 
+  /* ── Cover ── */
   section.cover {
-    background: var(--text);
+    background: #1c1917;
     color: var(--white);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
   }
 
-  section.cover h1 { color: var(--white); font-size: 44px; }
-  section.cover h2 { color: #93c5fd; border-bottom-color: #374151; font-size: 20px; font-weight: 400; }
-  section.cover p  { color: #9ca3af; }
-  section.cover strong { color: #60a5fa; }
-  section.cover code { background: #1e3a5f; color: #93c5fd; }
+  section.cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 80% 20%, rgba(217,119,6,0.08) 0%, transparent 55%),
+      radial-gradient(ellipse at 10% 85%, rgba(217,119,6,0.05) 0%, transparent 45%);
+    pointer-events: none;
+  }
 
-  /* series badge on cover */
+  section.cover h1 { color: var(--white); font-size: 44px; letter-spacing: -0.8px; }
+  section.cover h2 { color: #a8a29e; border-bottom-color: #44403c; font-size: 20px; font-weight: 400; letter-spacing: 0; }
+  section.cover p  { color: #78716c; }
+  section.cover strong { color: #fbbf24; }
+  section.cover code { background: #292524; color: #fbbf24; border: 1px solid #44403c; }
+
   section.cover .series-badge {
     display: inline-block;
-    background: #1e3a5f;
-    color: #93c5fd;
+    background: #292524;
+    color: #d97706;
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 500;
     padding: 5px 14px;
-    border-radius: 999px;
-    margin-bottom: 20px;
-    letter-spacing: 0.07em;
-    border: 1px solid #2563eb;
+    border-radius: 4px;
+    margin-bottom: 22px;
+    letter-spacing: 0.1em;
+    border: 1px solid #44403c;
+    width: fit-content;
   }
 
   section.step { background: var(--off-white); }
 
   .highlight {
-    background: var(--blue-light);
-    border: 1px solid var(--blue-mid);
-    border-radius: 10px;
-    padding: 18px 24px;
+    background: var(--amber-light);
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    padding: 16px 22px;
     margin: 16px 0;
   }
 
@@ -135,7 +152,7 @@ style: |
   .tool-card {
     background: var(--off-white);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 16px 20px;
   }
 
@@ -145,32 +162,41 @@ style: |
 
   .step-badge {
     display: inline-block;
-    background: var(--blue);
+    background: var(--text);
     color: white;
     font-family: 'DM Mono', monospace;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
-    padding: 4px 14px;
-    border-radius: 999px;
+    padding: 4px 12px;
+    border-radius: 3px;
     margin-bottom: 12px;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
   }
 
   section.final {
-    background: var(--blue);
+    background: #1c1917;
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    position: relative;
+    overflow: hidden;
   }
 
-  section.final h1 { color: white; font-size: 40px; }
-  section.final p  { color: #bfdbfe; font-size: 18px; }
-  section.final strong { color: white; }
-  section.final em { color: #bfdbfe; }
+  section.final::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(217,119,6,0.10) 0%, transparent 65%);
+    pointer-events: none;
+  }
 
-  /* ── Two-column layout ── */
+  section.final h1 { color: white; font-size: 40px; letter-spacing: -0.5px; }
+  section.final p  { color: #a8a29e; font-size: 18px; }
+  section.final strong { color: #fbbf24; }
+  section.final em { color: #a8a29e; }
+
   .two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -181,26 +207,25 @@ style: |
   .col-card {
     background: var(--off-white);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 16px 20px;
   }
 
   .col-card .label {
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
+    font-size: 10.5px;
     color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     margin-bottom: 8px;
   }
 
-  /* ── AI vs Agent split ── */
   .versus-grid {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     gap: 0;
     align-items: stretch;
-    border-radius: 14px;
+    border-radius: 10px;
     overflow: hidden;
     border: 1px solid var(--border);
     margin: 16px 0;
@@ -208,23 +233,23 @@ style: |
 
   .vs-side { padding: 16px 18px; }
   .vs-side.ai    { background: var(--off-white); }
-  .vs-side.agent { background: #f5f3ff; }
+  .vs-side.agent { background: #fffbeb; }
 
   .vs-side .vs-label {
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.09em;
     margin-bottom: 8px;
   }
 
   .vs-side.ai    .vs-label { color: var(--muted); }
-  .vs-side.agent .vs-label { color: #5b21b6; }
+  .vs-side.agent .vs-label { color: #92400e; }
 
   .vs-side .vs-title {
     font-weight: 700;
-    font-size: 17px;
+    font-size: 16.5px;
     color: var(--text);
     margin-bottom: 10px;
   }
@@ -240,7 +265,7 @@ style: |
   }
 
   .vs-side .vs-item:last-child { border-bottom: none; }
-  .vs-side.agent .vs-item { border-bottom-color: #ede9fe; color: var(--text); }
+  .vs-side.agent .vs-item { border-bottom-color: #fde68a; color: var(--text); }
   .vs-side .vs-item .vi-icon { flex-shrink: 0; }
 
   .vs-divider {
@@ -252,11 +277,11 @@ style: |
     justify-content: center;
     padding: 0 14px;
     font-weight: 700;
-    font-size: 13px;
+    font-size: 12px;
     color: var(--muted);
+    font-family: 'DM Mono', monospace;
   }
 
-  /* ── Problem → solution cards ── */
   .problem-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -265,7 +290,7 @@ style: |
   }
 
   .problem-card {
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: hidden;
     border: 1px solid var(--border);
   }
@@ -280,7 +305,7 @@ style: |
     border-bottom: 1px solid var(--border);
   }
 
-  .problem-card.problem .pc-head { background: #fef2f2; color: #991b1b; border-color: #fecaca; }
+  .problem-card.problem .pc-head  { background: #fef2f2; color: #991b1b; border-color: #fecaca; }
   .problem-card.solution .pc-head { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
 
   .problem-card .pc-body {
@@ -291,7 +316,6 @@ style: |
     line-height: 1.6;
   }
 
-  /* ── LLM vs Agent anatomy ── */
   .anatomy-compare {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -300,7 +324,7 @@ style: |
   }
 
   .anatomy-box {
-    border-radius: 12px;
+    border-radius: 10px;
     overflow: hidden;
     border: 1px solid var(--border);
   }
@@ -316,8 +340,8 @@ style: |
   }
 
   .anatomy-box.llm   .ab-header { background: var(--off-white); color: var(--text); }
-  .anatomy-box.agent .ab-header { background: #f5f3ff; color: #5b21b6; border-color: #ddd6fe; }
-  .anatomy-box.agent            { border-color: #ddd6fe; }
+  .anatomy-box.agent .ab-header { background: var(--amber-light); color: #92400e; border-color: #fde68a; }
+  .anatomy-box.agent            { border-color: #fde68a; }
 
   .anatomy-box .ab-body {
     padding: 12px 14px;
@@ -328,7 +352,7 @@ style: |
   }
 
   .ab-layer {
-    border-radius: 7px;
+    border-radius: 6px;
     padding: 9px 13px;
     font-size: 13px;
     display: flex;
@@ -340,13 +364,12 @@ style: |
   .ab-layer .abl-name { font-weight: 600; font-size: 13px; }
   .ab-layer .abl-desc { font-size: 12px; color: var(--muted); margin-top: 1px; }
 
-  .ab-layer.core    { background: #f5f3ff; border: 1px solid #ddd6fe; }
-  .ab-layer.tools   { background: var(--blue-light); border: 1px solid var(--blue-mid); }
+  .ab-layer.core    { background: var(--amber-light); border: 1px solid #fde68a; }
+  .ab-layer.tools   { background: #eff6ff; border: 1px solid #bfdbfe; }
   .ab-layer.memory  { background: #f0fdf4; border: 1px solid #bbf7d0; }
-  .ab-layer.loop    { background: #fef3c7; border: 1px solid #fde68a; }
+  .ab-layer.loop    { background: #fdf4ff; border: 1px solid #e9d5ff; }
   .ab-layer.plain   { background: var(--off-white); border: 1px solid var(--border); }
 
-  /* ── ReAct loop diagram ── */
   .react-loop {
     display: flex;
     align-items: stretch;
@@ -356,7 +379,7 @@ style: |
   }
 
   .rl-node {
-    border-radius: 12px;
+    border-radius: 10px;
     padding: 14px 14px;
     text-align: center;
     min-width: 118px;
@@ -368,25 +391,25 @@ style: |
   }
 
   .rl-node .rn-icon  { font-size: 26px; margin-bottom: 4px; }
-  .rl-node .rn-label { font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+  .rl-node .rn-label { font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; }
   .rl-node .rn-ques  { font-family: 'DM Mono', monospace; font-size: 10.5px; opacity: 0.8; line-height: 1.4; }
 
-  .rl-node.reason  { background: #f5f3ff; border: 2px solid #c4b5fd; }
-  .rl-node.act     { background: var(--blue-light); border: 2px solid var(--blue-mid); }
+  .rl-node.reason  { background: var(--amber-light); border: 2px solid #fde68a; }
+  .rl-node.act     { background: #eff6ff; border: 2px solid #bfdbfe; }
   .rl-node.observe { background: #f0fdf4; border: 2px solid #86efac; }
-  .rl-node.decide  { background: #fef3c7; border: 2px solid #fde68a; }
+  .rl-node.decide  { background: #fdf4ff; border: 2px solid #e9d5ff; }
 
-  .rl-node.reason  .rn-label { color: #5b21b6; }
+  .rl-node.reason  .rn-label { color: #92400e; }
   .rl-node.act     .rn-label { color: #1e40af; }
   .rl-node.observe .rn-label { color: #166534; }
-  .rl-node.decide  .rn-label { color: #92400e; }
+  .rl-node.decide  .rn-label { color: #6b21a8; }
 
   .rl-arrow {
     display: flex;
     align-items: center;
     padding: 0 6px;
     font-size: 18px;
-    color: var(--blue);
+    color: var(--amber);
     flex-shrink: 0;
   }
 
@@ -402,14 +425,13 @@ style: |
   }
 
   .rl-loop-line {
-    height: 2px;
+    height: 1.5px;
     background: var(--border);
     border-radius: 999px;
     flex: 1;
     max-width: 80px;
   }
 
-  /* ── ReAct walkthrough (annotated loop) ── */
   .react-walkthrough {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -420,7 +442,7 @@ style: |
   .rw-step {
     background: var(--white);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 12px 15px;
     display: flex;
     align-items: flex-start;
@@ -432,18 +454,18 @@ style: |
     font-size: 10px;
     font-weight: 600;
     padding: 3px 8px;
-    border-radius: 4px;
+    border-radius: 3px;
     flex-shrink: 0;
     margin-top: 1px;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     white-space: nowrap;
   }
 
-  .rws-badge.reason  { background: #f5f3ff; color: #5b21b6; border: 1px solid #ddd6fe; }
-  .rws-badge.act     { background: var(--blue-light); color: #1e40af; border: 1px solid var(--blue-mid); }
-  .rws-badge.observe { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
-  .rws-badge.decide  { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+  .rws-badge.reason  { background: var(--amber-light); color: #92400e; border: 1px solid #fde68a; }
+  .rws-badge.act     { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+  .rws-badge.observe { background: #f0fdf4; color: #166634; border: 1px solid #bbf7d0; }
+  .rws-badge.decide  { background: #fdf4ff; color: #6b21a8; border: 1px solid #e9d5ff; }
 
   .rw-step .rws-text {
     font-size: 12.5px;
@@ -454,13 +476,12 @@ style: |
   .rw-step .rws-text .rws-tool {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    color: var(--blue);
-    background: var(--blue-light);
+    color: var(--amber-dim);
+    background: var(--amber-light);
     padding: 1px 5px;
     border-radius: 3px;
   }
 
-  /* ── Why it matters cards ── */
   .matters-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -471,7 +492,7 @@ style: |
   .matters-card {
     background: var(--white);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 14px 16px;
     display: flex;
     align-items: flex-start;
@@ -493,7 +514,6 @@ style: |
     line-height: 1.55;
   }
 
-  /* ── Cheatsheet table ── */
   .cheat-table {
     width: 100%;
     border-collapse: collapse;
@@ -507,9 +527,9 @@ style: |
     padding: 8px 14px;
     text-align: left;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 11.5px;
     font-family: 'DM Mono', monospace;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.07em;
   }
 
   .cheat-table td {
@@ -523,7 +543,7 @@ style: |
 
   .cheat-table .mono {
     font-family: 'DM Mono', monospace;
-    color: var(--blue);
+    color: var(--amber-dim);
     font-size: 12.5px;
   }
 
@@ -544,14 +564,14 @@ style: |
 
   .step-list li::before {
     content: counter(steps);
-    background: var(--blue);
+    background: var(--amber);
     color: white;
     font-family: 'DM Mono', monospace;
     font-size: 12px;
     font-weight: 500;
     min-width: 24px;
     height: 24px;
-    border-radius: 999px;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -562,14 +582,14 @@ style: |
 
 <!-- _class: cover -->
 
-<div class="series-badge">SINGLE AGENT SERIES · PART 1 OF N</div>
+<div class="series-badge">SINGLE AGENT SERIES · PART 1 OF 4</div>
 
 # Your First AI Worker
 ## What Is an Agent
 
 &nbsp;
 
-**Before you build one, understand what separates it from a plain LLM call.**
+**Before you build one**, understand what separates it from a plain LLM call.
 
 `ReAct` · `reason` · `act` · `observe` · `tool` · `loop`
 
@@ -727,70 +747,39 @@ ReAct (Reasoning + Acting) is the most common agent pattern. The model alternate
   <div class="rl-node observe">
     <div class="rn-icon">👁️</div>
     <div class="rn-label">Observe</div>
-    <div class="rn-ques">What did the tool<br>return? What changed?</div>
+    <div class="rn-ques">What came back?<br>Did it work?</div>
   </div>
   <div class="rl-arrow">→</div>
   <div class="rl-node decide">
-    <div class="rn-icon">⚖️</div>
-    <div class="rn-label">Repeat?</div>
-    <div class="rn-ques">Goal done?<br>If not → Reason again.</div>
+    <div class="rn-icon">🔀</div>
+    <div class="rn-label">Decide</div>
+    <div class="rn-ques">Loop again?<br>Or done?</div>
   </div>
 </div>
 
 <div class="rl-loop-back">
   <div class="rl-loop-line"></div>
-  <span>↩ &nbsp;loop until task is complete or step limit reached&nbsp; ↺</span>
+  ↺ &nbsp;loops back to Reason until the goal is complete
   <div class="rl-loop-line"></div>
 </div>
-
-<div class="two-col" style="margin-top:14px;">
-  <div class="col-card">
-    <div class="label">In the model's output</div>
-    <p style="font-size:13.5px; margin-top:6px;">Each loop iteration, the model outputs either a <strong>tool call</strong> (act) or a <strong>final answer</strong>. Your loop controller runs the tool and feeds the result back.</p>
-  </div>
-  <div class="col-card">
-    <div class="label">In your code</div>
-    <p style="font-size:13.5px; margin-top:6px;"><code>while not done:</code> call the model → if tool call → run it → append result → call model again → if final answer → break.</p>
-  </div>
-</div>
-
----
-
-<!-- _class: step -->
-
-<div class="step-badge">CONCEPT 03 — continued</div>
-
-## ReAct in Action — A Traced Example
-
-**Goal:** "What is the current weather in Manila and should I bring an umbrella?"
 
 <div class="react-walkthrough">
   <div class="rw-step">
     <span class="rws-badge reason">Reason</span>
-    <span class="rws-text">I need current weather data for Manila. I'll use the <span class="rws-tool">web_search</span> tool to find it.</span>
+    <div class="rws-text">"I need to find the current Visayas grid load. I should call <span class="rws-tool">get_grid_data()</span> first."</div>
   </div>
   <div class="rw-step">
     <span class="rws-badge act">Act</span>
-    <span class="rws-text">Calling <span class="rws-tool">web_search("Manila weather today")</span> → returns current conditions: 31°C, 85% humidity, thunderstorm warning in effect.</span>
+    <div class="rws-text">Calls <span class="rws-tool">get_grid_data(region="visayas")</span> and waits for the result.</div>
   </div>
   <div class="rw-step">
     <span class="rws-badge observe">Observe</span>
-    <span class="rws-text">Got the weather data. There is an active thunderstorm warning. I have enough information to answer the original question.</span>
+    <div class="rws-text">Tool returns load data. Model adds this to context and re-evaluates what to do next.</div>
   </div>
   <div class="rw-step">
-    <span class="rws-badge decide">Repeat?</span>
-    <span class="rws-text">No more tools needed. Goal is satisfied. Returning final answer.</span>
+    <span class="rws-badge decide">Decide</span>
+    <div class="rws-text">Has enough data to complete the task. Exits the loop and returns the final analysis.</div>
   </div>
-  <div class="rw-step" style="grid-column: span 2; border-color: #bbf7d0; border-left: 3px solid #22c55e;">
-    <span class="rws-badge observe" style="background:#dcfce7;">Answer</span>
-    <span class="rws-text">It's 31°C with a thunderstorm warning in Manila. <strong>Yes, bring an umbrella</strong> — and consider staying indoors if the warning is still active when you go out. <em>(1 loop · 1 tool call)</em></span>
-  </div>
-</div>
-
-<div class="highlight" style="margin-top:14px;">
-
-**Key insight:** The model didn't just answer from memory — it fetched real data, then reasoned about it. That's the difference between an LLM and an agent: **grounded, current, actionable.**
-
 </div>
 
 ---
@@ -799,115 +788,127 @@ ReAct (Reasoning + Acting) is the most common agent pattern. The model alternate
 
 <div class="step-badge">CONCEPT 04</div>
 
-## Why This Matters for Your Workflow
+## Why This Pattern Is Powerful
+
+The ReAct loop isn't just an implementation detail — it's what separates brittle scripts from flexible agents.
 
 <div class="matters-grid">
   <div class="matters-card">
-    <div class="mcc-icon">🔓</div>
+    <div class="mcc-icon">🔍</div>
     <div>
-      <div class="mcc-title">Unlocks multi-step automation</div>
-      <div class="mcc-desc">Tasks that previously required a human to interpret AI output and decide the next step can now run end-to-end. The agent is the human in that loop.</div>
-    </div>
-  </div>
-  <div class="matters-card">
-    <div class="mcc-icon">📐</div>
-    <div>
-      <div class="mcc-title">Scales with complexity</div>
-      <div class="mcc-desc">A plain LLM hits a wall at multi-step tasks. An agent handles any depth — 3 steps or 30 — using the same loop, the same code, more iterations.</div>
-    </div>
-  </div>
-  <div class="matters-card">
-    <div class="mcc-icon">🎯</div>
-    <div>
-      <div class="mcc-title">Goal-directed, not prompt-directed</div>
-      <div class="mcc-desc">You describe what you want — not how to get it. The agent figures out the steps. This is a qualitatively different way of working with AI.</div>
+      <div class="mcc-title">Handles unknowns gracefully</div>
+      <div class="mcc-desc">A script fails when output doesn't match expectations. An agent reasons about what it got and decides what to try next — it adapts mid-task.</div>
     </div>
   </div>
   <div class="matters-card">
     <div class="mcc-icon">🔧</div>
     <div>
-      <div class="mcc-title">Composable with real systems</div>
-      <div class="mcc-desc">Because an agent can call any API, it integrates with your existing tools — databases, email, Slack, your codebase — without rebuilding anything.</div>
+      <div class="mcc-title">Tools extend what's possible</div>
+      <div class="mcc-desc">Each tool you give the agent is a new action it can take. Search, code execution, file I/O, API calls — the agent picks the right one per step.</div>
     </div>
   </div>
   <div class="matters-card">
-    <div class="mcc-icon">⏱️</div>
+    <div class="mcc-icon">💾</div>
     <div>
-      <div class="mcc-title">Async by default</div>
-      <div class="mcc-desc">Set the agent running and come back to the result. You don't babysit it. This frees you for work that genuinely requires your judgment.</div>
+      <div class="mcc-title">Context accumulates naturally</div>
+      <div class="mcc-desc">Every observation gets added back to the conversation. The agent doesn't forget — it builds a richer picture of the task with each loop.</div>
     </div>
   </div>
   <div class="matters-card">
-    <div class="mcc-icon">🧱</div>
+    <div class="mcc-icon">🔁</div>
     <div>
-      <div class="mcc-title">Foundation for multi-agent systems</div>
-      <div class="mcc-desc">A single agent is the primitive. Once you understand it, multi-agent systems — where agents delegate to each other — are a natural extension.</div>
+      <div class="mcc-title">The loop is your control plane</div>
+      <div class="mcc-desc">You decide when it stops: task complete, max iterations hit, or error threshold crossed. The agent does the work; you set the guardrails.</div>
     </div>
   </div>
 </div>
 
 ---
 
-## Part 1 Quick Reference
+<!-- _class: step -->
+
+<div class="step-badge">CONCEPT 05</div>
+
+## Building Your First Agent — The Minimal Loop
+
+You only need three things to run a real ReAct agent: a model, at least one tool, and a loop.
+
+<ul class="step-list">
+  <li>
+    <div><strong>Define your tools.</strong> A tool is just a Python function with a clear name, typed inputs, and a docstring. The model reads the description to know when and how to call it.</div>
+  </li>
+  <li>
+    <div><strong>Write the loop.</strong> Call the model. If it returns a tool call, run the function and append the result to the conversation. If it returns plain text, you're done — that's the final answer.</div>
+  </li>
+  <li>
+    <div><strong>Set a stop condition.</strong> Always cap your loop at a maximum number of iterations. This prevents infinite loops and keeps costs predictable.</div>
+  </li>
+  <li>
+    <div><strong>Inspect the trace.</strong> Print every Reason → Act → Observe step while developing. This is how you debug agent behaviour — the trace is your log.</div>
+  </li>
+</ul>
+
+<div class="highlight">
+
+**Minimal viable agent:** `model` + `tools list` + `while not done` loop + `max_steps` guard. Everything else — memory stores, multi-agent orchestration, critic loops — builds on top of this.
+
+</div>
+
+---
+
+## Quick Reference — Agent Vocabulary
+
+The terms that appear in every agent tutorial, decoded.
 
 <table class="cheat-table">
-  <tr>
-    <th>Term</th>
-    <th>Plain English</th>
-  </tr>
-  <tr>
-    <td><strong>Agent</strong></td>
-    <td>An LLM + tools + a loop. Keeps reasoning and acting until a goal is complete.</td>
-  </tr>
-  <tr>
-    <td><strong>Plain LLM call</strong></td>
-    <td>One prompt in, one response out. No tools, no loop, no autonomy.</td>
-  </tr>
-  <tr>
-    <td><strong>Tool</strong></td>
-    <td>A function the agent can call — web search, code runner, API, file read/write.</td>
-  </tr>
-  <tr>
-    <td><strong>ReAct loop</strong></td>
-    <td>Reason → Act (call a tool) → Observe (read result) → Repeat until done.</td>
-  </tr>
-  <tr>
-    <td><strong>Reason step</strong></td>
-    <td>The model outputs its plan — "I should search for X because Y."</td>
-  </tr>
-  <tr>
-    <td><strong>Act step</strong></td>
-    <td>The model outputs a structured tool call. Your code runs it and returns the result.</td>
-  </tr>
-  <tr>
-    <td><strong>Observe step</strong></td>
-    <td>The tool result is appended to context. The model reads it and decides what's next.</td>
-  </tr>
-  <tr>
-    <td><strong>Loop controller</strong></td>
-    <td>Your <code>while not done</code> loop — keeps calling the model until it returns a final answer.</td>
-  </tr>
-  <tr>
-    <td><strong>Final answer</strong></td>
-    <td>When the model decides the goal is met and outputs a response instead of a tool call.</td>
-  </tr>
-  <tr>
-    <td><strong>Step limit</strong></td>
-    <td>A max iteration count to prevent infinite loops — e.g. stop after 20 steps regardless.</td>
-  </tr>
+  <thead>
+    <tr><th>Term</th><th>What it means</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="mono">Agent</span></td>
+      <td>An LLM + tools + a loop. Takes a goal and acts until it's done.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">ReAct</span></td>
+      <td>Reason + Act pattern. The model thinks, then acts, then observes — repeating until the goal is met.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">Tool</span></td>
+      <td>A function the agent can call — a search API, code runner, file reader, database query, etc.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">Loop</span></td>
+      <td>The code wrapping the LLM call that keeps running until a stop condition is met.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">Observation</span></td>
+      <td>The result returned by a tool. Gets appended to the conversation so the model can reason over it.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">Context window</span></td>
+      <td>The agent's working memory — everything it can see in the current call, including all prior observations.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">Stop condition</span></td>
+      <td>The rule that ends the loop: task complete, max steps reached, or an unrecoverable error.</td>
+    </tr>
+  </tbody>
 </table>
 
 ---
 
 <!-- _class: final -->
 
-# An agent is an LLM
-# that doesn't stop
-# at one answer.
+# Now Build Your First Agent.
 
 &nbsp;
 
-Next: **Part 2 — Build your first agent in Python.**
+*You understand the pattern. The next step is running it.*
+
+&nbsp;
+
+Next: **Part 2 — Anatomy of an Agent.**
 
 &nbsp;
 

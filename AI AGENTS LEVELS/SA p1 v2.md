@@ -101,7 +101,6 @@ style: |
     overflow: hidden;
   }
 
-  /* subtle noise-like texture via radial gradient */
   section.cover::before {
     content: '';
     position: absolute;
@@ -143,7 +142,6 @@ style: |
     margin: 16px 0;
   }
 
-  /* ── Tools grid ── */
   .tools {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -199,7 +197,6 @@ style: |
   section.final strong { color: #fbbf24; }
   section.final em { color: #a8a29e; }
 
-  /* ── Two-column layout ── */
   .two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -223,7 +220,6 @@ style: |
     margin-bottom: 8px;
   }
 
-  /* ── AI vs Agent split ── */
   .versus-grid {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -286,7 +282,6 @@ style: |
     font-family: 'DM Mono', monospace;
   }
 
-  /* ── Problem → solution cards ── */
   .problem-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -321,7 +316,6 @@ style: |
     line-height: 1.6;
   }
 
-  /* ── LLM vs Agent anatomy ── */
   .anatomy-compare {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -376,7 +370,6 @@ style: |
   .ab-layer.loop    { background: #fdf4ff; border: 1px solid #e9d5ff; }
   .ab-layer.plain   { background: var(--off-white); border: 1px solid var(--border); }
 
-  /* ── ReAct loop diagram ── */
   .react-loop {
     display: flex;
     align-items: stretch;
@@ -439,7 +432,6 @@ style: |
     max-width: 80px;
   }
 
-  /* ── ReAct walkthrough ── */
   .react-walkthrough {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -472,7 +464,7 @@ style: |
 
   .rws-badge.reason  { background: var(--amber-light); color: #92400e; border: 1px solid #fde68a; }
   .rws-badge.act     { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
-  .rws-badge.observe { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+  .rws-badge.observe { background: #f0fdf4; color: #166634; border: 1px solid #bbf7d0; }
   .rws-badge.decide  { background: #fdf4ff; color: #6b21a8; border: 1px solid #e9d5ff; }
 
   .rw-step .rws-text {
@@ -490,7 +482,6 @@ style: |
     border-radius: 3px;
   }
 
-  /* ── Why it matters cards ── */
   .matters-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -523,7 +514,6 @@ style: |
     line-height: 1.55;
   }
 
-  /* ── Cheatsheet table ── */
   .cheat-table {
     width: 100%;
     border-collapse: collapse;
@@ -599,7 +589,7 @@ style: |
 
 &nbsp;
 
-**Before you build one, understand what separates it from a plain LLM call.**
+**Before you build one**, understand what separates it from a plain LLM call.
 
 `ReAct` · `reason` · `act` · `observe` · `tool` · `loop`
 
@@ -766,3 +756,160 @@ ReAct (Reasoning + Acting) is the most common agent pattern. The model alternate
     <div class="rn-ques">Loop again?<br>Or done?</div>
   </div>
 </div>
+
+<div class="rl-loop-back">
+  <div class="rl-loop-line"></div>
+  ↺ &nbsp;loops back to Reason until the goal is complete
+  <div class="rl-loop-line"></div>
+</div>
+
+<div class="react-walkthrough">
+  <div class="rw-step">
+    <span class="rws-badge reason">Reason</span>
+    <div class="rws-text">"I need to find the current Visayas grid load. I should call <span class="rws-tool">get_grid_data()</span> first."</div>
+  </div>
+  <div class="rw-step">
+    <span class="rws-badge act">Act</span>
+    <div class="rws-text">Calls <span class="rws-tool">get_grid_data(region="visayas")</span> and waits for the result.</div>
+  </div>
+  <div class="rw-step">
+    <span class="rws-badge observe">Observe</span>
+    <div class="rws-text">Tool returns load data. Model adds this to context and re-evaluates what to do next.</div>
+  </div>
+  <div class="rw-step">
+    <span class="rws-badge decide">Decide</span>
+    <div class="rws-text">Has enough data to complete the task. Exits the loop and returns the final analysis.</div>
+  </div>
+</div>
+
+---
+
+<!-- _class: step -->
+
+<div class="step-badge">CONCEPT 04</div>
+
+## Why This Pattern Is Powerful
+
+The ReAct loop isn't just an implementation detail — it's what separates brittle scripts from flexible agents.
+
+<div class="matters-grid">
+  <div class="matters-card">
+    <div class="mcc-icon">🔍</div>
+    <div>
+      <div class="mcc-title">Handles unknowns gracefully</div>
+      <div class="mcc-desc">A script fails when output doesn't match expectations. An agent reasons about what it got and decides what to try next — it adapts mid-task.</div>
+    </div>
+  </div>
+  <div class="matters-card">
+    <div class="mcc-icon">🔧</div>
+    <div>
+      <div class="mcc-title">Tools extend what's possible</div>
+      <div class="mcc-desc">Each tool you give the agent is a new action it can take. Search, code execution, file I/O, API calls — the agent picks the right one per step.</div>
+    </div>
+  </div>
+  <div class="matters-card">
+    <div class="mcc-icon">💾</div>
+    <div>
+      <div class="mcc-title">Context accumulates naturally</div>
+      <div class="mcc-desc">Every observation gets added back to the conversation. The agent doesn't forget — it builds a richer picture of the task with each loop.</div>
+    </div>
+  </div>
+  <div class="matters-card">
+    <div class="mcc-icon">🔁</div>
+    <div>
+      <div class="mcc-title">The loop is your control plane</div>
+      <div class="mcc-desc">You decide when it stops: task complete, max iterations hit, or error threshold crossed. The agent does the work; you set the guardrails.</div>
+    </div>
+  </div>
+</div>
+
+---
+
+<!-- _class: step -->
+
+<div class="step-badge">CONCEPT 05</div>
+
+## Building Your First Agent — The Minimal Loop
+
+You only need three things to run a real ReAct agent: a model, at least one tool, and a loop.
+
+<ul class="step-list">
+  <li>
+    <div><strong>Define your tools.</strong> A tool is just a Python function with a clear name, typed inputs, and a docstring. The model reads the description to know when and how to call it.</div>
+  </li>
+  <li>
+    <div><strong>Write the loop.</strong> Call the model. If it returns a tool call, run the function and append the result to the conversation. If it returns plain text, you're done — that's the final answer.</div>
+  </li>
+  <li>
+    <div><strong>Set a stop condition.</strong> Always cap your loop at a maximum number of iterations. This prevents infinite loops and keeps costs predictable.</div>
+  </li>
+  <li>
+    <div><strong>Inspect the trace.</strong> Print every Reason → Act → Observe step while developing. This is how you debug agent behaviour — the trace is your log.</div>
+  </li>
+</ul>
+
+<div class="highlight">
+
+**Minimal viable agent:** `model` + `tools list` + `while not done` loop + `max_steps` guard. Everything else — memory stores, multi-agent orchestration, critic loops — builds on top of this.
+
+</div>
+
+---
+
+## Quick Reference — Agent Vocabulary
+
+The terms that appear in every agent tutorial, decoded.
+
+<table class="cheat-table">
+  <thead>
+    <tr><th>Term</th><th>What it means</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="mono">Agent</span></td>
+      <td>An LLM + tools + a loop. Takes a goal and acts until it's done.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">ReAct</span></td>
+      <td>Reason + Act pattern. The model thinks, then acts, then observes — repeating until the goal is met.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">Tool</span></td>
+      <td>A function the agent can call — a search API, code runner, file reader, database query, etc.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">Loop</span></td>
+      <td>The code wrapping the LLM call that keeps running until a stop condition is met.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">Observation</span></td>
+      <td>The result returned by a tool. Gets appended to the conversation so the model can reason over it.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">Context window</span></td>
+      <td>The agent's working memory — everything it can see in the current call, including all prior observations.</td>
+    </tr>
+    <tr>
+      <td><span class="mono">Stop condition</span></td>
+      <td>The rule that ends the loop: task complete, max steps reached, or an unrecoverable error.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+<!-- _class: final -->
+
+# Now Build Your First Agent.
+
+&nbsp;
+
+*You understand the pattern. The next step is running it.*
+
+&nbsp;
+
+**Part 2 →** Giving Your Agent Tools
+
+**Part 3 →** Managing Context and Memory
+
+**Part 4 →** Multi-Agent Patterns

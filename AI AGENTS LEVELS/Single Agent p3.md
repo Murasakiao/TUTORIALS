@@ -1,0 +1,2 @@
+Part 3 — Building Your First Agent
+Slides: Defining a clear job (one agent, one role, one output format) → Project structure for a single agent → Writing the system prompt → Feeding context files → Making your first LLM call in Python → Reading and using the output
