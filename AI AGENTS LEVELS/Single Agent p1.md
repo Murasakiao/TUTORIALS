@@ -582,7 +582,7 @@ style: |
 
 <!-- _class: cover -->
 
-<div class="series-badge">SINGLE AGENT SERIES · PART 1 OF 4</div>
+<div class="series-badge">SINGLE AGENT SERIES · LEVEL 1 - PART 1 OF 4</div>
 
 # Your First AI Worker
 ## What Is an Agent

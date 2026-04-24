@@ -1027,7 +1027,7 @@ System prompt. Context. Input. Output. Four parts — endless combinations.
 
 &nbsp;
 
-Next: **Part 3 — Build the loop in Python.**
+Next: **Part 3 — Building Your First Agent.**
 
 &nbsp;
 
