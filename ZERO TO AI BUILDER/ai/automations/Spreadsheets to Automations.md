@@ -370,7 +370,7 @@ style: |
 
 &nbsp;
 
-**Your spreadsheet is already a database. AI turns it into a pipeline.**
+**Your spreadsheet is already a database.** AI turns it into a pipeline.
 
 `clean` · `analyse` · `automate` · `pandas` · `schedule`
 

@@ -469,7 +469,7 @@ style: |
 
 &nbsp;
 
-**You don't need Python. You need a trigger, an AI step, and an action.**
+**You don't need Python.** You need a trigger, an AI step, and an action.
 
 `Zapier` · `Make` · `trigger` · `AI step` · `action`
 

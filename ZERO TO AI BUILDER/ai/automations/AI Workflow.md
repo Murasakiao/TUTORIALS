@@ -662,10 +662,8 @@ Every workflow — no matter how complex — is built on this three-node pattern
   <div class="cb-bar">workflow.py — minimal input → process → output</div>
   <div class="cb-body">
     <span class="cb-kw">import</span> <span class="cb-var">anthropic</span><span class="cb-op">,</span> <span class="cb-var">json</span><br>
-    <br>
     <span class="cb-cmt"># ── INPUT ────────────────────────────────────</span><br>
     <span class="cb-var">raw_review</span> <span class="cb-op">=</span> <span class="cb-str">"Battery drains too fast but the screen is stunning."</span><br>
-    <br>
     <span class="cb-cmt"># ── PROCESS ──────────────────────────────────</span><br>
     <span class="cb-var">client</span>   <span class="cb-op">=</span> <span class="cb-var">anthropic</span><span class="cb-op">.</span><span class="cb-fn">Anthropic</span><span class="cb-op">()</span><br>
     <span class="cb-var">response</span> <span class="cb-op">=</span> <span class="cb-var">client</span><span class="cb-op">.</span><span class="cb-var">messages</span><span class="cb-op">.</span><span class="cb-fn">create</span><span class="cb-op">(</span><br>
@@ -676,7 +674,6 @@ Every workflow — no matter how complex — is built on this three-node pattern
     &nbsp;&nbsp;<span class="cb-op">}]</span><br>
     <span class="cb-op">)</span><br>
     <span class="cb-var">result</span> <span class="cb-op">=</span> <span class="cb-var">json</span><span class="cb-op">.</span><span class="cb-fn">loads</span><span class="cb-op">(</span><span class="cb-var">response</span><span class="cb-op">.</span><span class="cb-var">content</span><span class="cb-op">[</span><span class="cb-num">0</span><span class="cb-op">].</span><span class="cb-prop">text</span><span class="cb-op">)</span><br>
-    <br>
     <span class="cb-cmt"># ── OUTPUT ───────────────────────────────────</span><br>
     <span class="cb-fn">print</span><span class="cb-op">(</span><span class="cb-str">f"Sentiment: </span><span class="cb-op">{</span><span class="cb-var">result</span><span class="cb-op">[</span><span class="cb-str">'sentiment'</span><span class="cb-op">]}</span><span class="cb-str"> | Score: </span><span class="cb-op">{</span><span class="cb-var">result</span><span class="cb-op">[</span><span class="cb-str">'score'</span><span class="cb-op">]}</span><span class="cb-str">/5"</span><span class="cb-op">)</span><br>
     <span class="cb-cmt"># save to database, send to Slack, etc.</span>
@@ -779,7 +776,6 @@ Loops run the same workflow node over a collection — processing many items wit
   <div class="cb-bar">workflow.py — loop over a list of reviews</div>
   <div class="cb-body">
     <span class="cb-var">reviews</span> <span class="cb-op">=</span> <span class="cb-fn">load_reviews_from_csv</span><span class="cb-op">(</span><span class="cb-str">"reviews.csv"</span><span class="cb-op">)</span><br>
-    <br>
     <span class="cb-kw">for</span> <span class="cb-var">review</span> <span class="cb-kw">in</span> <span class="cb-var">reviews</span><span class="cb-op">:</span><br>
     &nbsp;&nbsp;<span class="cb-var">result</span> <span class="cb-op">=</span> <span class="cb-fn">classify_with_ai</span><span class="cb-op">(</span><span class="cb-var">review</span><span class="cb-op">)</span>      <span class="cb-cmt"># same AI call each time</span><br>
     &nbsp;&nbsp;<span class="cb-kw">if</span> <span class="cb-var">result</span><span class="cb-op">[</span><span class="cb-str">"score"</span><span class="cb-op">]</span> <span class="cb-op">&lt;</span> <span class="cb-num">3</span><span class="cb-op">:</span><br>
@@ -857,7 +853,7 @@ A complete AI workflow that processes customer reviews on a schedule, alerts on 
         </div>
       </div>
     </div>
-    <div style="flex:1; display:flex; flex-direction:column; align-items:center; padding-top:4px;">
+    <div style="flex:1; display:flex; flex-direction:column; align-items:center  padding-top:4px;">
       <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);">NO</div>
       <div style="font-size:16px;color:#2563eb;">↓</div>
     </div>

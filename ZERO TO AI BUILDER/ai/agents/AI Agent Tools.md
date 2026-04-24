@@ -637,7 +637,6 @@ Tools are just Python functions with a description. The model reads the descript
   &nbsp;&nbsp;&nbsp;&nbsp;}<br>
   &nbsp;&nbsp;}<br>
   ]<br>
-  <br>
   <span class="cmt"># Pass tools to the model — it decides when and how to call them</span><br>
   <span class="var">response</span> <span class="op">=</span> <span class="var">client</span>.<span class="var">messages</span>.<span class="fn">create</span>(<br>
   &nbsp;&nbsp;<span class="var">model</span><span class="op">=</span><span class="str">"claude-sonnet-4-20250514"</span>, <span class="var">tools</span><span class="op">=</span><span class="var">tools</span>, <span class="var">messages</span><span class="op">=</span>[...]<br>

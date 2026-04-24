@@ -705,10 +705,8 @@ A GET request fetches data from a URL. It's the most common API operation.
   <div class="cb-bar">api_test.py — parsing the response</div>
   <div class="cb-body">
     <span class="cb-var">response</span> <span class="cb-op">=</span> <span class="cb-var">requests</span><span class="cb-op">.</span><span class="cb-fn">get</span><span class="cb-op">(</span><span class="cb-str">"https://catfact.ninja/fact"</span><span class="cb-op">)</span><br>
-    <br>
     <span class="cb-cmt"># .json() deserialises the response into a Python dict</span><br>
     <span class="cb-var">data</span> <span class="cb-op">=</span> <span class="cb-var">response</span><span class="cb-op">.</span><span class="cb-fn">json</span><span class="cb-op">()</span><br>
-    <br>
     <span class="cb-cmt"># Access keys exactly like a regular dictionary</span><br>
     <span class="cb-fn">print</span><span class="cb-op">(</span><span class="cb-var">data</span><span class="cb-op">[</span><span class="cb-str">"fact"</span><span class="cb-op">])</span><br>
     <span class="cb-out">Cats sleep 70% of their lives.</span>
@@ -729,18 +727,14 @@ Putting it all together with error handling and query parameters.
   <div class="cb-bar">weather.py — Open-Meteo API, no key needed</div>
   <div class="cb-body">
     <span class="cb-kw">import</span> <span class="cb-var">requests</span><br>
-    <br>
     <span class="cb-var">url</span> <span class="cb-op">=</span> <span class="cb-str">"https://api.open-meteo.com/v1/forecast"</span><br>
-    <br>
     <span class="cb-cmt"># Query parameters — sent as ?key=value in the URL</span><br>
     <span class="cb-var">params</span> <span class="cb-op">=</span> <span class="cb-op">{</span><br>
     &nbsp;&nbsp;<span class="cb-str">"latitude"</span><span class="cb-op">:</span>  <span class="cb-num">14.5995</span><span class="cb-op">,</span>   <span class="cb-cmt"># Manila, Philippines</span><br>
     &nbsp;&nbsp;<span class="cb-str">"longitude"</span><span class="cb-op">:</span> <span class="cb-num">120.9842</span><span class="cb-op">,</span><br>
     &nbsp;&nbsp;<span class="cb-str">"current"</span><span class="cb-op">:</span>   <span class="cb-str">"temperature_2m,wind_speed_10m"</span><br>
     <span class="cb-op">}</span><br>
-    <br>
     <span class="cb-var">response</span> <span class="cb-op">=</span> <span class="cb-var">requests</span><span class="cb-op">.</span><span class="cb-fn">get</span><span class="cb-op">(</span><span class="cb-var">url</span><span class="cb-op">,</span> <span class="cb-var">params</span><span class="cb-op">=</span><span class="cb-var">params</span><span class="cb-op">)</span><br>
-    <br>
     <span class="cb-kw">if</span> <span class="cb-var">response</span><span class="cb-op">.</span><span class="cb-prop">status_code</span> <span class="cb-op">==</span> <span class="cb-num">200</span><span class="cb-op">:</span><br>
     &nbsp;&nbsp;<span class="cb-var">data</span>    <span class="cb-op">=</span> <span class="cb-var">response</span><span class="cb-op">.</span><span class="cb-fn">json</span><span class="cb-op">()</span><br>
     &nbsp;&nbsp;<span class="cb-var">current</span> <span class="cb-op">=</span> <span class="cb-var">data</span><span class="cb-op">[</span><span class="cb-str">"current"</span><span class="cb-op">]</span><br>

@@ -898,7 +898,7 @@ Every call to an agent follows the same three-step pattern: **call → validate 
 
 ## The `validate_*` Pattern — Catching Failures at the Handoff
 
-One Pydantic model per artifact. One validate function per contract. Raises immediately so the error points to the exact handoff that broke.
+One Pydantic model per artifact. One validate function per contract. Raises immediately so the error points to the exact handoff broke.
 
 <div class="code-block">
   <div class="cb-header">
