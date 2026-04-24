@@ -305,14 +305,22 @@ style: |
   .prop-demo .pd-code {
     background: #111827;
     border-radius: 10px;
-    padding: 14px 18px;
+    padding: 18px 20px;
     font-family: 'DM Mono', monospace;
-    font-size: 12.5px;
-    line-height: 2;
+    font-size: 13px;
+    line-height: 1.9;
+    color: #f9fafb;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    white-space: pre;
   }
+
+  .prop-demo .pd-code .t-sel   { color: #f9fafb; }
+  .prop-demo .pd-code .t-punct { color: #6b7280; }
+  .prop-demo .pd-code .t-prop  { color: #93c5fd; }
+  .prop-demo .pd-code .t-val   { color: #34d399; }
+  .prop-demo .pd-code .t-ind   { color: transparent; user-select: none; }
 
   .prop-demo .pd-visual {
     background: #dbeafe;
@@ -575,16 +583,14 @@ Flexbox works on a **container and its direct children**. Nothing else.
 Controls how items are spaced **along the main axis** (horizontal by default).
 
 <div class="prop-demo">
-  <div class="pd-code">
-    <span class="cb-sel">.container</span> <span class="cb-punct">{</span><br>
-    &nbsp;&nbsp;<span class="cb-prop">display</span><span class="cb-punct">:</span> <span class="cb-val">flex</span><span class="cb-punct">;</span><br>
-    &nbsp;&nbsp;<span class="cb-prop">justify-content</span><span class="cb-punct">:</span> <span class="cb-val">space-between</span><span class="cb-punct">;</span><br>
-    <span class="cb-punct">}</span>
-  </div>
+  <div class="pd-code"><span class="t-sel">.container</span> <span class="t-punct">{</span>
+  <span class="t-prop">display</span><span class="t-punct">:</span> <span class="t-val">flex</span><span class="t-punct">;</span>
+  <span class="t-prop">justify-content</span><span class="t-punct">:</span> <span class="t-val">space-between</span><span class="t-punct">;</span>
+<span class="t-punct">}</span></div>
   <div class="pd-visual" style="justify-content: space-between;">
     <div class="mi" style="width:44px; height:40px;">A</div>
-    <div class="mi" style="width:44px; height:40px;">B</div>
-    <div class="mi" style="width:44px; height:40px;">C</div>
+    <div class="mi b" style="width:44px; height:40px; background:#1d4ed8;">B</div>
+    <div class="mi c" style="width:44px; height:40px; background:#1e40af;">C</div>
   </div>
 </div>
 
@@ -618,17 +624,15 @@ Controls how items are spaced **along the main axis** (horizontal by default).
 Controls how items align **perpendicular to the main axis** (vertical by default).
 
 <div class="prop-demo">
-  <div class="pd-code">
-    <span class="cb-sel">.container</span> <span class="cb-punct">{</span><br>
-    &nbsp;&nbsp;<span class="cb-prop">display</span><span class="cb-punct">:</span> <span class="cb-val">flex</span><span class="cb-punct">;</span><br>
-    &nbsp;&nbsp;<span class="cb-prop">align-items</span><span class="cb-punct">:</span> <span class="cb-val">center</span><span class="cb-punct">;</span><br>
-    &nbsp;&nbsp;<span class="cb-prop">height</span><span class="cb-punct">:</span> <span class="cb-val">100px</span><span class="cb-punct">;</span><br>
-    <span class="cb-punct">}</span>
-  </div>
+  <div class="pd-code"><span class="t-sel">.container</span> <span class="t-punct">{</span>
+  <span class="t-prop">display</span><span class="t-punct">:</span> <span class="t-val">flex</span><span class="t-punct">;</span>
+  <span class="t-prop">align-items</span><span class="t-punct">:</span> <span class="t-val">center</span><span class="t-punct">;</span>
+  <span class="t-prop">height</span><span class="t-punct">:</span> <span class="t-val">100px</span><span class="t-punct">;</span>
+<span class="t-punct">}</span></div>
   <div class="pd-visual" style="align-items: center; height:100px;">
     <div class="mi" style="width:44px; height:64px;">A</div>
-    <div class="mi b" style="width:44px; height:36px;">B</div>
-    <div class="mi c" style="width:44px; height:50px;">C</div>
+    <div class="mi" style="width:44px; height:36px; background:#1d4ed8;">B</div>
+    <div class="mi" style="width:44px; height:50px; background:#1e40af;">C</div>
   </div>
 </div>
 

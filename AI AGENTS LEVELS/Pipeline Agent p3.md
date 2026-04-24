@@ -366,20 +366,20 @@ style: |
   }
 
   .code-block .cb-body {
-    padding: 16px 20px;
-    font-size: 12px;
-    line-height: 1.75;
+    padding: 14px 20px;
+    font-size: 11.5px;
+    line-height: 1.7;
     color: #d6d3d1;
     white-space: pre;
   }
 
-  .code-block .cb-body .kw  { color: #c084fc; }  /* keyword: def, import, return, if */
-  .code-block .cb-body .fn  { color: #fbbf24; }  /* function name */
-  .code-block .cb-body .st  { color: #86efac; }  /* string */
-  .code-block .cb-body .cm  { color: #57534e; }  /* comment */
-  .code-block .cb-body .nu  { color: #fb923c; }  /* number / bool */
-  .code-block .cb-body .bi  { color: #67e8f9; }  /* built-in / method */
-  .code-block .cb-body .va  { color: #d6d3d1; }  /* variable */
+  .code-block .cb-body .kw  { color: #c084fc; }
+  .code-block .cb-body .fn  { color: #fbbf24; }
+  .code-block .cb-body .st  { color: #86efac; }
+  .code-block .cb-body .cm  { color: #57534e; }
+  .code-block .cb-body .nu  { color: #fb923c; }
+  .code-block .cb-body .bi  { color: #67e8f9; }
+  .code-block .cb-body .va  { color: #d6d3d1; }
   .code-block .cb-body .hl  { background: rgba(217,119,6,0.15); display: inline-block; width: 100%; border-radius: 3px; }
 
   /* ── JSON schema block ── */
@@ -419,16 +419,16 @@ style: |
 
   .schema-block .sb-body {
     padding: 14px 18px;
-    font-size: 12px;
-    line-height: 1.8;
+    font-size: 11.5px;
+    line-height: 1.75;
     color: #bae6fd;
     white-space: pre;
   }
 
-  .schema-block .sb-body .sk { color: #fde68a; }  /* key */
-  .schema-block .sb-body .sv { color: #86efac; }  /* string value */
-  .schema-block .sb-body .sn { color: #fb923c; }  /* number value */
-  .schema-block .sb-body .sc { color: #57534e; }  /* comment */
+  .schema-block .sb-body .sk { color: #fde68a; }
+  .schema-block .sb-body .sv { color: #86efac; }
+  .schema-block .sb-body .sn { color: #fb923c; }
+  .schema-block .sb-body .sc { color: #57534e; }
 
   /* ── File tree ── */
   .file-tree {
@@ -457,17 +457,17 @@ style: |
   .file-tree .ft-body {
     padding: 14px 20px;
     font-family: 'DM Mono', monospace;
-    font-size: 12.5px;
-    line-height: 2;
+    font-size: 12px;
+    line-height: 1.9;
     color: #d6d3d1;
     white-space: pre;
   }
 
-  .file-tree .ft-body .fd  { color: #fbbf24; }   /* folder */
-  .file-tree .ft-body .fp  { color: #86efac; }   /* python file */
-  .file-tree .ft-body .fj  { color: #67e8f9; }   /* json / data file */
-  .file-tree .ft-body .fm  { color: #c4b5fd; }   /* markdown file */
-  .file-tree .ft-body .fc  { color: #78716c; }   /* comment / annotation */
+  .file-tree .ft-body .fd  { color: #fbbf24; }
+  .file-tree .ft-body .fp  { color: #86efac; }
+  .file-tree .ft-body .fj  { color: #67e8f9; }
+  .file-tree .ft-body .fm  { color: #c4b5fd; }
+  .file-tree .ft-body .fc  { color: #57534e; }
 
   /* ── Sequential vs Parallel compare ── */
   .seq-par-grid {
@@ -552,7 +552,7 @@ style: |
 
   .sp-par-row .sp-step { flex: 1; }
 
-  /* ── Walkthrough step strip ── */
+  /* ── Walkthrough strip ── */
   .walkthrough {
     display: flex;
     flex-direction: column;
@@ -583,8 +583,7 @@ style: |
   }
 
   .wt-row .wr-content {
-    padding: 11px 16px;
-    background: var(--white);
+    padding: 10px 16px;
   }
 
   .wt-row .wr-content .wrc-title {
@@ -616,6 +615,69 @@ style: |
 
   .wt-row:nth-child(odd)  .wr-content { background: var(--white); }
   .wt-row:nth-child(even) .wr-content { background: var(--off-white); }
+
+  /* ── Inline two-col ── */
+  .two-col-notes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .tcn-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+  }
+
+  .tcn-card .tcn-icon { font-size: 20px; flex-shrink: 0; }
+  .tcn-card .tcn-title { font-weight: 600; font-size: 13px; color: var(--text); margin-bottom: 3px; }
+  .tcn-card .tcn-desc  { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* ── Rule strip (horizontal rule list) ── */
+  .rule-strip {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin: 14px 0;
+  }
+
+  .rs-row {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    border-bottom: 1px solid var(--border);
+    align-items: stretch;
+  }
+
+  .rs-row:last-child { border-bottom: none; }
+
+  .rs-row .rsr-icon {
+    background: var(--off-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    border-right: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .rs-row .rsr-text {
+    padding: 9px 14px;
+    font-size: 12.5px;
+    color: var(--text);
+    line-height: 1.55;
+    background: var(--white);
+  }
+
+  .rs-row:nth-child(even) .rsr-text { background: var(--off-white); }
+  .rs-row:nth-child(even) .rsr-icon { background: #f5f4f3; }
 ---
 
 <!-- _class: cover -->
@@ -699,23 +761,23 @@ A contract is the exact schema an agent must return. You write it before you wri
     <span class="sk">"confidence"</span>: <span class="sv">"HIGH | LOW"</span>
   }
 ],
-<span class="sk">"keywords"</span>: [<span class="sv">"string"</span>],   <span class="sc">// top terms for the Outline agent</span>
-<span class="sk">"competitors"</span>: [<span class="sv">"string"</span>]  <span class="sc">// competing article URLs if found</span></div>
+<span class="sk">"keywords"</span>:    [<span class="sv">"string"</span>],   <span class="sc">// top terms for the Outline agent</span>
+<span class="sk">"competitors"</span>: [<span class="sv">"string"</span>]   <span class="sc">// competing article URLs if found</span></div>
 </div>
 
-<div class="matters-grid">
-  <div class="matters-card">
-    <div class="mcc-icon">✍️</div>
+<div class="two-col-notes">
+  <div class="tcn-card">
+    <div class="tcn-icon">✍️</div>
     <div>
-      <div class="mcc-title">Write the schema first — always</div>
-      <div class="mcc-desc">The schema is the only thing both the agent and the orchestrator agree on. If you write the agent first, you'll write a schema that fits its output rather than one that serves the next stage.</div>
+      <div class="tcn-title">Write the schema first — always</div>
+      <div class="tcn-desc">The schema is the only thing both the agent and orchestrator agree on. Write the agent first and you'll reverse-engineer a schema that fits its output rather than one that serves the next stage.</div>
     </div>
   </div>
-  <div class="matters-card">
-    <div class="mcc-icon">🔑</div>
+  <div class="tcn-card">
+    <div class="tcn-icon">🔑</div>
     <div>
-      <div class="mcc-title">IDs are the handoff mechanism</div>
-      <div class="mcc-desc">Each claim gets an ID (e.g. <code>C01</code>). The Outline agent references <code>C01</code> in its section slots. The Writer pulls claim text by ID. The QA agent checks by ID. IDs make the chain traceable end-to-end.</div>
+      <div class="tcn-title">IDs are the handoff mechanism</div>
+      <div class="tcn-desc">Each claim gets an ID (e.g. <code>C01</code>). The Outline agent references <code>C01</code> in its section slots. The Writer pulls claim text by ID. The QA agent checks by ID. IDs make the chain traceable end-to-end.</div>
     </div>
   </div>
 </div>
@@ -750,7 +812,7 @@ The full contract set for the five-agent pipeline. Define all five before writin
     <tr>
       <td><span class="mono">draft.md</span></td>
       <td>Markdown string</td>
-      <td">H1 title, H2 section headings matching outline, body paragraphs only</td>
+      <td>H1 title, H2 section headings matching outline, body paragraphs only</td>
       <td>Editor agent</td>
     </tr>
     <tr>
@@ -782,8 +844,6 @@ The full contract set for the five-agent pipeline. Define all five before writin
 
 ## Passing State Between Agents in Python
 
-Every call to an agent follows the same three-step pattern: call, validate, forward. Skip validation and a silent contract violation propagates through the entire chain.
-
 <div class="code-block">
   <div class="cb-header">
     <div class="cb-dots">
@@ -797,26 +857,36 @@ Every call to an agent follows the same three-step pattern: call, validate, forw
 <span class="kw">from</span> <span class="va">agents.research</span> <span class="kw">import</span> <span class="fn">run_research_agent</span>
 <span class="kw">from</span> <span class="va">agents.outline</span>  <span class="kw">import</span> <span class="fn">run_outline_agent</span>
 <span class="kw">from</span> <span class="va">contracts</span>       <span class="kw">import</span> <span class="fn">validate_research</span>, <span class="fn">validate_outline</span>
-<span class="cm"># ── Step 1: call the agent ──────────────────────────────</span>
+<span class="cm"># ── Step 1: call the agent ───────────────────────────────────────</span>
 <span class="va">research_raw</span> = <span class="fn">run_research_agent</span>(
     <span class="va">topic</span>=<span class="st">"Why sleep deprivation impairs decision-making"</span>,
     <span class="va">audience</span>=<span class="st">"general readers, no medical background"</span>
 )
-<span class="cm"># ── Step 2: validate the contract ──────────────────────</span>
+<span class="cm"># ── Step 2: validate the contract ───────────────────────────────</span>
 <span class="va">research</span> = <span class="fn">validate_research</span>(<span class="va">research_raw</span>)   <span class="cm"># raises if schema violated</span>
 <span class="fn">save_artifact</span>(<span class="st">"artifacts/research.json"</span>, <span class="va">research</span>)
-
-<span class="cm"># ── Step 3: forward only what the next agent needs ─────</span>
+<span class="cm"># ── Step 3: forward only what the next agent needs ──────────────</span>
 <span class="va">outline_raw</span> = <span class="fn">run_outline_agent</span>(
-    <span class="va">research</span>=<span class="va">research</span>,             <span class="cm"># full contract object</span>
+    <span class="va">research</span>=<span class="va">research</span>,           <span class="cm"># full contract object</span>
     <span class="va">target_format</span>=<span class="st">"blog post"</span>,
     <span class="va">word_count</span>=<span class="nu">1200</span>
 )</div>
 </div>
 
+---
+
+<!-- _class: step -->
+
+<div class="step-badge">CONCEPT 02 - CONTINUED</div>
+
+## Passing State Between Agents in Python
+
+Every call to an agent follows the same three-step pattern: **call → validate → forward.** Skip validation and a silent contract violation propagates through the entire chain.
+
+
 <div class="highlight">
 
-**Never pass the raw LLM response downstream.** Parse and validate first. An agent that returns `{"claims": null}` instead of `{"claims": []}` will silently break every agent that iterates over the list. Validate at every handoff — not just at the end.
+**Never pass the raw LLM response downstream.** Parse and validate first. An agent that returns `{"claims": null}` instead of `{"claims": []}` will silently break every downstream agent that iterates over the list.
 
 </div>
 
@@ -826,9 +896,9 @@ Every call to an agent follows the same three-step pattern: call, validate, forw
 
 <div class="step-badge">CONCEPT 02 — CONTINUED</div>
 
-## The `validate_*` Pattern — Catching Failures Early
+## The `validate_*` Pattern — Catching Failures at the Handoff
 
-A simple Pydantic-style validator for each artifact. One function per contract. Raises immediately on violation so the error points to the exact handoff that failed.
+One Pydantic model per artifact. One validate function per contract. Raises immediately so the error points to the exact handoff that broke.
 
 <div class="code-block">
   <div class="cb-header">
@@ -839,39 +909,36 @@ A simple Pydantic-style validator for each artifact. One function per contract. 
     </div>
     <div class="cb-filename">contracts.py — validation for research.json</div>
   </div>
-  <div class="cb-body"><span class="kw">from</span> <span class="va">pydantic</span> <span class="kw">import</span> <span class="va">BaseModel</span>, <span class="va">Field</span>, <span class="va">validator</span>
-<span class="kw">from</span> <span class="va">typing</span>  <span class="kw">import</span> <span class="va">List, Literal</span>
-
+  <div class="cb-body"><span class="kw">from</span> <span class="va">pydantic</span> <span class="kw">import</span> <span class="va">BaseModel</span>, <span class="va">Field</span>
+<span class="kw">from</span> <span class="va">typing</span>  <span class="kw">import</span> <span class="va">List</span>, <span class="va">Literal</span>
 <span class="kw">class</span> <span class="fn">Claim</span>(<span class="va">BaseModel</span>):
     <span class="va">id</span>:         <span class="va">str</span>
     <span class="va">text</span>:       <span class="va">str</span>
     <span class="va">source</span>:     <span class="va">str</span>
     <span class="va">confidence</span>: <span class="va">Literal</span>[<span class="st">"HIGH"</span>, <span class="st">"LOW"</span>]
-
 <span class="kw">class</span> <span class="fn">ResearchArtifact</span>(<span class="va">BaseModel</span>):
     <span class="va">topic</span>:       <span class="va">str</span>
     <span class="va">audience</span>:    <span class="va">str</span>
-    <span class="va">claims</span>:      <span class="va">List</span>[<span class="fn">Claim</span>] = <span class="va">Field</span>(<span class="va">min_items</span>=<span class="nu">1</span>)
+    <span class="va">claims</span>:      <span class="va">List</span>[<span class="fn">Claim</span>] = <span class="va">Field</span>(<span class="va">min_length</span>=<span class="nu">1</span>)
     <span class="va">keywords</span>:    <span class="va">List</span>[<span class="va">str</span>]
     <span class="va">competitors</span>: <span class="va">List</span>[<span class="va">str</span>] = []
-
 <span class="kw">def</span> <span class="fn">validate_research</span>(<span class="va">raw</span>: <span class="va">dict</span>) -> <span class="fn">ResearchArtifact</span>:
-    <span class="kw">return</span> <span class="fn">ResearchArtifact</span>(**<span class="va">raw</span>)   <span class="cm"># raises ValidationError on violation</span></div>
+    <span class="kw">return</span> <span class="fn">ResearchArtifact</span>(**<span class="va">raw</span>)  <span class="cm"># raises ValidationError on any violation</span></div>
 </div>
 
-<div class="matters-grid">
-  <div class="matters-card">
-    <div class="mcc-icon">🛡️</div>
+<div class="two-col-notes">
+  <div class="tcn-card">
+    <div class="tcn-icon">🛡️</div>
     <div>
-      <div class="mcc-title">Pydantic is the contract enforcer</div>
-      <div class="mcc-desc">Write one <code>BaseModel</code> per artifact. The schema is declared once, in code, and validated at every handoff. If the LLM hallucinates a field or drops a required key, validation raises before the next agent ever runs.</div>
+      <div class="tcn-title">Pydantic is the contract enforcer</div>
+      <div class="tcn-desc">Write one <code>BaseModel</code> per artifact. The schema is declared once, in code, and checked at every handoff. If the LLM drops a required key or hallucinates a field, validation raises before the next agent runs.</div>
     </div>
   </div>
-  <div class="matters-card">
-    <div class="mcc-icon">🐛</div>
+  <div class="tcn-card">
+    <div class="tcn-icon">🐛</div>
     <div>
-      <div class="mcc-title">Validation errors point to the right stage</div>
-      <div class="mcc-desc">Without validation, a missing <code>claim_id</code> in <code>research.json</code> produces a <code>KeyError</code> inside the QA agent — three stages later. With it, you get a <code>ValidationError</code> at the Research → Outline handoff, exactly where the problem is.</div>
+      <div class="tcn-title">Errors point to the right stage</div>
+      <div class="tcn-desc">Without validation, a missing <code>claim_id</code> in <code>research.json</code> produces a <code>KeyError</code> inside the QA agent — three stages later. With it, you get a <code>ValidationError</code> at the Research → Outline handoff, exactly where the fault is.</div>
     </div>
   </div>
 </div>
@@ -884,7 +951,7 @@ A simple Pydantic-style validator for each artifact. One function per contract. 
 
 ## Sequential vs Parallel Pipelines
 
-Not every stage has to wait for the one before it. Two agents that don't share a dependency can run at the same time — cutting wall-clock time without changing logic.
+Not every stage has to wait for the one before it. Two agents that share no dependency can run simultaneously — cutting wall-clock time without changing logic.
 
 <div class="seq-par-grid">
   <div class="sp-side sequential">
@@ -972,16 +1039,16 @@ Not every stage has to wait for the one before it. Two agents that don't share a
       <td>B has a self-dependency on A. Any parallelism here produces a race condition.</td>
     </tr>
     <tr>
-      <td>Uncertain whether dependency exists</td>
+      <td>Uncertain whether a dependency exists</td>
       <td><strong>Sequential</strong></td>
-      <td>Default to sequential. Add parallelism only when you can prove independence. Incorrect parallel runs produce silent corruption, not errors.</td>
+      <td>Default to sequential. Add parallelism only when independence is provable. Parallel bugs produce silent corruption, not errors.</td>
     </tr>
   </tbody>
 </table>
 
 <div class="highlight">
 
-**In our five-agent pipeline:** Research → Outline → Writer is strictly sequential (hard dependencies). But once <code>research.json</code> exists, an optional SEO or competitor-gap agent could run in parallel with Outline — both read only research, produce independent outputs, and their results merge before Writer runs.
+**In our five-agent pipeline:** Research → Outline → Writer is strictly sequential. But once <code>research.json</code> exists, an optional SEO agent can run in parallel with Outline — both read only research, produce independent outputs, and merge before Writer runs.
 
 </div>
 
@@ -993,46 +1060,57 @@ Not every stage has to wait for the one before it. Two agents that don't share a
 
 ## Project Structure for a Multi-Agent Pipeline
 
-Before writing any agent file, lay out the folder structure. Where a file lives determines what can import it. Get this wrong and you're refactoring before the pipeline even runs.
+Before writing any agent file, lay out the folder structure. Where a file lives determines what can import it.
 
 <div class="file-tree">
   <div class="ft-header">📁 &nbsp;pipeline-project/</div>
   <div class="ft-body"><span class="fd">pipeline-project/</span>
-│
-├── <span class="fd">agents/</span>                   <span class="fc"># one file per specialist agent</span>
-│   ├── <span class="fp">research.py</span>           <span class="fc"># run_research_agent(topic, audience) → dict</span>
-│   ├── <span class="fp">outline.py</span>            <span class="fc"># run_outline_agent(research, format) → dict</span>
-│   ├── <span class="fp">writer.py</span>             <span class="fc"># run_writer_agent(outline, research) → str</span>
-│   ├── <span class="fp">editor.py</span>             <span class="fc"># run_editor_agent(draft) → str</span>
-│   └── <span class="fp">qa.py</span>                 <span class="fc"># run_qa_agent(edited, research) → dict</span>
-│
-├── <span class="fd">artifacts/</span>                <span class="fc"># saved outputs — one per run</span>
-│   ├── <span class="fj">research.json</span>
-│   ├── <span class="fj">outline.json</span>
-│   ├── <span class="fm">draft.md</span>
-│   ├── <span class="fm">edited.md</span>
-│   └── <span class="fj">qa_report.json</span>
-│
-├── <span class="fp">contracts.py</span>              <span class="fc"># Pydantic models + validate_* functions</span>
-├── <span class="fp">orchestrator.py</span>           <span class="fc"># sequences agents, handles state, runs pipeline</span>
-├── <span class="fp">prompts.py</span>                <span class="fc"># system prompt strings, one constant per agent</span>
-└── <span class="fj">config.json</span>               <span class="fc"># model name, temperature, max_tokens per agent</span></div>
+├── <span class="fd">agents/</span>                    <span class="fc"># one file per specialist agent</span>
+│   ├── <span class="fp">research.py</span>            <span class="fc"># run_research_agent(topic, audience) → dict</span>
+│   ├── <span class="fp">outline.py</span>             <span class="fc"># run_outline_agent(research, format)  → dict</span>
+│   ├── <span class="fp">writer.py</span>              <span class="fc"># run_writer_agent(outline, research)  → str</span>
+│   ├── <span class="fp">editor.py</span>              <span class="fc"># run_editor_agent(draft)              → str</span>
+│   └── <span class="fp">qa.py</span>                  <span class="fc"># run_qa_agent(edited, research)       → dict</span>
+├── <span class="fd">artifacts/</span>                 <span class="fc"># saved outputs — one file per stage per run</span>
+│   ├── <span class="fj">research.json</span>  ├── <span class="fj">outline.json</span>  ├── <span class="fm">draft.md</span>  ├── <span class="fm">edited.md</span>  └── <span class="fj">qa_report.json</span>
+├── <span class="fp">contracts.py</span>               <span class="fc"># Pydantic models + validate_* functions</span>
+├── <span class="fp">orchestrator.py</span>            <span class="fc"># sequences agents, handles state, runs pipeline</span>
+├── <span class="fp">prompts.py</span>                 <span class="fc"># system prompt strings — one constant per agent</span>
+└── <span class="fj">config.json</span>                <span class="fc"># model name, temperature, max_tokens per agent</span></div>
 </div>
 
-<div class="matters-grid" style="margin-top: 0;">
-  <div class="matters-card">
-    <div class="mcc-icon">📐</div>
-    <div>
-      <div class="mcc-title">One file, one agent, one function</div>
-      <div class="mcc-desc">Each agent file exports exactly one public function: <code>run_*_agent()</code>. The orchestrator imports only these functions — never calls the Anthropic client directly from orchestrator code.</div>
-    </div>
+<div class="highlight">
+
+**Three rules that hold for every pipeline project:** one file per agent, one public function per file (`run_*_agent()`), and every artifact written to `artifacts/` before it is forwarded. The orchestrator imports agent functions — it never calls the Anthropic client directly.
+
+</div>
+
+---
+
+<!-- _class: step -->
+
+<div class="step-badge">CONCEPT 04 — CONTINUED</div>
+
+## Why This Structure Matters
+
+Every layout decision has a reason. These four rules prevent the most common refactors.
+
+<div class="rule-strip">
+  <div class="rs-row">
+    <div class="rsr-icon">📐</div>
+    <div class="rsr-text"><strong>One file, one agent, one function.</strong> Each agent file exports exactly one public function: <code>run_*_agent()</code>. The orchestrator imports only these — it never calls the Anthropic client directly from orchestrator code. Agent logic stays in agent files.</div>
   </div>
-  <div class="matters-card">
-    <div class="mcc-icon">🗂️</div>
-    <div>
-      <div class="mcc-title">Artifacts are always written to disk</div>
-      <div class="mcc-desc">Even if the next stage runs immediately after, save every artifact before forwarding it. Disk is your audit log. A pipeline crash at stage 4 means you re-run from stage 3's artifact — not from the beginning.</div>
-    </div>
+  <div class="rs-row">
+    <div class="rsr-icon">💾</div>
+    <div class="rsr-text"><strong>Artifacts are always written to disk before forwarding.</strong> Even in a fully sequential run, save every artifact before passing it on. Disk is your audit log. A crash at stage 4 means you re-run from stage 3's saved artifact — not from the beginning.</div>
+  </div>
+  <div class="rs-row">
+    <div class="rsr-icon">📝</div>
+    <div class="rsr-text"><strong>System prompts live in <code>prompts.py</code>, never inline.</strong> Agents import prompt constants — they never define prompt strings inside the function body. Prompts change constantly during development. One file means one place to change them.</div>
+  </div>
+  <div class="rs-row">
+    <div class="rsr-icon">⚙️</div>
+    <div class="rsr-text"><strong>Model config lives in <code>config.json</code>, never hardcoded.</strong> Each agent may warrant a different model, temperature, or token budget. Externalising config means you tune without touching agent code — and without breaking imports.</div>
   </div>
 </div>
 
@@ -1042,16 +1120,16 @@ Before writing any agent file, lay out the folder structure. Where a file lives 
 
 <div class="step-badge">CONCEPT 05</div>
 
-## Live Walkthrough — Chaining the Research → Outline Agents
+## Live Walkthrough — Research → Outline Handoff
 
-The first real handoff: taking raw topic input, producing validated `research.json`, and passing it directly into the Outline agent as a typed object.
+The first real handoff: raw topic input → validated `research.json` → passed as a typed object into the Outline agent.
 
 <div class="walkthrough">
   <div class="wt-row">
     <div class="wr-num">1</div>
     <div class="wr-content">
       <div class="wrc-title">🔍 &nbsp;Call the Research agent</div>
-      <div class="wrc-desc">Pass the topic string and audience spec. The agent sends one API call with the Research system prompt. Returns raw JSON string from the model.</div>
+      <div class="wrc-desc">Pass the topic string and audience spec. The agent makes one API call with the Research system prompt and returns a raw JSON string from the model.</div>
       <div class="wrc-code">research_raw = run_research_agent(topic, audience)</div>
     </div>
   </div>
@@ -1059,7 +1137,7 @@ The first real handoff: taking raw topic input, producing validated `research.js
     <div class="wr-num">2</div>
     <div class="wr-content">
       <div class="wrc-title">🛡️ &nbsp;Parse and validate the contract</div>
-      <div class="wrc-desc">Strip any markdown fences the model may have added. Parse as JSON. Run through <code>ResearchArtifact</code> Pydantic model. Raises <code>ValidationError</code> immediately if the schema is violated.</div>
+      <div class="wrc-desc">Strip any markdown fences the model may have added. Parse as JSON. Run through <code>ResearchArtifact</code>. Raises <code>ValidationError</code> immediately if the schema is violated — before anything downstream runs.</div>
       <div class="wrc-code">research = validate_research(json.loads(research_raw))</div>
     </div>
   </div>
@@ -1067,7 +1145,7 @@ The first real handoff: taking raw topic input, producing validated `research.js
     <div class="wr-num">3</div>
     <div class="wr-content">
       <div class="wrc-title">💾 &nbsp;Save the artifact to disk</div>
-      <div class="wrc-desc">Write the validated artifact to <code>artifacts/research.json</code> before moving on. This is the checkpoint — if anything after this fails, the Research stage does not need to re-run.</div>
+      <div class="wrc-desc">Write the validated artifact to <code>artifacts/research.json</code> before moving on. This is the checkpoint — if anything after this point fails, the Research stage does not need to re-run.</div>
       <div class="wrc-code">save_artifact("artifacts/research.json", research.dict())</div>
     </div>
   </div>
@@ -1075,15 +1153,15 @@ The first real handoff: taking raw topic input, producing validated `research.js
     <div class="wr-num">4</div>
     <div class="wr-content">
       <div class="wrc-title">🗂️ &nbsp;Call the Outline agent with the typed object</div>
-      <div class="wrc-desc">Pass the <code>ResearchArtifact</code> object directly — not the raw dict. The Outline agent's function signature accepts a typed input, so a missing field raises before the API call is even made.</div>
+      <div class="wrc-desc">Pass the <code>ResearchArtifact</code> object directly — not the raw dict. A missing field raises before the API call is even made.</div>
       <div class="wrc-code">outline_raw = run_outline_agent(research=research, format="blog post")</div>
     </div>
   </div>
   <div class="wt-row">
     <div class="wr-num">5</div>
     <div class="wr-content">
-      <div class="wrc-title">✅ &nbsp;Validate and save outline.json</div>
-      <div class="wrc-desc">Repeat the same pattern: parse, validate against <code>OutlineArtifact</code>, save to disk. The chain is now two stages deep with two verified checkpoints. Continue identically for Writer, Editor, and QA.</div>
+      <div class="wrc-title">✅ &nbsp;Validate and save outline.json — repeat</div>
+      <div class="wrc-desc">Same pattern: parse → validate against <code>OutlineArtifact</code> → save to disk. The chain is now two stages deep with two verified checkpoints. Continue identically for Writer, Editor, and QA.</div>
       <div class="wrc-code">outline = validate_outline(json.loads(outline_raw))</div>
     </div>
   </div>
@@ -1097,7 +1175,7 @@ The first real handoff: taking raw topic input, producing validated `research.js
 
 ## The Full Agent Function Pattern
 
-Every agent file in `agents/` follows this identical structure. One function. Three sections. No variation.
+Every agent file in `agents/` follows this identical three-section structure. One function. No variation.
 
 <div class="code-block">
   <div class="cb-header">
@@ -1108,30 +1186,26 @@ Every agent file in `agents/` follows this identical structure. One function. Th
     </div>
     <div class="cb-filename">agents/research.py</div>
   </div>
-  <div class="cb-body"><span class="kw">import</span> <span class="va">anthropic, json</span>
+  <div class="cb-body"><span class="kw">import</span> <span class="va">anthropic</span>, <span class="va">json</span>
 <span class="kw">from</span> <span class="va">prompts</span> <span class="kw">import</span> <span class="va">RESEARCH_SYSTEM_PROMPT</span>
-
 <span class="va">client</span> = <span class="va">anthropic</span>.<span class="fn">Anthropic</span>()
-
 <span class="kw">def</span> <span class="fn">run_research_agent</span>(<span class="va">topic</span>: <span class="va">str</span>, <span class="va">audience</span>: <span class="va">str</span>) -> <span class="va">str</span>:
-    <span class="cm"># ── 1. Build the user message ──────────────────────────</span>
+    <span class="cm"># ── 1. Build the user message ────────────────────────────────</span>
     <span class="va">user_msg</span> = <span class="st">f"Topic: {topic}\nAudience: {audience}"</span>
-
-    <span class="cm"># ── 2. Call the API with the specialist system prompt ──</span>
+    <span class="cm"># ── 2. Call the API with the specialist system prompt ────────</span>
     <span class="va">response</span> = <span class="va">client</span>.<span class="va">messages</span>.<span class="fn">create</span>(
         <span class="va">model</span>=<span class="st">"claude-sonnet-4-20250514"</span>,
         <span class="va">max_tokens</span>=<span class="nu">2048</span>,
         <span class="va">system</span>=<span class="va">RESEARCH_SYSTEM_PROMPT</span>,
         <span class="va">messages</span>=[{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="va">user_msg</span>}]
     )
-
-    <span class="cm"># ── 3. Return raw text — orchestrator validates ────────</span>
+    <span class="cm"># ── 3. Return raw text — orchestrator validates ───────────────</span>
     <span class="kw">return</span> <span class="va">response</span>.<span class="va">content</span>[<span class="nu">0</span>].<span class="va">text</span></div>
 </div>
 
 <div class="highlight">
 
-**The agent function has one job: call the API and return text.** It does not parse JSON. It does not validate. It does not save to disk. All of that happens in the orchestrator — because that's where the pipeline logic lives, not inside the agent. Keep agents thin.
+**The agent function has one job: call the API and return text.** It does not parse JSON. It does not validate. It does not save to disk. All of that happens in the orchestrator — because pipeline logic belongs there, not inside the agent. Keep agents thin.
 
 </div>
 
@@ -1163,7 +1237,7 @@ The patterns, rules, and file locations that apply to every pipeline you build.
     </tr>
     <tr>
       <td><strong>Sequential default</strong></td>
-      <td>Run sequentially unless you can prove independence. Parallel bugs are silent.</td>
+      <td>Run sequentially unless independence is provable. Parallel bugs are silent.</td>
       <td><span class="mono">orchestrator.py</span></td>
     </tr>
     <tr>
@@ -1178,7 +1252,7 @@ The patterns, rules, and file locations that apply to every pipeline you build.
     </tr>
     <tr>
       <td><strong>System prompts</strong></td>
-      <td>All system prompt strings in one file. Agents import, never define inline.</td>
+      <td>All system prompt strings in one file. Agents import — never define inline.</td>
       <td><span class="mono">prompts.py</span></td>
     </tr>
   </tbody>
