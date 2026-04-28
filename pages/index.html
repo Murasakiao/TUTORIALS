@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn to Build with AI — Julius Darang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0f0e0c;
+      --ink-2: #3a3832;
+      --ink-3: #7a7670;
+      --paper: #faf9f6;
+      --paper-2: #f2f0ea;
+      --paper-3: #e8e4da;
+      --blue: #2563eb;
+      --blue-light: #dbeafe;
+      --blue-mid: #93c5fd;
+      --amber: #c47d00;
+      --amber-light: #fef3c7;
+      --amber-mid: #fcd34d;
+      --green: #15803d;
+      --green-light: #dcfce7;
+      --red: #dc2626;
+      --border: #ddd8cc;
+      --radius: 6px;
+      --font: 'DM Sans', sans-serif;
+      --mono: 'DM Mono', monospace;
+      --display: 'Fraunces', serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,249,246,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .nav-brand {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--ink-2);
+      letter-spacing: 0.02em;
+    }
+    .nav-brand span { color: var(--blue); }
+    .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--ink-3);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      background: var(--ink);
+      color: var(--paper) !important;
+      padding: 6px 14px;
+      border-radius: var(--radius);
+      font-size: 13px !important;
+      font-weight: 500;
+      transition: background 0.15s !important;
+    }
+    .nav-cta:hover { background: var(--blue) !important; color: #fff !important; }
+
+    /* HERO */
+    .hero {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 2rem 60px;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: var(--blue-light);
+      border: 1px solid var(--blue-mid);
+      padding: 4px 12px;
+      border-radius: 99px;
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow::before { content: '●'; font-size: 8px; }
+    .hero h1 {
+      font-family: var(--display);
+      font-size: clamp(38px, 6vw, 62px);
+      font-weight: 600;
+      line-height: 1.08;
+      color: var(--ink);
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--blue);
+    }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--ink-2);
+      max-width: 540px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+      font-weight: 300;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--ink-2);
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      font-size: 14px;
+      font-weight: 400;
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-secondary:hover { border-color: var(--ink-3); color: var(--ink); }
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .stat { display: flex; flex-direction: column; gap: 2px; }
+    .stat-n {
+      font-family: var(--display);
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .stat-l { font-size: 12px; color: var(--ink-3); letter-spacing: 0.02em; }
+
+    /* SECTION SHARED */
+    .section { padding: 64px 2rem; }
+    .section-inner { max-width: 900px; margin: 0 auto; }
+    .section-header { margin-bottom: 40px; }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--display);
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .section-desc {
+      font-size: 15px;
+      color: var(--ink-2);
+      margin-top: 10px;
+      max-width: 520px;
+      font-weight: 300;
+    }
+
+    /* PRODUCT TABS */
+    .product-tabs {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 40px;
+      width: fit-content;
+    }
+    .ptab {
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      background: var(--paper);
+      color: var(--ink-3);
+      border: none;
+      transition: all 0.15s;
+      border-right: 1px solid var(--border);
+    }
+    .ptab:last-child { border-right: none; }
+    .ptab.active-blue { background: var(--blue); color: #fff; }
+    .ptab.active-amber { background: var(--amber); color: #fff; }
+    .ptab:hover:not(.active-blue):not(.active-amber) { background: var(--paper-2); color: var(--ink); }
+
+    /* PRODUCT PANEL */
+    .product-panel { display: none; }
+    .product-panel.active { display: block; }
+
+    /* PRODUCT HERO CARD */
+    .product-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .product-card-header {
+      padding: 28px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .product-card-header.blue-header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 60%, #2563eb 100%);
+      color: #fff;
+    }
+    .product-card-header.amber-header {
+      background: linear-gradient(135deg, #78350f 0%, #b45309 60%, #d97706 100%);
+      color: #fff;
+    }
+    .product-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 8px;
+    }
+    .product-card-title {
+      font-family: var(--display);
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .product-card-sub {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-top: 6px;
+      font-weight: 300;
+    }
+    .product-card-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 3px 10px;
+      border-radius: 99px;
+    }
+    .product-price-box { text-align: right; min-width: 120px; }
+    .price-label { font-size: 11px; opacity: 0.7; font-family: var(--mono); letter-spacing: 0.05em; }
+    .price-value {
+      font-family: var(--display);
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 1;
+      margin: 4px 0;
+    }
+    .price-note { font-size: 11px; opacity: 0.65; }
+    .product-card-body { background: var(--paper); padding: 24px 32px; }
+    .free-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--green);
+      background: var(--green-light);
+      border: 1px solid #86efac;
+      padding: 6px 14px;
+      border-radius: 99px;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .product-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-gumroad-blue {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--blue); color: #fff;
+      padding: 11px 22px; border-radius: var(--radius);
+      font-size: 14px; font-weight: 500; text-decoration: none;
+      transition: background 0.15s;
+    }
+    .btn-gumroad-blue:hover { background: #1d4ed8; }
+    .btn-gumroad-amber {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--amber); color: #fff;
+      padding: 11px 22px; border-radius: var(--radius);
+      font-size: 14px; font-weight: 500; text-decoration: none;
+      transition: background 0.15s;
+    }
+    .btn-gumroad-amber:hover { background: #a26200; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--ink-2);
+      padding: 11px 22px; border-radius: var(--radius);
+      border: 1px solid var(--border);
+      font-size: 14px; text-decoration: none;
+      transition: border-color 0.15s;
+    }
+    .btn-outline:hover { border-color: var(--ink-3); }
+
+    /* PHASE / LEVEL CURRICULUM */
+    .curriculum { display: flex; flex-direction: column; gap: 6px; }
+    .phase-group { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      cursor: pointer;
+      background: var(--paper);
+      transition: background 0.12s;
+      user-select: none;
+    }
+    .phase-header:hover { background: var(--paper-2); }
+    .phase-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .phase-name {
+      font-size: 14px;
+      font-weight: 500;
+      flex: 1;
+    }
+    .phase-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .phase-count {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-3);
+    }
+    .phase-chevron {
+      font-size: 11px;
+      color: var(--ink-3);
+      transition: transform 0.2s;
+    }
+    .phase-group.open .phase-chevron { transform: rotate(180deg); }
+    .phase-body {
+      display: none;
+      border-top: 1px solid var(--border);
+      background: var(--paper-2);
+    }
+    .phase-group.open .phase-body { display: block; }
+    .tutorial-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 18px 10px 40px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .tutorial-row:last-child { border-bottom: none; }
+    .tutorial-row:hover { background: var(--paper-3); }
+    .t-name { flex: 1; color: var(--ink-2); }
+    .t-name.paid-title { color: var(--ink); font-weight: 500; }
+    .badge {
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 99px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .badge-free { background: var(--green-light); color: var(--green); border: 1px solid #86efac; }
+    .badge-paid-blue { background: var(--blue-light); color: var(--blue); border: 1px solid var(--blue-mid); }
+    .badge-paid-amber { background: var(--amber-light); color: var(--amber); border: 1px solid var(--amber-mid); }
+    .badge-wip { background: var(--paper-3); color: var(--ink-3); border: 1px solid var(--border); }
+    .lock-icon { font-size: 11px; color: var(--ink-3); }
+
+    /* DIVIDER */
+    .divider { border: none; border-top: 1px solid var(--border); }
+
+    /* FREE SECTION */
+    .free-section { background: var(--paper-2); }
+    .free-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .free-card {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s, transform 0.1s;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .free-card:hover { border-color: var(--ink-3); transform: translateY(-2px); }
+    .free-card-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .free-card-title { font-size: 14px; font-weight: 500; color: var(--ink); }
+    .free-card-meta { font-size: 12px; color: var(--ink-3); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 2rem;
+      text-align: center;
+    }
+    .footer-inner { max-width: 900px; margin: 0 auto; }
+    .footer-name {
+      font-family: var(--display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .footer-sub { font-size: 13px; color: var(--ink-3); margin-bottom: 16px; }
+    .footer-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .footer-links a { font-size: 13px; color: var(--ink-3); text-decoration: none; }
+    .footer-links a:hover { color: var(--blue); }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 32px; }
+      .product-card-header { flex-direction: column; }
+      .product-price-box { text-align: left; }
+      nav { padding: 0 1rem; }
+      .hero, .section { padding-left: 1rem; padding-right: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">julius<span>.</span>darang</div>
+    <div class="nav-links">
+      <a href="#products">Products</a>
+      <a href="#free">Free tutorials</a>
+      <a href="https://substack.com" target="_blank">Substack</a>
+      <a href="https://gumroad.com" target="_blank" class="nav-cta">Buy on Gumroad ↗</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Learn to build<br /><em>real things</em> with AI.</h1>
+    <p class="hero-sub">
+      Two structured curricula — one that takes you from zero to AI builder, and one that teaches you to architect autonomous agent systems. Step-by-step, visual, and hands-on.
+    </p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary">Browse curricula ↓</a>
+      <a href="#free" class="btn-secondary">Start for free</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-n">72</span>
+        <span class="stat-l">Total tutorials</span>
+      </div>
+      <div class="stat">
+        <span class="stat-n">8</span>
+        <span class="stat-l">Phases & levels</span>
+      </div>
+      <div class="stat">
+        <span class="stat-n">12+</span>
+        <span class="stat-l">Free tutorials</span>
+      </div>
+      <div class="stat">
+        <span class="stat-n">PDF</span>
+        <span class="stat-l">Slide format</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PRODUCTS -->
+  <section class="section" id="products">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-label" style="color:var(--blue)">// curricula</div>
+        <h2 class="section-title">Two products. One path.</h2>
+        <p class="section-desc">Start with Zero to AI Builder if you're new. Move to AI Agents Levels when you're ready to go deeper.</p>
+      </div>
+
+      <!-- TABS -->
+      <div class="product-tabs reveal">
+        <button class="ptab active-blue" onclick="switchProduct('ztab')">Zero to AI Builder</button>
+        <button class="ptab" onclick="switchProduct('aal')">AI Agents Levels</button>
+      </div>
+
+      <!-- ZERO TO AI BUILDER -->
+      <div class="product-panel active" id="panel-ztab">
+        <div class="product-card reveal">
+          <div class="product-card-header blue-header">
+            <div>
+              <div class="product-tag">Product 01 — Beginner to Intermediate</div>
+              <div class="product-card-title">Zero to AI Builder</div>
+              <div class="product-card-sub">From Terminal & Git → Python → AI agents & automations</div>
+              <div class="product-card-meta">
+                <span class="meta-pill">56 tutorials</span>
+                <span class="meta-pill">8 phases + bonus</span>
+                <span class="meta-pill">PDF slides</span>
+                <span class="meta-pill">No prerequisite</span>
+              </div>
+            </div>
+            <div class="product-price-box">
+              <div class="price-label">FULL BUNDLE</div>
+              <div class="price-value">$29</div>
+              <div class="price-note">one-time · Gumroad</div>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <div class="free-note">✓ Phases 1 & 2 are completely free — no sign-up needed</div>
+            <div class="product-actions">
+              <a href="https://gumroad.com" target="_blank" class="btn-gumroad-blue">Buy full bundle on Gumroad ↗</a>
+              <a href="#free" class="btn-outline">See free tutorials</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="curriculum reveal">
+
+          <!-- Phase 1 -->
+          <div class="phase-group open">
+            <div class="phase-header" onclick="togglePhase(this)">
+              <div class="phase-dot" style="background:#378ADD"></div>
+              <span class="phase-name">Phase 1 — Terminal & Development Tools</span>
+              <div class="phase-meta">
+                <span class="badge badge-free">FREE</span>
+                <span class="phase-count">6 tutorials</span>
+                <span class="phase-chevron">▼</span>
+              </div>
+            </div>
+            <div class="phase-body">
+              <div class="tutorial-row"><span class="t-name">Mac Terminal</span><span class="badge badge-free">free</span></div>
+              <div class="tutorial-row"><span class="t-name">Windows Terminal</span><span class="badge badge-free">free</span></div>
+              <div class="tutorial-row"><span class="t-name">Install VS Code</span><span class="badge badge-free">free</span></div>
+              <div class="tutorial-row"><span class="t-name">Markdown</span><span class="badge badge-free">free</span></div>
+              <div class="tutorial-row"><span class="t-name">What is a Browser</span><span class="badge badge-free">free</span></div>
+              <div class="tutorial-row"><span class="t-name">DevTools CSS Inspection</span><span class="badge badge-free">free</span></div>
+            </div>
+          </div>
+
+          <!-- Phase 2 -->
+          <div class="phase-group open">
+            <div class="phase-header" onclick="togglePhase(this)">
+              <div class="phase-dot" style="background:#1D9E75"></div>
+              <span class="phase-name">Phase 2 — Git & GitHub</span>
+              <div class="phase-meta">
+                <span class="badge badge-free">FREE</span>
+                <span class="phase-count">5 tutorials</span>
+                <span class="phase-chevron">▼</span>
+              </div>
+            </div>
+            <div class="phase-body">
+              <div class="tutorial-row"><span class="t-name">Install Git</span><span class="badge badge-free">free</span></div>
+              <div class="tutorial-row"><span class="t-name">Git vs GitHub</span><span class="badge badge-free">free</span></div>
+              <div class="tutorial-row"><span class="t-name">Undo Mistakes in Git</span><span class="badge badge-free">free</span></div>
+              <div class="tutorial-row"><span class="t-name">Good Commit Messages</span><span class="badge badge-free">free</span></div>
+              <div class="tutorial-row"><span class="t-name">Collaborate on GitHub</span><span class="badge badge-free">free</span></div>
+            </div>
+          </div>
+
+          <!-- Phase 3 -->
+          <div class="phase-group">
+            <div class="phase-header" onclick="togglePhase(this)">
+              <div class="phase-dot" style="background:#D85A30"></div>
+              <span class="phase-name">Phase 3 — Web Development</span>
+              <div class="phase-meta">
+                <span class="badge badge-paid-blue">paid</span>
+                <span class="phase-count">9 tutorials</span>
+                <span class="phase-chevron">▼</span>
+              </div>
+            </div>
+            <div class="phase-body">
+              <div class="tutorial-row"><span class="t-name paid-title">Basic Web Structure</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">CSS Flexbox</span><span class="lock-icon">🔒</span><span class="badge badge-wip">coming soon</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">How to Pick Color</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Google Fonts</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Domain Names</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Responsive Design</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Image Optimization</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Favicon</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">What is an API</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+            </div>
+          </div>
+
+          <!-- Phase 4 -->
+          <div class="phase-group">
+            <div class="phase-header" onclick="togglePhase(this)">
+              <div class="phase-dot" style="background:#7F77DD"></div>
+              <span class="phase-name">Phase 4 — Python Fundamentals</span>
+              <div class="phase-meta">
+                <span class="badge badge-paid-blue">paid</span>
+                <span class="phase-count">11 tutorials</span>
+                <span class="phase-chevron">▼</span>
+              </div>
+            </div>
+            <div class="phase-body">
+              <div class="tutorial-row"><span class="t-name paid-title">Mac Install Python</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Windows Install Python</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Virtual Environment</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Python Scripting</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">CSV Files</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Python APIs</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Pandas for Excel Users</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Web Scraping</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Send Email with Python</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Schedule Python Scripts</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Python Calculator with Tkinter</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+            </div>
+          </div>
+
+          <!-- Phase 5 -->
+          <div class="phase-group">
+            <div class="phase-header" onclick="togglePhase(this)">
+              <div class="phase-dot" style="background:#BA7517"></div>
+              <span class="phase-name">Phase 5 — AI Prompting</span>
+              <div class="phase-meta">
+                <span class="badge badge-paid-blue">paid</span>
+                <span class="phase-count">5 tutorials</span>
+                <span class="phase-chevron">▼</span>
+              </div>
+            </div>
+            <div class="phase-body">
+              <div class="tutorial-row"><span class="t-name paid-title">Better AI Prompts</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">5 Prompt Frameworks</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">ChatGPT as Personal Assistant</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Prompting for Coding</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Structured AI Outputs</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+            </div>
+          </div>
+
+          <!-- Phase 6 -->
+          <div class="phase-group">
+            <div class="phase-header" onclick="togglePhase(this)">
+              <div class="phase-dot" style="background:#378ADD"></div>
+              <span class="phase-name">Phase 6 — AI Agents</span>
+              <div class="phase-meta">
+                <span class="badge badge-paid-blue">paid</span>
+                <span class="phase-count">5 tutorials</span>
+                <span class="phase-chevron">▼</span>
+              </div>
+            </div>
+            <div class="phase-body">
+              <div class="tutorial-row"><span class="t-name paid-title">What is an AI Agent</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Build First AI Agent</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">AI Agent Tools</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Single vs Multi Agent</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">AI Agent Memory</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+            </div>
+          </div>
+
+          <!-- Phase 7 -->
+          <div class="phase-group">
+            <div class="phase-header" onclick="togglePhase(this)">
+              <div class="phase-dot" style="background:#1D9E75"></div>
+              <span class="phase-name">Phase 7 — Agentic Coding</span>
+              <div class="phase-meta">
+                <span class="badge badge-paid-blue">paid</span>
+                <span class="phase-count">5 tutorials</span>
+                <span class="phase-chevron">▼</span>
+              </div>
+            </div>
+            <div class="phase-body">
+              <div class="tutorial-row"><span class="t-name paid-title">What is Agentic Coding</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Debug with AI</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Build Apps with AI</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Break Down Projects for AI</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Review AI Code</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+            </div>
+          </div>
+
+          <!-- Phase 8 -->
+          <div class="phase-group">
+            <div class="phase-header" onclick="togglePhase(this)">
+              <div class="phase-dot" style="background:#639922"></div>
+              <span class="phase-name">Phase 8 — AI Automations</span>
+              <div class="phase-meta">
+                <span class="badge badge-paid-blue">paid</span>
+                <span class="phase-count">5 tutorials</span>
+                <span class="phase-chevron">▼</span>
+              </div>
+            </div>
+            <div class="phase-body">
+              <div class="tutorial-row"><span class="t-name paid-title">Automate Daily Tasks</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Connect Apps with AI</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">AI Workflow</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Spreadsheets to Automations</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Schedule Automations</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+            </div>
+          </div>
+
+          <!-- Bonus -->
+          <div class="phase-group">
+            <div class="phase-header" onclick="togglePhase(this)">
+              <div class="phase-dot" style="background:#888780"></div>
+              <span class="phase-name">Bonus — Career & Content</span>
+              <div class="phase-meta">
+                <span class="badge badge-paid-blue">paid</span>
+                <span class="phase-count">10 tutorials</span>
+                <span class="phase-chevron">▼</span>
+              </div>
+            </div>
+            <div class="phase-body">
+              <div class="tutorial-row"><span class="t-name paid-title">Build a Portfolio</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">LinkedIn for Developers</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Open Source First Contribution</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Learn Faster</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Document Projects</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Choose What to Learn</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Stay Consistent</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">10 AI Prompts That Save Hours</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Replaced 5 Hours with AI</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">5 AI Automations Today</span><span class="lock-icon">🔒</span><span class="badge badge-paid-blue">paid</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- AI AGENTS LEVELS -->
+      <div class="product-panel" id="panel-aal">
+        <div class="product-card reveal">
+          <div class="product-card-header amber-header">
+            <div>
+              <div class="product-tag">Product 02 — Intermediate to Advanced</div>
+              <div class="product-card-title">AI Agents Levels</div>
+              <div class="product-card-sub">Single agents → Pipeline → Multi-agent → Autonomous teams</div>
+              <div class="product-card-meta">
+                <span class="meta-pill">16 tutorials</span>
+                <span class="meta-pill">4 levels</span>
+                <span class="meta-pill">PDF slides</span>
+                <span class="meta-pill">Requires AI basics</span>
+              </div>
+            </div>
+            <div class="product-price-box">
+              <div class="price-label">FULL BUNDLE</div>
+              <div class="price-value">$19</div>
+              <div class="price-note">one-time · Gumroad</div>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <div class="free-note">✓ Level 1 is completely free — start without buying</div>
+            <div class="product-actions">
+              <a href="https://gumroad.com" target="_blank" class="btn-gumroad-amber">Buy full bundle on Gumroad ↗</a>
+              <a href="#free" class="btn-outline">See free tutorials</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="curriculum reveal">
+
+          <!-- Level 1 -->
+          <div class="phase-group open">
+            <div class="phase-header" onclick="togglePhase(this)">
+              <div class="phase-dot" style="background:#BA7517"></div>
+              <span class="phase-name">Level 1 — Single Agent: Your First AI Worker</span>
+              <div class="phase-meta">
+                <span class="badge badge-free">FREE</span>
+                <span class="phase-count">4 tutorials</span>
+                <span class="phase-chevron">▼</span>
+              </div>
+            </div>
+            <div class="phase-body">
+              <div class="tutorial-row"><span class="t-name">What Is an Agent</span><span class="badge badge-free">free</span></div>
+              <div class="tutorial-row"><span class="t-name">Anatomy of an Agent</span><span class="badge badge-free">free</span></div>
+              <div class="tutorial-row"><span class="t-name">Tools + ReAct Loop</span><span class="badge badge-free">free</span></div>
+              <div class="tutorial-row"><span class="t-name">Building Your First Agent</span><span class="badge badge-free">free</span></div>
+            </div>
+          </div>
+
+          <!-- Level 2 -->
+          <div class="phase-group">
+            <div class="phase-header" onclick="togglePhase(this)">
+              <div class="phase-dot" style="background:#BA7517"></div>
+              <span class="phase-name">Level 2 — Pipeline Agent: Chaining Specialists</span>
+              <div class="phase-meta">
+                <span class="badge badge-paid-amber">paid</span>
+                <span class="phase-count">4 tutorials</span>
+                <span class="phase-chevron">▼</span>
+              </div>
+            </div>
+            <div class="phase-body">
+              <div class="tutorial-row"><span class="t-name paid-title">The Pipeline Mental Model</span><span class="lock-icon">🔒</span><span class="badge badge-paid-amber">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">The Orchestrator</span><span class="lock-icon">🔒</span><span class="badge badge-paid-amber">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Artifact Design</span><span class="lock-icon">🔒</span><span class="badge badge-paid-amber">paid</span></div>
+              <div class="tutorial-row"><span class="t-name paid-title">Error Handling + Debugging</span><span class="lock-icon">🔒</span><span class="badge badge-paid-amber">paid</span></div>
+            </div>
+          </div>
+
+          <!-- Level 3 -->
+          <div class="phase-group">
+            <div class="phase-header" onclick="togglePhase(this)">
+              <div class="phase-dot" style="background:#D85A30"></div>
+              <span class="phase-name">Level 3 — Multi-Agent: Orchestrator + Specialists</span>
+              <div class="phase-meta">
+                <span class="badge badge-wip">in progress</span>
+                <span class="phase-count">4 tutorials</span>
+                <span class="phase-chevron">▼</span>
+              </div>
+            </div>
+            <div class="phase-body">
+              <div class="tutorial-row"><span class="t-name" style="color:var(--ink-3)">The Orchestrator Mental Model</span><span class="badge badge-wip">coming soon</span></div>
+              <div class="tutorial-row"><span class="t-name" style="color:var(--ink-3)">Agent Selection Routing</span><span class="badge badge-wip">coming soon</span></div>
+              <div class="tutorial-row"><span class="t-name" style="color:var(--ink-3)">Result Handling + Synthesis</span><span class="badge badge-wip">coming soon</span></div>
+              <div class="tutorial-row"><span class="t-name" style="color:var(--ink-3)">Full Multi-Agent Build</span><span class="badge badge-wip">coming soon</span></div>
+            </div>
+          </div>
+
+          <!-- Level 4 -->
+          <div class="phase-group">
+            <div class="phase-header" onclick="togglePhase(this)">
+              <div class="phase-dot" style="background:#D85A30"></div>
+              <span class="phase-name">Level 4 — Agent Teams: Full Autonomous Workflow</span>
+              <div class="phase-meta">
+                <span class="badge badge-wip">in progress</span>
+                <span class="phase-count">4 tutorials</span>
+                <span class="phase-chevron">▼</span>
+              </div>
+            </div>
+            <div class="phase-body">
+              <div class="tutorial-row"><span class="t-name" style="color:var(--ink-3)">The Team Mental Model</span><span class="badge badge-wip">coming soon</span></div>
+              <div class="tutorial-row"><span class="t-name" style="color:var(--ink-3)">Building Teams (Content vs Engineering)</span><span class="badge badge-wip">coming soon</span></div>
+              <div class="tutorial-row"><span class="t-name" style="color:var(--ink-3)">Top-Level Orchestration</span><span class="badge badge-wip">coming soon</span></div>
+              <div class="tutorial-row"><span class="t-name" style="color:var(--ink-3)">Full Autonomous System</span><span class="badge badge-wip">coming soon</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- FREE TUTORIALS -->
+  <section class="section free-section" id="free">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-label" style="color:var(--green)">// free access</div>
+        <h2 class="section-title">Start here. No credit card.</h2>
+        <p class="section-desc">The first phases of each product are free. Download them directly — no sign-up required.</p>
+      </div>
+      <div class="free-grid">
+        <a href="#" class="free-card reveal">
+          <span class="free-card-label" style="color:var(--blue)">Zero to AI Builder · Phase 1</span>
+          <span class="free-card-title">Mac Terminal</span>
+          <span class="free-card-meta">PDF · Foundation</span>
+        </a>
+        <a href="#" class="free-card reveal">
+          <span class="free-card-label" style="color:var(--blue)">Zero to AI Builder · Phase 1</span>
+          <span class="free-card-title">Windows Terminal</span>
+          <span class="free-card-meta">PDF · Foundation</span>
+        </a>
+        <a href="#" class="free-card reveal">
+          <span class="free-card-label" style="color:var(--blue)">Zero to AI Builder · Phase 1</span>
+          <span class="free-card-title">Install VS Code</span>
+          <span class="free-card-meta">PDF · Foundation</span>
+        </a>
+        <a href="#" class="free-card reveal">
+          <span class="free-card-label" style="color:var(--blue)">Zero to AI Builder · Phase 2</span>
+          <span class="free-card-title">Install Git</span>
+          <span class="free-card-meta">PDF · Git & GitHub</span>
+        </a>
+        <a href="#" class="free-card reveal">
+          <span class="free-card-label" style="color:var(--blue)">Zero to AI Builder · Phase 2</span>
+          <span class="free-card-title">Git vs GitHub</span>
+          <span class="free-card-meta">PDF · Git & GitHub</span>
+        </a>
+        <a href="#" class="free-card reveal">
+          <span class="free-card-label" style="color:var(--amber)">AI Agents Levels · Level 1</span>
+          <span class="free-card-title">What Is an Agent</span>
+          <span class="free-card-meta">PDF · Single Agent</span>
+        </a>
+        <a href="#" class="free-card reveal">
+          <span class="free-card-label" style="color:var(--amber)">AI Agents Levels · Level 1</span>
+          <span class="free-card-title">Anatomy of an Agent</span>
+          <span class="free-card-meta">PDF · Single Agent</span>
+        </a>
+        <a href="#" class="free-card reveal">
+          <span class="free-card-label" style="color:var(--amber)">AI Agents Levels · Level 1</span>
+          <span class="free-card-title">Tools + ReAct Loop</span>
+          <span class="free-card-meta">PDF · Single Agent</span>
+        </a>
+        <a href="#" class="free-card reveal">
+          <span class="free-card-label" style="color:var(--amber)">AI Agents Levels · Level 1</span>
+          <span class="free-card-title">Building Your First Agent</span>
+          <span class="free-card-meta">PDF · Single Agent</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-name">Julius Darang</div>
+      <div class="footer-sub">Electrical Engineer · Renewable Energy · Creator</div>
+      <div class="footer-links">
+        <a href="https://substack.com" target="_blank">Substack — Conquer Self</a>
+        <a href="https://gumroad.com" target="_blank">Gumroad</a>
+        <a href="https://threads.net" target="_blank">Threads</a>
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+      </div>
+      <div style="margin-top:20px;font-size:12px;color:var(--ink-3)">
+        © 2025 Julius Darang. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function togglePhase(header) {
+      const group = header.parentElement;
+      group.classList.toggle('open');
+    }
+
+    function switchProduct(product) {
+      document.querySelectorAll('.product-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('panel-' + product).classList.add('active');
+      document.querySelectorAll('.ptab').forEach((t, i) => {
+        t.classList.remove('active-blue', 'active-amber');
+      });
+      if (product === 'ztab') {
+        document.querySelectorAll('.ptab')[0].classList.add('active-blue');
+      } else {
+        document.querySelectorAll('.ptab')[1].classList.add('active-amber');
+      }
+    }
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
