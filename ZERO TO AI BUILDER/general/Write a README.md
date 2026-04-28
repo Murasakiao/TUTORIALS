@@ -554,9 +554,7 @@ Copy this structure for every project:
 <div class="md-ref">
   <span class="md-kw"># Project Name</span><br>
   One sentence. What it does and who it's for.<br>
-  <br>
   ![<span class="md-str">demo</span>](<span class="md-url">assets/demo.gif</span>) <span class="md-cmt">&lt;!-- or screenshot --&gt;</span><br>
-  <br>
   <span class="md-kw">## Installation</span><br>
   ```bash<br>
   git clone https://github.com/you/project<br>
@@ -570,7 +568,6 @@ Copy this structure for every project:
   ```<br>
   <span class="md-kw">## Built With</span><br>
   - Python 3.11 · pandas · Flask<br>
-  <br>
   <span class="md-kw">## License</span><br>
   MIT
 </div>

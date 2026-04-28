@@ -570,28 +570,28 @@ At session start, the agent reads this file and injects it into the system promp
 
 <div class="use-grid">
   <div class="use-card">
-    <div class="uc-title">🛠️ Engineering assistant</div>
+    <div class="uc-title">🛠️&nbsp; Engineering assistant</div>
     <div class="uc-label bad">❌ Without memory</div>
     <div class="uc-without">"What's your grid frequency?" — Every. Single. Session.</div>
     <div class="uc-label good">✅ With memory</div>
     <div class="uc-with">Agent already knows: Visayas grid, 60Hz, pandapower, N-1 scope. Answers without preamble.</div>
   </div>
   <div class="use-card">
-    <div class="uc-title">✍️ Writing assistant</div>
+    <div class="uc-title">✍️&nbsp; Writing assistant</div>
     <div class="uc-label bad">❌ Without memory</div>
     <div class="uc-without">Generic blog tone on every draft. Re-explain "direct, no hype, Dan Koe style" every time.</div>
     <div class="uc-label good">✅ With memory</div>
     <div class="uc-with">Agent retrieves voice samples, past post style, Substack focus. Writes on-brand from turn one.</div>
   </div>
   <div class="use-card">
-    <div class="uc-title">🤖 Coding agent</div>
+    <div class="uc-title">🤖&nbsp; Coding agent</div>
     <div class="uc-label bad">❌ Without memory</div>
     <div class="uc-without">Suggests frameworks you don't use. Writes Python 2 syntax. Ignores your naming conventions.</div>
     <div class="uc-label good">✅ With memory</div>
     <div class="uc-with">Knows your stack, version, project structure, and style preferences. Code fits first pass.</div>
   </div>
   <div class="use-card">
-    <div class="uc-title">📅 Planning agent</div>
+    <div class="uc-title">📅&nbsp; Planning agent</div>
     <div class="uc-label bad">❌ Without memory</div>
     <div class="uc-without">No awareness of ongoing projects, deadlines, or recurring tasks.</div>
     <div class="uc-label good">✅ With memory</div>

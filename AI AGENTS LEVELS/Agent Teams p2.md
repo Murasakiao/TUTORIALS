@@ -237,6 +237,7 @@ style: |
   }
 
   .cheat-table tr:last-child td { border-bottom: none; }
+  .cheat-table tr:last-child td { border-bottom: 1px solid var(--border); }
   .cheat-table tr:nth-child(even) td { background: var(--off-white); }
   .cheat-table .mono {
     font-family: 'DM Mono', monospace;

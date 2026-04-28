@@ -710,6 +710,9 @@ Conditions make the workflow smart — different results take different paths.
     <div class="cfl">Alert</div>
     <div class="cfd">Slack + ticket</div>
   </div>
+  <div class="cf-arrow">
+    <div class="cfa-line">→</div>
+  </div>
   <div style="width:20px;"></div>
   <div class="cf-node decide" style="opacity:0; pointer-events:none;">
     <div class="cfl">Score &lt; 3?</div>
