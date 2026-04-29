@@ -1,118 +1,133 @@
-# @juliusdarang Personal Brand Structure
+# @juliusdarang — Personal Brand Structure
 
 ---
 
 ## Core Identity
 
 **Name:** Julius Darang
-**Handle:** @juliusdarang (all platforms)
-**Tagline:** "Figuring things out, translating what I learn."
+**Handle:** @juliusdarang
+**Tagline:** "Engineer by training. Polymath by design."
 
-**Unifying message:** "I explore across domains — mind, body, spirit — and share what I discover."
+**One-line pitch:** I build things, train hard, and think deeply — then I translate what I learn into content that helps others do the same.
+
+**Worldview:** The best version of yourself is built across three dimensions: what you create (Mind), how you show up physically (Body), and who you are becoming (Spirit). Everything here lives at that intersection.
 
 ---
 
 ## Mission
 
-Build lasting knowledge work that compounds over time. Create content that helps others learn faster, build better, and live intentionally.
+Build lasting knowledge work that compounds over time. Create content that helps others learn faster, build better, and live intentionally — across all three dimensions of a full life.
 
 ---
 
 ## Brand Pillars
 
-| Pillar | Focus | Essence |
-|--------|-------|---------|
-| **Mind** | Code, AI, agents, building | "I build things that work" |
-| **Body** | Calisthenics, fitness, discipline | "I train what I control" |
-| **Spirit** | Philosophy, psychology, stoicism | "I understand myself first" |
+| Pillar | Symbol | Domain | Core Promise |
+|--------|--------|--------|--------------|
+| **Mind** | 🧠 | Code, AI, building | "I build things that work — and show you how." |
+| **Body** | 💪 | Calisthenics, discipline, hard work | "I train what I control — and stay honest about it." |
+| **Spirit** | 🔥 | Philosophy, psychology, inner work | "I understand myself first — so I can act with clarity." |
 
-Polymath = all three interconnected.
+**The Polymath Thesis:** These three aren't separate pursuits. Discipline in training builds the focus to code. Philosophy sharpens the questions that guide the building. The body is the machine; the spirit is the compass; the mind is the tool.
 
 ---
 
 ## Content Spheres
 
-### Sphere 1: /code (Mind)
+### 🧠 /mind — Code & Building
+
+**Who it's for:** Aspiring developers, engineers entering AI, self-taught builders.
 
 **Topics:**
 - AI Agents & Agentic Engineering
 - Python & Automation
 - Web Development (HTML, CSS, APIs)
 - Git & Version Control
-- Project Building
-- Debugging & Code Review
 - Prompt Engineering
+- Debugging & Code Review
+- Project Building (ship it)
 
-**Format:**
-- Tutorials (Marp → PDF)
-- Thread snippets
-- Code walkthroughs
+**Content formats:**
+- Tutorials (PDF / Notion)
+- Code walkthroughs (Twitter/X threads)
+- Build-in-public updates
 
-**Key Assets (from marp/):**
-- 52 tutorials: Foundation → Git → Web Dev → Python → AI Prompting → AI Agents → Agentic Coding → Automations
+**Voice:** Practical, instructional, clear. No fluff. Show the output first.
 
 ---
 
-### Sphere 2: /fitness (Body)
+### 💪 /body — Calisthenics & Discipline
+
+**Who it's for:** People who want to build a body through discipline, not shortcuts.
 
 **Topics:**
-- Calisthenics
-- Strength Training
-- Working (manual labor)
-- Bodyweight exercises
-- Discipline & routine
+- Calisthenics progressions
+- Bodyweight strength training
+- Manual labor as training
 - Physical resilience
+- Discipline as identity
 
-**Format:**
-- Photo posts
-- Short updates
-- Progress logs
+**Content formats:**
+- Progress photo posts (Instagram)
+- Short honest updates (Twitter/X)
+- Discipline reflections (crosspost to /spirit)
+
+**Voice:** Raw, progress-focused, no vanity metrics. Show the reps, not the aesthetic.
 
 ---
 
-### Sphere 3: /wisdom (Spirit)
+### 🔥 /spirit — Philosophy & Inner Work
+
+**Who it's for:** Thinkers, builders, and anyone doing hard things who want their interior life to match their exterior work.
 
 **Topics:**
-- Philosophy (Stoicism, existentialism)
-- Psychology (mindset, self-knowledge)
-- Self-conquest / inner work
-- Habits & consistency
+- Stoicism & practical philosophy
+- Psychology of self-knowledge
+- Habits, identity, and consistency
 - Learning how to learn
+- Inner conquest before outer achievement
 
-**Format:**
-- Essays (Substack)
-- Thread thoughts
-- Book notes
+**Content formats:**
+- Long-form essays (Substack)
+- Reflective threads (Twitter/X)
+- Book notes (Notion)
+
+**Voice:** Thoughtful, honest, questioning. Write what you'd want to find at 3 AM.
 
 ---
 
-### Sphere 4: /life (Polymath)
+### ⚡ /life — The Polymath Experiments
+
+**Who it's for:** Generalists, multi-domain thinkers, people building unconventional lives.
 
 **Topics:**
-- Polymath lifestyle
-- Multi-domain learning
+- Cross-domain synthesis (code + philosophy + body)
 - Building in public
-- Creative work
-- Life experiments
+- Life experiments and what they taught me
+- The case for being a polymath
 
-**Format:**
-- Cross-posts
-- Updates
-- Philosophy of making
+**Content formats:**
+- Cross-sphere threads
+- Monthly reflection posts
+- Honest project updates
+
+**Voice:** Experimental, honest, evolving. You don't have everything figured out. Say so.
 
 ---
 
 ## Platform Strategy
 
-| Platform | Role | Content Type |
-|----------|------|--------------|
-| **Notion** | Home base — all tutorials, essays, reference | Long-form, organized |
-| **Substack** | Newsletter — free essays + paid tier | Weekly essays |
-| **Gumroad** | PDF course sales | Digital products |
-| **Twitter/X** | Short-form, threads, engagement | 3-4x/week |
-| **LinkedIn** | Professional, tutorials | Monthly |
-| **Instagram** | Fitness, lifestyle | Visual, 1-2x/week |
-| **GitHub** | Code projects, repos | Open source |
+| Platform | Primary Role | Content Type | Cadence |
+|----------|-------------|--------------|---------|
+| **Notion** | Knowledge base — all tutorials, essays, notes | Long-form, organized | Ongoing |
+| **Substack** | Newsletter — /spirit essays + paid tier | Essays | Weekly |
+| **Twitter/X** | Short-form reach — threads, ideas, engagement | Threads, snippets | 3–4x / week |
+| **Instagram** | Body & life — progress, lifestyle | Visual | 1–2x / week |
+| **Gumroad** | Monetization — PDF courses | Digital products | Monthly |
+| **LinkedIn** | Professional reach — tutorials, authority | Long-form posts | Monthly |
+| **GitHub** | Code proof — open repos | Projects | Ongoing |
+
+**Single link:** `juliusdarang.notion.site`
 
 ---
 
@@ -120,13 +135,33 @@ Polymath = all three interconnected.
 
 ```
 @juliusdarang
-├── 📸 code    → AI, agents, tutorials
-├── 💪 fitness → calisthenics, training
-├── 🧠 wisdom  → philosophy, psychology
-└── 🔨 life    → polymath experiments
+├── 🧠 /mind    → AI, agents, Python, tutorials, building
+├── 💪 /body    → Calisthenics, discipline, training logs
+├── 🔥 /spirit  → Philosophy, psychology, essays
+└── ⚡ /life    → Polymath synthesis, experiments, honesty
 ```
 
-Single bio link → juliusdarang.notion.site
+---
+
+## Voice & Tone
+
+**Master voice:** Direct, curious, learn-in-public. Never pretend to have it all figured out. Teach what you just learned.
+
+**Sphere tones:**
+
+| Sphere | Tone |
+|--------|------|
+| /mind | Practical, technical, show-don't-tell |
+| /body | Honest, raw, no aesthetic posturing |
+| /spirit | Reflective, slow, questioning |
+| /life | Experimental, transparent, evolving |
+
+**Core principles:**
+1. Ship first, refine later.
+2. Share what you'd want to find.
+3. Be wrong. Be corrected. Improve publicly.
+4. Depth beats breadth. Compound over time.
+5. The best content is a journal entry that turned into a lesson.
 
 ---
 
@@ -136,102 +171,94 @@ Single bio link → juliusdarang.notion.site
 
 | Day | Platform | Content |
 |-----|----------|---------|
-| Tuesday | Notion + Substack | Full tutorial or essay |
-| Thursday | Twitter/X | Thread (snippet from tutorial) |
-| Saturday | Instagram | Fitness/life post |
+| Tuesday | Notion + Substack | Full tutorial (/mind) or essay (/spirit) |
+| Thursday | Twitter/X | Thread — snippet from Tuesday's piece |
+| Saturday | Instagram | /body progress or /life reflection |
 
-### Monthly Focus
+### Monthly Theme Rotation
 
-| Week | Theme |
-|------|-------|
-| 1 | Code/AI (tutorial launch) |
-| 2 | Wisdom (essay) |
-| 3 | Code (tutorial) |
-| 4 | Fitness/focused reflection |
+| Week | Sphere | Type |
+|------|--------|------|
+| 1 | /mind | Tutorial or AI agent deep-dive |
+| 2 | /spirit | Long-form essay |
+| 3 | /mind | Tutorial or project walkthrough |
+| 4 | /body + /life | Progress post + polymath reflection |
 
 ---
 
 ## Monetization Stack
 
 ```
-Audience (Notion/Twitter)
-        ↓
-Newsletter (Substack free)
-        ↓
-Paid Tier ($5-10/mo) + PDF Course ($9)
+Audience (Notion + Twitter/X)
+         ↓
+Free newsletter (Substack)
+         ↓
+Paid content ($5–10/mo) + PDF courses ($9 each)
+         ↓
+Services / freelance ($500+)
 ```
 
 | Product | Format | Price | Timeline |
 |---------|--------|-------|----------|
-| Free tutorials | Notion | Free | Now |
-| PDF Course | Gumroad | $9 | Month 2 |
-| Newsletter (paid) | Substack | $5-10/mo | Month 4 |
-| Services | DMs/freelance | $500+ | Month 6+ |
+| Free tutorials (52) | Notion | Free | Now |
+| PDF Course — Code Foundations | Gumroad | $9 | Month 2 |
+| Substack paid tier | Newsletter | $5–10/mo | Month 4 |
+| Freelance / consulting | DMs | $500+ | Month 6+ |
+| Premium course bundle | Gumroad | $29–49 | Month 8+ |
 
 ---
 
-## Current Assets Ready to Publish
-
-### Code Tutorials (52)
+## Tutorial Assets — Ready to Publish
 
 | Phase | Count | Status |
 |-------|-------|--------|
-| Phase 1: Foundation | 7 | Ready |
-| Phase 2: Git | 5 | Ready |
-| Phase 3: Web Dev | 9 | Ready |
-| Phase 4: Python | 11 | Ready |
-| Phase 5: AI Prompting | 5 | Ready |
-| Phase 6: AI Agents | 5 | Ready |
-| Phase 7: Agentic Coding | 5 | Ready |
-| Phase 8: Automations | 5 | Ready |
-| Bonus: Career | 7 | Partial |
-| **Total** | **52** | **Most complete** |
-
----
-
-## Voice & Tone
-
-**Voice:** Direct, curious, learn-in-public
-
-**Tone by sphere:**
-- /code: Practical, instructional, clear
-- /fitness: Raw, disciplined, progress-focused
-- /wisdom: Thoughtful, reflective, questioning
-- /life: Experimental, honest, evolving
-
-**Core principles:**
-1. Ship first, refine later
-2. Share what you'd want to find
-3. Be wrong, be corrected, improve
-4. Build in public
+| Phase 1: Foundation | 7 | ✅ Ready |
+| Phase 2: Git | 5 | ✅ Ready |
+| Phase 3: Web Dev | 9 | ✅ Ready |
+| Phase 4: Python | 11 | ✅ Ready |
+| Phase 5: AI Prompting | 5 | ✅ Ready |
+| Phase 6: AI Agents | 5 | ✅ Ready |
+| Phase 7: Agentic Coding | 5 | ✅ Ready |
+| Phase 8: Automations | 5 | ✅ Ready |
+| Bonus: Career | 7 | 🔄 Partial |
+| **Total** | **59** | **52 complete** |
 
 ---
 
 ## First 6 Tutorials to Publish Free
 
-**Selection criteria:** High demand, standalone value, shareable
+Selected for: high demand, standalone value, shareability.
 
-1. **Git vs GitHub** — Most shareable concept
-2. **Terminal Basics** — Foundation for everything
-3. **Write a README** — Practical, immediate use
-4. **Better AI Prompts** — Timely, high interest
-5. **What is an AI Agent** — Growing topic
-6. **Stay Consistent** — Career/wisdom bridge
+| # | Title | Sphere | Why |
+|---|-------|--------|-----|
+| 1 | Git vs GitHub | /mind | Most shareable concept |
+| 2 | Terminal Basics | /mind | Foundation for everything |
+| 3 | Write a README | /mind | Immediate practical use |
+| 4 | Better AI Prompts | /mind | Timely, high interest |
+| 5 | What is an AI Agent | /mind | Growing topic, easy entry |
+| 6 | Stay Consistent | /spirit | Bridge essay — body meets mind |
 
 ---
 
 ## Launch Checklist
 
-- [ ] Set up Notion site (juliusdarang.notion.site)
-- [ ] Publish first 6 tutorials
-- [ ] Create Substack (juliusdarang.substack.com)
-- [ ] Write first essay (philosophy or code)
-- [ ] Optimize Twitter bio + link
-- [ ] Set up Gumroad (already planned)
-- [ ] Create first thread
-- [ ] Announce free content
-- [ ] Launch PDF course ($9)
-- [ ] Open Substack paid tier
+**Phase 0 — Foundation**
+- [ ] Notion site live (`juliusdarang.notion.site`)
+- [ ] Substack set up (`juliusdarang.substack.com`)
+- [ ] Twitter bio + single link optimized
+- [ ] Gumroad account ready
+
+**Phase 1 — Content**
+- [ ] Publish first 6 free tutorials
+- [ ] Write and publish first essay (/spirit)
+- [ ] Create first Twitter/X thread
+- [ ] Announce free content publicly
+
+**Phase 2 — Monetize**
+- [ ] Launch PDF course ($9) on Gumroad
+- [ ] Open Substack paid tier ($5–10/mo)
+- [ ] Pin best-performing thread
+- [ ] First DM offer (freelance/services)
 
 ---
 
@@ -239,11 +266,11 @@ Paid Tier ($5-10/mo) + PDF Course ($9)
 
 | File | Purpose |
 |------|---------|
-| `marp/` | 52 tutorials source |
-| `GUMROAD_LAUNCH_PLAN.md` | PDF sales plan |
-| `LEARNING_PATH.md` | Course structure |
+| `marp/` | 52 tutorial source files |
+| `GUMROAD_LAUNCH_PLAN.md` | PDF course sales plan |
+| `LEARNING_PATH.md` | Course structure and progression |
 
 ---
 
 *Last updated: April 2026*
-*To be updated: Monthly*
+*Review: Monthly — update assets, cadence, and monetization stage*

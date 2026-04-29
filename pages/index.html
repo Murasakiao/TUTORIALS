@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Learn to Build with AI — Julius Darang</title>
+  <title>Julius Darang — Learn to Build with AI</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,600;1,9..144,200;1,9..144,400&display=swap" rel="stylesheet" />
@@ -33,6 +33,12 @@
       --green:      #50ad7c;
       --green-tag:  rgba(80,173,124,0.1);
       --green-tag-b:rgba(80,173,124,0.28);
+      --red:        #e05a4f;
+      --red-tag:    rgba(224,90,79,0.1);
+      --red-tag-b:  rgba(224,90,79,0.28);
+      --purple:     #9d7fe0;
+      --purple-tag: rgba(157,127,224,0.1);
+      --purple-tag-b:rgba(157,127,224,0.28);
       --r:    0px;
       --r-sm: 2px;
       --font:    'DM Sans', sans-serif;
@@ -81,13 +87,11 @@
       background: var(--bg);
       border-bottom: 1px solid var(--border);
     }
-    /* Dot grid */
     .hero-wrap::before {
       content: ''; position: absolute; inset: 0; z-index: 0;
       background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
       background-size: 22px 22px; pointer-events: none;
     }
-    /* Scanlines */
     .hero-wrap::after {
       content: ''; position: absolute; inset: 0; z-index: 0;
       background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.05) 3px, rgba(0,0,0,0.05) 4px);
@@ -163,6 +167,7 @@
       padding: 11px 22px; font-size: 13px; font-weight: 500;
       text-decoration: none; border-radius: var(--r);
       transition: all 0.15s; letter-spacing: 0.01em; font-family: var(--font);
+      cursor: pointer; border: none;
     }
     .btn-blue { background: var(--blue-dim); color: #fff; border: 1px solid transparent; }
     .btn-blue:hover { background: var(--blue); box-shadow: 0 0 22px rgba(80,144,245,0.32); }
@@ -171,7 +176,6 @@
     .btn-amber { background: var(--amber-dim); color: #fff; border: 1px solid transparent; }
     .btn-amber:hover { background: var(--amber); box-shadow: 0 0 22px rgba(223,159,53,0.3); }
 
-    /* Stat tower */
     .stat-tower {
       display: flex; flex-direction: column;
       border: 1px solid var(--border-2); background: var(--bg-2);
@@ -190,9 +194,7 @@
       background: var(--bg-2); overflow: hidden;
       height: 38px; display: flex; align-items: center;
     }
-    .marquee-track {
-      display: flex; animation: marquee 30s linear infinite; white-space: nowrap;
-    }
+    .marquee-track { display: flex; animation: marquee 30s linear infinite; white-space: nowrap; }
     .marquee-item {
       font-family: var(--mono); font-size: 10px;
       letter-spacing: 0.1em; text-transform: uppercase;
@@ -202,6 +204,94 @@
     }
     .marquee-item b { color: var(--blue); font-weight: 500; }
     @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* ── PILLARS SECTION ──────────────────── */
+    .pillars-section {
+      padding: 80px 2.5rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .pillars-inner { max-width: 1020px; margin: 0 auto; }
+    .pillars-header { margin-bottom: 48px; }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border-2);
+    }
+    .pillar-card {
+      background: var(--bg-2);
+      padding: 36px 30px 30px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.18s;
+    }
+    .pillar-card:hover { background: var(--bg-3); }
+    .pillar-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+    }
+    .pillar-mind::before    { background: var(--blue); }
+    .pillar-body::before    { background: var(--green); }
+    .pillar-spirit::before  { background: var(--amber); }
+
+    .pillar-icon {
+      font-size: 28px; line-height: 1;
+      margin-bottom: 4px;
+    }
+    .pillar-kicker {
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .pillar-mind .pillar-kicker    { color: var(--blue); }
+    .pillar-body .pillar-kicker    { color: var(--green); }
+    .pillar-spirit .pillar-kicker  { color: var(--amber); }
+
+    .pillar-title {
+      font-family: var(--display); font-size: 22px;
+      font-weight: 600; letter-spacing: -0.02em;
+      line-height: 1.15; color: var(--text);
+    }
+    .pillar-desc {
+      font-size: 13px; color: var(--text-2);
+      line-height: 1.76; font-weight: 300; flex: 1;
+    }
+    .pillar-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .pillar-tag {
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.07em;
+      text-transform: uppercase; padding: 3px 8px;
+      border-radius: var(--r-sm); border: 1px solid;
+    }
+    .pillar-mind .pillar-tag    { color: var(--blue);   border-color: var(--blue-tag-b);   background: var(--blue-tag); }
+    .pillar-body .pillar-tag    { color: var(--green);  border-color: var(--green-tag-b);  background: var(--green-tag); }
+    .pillar-spirit .pillar-tag  { color: var(--amber);  border-color: var(--amber-tag-b);  background: var(--amber-tag); }
+
+    /* placeholder ribbon */
+    .pillar-coming {
+      position: absolute; top: 18px; right: -22px;
+      background: var(--bg-4); color: var(--text-3);
+      font-family: var(--mono); font-size: 8px; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 3px 32px;
+      transform: rotate(35deg); border-top: 1px solid var(--border-2); border-bottom: 1px solid var(--border-2);
+    }
+    .pillar-card.active .pillar-coming { display: none; }
+
+    .pillar-status {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-top: 4px;
+    }
+    .pst-live  { color: var(--green); }
+    .pst-soon  { color: var(--text-3); }
+    .pst-dot   { width: 5px; height: 5px; border-radius: 50%; }
+    .pst-live .pst-dot  { background: var(--green); animation: pulse 2.6s ease-in-out infinite; }
+    .pst-soon .pst-dot  { background: var(--text-3); }
 
     /* ── SECTION ──────────────────────────── */
     .section { padding: 72px 2.5rem; }
@@ -237,7 +327,6 @@
     .ptab.ab { background: var(--blue-dim); color: #fff; }
     .ptab.aa { background: var(--amber-dim); color: #fff; }
 
-    /* ── PRODUCT PANEL ────────────────────── */
     .ppanel { display: none; }
     .ppanel.active { display: block; }
 
@@ -302,17 +391,26 @@
     .phbody { display: none; border-top: 1px solid var(--border); background: var(--bg); }
     .phgroup.open .phbody { display: block; }
 
+    /* Tutorial row — now clickable */
     .trow {
       display: flex; align-items: center; gap: 10px;
       padding: 9px 18px 9px 35px;
       border-bottom: 1px solid var(--border);
       transition: background 0.1s;
+      text-decoration: none; color: inherit;
     }
     .trow:last-child { border-bottom: none; }
-    .trow:hover { background: var(--bg-2); }
+    .trow.tlink:hover { background: var(--bg-2); }
+    .trow.tlink:hover .tname { color: var(--text); }
+    .trow.tlink:hover .tarrow { opacity: 1; transform: none; }
     .tname { flex: 1; font-size: 13px; color: var(--text-2); }
     .tname.paid { color: var(--text); font-weight: 500; }
     .tlocked { font-size: 11px; color: var(--text-3); }
+    .tarrow {
+      font-size: 11px; color: var(--text-3);
+      opacity: 0; transform: translate(-4px, 3px);
+      transition: all 0.15s;
+    }
 
     /* ── BADGES ───────────────────────────── */
     .badge {
@@ -324,18 +422,21 @@
     .bb  { background: var(--blue-tag);   color: var(--blue);   border: 1px solid var(--blue-tag-b); }
     .ba  { background: var(--amber-tag);  color: var(--amber);  border: 1px solid var(--amber-tag-b); }
     .bw  { background: var(--bg-4);       color: var(--text-3); border: 1px solid var(--border-2); }
+    .br  { background: var(--red-tag);    color: var(--red);    border: 1px solid var(--red-tag-b); }
 
     /* ── FREE SECTION ─────────────────────── */
     .free-s { background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .free-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
-      gap: 1px; background: var(--border); border: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
     }
     .fcard {
       background: var(--bg-2); padding: 20px 22px;
       text-decoration: none; color: inherit;
       display: flex; flex-direction: column; gap: 6px;
       transition: background 0.12s; position: relative; overflow: hidden;
+      border: 1px solid var(--border); border-radius: 1px;
     }
     .fcard::after {
       content: '↗'; position: absolute; top: 13px; right: 15px;
@@ -347,6 +448,88 @@
     .fcard-kicker { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; }
     .fcard-title { font-size: 14px; font-weight: 500; color: var(--text); }
     .fcard-meta  { font-size: 11px; color: var(--text-3); }
+
+    /* ── PLACEHOLDER PILLAR SECTIONS ─────── */
+    .body-section {
+      background: var(--bg-3);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .spirit-section {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .placeholder-panel {
+      max-width: 1020px; margin: 0 auto;
+      padding: 72px 2.5rem;
+    }
+    .placeholder-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 36px;
+    }
+    .placeholder-card {
+      border: 1px dashed var(--border-2);
+      padding: 28px 22px;
+      display: flex; flex-direction: column; gap: 10px;
+      position: relative;
+      background: transparent;
+      transition: background 0.15s;
+    }
+    .placeholder-card:hover { background: rgba(255,255,255,0.015); }
+    .ph-card-icon { font-size: 20px; }
+    .ph-card-title { font-size: 14px; font-weight: 500; color: var(--text-3); }
+    .ph-card-sub { font-size: 12px; color: var(--text-3); line-height: 1.6; opacity: 0.65; }
+    .ph-coming-label {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-3);
+      margin-top: 6px;
+    }
+    .ph-coming-label::before {
+      content: ''; display: block; width: 14px; height: 1px; background: currentColor;
+    }
+
+    .pillar-section-header { margin-bottom: 12px; }
+    .pillar-divider {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 32px;
+    }
+    .pillar-divider-line { flex: 1; height: 1px; background: var(--border); }
+    .pillar-divider-label {
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--text-3);
+      white-space: nowrap;
+    }
+
+    /* Notify form */
+    .notify-row {
+      display: flex; gap: 10px; align-items: center;
+      margin-top: 28px; flex-wrap: wrap;
+    }
+    .notify-input {
+      background: var(--bg-2); border: 1px solid var(--border-2);
+      color: var(--text); font-family: var(--font); font-size: 13px;
+      padding: 10px 16px; outline: none; flex: 1; min-width: 220px;
+      transition: border-color 0.15s;
+    }
+    .notify-input::placeholder { color: var(--text-3); }
+    .notify-input:focus { border-color: var(--border-3); }
+    .notify-btn-green {
+      background: rgba(80,173,124,0.14); color: var(--green);
+      border: 1px solid var(--green-tag-b); font-size: 13px; font-weight: 500;
+      padding: 10px 20px; cursor: pointer; font-family: var(--font);
+      transition: background 0.15s; white-space: nowrap;
+    }
+    .notify-btn-green:hover { background: rgba(80,173,124,0.22); }
+    .notify-btn-amber {
+      background: rgba(223,159,53,0.1); color: var(--amber);
+      border: 1px solid var(--amber-tag-b); font-size: 13px; font-weight: 500;
+      padding: 10px 20px; cursor: pointer; font-family: var(--font);
+      transition: background 0.15s; white-space: nowrap;
+    }
+    .notify-btn-amber:hover { background: rgba(223,159,53,0.18); }
 
     /* ── ABOUT STRIP ──────────────────────── */
     .about-s { background: var(--bg-3); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -389,6 +572,9 @@
       .footer-inner { flex-direction:column; align-items:flex-start; }
       .pcard-header { grid-template-columns:1fr; }
       .ph-price { text-align:left; }
+      .free-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .pillars-grid { grid-template-columns: 1fr; gap: 0; }
+      .placeholder-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media(max-width:520px) {
       nav { padding:0 1.25rem; }
@@ -397,6 +583,10 @@
       .stat-tower { display:none; }
       .pcard-header { padding:22px 18px; }
       .pcard-body { padding:16px 18px; }
+      .free-grid { grid-template-columns: 1fr; }
+      .placeholder-grid { grid-template-columns: 1fr; }
+      .pillars-section { padding: 52px 1.5rem; }
+      .placeholder-panel { padding: 52px 1.5rem; }
     }
   </style>
 </head>
@@ -406,7 +596,10 @@
 <nav id="nav">
   <div class="nav-brand"><strong>julius</strong><span class="dot">.</span>darang</div>
   <div class="nav-links">
-    <a href="#products">Products</a>
+    <a href="#pillars">Pillars</a>
+    <a href="#products">Mind</a>
+    <a href="#body">Body</a>
+    <a href="#spirit">Spirit</a>
     <a href="#free">Free</a>
     <a href="https://substack.com/@juliusdarang" target="_blank">Substack</a>
     <a href="https://gumroad.com" target="_blank" class="nav-cta">Get on Gumroad ↗</a>
@@ -420,16 +613,17 @@
   <div class="glow glow-3"></div>
   <div class="hero">
     <div>
+      <div class="hero-eyebrow"><span class="epulse"></span> Mind · Body · Spirit</div>
       <h1>Build things<br /><em>that actually work</em><span class="h1-dim">with AI.</span></h1>
-      <p class="hero-desc">Two structured curricula — one taking complete beginners from the Terminal all the way to AI agents, and one teaching autonomous agent architecture at scale. Visual PDF slides. No fluff. Hands-on from day one.</p>
+      <p class="hero-desc">A polymath approach to learning. Structured curricula on AI and code — with body and spirit content coming. Visual PDF slides. No fluff. Hands-on from day one.</p>
       <div class="hero-btns">
-        <a href="#products" class="btn btn-blue">Browse curricula ↓</a>
+        <a href="#pillars" class="btn btn-blue">Explore pillars ↓</a>
         <a href="#free" class="btn btn-ghost">Start for free</a>
       </div>
     </div>
     <div class="stat-tower">
       <div class="stat-cell"><span class="stat-n">72</span><span class="stat-l">Tutorials</span></div>
-      <div class="stat-cell"><span class="stat-n">2</span><span class="stat-l">Products</span></div>
+      <div class="stat-cell"><span class="stat-n">3</span><span class="stat-l">Pillars</span></div>
       <div class="stat-cell"><span class="stat-n">12+</span><span class="stat-l">Free</span></div>
       <div class="stat-cell"><span class="stat-n">PDF</span><span class="stat-l">Format</span></div>
     </div>
@@ -439,7 +633,9 @@
 <!-- MARQUEE -->
 <div class="marquee-bar">
   <div class="marquee-track">
-    <div class="marquee-item"><b>50+</b> tutorials</div>
+    <div class="marquee-item"><b>Mind</b> Code &amp; AI</div>
+    <div class="marquee-item"><b>Body</b> Calisthenics &amp; Discipline</div>
+    <div class="marquee-item"><b>Spirit</b> Philosophy &amp; Inner Work</div>
     <div class="marquee-item">Terminal → Git → Web → Python</div>
     <div class="marquee-item"><b>PDF</b> slide format</div>
     <div class="marquee-item">Zero prerequisites required</div>
@@ -447,7 +643,9 @@
     <div class="marquee-item"><b>12+</b> free tutorials</div>
     <div class="marquee-item">Single · Pipeline · Multi-Agent · Teams</div>
     <div class="marquee-item">One-time purchase · Gumroad</div>
-    <div class="marquee-item"><b>50+</b> tutorials</div>
+    <div class="marquee-item"><b>Mind</b> Code &amp; AI</div>
+    <div class="marquee-item"><b>Body</b> Calisthenics &amp; Discipline</div>
+    <div class="marquee-item"><b>Spirit</b> Philosophy &amp; Inner Work</div>
     <div class="marquee-item">Terminal → Git → Web → Python</div>
     <div class="marquee-item"><b>PDF</b> slide format</div>
     <div class="marquee-item">Zero prerequisites required</div>
@@ -458,11 +656,68 @@
   </div>
 </div>
 
-<!-- PRODUCTS -->
-<section class="section" id="products">
+<!-- PILLARS -->
+<section class="pillars-section" id="pillars">
+  <div class="pillars-inner">
+    <div class="pillars-header reveal">
+      <div class="s-kicker">The Framework</div>
+      <h2 class="s-title">Three pillars.<br /><em>One full life.</em></h2>
+      <p class="s-desc">Everything I create lives inside one of three domains. Start with Mind — it's live. Body and Spirit are being built.</p>
+    </div>
+    <div class="pillars-grid reveal">
+      <!-- MIND -->
+      <div class="pillar-card pillar-mind active">
+        <div class="pillar-icon">🧠</div>
+        <div class="pillar-kicker">Pillar 01</div>
+        <div class="pillar-title">Mind</div>
+        <p class="pillar-desc">Code, AI, agents, and building. Structured curricula taking you from terminal basics all the way to autonomous multi-agent systems. Visual PDF slides, zero fluff.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">AI Agents</span>
+          <span class="pillar-tag">Python</span>
+          <span class="pillar-tag">Web Dev</span>
+          <span class="pillar-tag">Automations</span>
+        </div>
+        <div class="pillar-status pst-live"><span class="pst-dot"></span> Live now</div>
+      </div>
+      <!-- BODY -->
+      <div class="pillar-card pillar-body">
+        <span class="pillar-coming">Coming soon</span>
+        <div class="pillar-icon">💪</div>
+        <div class="pillar-kicker">Pillar 02</div>
+        <div class="pillar-title">Body</div>
+        <p class="pillar-desc">Calisthenics, strength, and the discipline of physical training. Tutorials and guides on building a body through consistent, principled work — not shortcuts.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Calisthenics</span>
+          <span class="pillar-tag">Strength</span>
+          <span class="pillar-tag">Discipline</span>
+          <span class="pillar-tag">Routine</span>
+        </div>
+        <div class="pillar-status pst-soon"><span class="pst-dot"></span> In progress</div>
+      </div>
+      <!-- SPIRIT -->
+      <div class="pillar-card pillar-spirit">
+        <span class="pillar-coming">Coming soon</span>
+        <div class="pillar-icon">🔥</div>
+        <div class="pillar-kicker">Pillar 03</div>
+        <div class="pillar-title">Spirit</div>
+        <p class="pillar-desc">Philosophy, psychology, and inner work. Essays and guides on Stoicism, self-knowledge, and learning how to learn. The interior architecture of a well-lived life.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Stoicism</span>
+          <span class="pillar-tag">Psychology</span>
+          <span class="pillar-tag">Habits</span>
+          <span class="pillar-tag">Essays</span>
+        </div>
+        <div class="pillar-status pst-soon"><span class="pst-dot"></span> In progress</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MIND / PRODUCTS ═══════════════════════════════════════════════ -->
+<section class="section" id="products" style="background: var(--bg-2); border-bottom: 1px solid var(--border);">
   <div class="section-inner">
     <div class="section-header reveal">
-      <div class="s-kicker">Curricula</div>
+      <div class="s-kicker" style="color:var(--blue)">🧠 Mind — Code &amp; AI</div>
       <h2 class="s-title">Two products.<br /><em>One clear path.</em></h2>
       <p class="s-desc">Start with Zero to AI Builder if you're new. Graduate to AI Agents Levels when you're ready to go deep.</p>
     </div>
@@ -494,7 +749,7 @@
           </div>
         </div>
         <div class="pcard-body">
-          <span class="free-badge">Phases 1 &amp; 2 are completely free</span>
+          <span class="free-badge">Phases 1, 2, 3 &amp; 4 are completely free</span>
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
             <a href="https://gumroad.com" target="_blank" class="btn btn-blue">Buy on Gumroad ↗</a>
             <a href="#free" class="btn btn-ghost">Free tutorials</a>
@@ -510,64 +765,64 @@
             <div class="phright"><span class="badge bf">free</span><span class="phcount">6 tutorials</span><span class="phchev">▼</span></div>
           </div>
           <div class="phbody">
-            <div class="trow"><span class="tname">Mac Terminal</span><span class="badge bf">free</span></div>
-            <div class="trow"><span class="tname">Windows Terminal</span><span class="badge bf">free</span></div>
-            <div class="trow"><span class="tname">Install VS Code</span><span class="badge bf">free</span></div>
-            <div class="trow"><span class="tname">Markdown</span><span class="badge bf">free</span></div>
-            <div class="trow"><span class="tname">What is a Browser</span><span class="badge bf">free</span></div>
-            <div class="trow"><span class="tname">DevTools CSS Inspection</span><span class="badge bf">free</span></div>
+            <a href="#" class="trow tlink"><span class="tname">Mac Terminal</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Windows Terminal</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Install VS Code</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Markdown</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">What is a Browser</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">DevTools CSS Inspection</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
           </div>
         </div>
-        <div class="phgroup open">
+        <div class="phgroup">
           <div class="phhead" onclick="tp(this)">
             <div class="phaccent" style="background:#50ad7c"></div>
             <span class="phname">Phase 2 — Git &amp; GitHub</span>
             <div class="phright"><span class="badge bf">free</span><span class="phcount">5 tutorials</span><span class="phchev">▼</span></div>
           </div>
           <div class="phbody">
-            <div class="trow"><span class="tname">Install Git</span><span class="badge bf">free</span></div>
-            <div class="trow"><span class="tname">Git vs GitHub</span><span class="badge bf">free</span></div>
-            <div class="trow"><span class="tname">Undo Mistakes in Git</span><span class="badge bf">free</span></div>
-            <div class="trow"><span class="tname">Good Commit Messages</span><span class="badge bf">free</span></div>
-            <div class="trow"><span class="tname">Collaborate on GitHub</span><span class="badge bf">free</span></div>
+            <a href="#" class="trow tlink"><span class="tname">Install Git</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Git vs GitHub</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Undo Mistakes in Git</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Good Commit Messages</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Collaborate on GitHub</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
           </div>
         </div>
         <div class="phgroup">
           <div class="phhead" onclick="tp(this)">
             <div class="phaccent" style="background:#e05a4f"></div>
             <span class="phname">Phase 3 — Web Development</span>
-            <div class="phright"><span class="badge bb">paid</span><span class="phcount">9 tutorials</span><span class="phchev">▼</span></div>
+            <div class="phright"><span class="badge bf">free</span><span class="phcount">9 tutorials</span><span class="phchev">▼</span></div>
           </div>
           <div class="phbody">
-            <div class="trow"><span class="tname paid">Basic Web Structure</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">CSS Flexbox</span><span class="tlocked">—</span><span class="badge bw">soon</span></div>
-            <div class="trow"><span class="tname paid">How to Pick Color</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Google Fonts</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Domain Names</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Responsive Design</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Image Optimization</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Favicon</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">What is an API</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
+            <a href="#" class="trow tlink"><span class="tname">Basic Web Structure</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">CSS Flexbox</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">How to Pick Color</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Google Fonts</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Domain Names</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Responsive Design</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Image Optimization</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Favicon</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">What is an API</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
           </div>
         </div>
         <div class="phgroup">
           <div class="phhead" onclick="tp(this)">
             <div class="phaccent" style="background:#9d7fe0"></div>
             <span class="phname">Phase 4 — Python Fundamentals</span>
-            <div class="phright"><span class="badge bb">paid</span><span class="phcount">11 tutorials</span><span class="phchev">▼</span></div>
+            <div class="phright"><span class="badge bf">free</span><span class="phcount">11 tutorials</span><span class="phchev">▼</span></div>
           </div>
           <div class="phbody">
-            <div class="trow"><span class="tname paid">Mac Install Python</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Windows Install Python</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Virtual Environment</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Python Scripting</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">CSV Files</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Python APIs</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Pandas for Excel Users</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Web Scraping</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Send Email with Python</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Schedule Python Scripts</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Python Calculator with Tkinter</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
+            <a href="#" class="trow tlink"><span class="tname">Mac Install Python</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Windows Install Python</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Virtual Environment</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Python Scripting</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">CSV Files</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Python APIs</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Pandas for Excel Users</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Web Scraping</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Send Email with Python</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Schedule Python Scripts</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Python Calculator with Tkinter</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
           </div>
         </div>
         <div class="phgroup">
@@ -577,11 +832,11 @@
             <div class="phright"><span class="badge bb">paid</span><span class="phcount">5 tutorials</span><span class="phchev">▼</span></div>
           </div>
           <div class="phbody">
-            <div class="trow"><span class="tname paid">Better AI Prompts</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">5 Prompt Frameworks</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">ChatGPT as Personal Assistant</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Prompting for Coding</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Structured AI Outputs</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Better AI Prompts</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">5 Prompt Frameworks</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">ChatGPT as Personal Assistant</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Prompting for Coding</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Structured AI Outputs</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
           </div>
         </div>
         <div class="phgroup">
@@ -591,11 +846,11 @@
             <div class="phright"><span class="badge bb">paid</span><span class="phcount">5 tutorials</span><span class="phchev">▼</span></div>
           </div>
           <div class="phbody">
-            <div class="trow"><span class="tname paid">What is an AI Agent</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Build First AI Agent</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">AI Agent Tools</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Single vs Multi Agent</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">AI Agent Memory</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">What is an AI Agent</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Build First AI Agent</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">AI Agent Tools</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Single vs Multi Agent</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">AI Agent Memory</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
           </div>
         </div>
         <div class="phgroup">
@@ -605,11 +860,11 @@
             <div class="phright"><span class="badge bb">paid</span><span class="phcount">5 tutorials</span><span class="phchev">▼</span></div>
           </div>
           <div class="phbody">
-            <div class="trow"><span class="tname paid">What is Agentic Coding</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Debug with AI</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Build Apps with AI</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Break Down Projects for AI</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Review AI Code</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">What is Agentic Coding</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Debug with AI</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Build Apps with AI</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Break Down Projects for AI</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Review AI Code</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
           </div>
         </div>
         <div class="phgroup">
@@ -619,11 +874,11 @@
             <div class="phright"><span class="badge bb">paid</span><span class="phcount">5 tutorials</span><span class="phchev">▼</span></div>
           </div>
           <div class="phbody">
-            <div class="trow"><span class="tname paid">Automate Daily Tasks</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Connect Apps with AI</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">AI Workflow</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Spreadsheets to Automations</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Schedule Automations</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Automate Daily Tasks</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Connect Apps with AI</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">AI Workflow</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Spreadsheets to Automations</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Schedule Automations</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
           </div>
         </div>
         <div class="phgroup">
@@ -633,16 +888,16 @@
             <div class="phright"><span class="badge bb">paid</span><span class="phcount">10 tutorials</span><span class="phchev">▼</span></div>
           </div>
           <div class="phbody">
-            <div class="trow"><span class="tname paid">Build a Portfolio</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">LinkedIn for Developers</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Open Source First Contribution</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Learn Faster</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Document Projects</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Choose What to Learn</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Stay Consistent</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">10 AI Prompts That Save Hours</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">Replaced 5 Hours with AI</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
-            <div class="trow"><span class="tname paid">5 AI Automations Today</span><span class="tlocked">—</span><span class="badge bb">paid</span></div>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Build a Portfolio</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">LinkedIn for Developers</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Open Source First Contribution</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Learn Faster</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Document Projects</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Choose What to Learn</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Stay Consistent</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">10 AI Prompts That Save Hours</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Replaced 5 Hours with AI</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">5 AI Automations Today</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
           </div>
         </div>
       </div>
@@ -686,10 +941,10 @@
             <div class="phright"><span class="badge bf">free</span><span class="phcount">4 tutorials</span><span class="phchev">▼</span></div>
           </div>
           <div class="phbody">
-            <div class="trow"><span class="tname">What Is an Agent</span><span class="badge bf">free</span></div>
-            <div class="trow"><span class="tname">Anatomy of an Agent</span><span class="badge bf">free</span></div>
-            <div class="trow"><span class="tname">Tools + ReAct Loop</span><span class="badge bf">free</span></div>
-            <div class="trow"><span class="tname">Building Your First Agent</span><span class="badge bf">free</span></div>
+            <a href="#" class="trow tlink"><span class="tname">What Is an Agent</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Anatomy of an Agent</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Tools + ReAct Loop</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
+            <a href="#" class="trow tlink"><span class="tname">Building Your First Agent</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
           </div>
         </div>
         <div class="phgroup">
@@ -699,10 +954,10 @@
             <div class="phright"><span class="badge ba">paid</span><span class="phcount">4 tutorials</span><span class="phchev">▼</span></div>
           </div>
           <div class="phbody">
-            <div class="trow"><span class="tname paid">The Pipeline Mental Model</span><span class="tlocked">—</span><span class="badge ba">paid</span></div>
-            <div class="trow"><span class="tname paid">The Orchestrator</span><span class="tlocked">—</span><span class="badge ba">paid</span></div>
-            <div class="trow"><span class="tname paid">Artifact Design</span><span class="tlocked">—</span><span class="badge ba">paid</span></div>
-            <div class="trow"><span class="tname paid">Error Handling + Debugging</span><span class="tlocked">—</span><span class="badge ba">paid</span></div>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">The Pipeline Mental Model</span><span class="tarrow">↗</span><span class="badge ba">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">The Orchestrator</span><span class="tarrow">↗</span><span class="badge ba">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Artifact Design</span><span class="tarrow">↗</span><span class="badge ba">paid</span></a>
+            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Error Handling + Debugging</span><span class="tarrow">↗</span><span class="badge ba">paid</span></a>
           </div>
         </div>
         <div class="phgroup">
@@ -749,12 +1004,142 @@
       <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 1</span><span class="fcard-title">Windows Terminal</span><span class="fcard-meta">PDF · Foundation</span></a>
       <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 1</span><span class="fcard-title">Install VS Code</span><span class="fcard-meta">PDF · Foundation</span></a>
       <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 1</span><span class="fcard-title">Markdown</span><span class="fcard-meta">PDF · Foundation</span></a>
+      <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 1</span><span class="fcard-title">What is a Browser</span><span class="fcard-meta">PDF · Foundation</span></a>
+      <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 1</span><span class="fcard-title">DevTools CSS Inspection</span><span class="fcard-meta">PDF · Foundation</span></a>
       <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 2</span><span class="fcard-title">Install Git</span><span class="fcard-meta">PDF · Git &amp; GitHub</span></a>
       <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 2</span><span class="fcard-title">Git vs GitHub</span><span class="fcard-meta">PDF · Git &amp; GitHub</span></a>
+      <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 2</span><span class="fcard-title">Undo Mistakes in Git</span><span class="fcard-meta">PDF · Git &amp; GitHub</span></a>
+      <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 2</span><span class="fcard-title">Good Commit Messages</span><span class="fcard-meta">PDF · Git &amp; GitHub</span></a>
+      <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 2</span><span class="fcard-title">Collaborate on GitHub</span><span class="fcard-meta">PDF · Git &amp; GitHub</span></a>
       <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--amber)">AI Agents Levels · Level 1</span><span class="fcard-title">What Is an Agent</span><span class="fcard-meta">PDF · Single Agent</span></a>
       <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--amber)">AI Agents Levels · Level 1</span><span class="fcard-title">Anatomy of an Agent</span><span class="fcard-meta">PDF · Single Agent</span></a>
       <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--amber)">AI Agents Levels · Level 1</span><span class="fcard-title">Tools + ReAct Loop</span><span class="fcard-meta">PDF · Single Agent</span></a>
       <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--amber)">AI Agents Levels · Level 1</span><span class="fcard-title">Building Your First Agent</span><span class="fcard-meta">PDF · Single Agent</span></a>
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:12px;" id="free-pagination-wrap">
+      <button id="free-next" class="btn btn-ghost" aria-label="Next free tutorials">Next</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BODY PLACEHOLDER ════════════════════════════════════════════ -->
+<section class="body-section" id="body">
+  <div class="placeholder-panel">
+    <div class="section-header reveal">
+      <div class="s-kicker" style="color:var(--green)">💪 Body — Calisthenics &amp; Discipline</div>
+      <h2 class="s-title">Train what<br /><em>you control.</em></h2>
+      <p class="s-desc">Tutorials on calisthenics progressions, bodyweight strength, and the discipline of physical consistency. Being built now.</p>
+    </div>
+
+    <div class="pillar-divider reveal">
+      <div class="pillar-divider-line"></div>
+      <div class="pillar-divider-label">Planned content</div>
+      <div class="pillar-divider-line"></div>
+    </div>
+
+    <div class="placeholder-grid reveal">
+      <div class="placeholder-card">
+        <div class="ph-card-icon">🤸</div>
+        <div class="ph-card-title">Calisthenics Progressions</div>
+        <p class="ph-card-sub">From zero pull-ups to muscle-up. A structured progression guide for each movement pattern.</p>
+        <div class="ph-coming-label">Tutorial series</div>
+      </div>
+      <div class="placeholder-card">
+        <div class="ph-card-icon">🏋️</div>
+        <div class="ph-card-title">Bodyweight Strength</div>
+        <p class="ph-card-sub">Push, pull, squat, hinge, core. Building functional strength with no equipment required.</p>
+        <div class="ph-coming-label">Tutorial series</div>
+      </div>
+      <div class="placeholder-card">
+        <div class="ph-card-icon">📅</div>
+        <div class="ph-card-title">Building the Habit</div>
+        <p class="ph-card-sub">How to structure your training week and build a sustainable routine that actually sticks.</p>
+        <div class="ph-coming-label">Guide</div>
+      </div>
+      <div class="placeholder-card">
+        <div class="ph-card-icon">⚖️</div>
+        <div class="ph-card-title">Discipline as Identity</div>
+        <p class="ph-card-sub">The mindset shift that separates people who train consistently from those who don't.</p>
+        <div class="ph-coming-label">Essay + Guide</div>
+      </div>
+      <div class="placeholder-card">
+        <div class="ph-card-icon">🔧</div>
+        <div class="ph-card-title">Manual Labor as Training</div>
+        <p class="ph-card-sub">Hard physical work builds more than just strength. How to leverage what you already do.</p>
+        <div class="ph-coming-label">Essay</div>
+      </div>
+      <div class="placeholder-card">
+        <div class="ph-card-icon">📊</div>
+        <div class="ph-card-title">Progress Tracking</div>
+        <p class="ph-card-sub">Simple systems for tracking training data, noting what's working, and adjusting over time.</p>
+        <div class="ph-coming-label">Tutorial</div>
+      </div>
+    </div>
+
+    <div class="notify-row reveal">
+      <input type="email" class="notify-input" placeholder="your@email.com — get notified when Body launches" />
+      <button class="notify-btn-green" onclick="handleNotify(this, 'body')">Notify me 💪</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SPIRIT PLACEHOLDER ══════════════════════════════════════════ -->
+<section class="spirit-section" id="spirit">
+  <div class="placeholder-panel">
+    <div class="section-header reveal">
+      <div class="s-kicker" style="color:var(--amber)">🔥 Spirit — Philosophy &amp; Inner Work</div>
+      <h2 class="s-title">Understand yourself<br /><em>first.</em></h2>
+      <p class="s-desc">Essays and guides on Stoicism, self-knowledge, and the interior architecture of a life lived with intention. Being written now.</p>
+    </div>
+
+    <div class="pillar-divider reveal">
+      <div class="pillar-divider-line"></div>
+      <div class="pillar-divider-label">Planned content</div>
+      <div class="pillar-divider-line"></div>
+    </div>
+
+    <div class="placeholder-grid reveal">
+      <div class="placeholder-card">
+        <div class="ph-card-icon">⚡</div>
+        <div class="ph-card-title">Stoicism for Builders</div>
+        <p class="ph-card-sub">Practical Stoic principles applied to the daily reality of building things under uncertainty.</p>
+        <div class="ph-coming-label">Essay series</div>
+      </div>
+      <div class="placeholder-card">
+        <div class="ph-card-icon">🔍</div>
+        <div class="ph-card-title">Self-Knowledge First</div>
+        <p class="ph-card-sub">You can't build the life you want without knowing who you actually are. A guide to honest introspection.</p>
+        <div class="ph-coming-label">Essay + Guide</div>
+      </div>
+      <div class="placeholder-card">
+        <div class="ph-card-icon">🌱</div>
+        <div class="ph-card-title">Learning How to Learn</div>
+        <p class="ph-card-sub">The meta-skill. How to absorb new domains faster, retain more, and build knowledge that compounds.</p>
+        <div class="ph-coming-label">Guide</div>
+      </div>
+      <div class="placeholder-card">
+        <div class="ph-card-icon">🔄</div>
+        <div class="ph-card-title">Identity &amp; Consistency</div>
+        <p class="ph-card-sub">The psychology of why some people stay consistent and others don't — and how to move between them.</p>
+        <div class="ph-coming-label">Essay</div>
+      </div>
+      <div class="placeholder-card">
+        <div class="ph-card-icon">📖</div>
+        <div class="ph-card-title">Book Notes</div>
+        <p class="ph-card-sub">Distilled lessons from the books that changed how I think — philosophy, psychology, biography.</p>
+        <div class="ph-coming-label">Reference library</div>
+      </div>
+      <div class="placeholder-card">
+        <div class="ph-card-icon">🧭</div>
+        <div class="ph-card-title">Inner Conquest</div>
+        <p class="ph-card-sub">The one battle worth fighting before all others. On mastering your interior before taking on the exterior.</p>
+        <div class="ph-coming-label">Essay</div>
+      </div>
+    </div>
+
+    <div class="notify-row reveal">
+      <input type="email" class="notify-input" placeholder="your@email.com — get notified when Spirit launches" />
+      <button class="notify-btn-amber" onclick="handleNotify(this, 'spirit')">Notify me 🔥</button>
     </div>
   </div>
 </section>
@@ -764,7 +1149,7 @@
   <div class="about-inner">
     <div class="reveal">
       <div class="about-title">Built by someone who actually builds.</div>
-      <p class="about-body">I'm Julius — a Registered Electrical Engineer from the Philippines specializing in Renewable Energy and Power Systems. I also write about self-improvement, productivity, and solopreneurship on Substack. These tutorials are distilled from real work, not theory.</p>
+      <p class="about-body">I'm Julius — a Registered Electrical Engineer from the Philippines specializing in Renewable Energy and Power Systems. I also write about philosophy, productivity, and solopreneurship on Substack. These tutorials are distilled from real work, not theory.</p>
       <div class="about-tags">
         <span class="about-tag">Renewable Energy</span>
         <span class="about-tag">Python</span>
@@ -788,7 +1173,7 @@
   <div class="footer-inner">
     <div>
       <div class="footer-name">Julius Darang</div>
-      <div class="footer-sub">REE · Renewable Energy · Creator · Philippines</div>
+      <div class="footer-sub">REE · Renewable Energy · Creator · Philippines · Mind · Body · Spirit</div>
     </div>
     <div class="footer-links">
       <a href="https://substack.com/@juliusdarang" target="_blank">Substack</a>
@@ -809,7 +1194,7 @@
   // Phase toggle
   function tp(h) { h.parentElement.classList.toggle('open'); }
 
-  // Product switch
+  // Product tab switch
   function sp(p) {
     document.querySelectorAll('.ppanel').forEach(el => el.classList.remove('active'));
     document.getElementById('p-' + p).classList.add('active');
@@ -823,6 +1208,49 @@
     entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, {threshold:0.06});
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Free tutorials pagination
+  (function(){
+    const grid = document.querySelector('.free-grid');
+    if(!grid) return;
+    const cards = Array.from(grid.querySelectorAll('.fcard'));
+    const perPage = 9;
+    if(cards.length <= perPage) {
+      const wrap = document.getElementById('free-pagination-wrap');
+      if(wrap) wrap.style.display = 'none';
+      return;
+    }
+    let page = 0;
+    const pages = Math.ceil(cards.length / perPage);
+    const btn = document.getElementById('free-next');
+    function render(){
+      grid.innerHTML = '';
+      const slice = cards.slice(page * perPage, (page + 1) * perPage);
+      slice.forEach(c => grid.appendChild(c));
+      if(btn) btn.textContent = `Next (${page+1}/${pages})`;
+    }
+    if(btn){
+      btn.addEventListener('click', () => { page = (page + 1) % pages; render(); grid.scrollIntoView({behavior:'smooth', block:'start'}); });
+    }
+    render();
+  })();
+
+  // Notify form handler
+  function handleNotify(btn, pillar) {
+    const input = btn.previousElementSibling;
+    const val = input.value.trim();
+    if(!val || !val.includes('@')) {
+      input.style.borderColor = 'var(--red)';
+      input.placeholder = 'Please enter a valid email';
+      setTimeout(() => { input.style.borderColor = ''; input.placeholder = 'your@email.com'; }, 2200);
+      return;
+    }
+    btn.textContent = '✓ You\'re on the list';
+    btn.disabled = true;
+    input.disabled = true;
+    input.value = '';
+    input.placeholder = 'We\'ll be in touch.';
+  }
 </script>
 </body>
 </html>
