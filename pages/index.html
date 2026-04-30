@@ -3,1167 +3,1044 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Julius Darang — Learn to Build with AI</title>
+  <title>Julius Darang — Mind · Body · Soul</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,600;1,9..144,200;1,9..144,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* ── DESIGN TOKENS (matched to personal site) ── */
     :root {
-      --bg:         #0c0c0a;
-      --bg-2:       #111110;
-      --bg-3:       #181816;
-      --bg-4:       #1f1f1d;
-      --surface:    #1c1c1a;
-      --border:     rgba(255,255,255,0.07);
-      --border-2:   rgba(255,255,255,0.12);
-      --border-3:   rgba(255,255,255,0.18);
-      --text:       #e4e0d4;
-      --text-2:     #968f83;
-      --text-3:     #524e48;
-      --blue:       #5090f5;
-      --blue-dim:   #2563eb;
-      --blue-tag:   rgba(80,144,245,0.11);
-      --blue-tag-b: rgba(80,144,245,0.26);
-      --amber:      #df9f35;
-      --amber-dim:  #b97820;
-      --amber-tag:  rgba(223,159,53,0.1);
-      --amber-tag-b:rgba(223,159,53,0.26);
-      --green:      #50ad7c;
-      --green-tag:  rgba(80,173,124,0.1);
-      --green-tag-b:rgba(80,173,124,0.28);
-      --red:        #e05a4f;
-      --red-tag:    rgba(224,90,79,0.1);
-      --red-tag-b:  rgba(224,90,79,0.28);
-      --purple:     #9d7fe0;
-      --purple-tag: rgba(157,127,224,0.1);
-      --purple-tag-b:rgba(157,127,224,0.28);
-      --r:    0px;
-      --r-sm: 2px;
-      --font:    'DM Sans', sans-serif;
-      --mono:    'DM Mono', monospace;
-      --display: 'Fraunces', serif;
+      /* Core palette — from personal site */
+      --bg:      #0d0d0f;
+      --bg-1:    #131316;
+      --bg-2:    #17171a;
+      --border:  rgba(255,255,255,0.08);
+      --border-2:rgba(255,255,255,0.13);
+      --text:    #d4d4d8;
+      --dim:     #52525b;
+      --bright:  #fafafa;
+      --accent:  #d77600;          /* personal site orange */
+
+      /* Pillar accent colors — kept from products site */
+      --blue:     #5590f0;
+      --blue-dim: #2563eb;
+      --blue-bg:  rgba(85,144,240,0.08);
+      --blue-b:   rgba(85,144,240,0.20);
+      --green:    #52ad7e;
+      --green-bg: rgba(82,173,126,0.08);
+      --green-b:  rgba(82,173,126,0.22);
+      --amber:    #d99835;
+      --amber-bg: rgba(217,152,53,0.08);
+      --amber-b:  rgba(217,152,53,0.22);
+
+      /* Type — DM Sans as primary, DM Mono for labels */
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --mono: 'DM Mono', monospace;
+
+      --max: 960px;
+      --pad: clamp(1.25rem, 4vw, 2.5rem);
     }
 
     html { scroll-behavior: smooth; }
+
     body {
-      font-family: var(--font);
+      font-family: var(--sans);
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      font-size: 0.9375rem;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
-    /* ── NAV ──────────────────────────────── */
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV (personal site style) ── */
     nav {
-      position: sticky; top: 0; z-index: 200;
-      height: 52px; padding: 0 2.5rem;
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(12,12,10,0.88);
-      backdrop-filter: blur(18px);
+      position: sticky; top: 0; z-index: 100;
       border-bottom: 1px solid var(--border);
-      transition: border-color 0.3s;
+      background: rgba(13,13,15,0.9);
+      backdrop-filter: blur(12px);
     }
-    nav.scrolled { border-bottom-color: var(--border-2); }
-    .nav-brand { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; color: var(--text-2); }
-    .nav-brand strong { color: var(--text); font-weight: 500; }
-    .nav-brand .dot { color: var(--blue); }
-    .nav-links { display: flex; gap: 1.75rem; align-items: center; }
-    .nav-links a { font-size: 13px; color: var(--text-3); text-decoration: none; transition: color 0.15s; }
+    .nav-inner {
+      max-width: var(--max);
+      margin-inline: auto;
+      padding-inline: var(--pad);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: 0.9rem;
+    }
+    .nav-logo {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--bright);
+      letter-spacing: 0.04em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.8rem;
+      color: var(--dim);
+      transition: color 0.15s;
+    }
     .nav-links a:hover { color: var(--text); }
-    .nav-cta {
-      font-size: 12px !important; font-weight: 500 !important;
-      padding: 6px 14px !important; border-radius: var(--r) !important;
-      background: var(--blue-dim) !important; color: #fff !important;
-      letter-spacing: 0.02em; transition: background 0.15s, box-shadow 0.15s !important;
+    .nav-links .nav-cta {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--accent);
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 0.1rem;
+      transition: opacity 0.15s;
     }
-    .nav-cta:hover { background: var(--blue) !important; box-shadow: 0 0 18px rgba(80,144,245,0.28) !important; }
+    .nav-links .nav-cta:hover { opacity: 0.7; }
 
-    /* ── HERO ─────────────────────────────── */
-    .hero-wrap {
-      position: relative; overflow: hidden;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
+    /* ── WRAP ── */
+    .wrap {
+      max-width: var(--max);
+      margin-inline: auto;
+      padding-inline: var(--pad);
     }
-    .hero-wrap::before {
-      content: ''; position: absolute; inset: 0; z-index: 0;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
-      background-size: 22px 22px; pointer-events: none;
-    }
-    .hero-wrap::after {
-      content: ''; position: absolute; inset: 0; z-index: 0;
-      background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.05) 3px, rgba(0,0,0,0.05) 4px);
-      pointer-events: none;
-    }
-    .glow {
-      position: absolute; border-radius: 50%;
-      filter: blur(110px); pointer-events: none; z-index: 0;
-    }
-    .glow-1 {
-      width:640px; height:420px; top:-120px; left:-80px;
-      background: radial-gradient(ellipse, rgba(30,80,200,0.22) 0%, transparent 65%);
-      animation: ga 13s ease-in-out infinite alternate;
-    }
-    .glow-2 {
-      width:480px; height:380px; bottom:-60px; right:-20px;
-      background: radial-gradient(ellipse, rgba(180,110,10,0.16) 0%, transparent 65%);
-      animation: gb 16s ease-in-out infinite alternate;
-    }
-    .glow-3 {
-      width:280px; height:280px; top:50%; left:52%; transform:translate(-50%,-50%);
-      background: radial-gradient(ellipse, rgba(80,144,245,0.07) 0%, transparent 70%);
-      animation: ga 20s ease-in-out infinite alternate-reverse;
-    }
-    @keyframes ga { from{transform:translate(0,0) scale(1)} to{transform:translate(38px,22px) scale(1.1)} }
-    @keyframes gb { from{transform:translate(0,0) scale(1)} to{transform:translate(-28px,-18px) scale(1.07)} }
 
+    /* ── HERO (personal site rhythm, products site copy) ── */
     .hero {
-      position: relative; z-index: 1;
-      max-width: 1020px; margin: 0 auto;
-      padding: 88px 2.5rem 76px;
-      display: grid; grid-template-columns: 1fr 152px;
-      gap: 52px; align-items: end;
+      padding-top: 4rem;
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid var(--border);
     }
-
     .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 9px;
-      font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--blue);
-      background: var(--blue-tag); border: 1px solid var(--blue-tag-b);
-      padding: 5px 12px; border-radius: var(--r);
-      margin-bottom: 28px;
-      animation: up 0.7s 0.05s ease both;
-    }
-    .epulse {
-      width: 5px; height: 5px; background: var(--blue);
-      border-radius: 50%; animation: pulse 2.6s ease-in-out infinite;
-    }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.25;transform:scale(0.55)} }
-
-    .hero h1 {
-      font-family: var(--display);
-      font-size: clamp(40px, 5.6vw, 70px);
-      font-weight: 600; line-height: 1.02;
-      letter-spacing: -0.03em; color: var(--text);
-      margin-bottom: 24px;
-      animation: up 0.7s 0.12s ease both;
-    }
-    .hero h1 em { font-style: italic; font-weight: 200; color: var(--blue); }
-    .h1-dim { display: block; color: var(--text-3); font-weight: 200; font-style: italic; }
-
-    .hero-desc {
-      font-size: 15px; color: var(--text-2);
-      max-width: 460px; line-height: 1.82;
-      font-weight: 300; margin-bottom: 36px;
-      animation: up 0.7s 0.2s ease both;
-    }
-
-    .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; animation: up 0.7s 0.28s ease both; }
-
-    .btn {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 11px 22px; font-size: 13px; font-weight: 500;
-      text-decoration: none; border-radius: var(--r);
-      transition: all 0.15s; letter-spacing: 0.01em; font-family: var(--font);
-      cursor: pointer; border: none;
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 1.25rem;
     }
-    .btn-blue { background: var(--blue-dim); color: #fff; border: 1px solid transparent; }
-    .btn-blue:hover { background: var(--blue); box-shadow: 0 0 22px rgba(80,144,245,0.32); }
-    .btn-ghost { background: transparent; color: var(--text-2); border: 1px solid var(--border-2); }
-    .btn-ghost:hover { border-color: var(--border-3); color: var(--text); }
-    .btn-amber { background: var(--amber-dim); color: #fff; border: 1px solid transparent; }
-    .btn-amber:hover { background: var(--amber); box-shadow: 0 0 22px rgba(223,159,53,0.3); }
+    .eyebrow-dot {
+      width: 5px; height: 5px; background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2.6s ease-in-out infinite;
+    }
+    .hero h1 {
+      font-size: clamp(1.75rem, 4.5vw, 2.6rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--bright);
+      letter-spacing: -0.02em;
+      max-width: 22ch;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 strong { font-weight: 600; }
+    .hero h1 em { font-style: italic; color: var(--dim); }
+    .hero-sub {
+      font-size: 0.875rem;
+      color: var(--dim);
+      max-width: 42ch;
+      margin-bottom: 1.75rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 
-    .stat-tower {
-      display: flex; flex-direction: column;
-      border: 1px solid var(--border-2); background: var(--bg-2);
-      animation: up 0.7s 0.32s ease both;
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.6rem 1.1rem;
+      font-size: 0.8rem; font-weight: 500;
+      font-family: var(--sans); cursor: pointer; border: none;
+      transition: opacity 0.15s, background 0.15s;
+      text-decoration: none; white-space: nowrap;
     }
-    .stat-cell { padding: 17px 16px 13px; border-bottom: 1px solid var(--border); }
-    .stat-cell:last-child { border-bottom: none; }
-    .stat-n { font-family: var(--display); font-size: 26px; font-weight: 600; color: var(--text); line-height: 1; display: block; }
-    .stat-l { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-top: 3px; display: block; }
-
-    @keyframes up { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
-
-    /* ── MARQUEE ──────────────────────────── */
-    .marquee-bar {
-      border-bottom: 1px solid var(--border);
-      background: var(--bg-2); overflow: hidden;
-      height: 38px; display: flex; align-items: center;
+    .btn-primary {
+      background: var(--accent); color: #fff;
     }
-    .marquee-track { display: flex; animation: marquee 30s linear infinite; white-space: nowrap; }
-    .marquee-item {
-      font-family: var(--mono); font-size: 10px;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--text-3); padding: 0 28px;
-      border-right: 1px solid var(--border);
-      height: 38px; display: inline-flex; align-items: center; gap: 9px; flex-shrink: 0;
-    }
-    .marquee-item b { color: var(--blue); font-weight: 500; }
-    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-
-    /* ── PILLARS SECTION ──────────────────── */
-    .pillars-section {
-      padding: 80px 2.5rem;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-    }
-    .pillars-inner { max-width: 1020px; margin: 0 auto; }
-    .pillars-header { margin-bottom: 48px; }
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-ghost {
+      background: transparent; color: var(--dim);
       border: 1px solid var(--border-2);
     }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.22); color: var(--text); }
+    .btn-amber {
+      background: var(--amber-bg); color: var(--amber);
+      border: 1px solid var(--amber-b);
+    }
+    .btn-amber:hover { background: rgba(217,152,53,0.16); }
+
+    /* Hero stat strip */
+    .hero-stats {
+      display: flex; gap: 0;
+      margin-top: 2.5rem;
+      border: 1px solid var(--border);
+      width: fit-content;
+    }
+    .stat {
+      padding: 0.9rem 1.5rem;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-n {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--bright);
+      display: block;
+      line-height: 1;
+    }
+    .stat-l {
+      font-family: var(--mono); font-size: 0.65rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--dim); margin-top: 3px; display: block;
+    }
+
+    /* ── SECTION LAYOUT ── */
+    .section {
+      padding-block: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-head {
+      margin-bottom: 2rem;
+    }
+    .section-label {
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--dim);
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 0.75rem;
+    }
+    .section-label::before { content: ''; width: 20px; height: 1px; background: var(--border-2); }
+    .section-title {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--bright);
+    }
+    .section-title em { font-style: italic; color: var(--dim); font-weight: 300; }
+    .section-desc {
+      font-size: 0.875rem; color: var(--dim);
+      margin-top: 0.6rem; max-width: 44ch;
+      font-weight: 300; line-height: 1.7;
+    }
+
+    /* ── PILLAR TABS ── */
+    .pillar-tabs {
+      display: flex; gap: 0;
+      margin-top: 2rem; margin-bottom: 2rem;
+      border: 1px solid var(--border);
+      width: fit-content;
+    }
+    .pillar-tab {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.6rem 1.25rem;
+      font-size: 0.8rem; font-weight: 500;
+      cursor: pointer; border: none; font-family: var(--sans);
+      background: transparent; color: var(--dim);
+      border-right: 1px solid var(--border);
+      transition: all 0.15s; white-space: nowrap;
+    }
+    .pillar-tab:last-child { border-right: none; }
+    .pillar-tab:hover:not(.active) { color: var(--text); background: var(--bg-1); }
+    .tab-emoji { font-size: 0.85rem; }
+
+    .pillar-tab.active-mind  { background: rgba(85,144,240,0.1); color: var(--blue); }
+    .pillar-tab.active-body  { background: rgba(82,173,126,0.09); color: var(--green); }
+    .pillar-tab.active-soul  { background: rgba(217,152,53,0.09); color: var(--amber); }
+
+    /* Product sub-tabs */
+    .product-tabs {
+      display: flex; gap: 0;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border);
+      width: fit-content;
+    }
+    .product-tab {
+      font-size: 0.78rem; font-weight: 500; font-family: var(--sans);
+      padding: 0.55rem 1rem;
+      background: transparent; border: none; border-right: 1px solid var(--border);
+      color: var(--dim); cursor: pointer; transition: all 0.15s;
+    }
+    .product-tab:last-child { border-right: none; }
+    .product-tab:hover { color: var(--text); background: var(--bg-1); }
+    .product-tab.active { background: var(--accent); color: #fff; }
+
+    /* ── PILLAR PANELS ── */
+    .pillar-panel { display: none; }
+    .pillar-panel.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+
+    /* ── PRODUCT CARD (kept gradient headers, adapted structure) ── */
     .pillar-card {
-      background: var(--bg-2);
-      padding: 36px 30px 30px;
-      position: relative;
+      border: 1px solid var(--border);
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      text-decoration: none;
-      color: inherit;
-      transition: background 0.18s;
+      margin-bottom: 1.5rem;
     }
-    .pillar-card:hover { background: var(--bg-3); }
-    .pillar-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 2px;
-    }
-    .pillar-mind::before    { background: var(--blue); }
-    .pillar-body::before    { background: var(--green); }
-    .pillar-soul::before  { background: var(--amber); }
-
-    .pillar-icon {
-      font-size: 28px; line-height: 1;
-      margin-bottom: 4px;
-    }
-    .pillar-kicker {
-      font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-    .pillar-mind .pillar-kicker    { color: var(--blue); }
-    .pillar-body .pillar-kicker    { color: var(--green); }
-    .pillar-soul .pillar-kicker  { color: var(--amber); }
-
-    .pillar-title {
-      font-family: var(--display); font-size: 22px;
-      font-weight: 600; letter-spacing: -0.02em;
-      line-height: 1.15; color: var(--text);
-    }
-    .pillar-desc {
-      font-size: 13px; color: var(--text-2);
-      line-height: 1.76; font-weight: 300; flex: 1;
-    }
-    .pillar-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-    .pillar-tag {
-      font-family: var(--mono); font-size: 9px; letter-spacing: 0.07em;
-      text-transform: uppercase; padding: 3px 8px;
-      border-radius: var(--r-sm); border: 1px solid;
-    }
-    .pillar-mind .pillar-tag    { color: var(--blue);   border-color: var(--blue-tag-b);   background: var(--blue-tag); }
-    .pillar-body .pillar-tag    { color: var(--green);  border-color: var(--green-tag-b);  background: var(--green-tag); }
-    .pillar-soul .pillar-tag  { color: var(--amber);  border-color: var(--amber-tag-b);  background: var(--amber-tag); }
-
-    /* placeholder ribbon */
-    .pillar-coming {
-      position: absolute; top: 18px; right: -22px;
-      background: var(--bg-4); color: var(--text-3);
-      font-family: var(--mono); font-size: 8px; letter-spacing: 0.1em;
-      text-transform: uppercase; padding: 3px 32px;
-      transform: rotate(35deg); border-top: 1px solid var(--border-2); border-bottom: 1px solid var(--border-2);
-    }
-    .pillar-card.active .pillar-coming { display: none; }
-
-    .pillar-status {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em;
-      text-transform: uppercase; margin-top: 4px;
-    }
-    .pst-live  { color: var(--green); }
-    .pst-soon  { color: var(--text-3); }
-    .pst-dot   { width: 5px; height: 5px; border-radius: 50%; }
-    .pst-live .pst-dot  { background: var(--green); animation: pulse 2.6s ease-in-out infinite; }
-    .pst-soon .pst-dot  { background: var(--text-3); }
-
-    /* ── SECTION ──────────────────────────── */
-    .section { padding: 72px 2.5rem; }
-    .section-inner { max-width: 1020px; margin: 0 auto; }
-    .section-header { margin-bottom: 44px; }
-    .s-kicker {
-      font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--text-3);
-      display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
-    }
-    .s-kicker::before { content: ''; display: block; width: 22px; height: 1px; background: var(--border-2); }
-    .s-title {
-      font-family: var(--display); font-size: clamp(26px, 3.6vw, 40px);
-      font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; color: var(--text);
-    }
-    .s-title em { font-style: italic; font-weight: 200; color: var(--text-2); }
-    .s-desc { font-size: 14px; color: var(--text-2); margin-top: 10px; max-width: 460px; font-weight: 300; line-height: 1.78; }
-
-    /* ── PRODUCT TABS ─────────────────────── */
-    .ptabs {
-      display: flex; border: 1px solid var(--border-2);
-      width: fit-content; margin-bottom: 32px; background: var(--bg-2);
-    }
-    .ptab {
-      padding: 10px 22px; font-size: 13px; font-weight: 500;
-      letter-spacing: 0.01em; cursor: pointer;
-      background: transparent; color: var(--text-3);
-      border: none; border-right: 1px solid var(--border-2);
-      transition: all 0.15s; font-family: var(--font);
-    }
-    .ptab:last-child { border-right: none; }
-    .ptab:hover:not(.ab):not(.aa) { color: var(--text); background: var(--bg-3); }
-    .ptab.ab { background: var(--blue-dim); color: #fff; }
-    .ptab.aa { background: var(--amber-dim); color: #fff; }
-
-    .ppanel { display: none; }
-    .ppanel.active { display: block; }
-
-    .pcard { border: 1px solid var(--border-2); background: var(--bg-2); margin-bottom: 24px; overflow: hidden; }
-
-    .pcard-header {
-      padding: 30px 34px; display: grid;
-      grid-template-columns: 1fr auto; gap: 32px; align-items: start;
+    .pillar-card-header {
+      padding: 2rem 2.25rem;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 2rem; align-items: start;
       position: relative; overflow: hidden;
     }
-    .pcard-header::after {
+    /* Subtle dot texture */
+    .pillar-card-header::after {
       content: ''; position: absolute; inset: 0; pointer-events: none;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
       background-size: 18px 18px;
     }
-    .ph-blue  { background: linear-gradient(125deg, #0c1a40 0%, #162e7a 50%, #1c3fad 100%); border-bottom: 1px solid rgba(80,144,245,0.28); }
-    .ph-amber { background: linear-gradient(125deg, #1e1000 0%, #4a2200 50%, #703600 100%); border-bottom: 1px solid rgba(223,159,53,0.28); }
+    /* Card gradient colors — KEPT AS-IS */
+    .ph-mind { background: linear-gradient(130deg, #0b1838 0%, #122460 50%, #1a35a0 100%); border-bottom: 1px solid rgba(85,144,240,0.25); }
+    .ph-body { background: linear-gradient(130deg, #0a1f14 0%, #123d22 50%, #1a5d34 100%); border-bottom: 1px solid rgba(82,173,126,0.25); }
+    .ph-soul { background: linear-gradient(130deg, #1a1000 0%, #3d2200 50%, #5e3800 100%); border-bottom: 1px solid rgba(217,152,53,0.25); }
+    .ph-aal  { background: linear-gradient(130deg, #100a28 0%, #221050 50%, #3a1a8a 100%); border-bottom: 1px solid rgba(140,90,255,0.28); }
 
-    .ph-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
-    .ph-title { font-family: var(--display); font-size: 27px; font-weight: 600; letter-spacing: -0.02em; color: #fff; line-height: 1.08; position: relative; z-index: 1; }
-    .ph-sub { font-size: 13px; color: rgba(255,255,255,0.48); margin-top: 7px; font-weight: 300; position: relative; z-index: 1; }
-    .ph-pills { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 18px; position: relative; z-index: 1; }
-    .ph-pill {
-      font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase;
-      color: rgba(255,255,255,0.42); background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.1); padding: 3px 10px; border-radius: var(--r);
+    .pc-tag {
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.3);
+      margin-bottom: 0.5rem;
     }
-    .ph-price { text-align: right; position: relative; z-index: 1; }
-    .ph-price-l { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
-    .ph-price-v { font-family: var(--display); font-size: 44px; font-weight: 600; line-height: 1; color: #fff; margin: 4px 0; }
-    .ph-price-n { font-size: 11px; color: rgba(255,255,255,0.3); }
-
-    .pcard-body {
-      padding: 20px 34px; background: var(--surface);
-      display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: space-between;
+    .pc-title {
+      font-size: 1.5rem; font-weight: 500;
+      color: #fff; line-height: 1.1;
+      position: relative; z-index: 1;
     }
-    .free-badge {
-      display: inline-flex; align-items: center; gap: 7px;
-      font-size: 13px; color: var(--green);
-      background: var(--green-tag); border: 1px solid var(--green-tag-b);
-      padding: 6px 14px; border-radius: var(--r); font-weight: 500;
+    .pc-sub {
+      font-size: 0.8rem; color: rgba(255,255,255,0.4);
+      margin-top: 0.4rem; font-weight: 300;
+      position: relative; z-index: 1;
     }
-    .free-badge::before { content: '✓'; }
+    .pc-pills {
+      display: flex; gap: 0.4rem; flex-wrap: wrap;
+      margin-top: 1rem; position: relative; z-index: 1;
+    }
+    .pc-pill {
+      font-family: var(--mono); font-size: 0.65rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.2rem 0.6rem;
+    }
+    .pc-price { text-align: right; position: relative; z-index: 1; }
+    .pc-price-label {
+      font-family: var(--mono); font-size: 0.65rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+    }
+    .pc-price-val {
+      font-size: 2.75rem; font-weight: 600;
+      color: #fff; line-height: 1; margin: 0.25rem 0;
+    }
+    .pc-price-note { font-size: 0.7rem; color: rgba(255,255,255,0.28); }
 
-    /* ── CURRICULUM ───────────────────────── */
-    .curriculum { display: flex; flex-direction: column; gap: 2px; }
-    .phgroup { background: var(--bg-2); border: 1px solid var(--border); }
-    .phgroup + .phgroup { margin-top: 2px; }
+    .pillar-card-footer {
+      padding: 1rem 2.25rem;
+      background: var(--bg-1);
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+    }
+    .free-note {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.8rem; font-weight: 500;
+    }
+    .free-note::before { content: '✓'; }
+    .free-note-mind { color: var(--blue); }
+    .free-note-body { color: var(--green); }
+    .free-note-amber { color: var(--amber); }
 
-    .phhead {
-      display: flex; align-items: center; gap: 14px;
-      padding: 13px 18px; cursor: pointer;
+    /* ── CURRICULUM ── */
+    .curriculum { display: flex; flex-direction: column; gap: 0; }
+    .phase {
+      border: 1px solid var(--border);
+      margin-top: -1px;
+    }
+    .phase-head {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.75rem 1rem; cursor: pointer;
       transition: background 0.12s; user-select: none;
     }
-    .phhead:hover { background: var(--bg-3); }
-    .phaccent { width: 3px; height: 20px; flex-shrink: 0; }
-    .phname { font-size: 13px; font-weight: 500; color: var(--text); flex: 1; letter-spacing: 0.005em; }
-    .phright { display: flex; align-items: center; gap: 9px; }
-    .phcount { font-family: var(--mono); font-size: 10px; color: var(--text-3); letter-spacing: 0.05em; }
-    .phchev { font-size: 10px; color: var(--text-3); transition: transform 0.2s; }
-    .phgroup.open .phchev { transform: rotate(180deg); }
-    .phbody { display: none; border-top: 1px solid var(--border); background: var(--bg); }
-    .phgroup.open .phbody { display: block; }
+    .phase-head:hover { background: var(--bg-1); }
+    .phase-accent { width: 2px; height: 18px; flex-shrink: 0; }
+    .phase-name { font-size: 0.825rem; font-weight: 500; color: var(--text); flex: 1; }
+    .phase-meta { display: flex; align-items: center; gap: 0.6rem; }
+    .phase-count { font-family: var(--mono); font-size: 0.65rem; color: var(--dim); }
+    .phase-chev { font-size: 0.55rem; color: var(--dim); transition: transform 0.2s; }
+    .phase.open .phase-chev { transform: rotate(180deg); }
+    .phase-body { display: none; border-top: 1px solid var(--border); background: var(--bg); }
+    .phase.open .phase-body { display: block; }
 
-    /* Tutorial row — now clickable */
-    .trow {
-      display: flex; align-items: center; gap: 10px;
-      padding: 9px 18px 9px 35px;
+    .lesson {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.6rem 1rem 0.6rem 1.75rem;
       border-bottom: 1px solid var(--border);
+      text-decoration: none; color: inherit;
       transition: background 0.1s;
-      text-decoration: none; color: inherit;
     }
-    .trow:last-child { border-bottom: none; }
-    .trow.tlink:hover { background: var(--bg-2); }
-    .trow.tlink:hover .tname { color: var(--text); }
-    .trow.tlink:hover .tarrow { opacity: 1; transform: none; }
-    .tname { flex: 1; font-size: 13px; color: var(--text-2); }
-    .tname.paid { color: var(--text); font-weight: 500; }
-    .tlocked { font-size: 11px; color: var(--text-3); }
-    .tarrow {
-      font-size: 11px; color: var(--text-3);
-      opacity: 0; transform: translate(-4px, 3px);
-      transition: all 0.15s;
-    }
+    .lesson:last-child { border-bottom: none; }
+    .lesson.is-link:hover { background: var(--bg-1); }
+    .lesson.is-link:hover .lesson-name { color: var(--text); }
+    .lesson.is-link:hover .lesson-arrow { opacity: 1; }
+    .lesson-name { flex: 1; font-size: 0.8rem; color: var(--dim); }
+    .lesson-name.paid { color: var(--text); }
+    .lesson-arrow { font-size: 0.65rem; color: var(--dim); opacity: 0; transition: opacity 0.12s; }
 
-    /* ── BADGES ───────────────────────────── */
+    /* ── BADGES ── */
     .badge {
-      font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em;
-      text-transform: uppercase; padding: 3px 8px; border-radius: var(--r-sm);
-      white-space: nowrap; font-weight: 500;
+      font-family: var(--mono); font-size: 0.6rem;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 0.15rem 0.4rem; white-space: nowrap;
     }
-    .bf  { background: var(--green-tag);  color: var(--green);  border: 1px solid var(--green-tag-b); }
-    .bb  { background: var(--blue-tag);   color: var(--blue);   border: 1px solid var(--blue-tag-b); }
-    .ba  { background: var(--amber-tag);  color: var(--amber);  border: 1px solid var(--amber-tag-b); }
-    .bw  { background: var(--bg-4);       color: var(--text-3); border: 1px solid var(--border-2); }
-    .br  { background: var(--red-tag);    color: var(--red);    border: 1px solid var(--red-tag-b); }
+    .bf { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-b); }
+    .bb { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-b); }
+    .ba { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-b); }
+    .bw { background: var(--bg-2); color: var(--dim); border: 1px solid var(--border-2); }
 
-    /* ── FREE SECTION ─────────────────────── */
-    .free-s { background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .free-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+    /* ── COMING SOON PANELS ── */
+    .planned-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 0; background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 1.25rem;
     }
-    .fcard {
-      background: var(--bg-2); padding: 20px 22px;
-      text-decoration: none; color: inherit;
-      display: flex; flex-direction: column; gap: 6px;
-      transition: background 0.12s; position: relative; overflow: hidden;
-      border: 1px solid var(--border); border-radius: 1px;
+    .planned-card {
+      background: var(--bg-1); padding: 1.25rem 1.1rem;
+      display: flex; flex-direction: column; gap: 0.4rem;
     }
-    .fcard::after {
-      content: '↗'; position: absolute; top: 13px; right: 15px;
-      font-size: 12px; color: var(--text-3); opacity: 0;
-      transform: translate(-4px,4px); transition: all 0.15s;
-    }
-    .fcard:hover { background: var(--bg-3); }
-    .fcard:hover::after { opacity: 1; transform: none; }
-    .fcard-kicker { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; }
-    .fcard-title { font-size: 14px; font-weight: 500; color: var(--text); }
-    .fcard-meta  { font-size: 11px; color: var(--text-3); }
+    .planned-icon { font-size: 1.1rem; }
+    .planned-title { font-size: 0.825rem; font-weight: 500; color: var(--text); }
+    .planned-desc { font-size: 0.775rem; color: var(--dim); line-height: 1.6; }
 
-    /* ── PLACEHOLDER PILLAR SECTIONS ─────── */
-    .body-section {
-      background: var(--bg-3);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .soul-section {
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-    }
-    .placeholder-panel {
-      max-width: 1020px; margin: 0 auto;
-      padding: 72px 2.5rem;
-    }
-    .placeholder-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 36px;
-    }
-    .placeholder-card {
-      border: 1px dashed var(--border-2);
-      padding: 28px 22px;
-      display: flex; flex-direction: column; gap: 10px;
-      position: relative;
-      background: transparent;
-      transition: background 0.15s;
-    }
-    .placeholder-card:hover { background: rgba(255,255,255,0.015); }
-    .ph-card-icon { font-size: 20px; }
-    .ph-card-title { font-size: 14px; font-weight: 500; color: var(--text-3); }
-    .ph-card-sub { font-size: 12px; color: var(--text-3); line-height: 1.6; opacity: 0.65; }
-    .ph-coming-label {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--text-3);
-      margin-top: 6px;
-    }
-    .ph-coming-label::before {
-      content: ''; display: block; width: 14px; height: 1px; background: currentColor;
-    }
-
-    .pillar-section-header { margin-bottom: 12px; }
-    .pillar-divider {
-      display: flex; align-items: center; gap: 16px;
-      margin-bottom: 32px;
-    }
-    .pillar-divider-line { flex: 1; height: 1px; background: var(--border); }
-    .pillar-divider-label {
-      font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--text-3);
-      white-space: nowrap;
-    }
-
-    /* Notify form */
-    .notify-row {
-      display: flex; gap: 10px; align-items: center;
-      margin-top: 28px; flex-wrap: wrap;
-    }
+    .notify-row { display: flex; gap: 0; margin-top: 1.5rem; }
     .notify-input {
-      background: var(--bg-2); border: 1px solid var(--border-2);
-      color: var(--text); font-family: var(--font); font-size: 13px;
-      padding: 10px 16px; outline: none; flex: 1; min-width: 220px;
+      background: var(--bg-1); border: 1px solid var(--border-2);
+      color: var(--text); font-family: var(--sans); font-size: 0.825rem;
+      padding: 0.65rem 0.9rem; outline: none; flex: 1; min-width: 0;
       transition: border-color 0.15s;
     }
-    .notify-input::placeholder { color: var(--text-3); }
-    .notify-input:focus { border-color: var(--border-3); }
-    .notify-btn-green {
-      background: rgba(80,173,124,0.14); color: var(--green);
-      border: 1px solid var(--green-tag-b); font-size: 13px; font-weight: 500;
-      padding: 10px 20px; cursor: pointer; font-family: var(--font);
-      transition: background 0.15s; white-space: nowrap;
+    .notify-input::placeholder { color: var(--dim); }
+    .notify-input:focus { border-color: rgba(255,255,255,0.2); }
+    .notify-btn {
+      font-size: 0.78rem; font-weight: 500; padding: 0.65rem 1rem;
+      cursor: pointer; font-family: var(--sans);
+      border: none; transition: opacity 0.15s;
     }
-    .notify-btn-green:hover { background: rgba(80,173,124,0.22); }
-    .notify-btn-amber {
-      background: rgba(223,159,53,0.1); color: var(--amber);
-      border: 1px solid var(--amber-tag-b); font-size: 13px; font-weight: 500;
-      padding: 10px 20px; cursor: pointer; font-family: var(--font);
-      transition: background 0.15s; white-space: nowrap;
-    }
-    .notify-btn-amber:hover { background: rgba(223,159,53,0.18); }
+    .notify-btn-green { background: var(--green); color: #fff; }
+    .notify-btn-green:hover { opacity: 0.85; }
+    .notify-btn-amber { background: var(--accent); color: #fff; }
+    .notify-btn-amber:hover { opacity: 0.85; }
 
-    /* ── ABOUT STRIP ──────────────────────── */
-    .about-s { background: var(--bg-3); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    /* ── FREE GRID ── */
+    .free-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 0; background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+    .free-card {
+      background: var(--bg-1); padding: 1.1rem;
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column; gap: 0.3rem;
+      transition: background 0.12s; position: relative;
+    }
+    .free-card:hover { background: var(--bg-2); }
+    .free-card:hover .fc-arrow { opacity: 1; }
+    .fc-arrow {
+      position: absolute; top: 0.9rem; right: 0.9rem;
+      font-size: 0.7rem; color: var(--dim); opacity: 0;
+      transition: opacity 0.12s;
+    }
+    .fc-tag {
+      font-family: var(--mono); font-size: 0.6rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 0.15rem;
+    }
+    .fc-title { font-size: 0.825rem; font-weight: 500; color: var(--text); }
+    .fc-meta { font-size: 0.7rem; color: var(--dim); }
+
+    /* ── ABOUT SECTION ── */
     .about-inner {
-      max-width: 1020px; margin: 0 auto; padding: 56px 2.5rem;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start;
+      padding-block: 3rem;
     }
-    .about-title { font-family: var(--display); font-size: 25px; font-weight: 600; letter-spacing: -0.02em; color: var(--text); margin-bottom: 13px; line-height: 1.2; }
-    .about-body { font-size: 14px; color: var(--text-2); line-height: 1.82; font-weight: 300; }
-    .about-tags { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 20px; }
-    .about-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); border: 1px solid var(--border-2); padding: 4px 10px; border-radius: var(--r); }
+    .about-title {
+      font-size: 1.05rem; font-weight: 500;
+      color: var(--bright); margin-bottom: 0.9rem;
+    }
+    .about-body {
+      font-size: 0.875rem; color: var(--dim);
+      line-height: 1.75; font-weight: 300;
+    }
+    .about-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .about-tag {
+      font-family: var(--mono); font-size: 0.65rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--dim); border: 1px solid var(--border);
+      padding: 0.2rem 0.55rem;
+    }
     .about-rows { display: flex; flex-direction: column; }
-    .about-row { display: flex; justify-content: space-between; align-items: baseline; padding: 11px 0; border-bottom: 1px solid var(--border); }
-    .about-row:last-child { border-bottom: none; }
-    .arow-l { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); }
-    .arow-v { font-size: 13px; color: var(--text); font-weight: 500; }
+    .about-row {
+      display: flex; justify-content: space-between;
+      align-items: baseline; padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .about-row:first-child { border-top: 1px solid var(--border); }
+    .ar-l {
+      font-family: var(--mono); font-size: 0.65rem;
+      letter-spacing: 0.06em; text-transform: uppercase; color: var(--dim);
+    }
+    .ar-v { font-size: 0.825rem; color: var(--text); font-weight: 500; }
 
-    /* ── FOOTER ───────────────────────────── */
-    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 36px 2.5rem; }
-    .footer-inner { max-width: 1020px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
-    .footer-name { font-family: var(--display); font-size: 15px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
-    .footer-sub { font-size: 11px; color: var(--text-3); margin-top: 3px; font-family: var(--mono); letter-spacing: 0.04em; }
-    .footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
-    .footer-links a { font-size: 12px; color: var(--text-3); text-decoration: none; transition: color 0.15s; }
-    .footer-links a:hover { color: var(--blue); }
-    .footer-copy { font-size: 11px; color: var(--text-3); font-family: var(--mono); }
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+      padding: 1.75rem 0;
+    }
+    .footer-inner {
+      max-width: var(--max); margin-inline: auto;
+      padding-inline: var(--pad);
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-brand { font-size: 0.8rem; font-weight: 500; color: var(--bright); letter-spacing: 0.04em; }
+    .footer-sub { font-family: var(--mono); font-size: 0.6rem; color: var(--dim); letter-spacing: 0.04em; margin-top: 2px; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--dim); transition: color 0.15s; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy { font-family: var(--mono); font-size: 0.65rem; color: var(--dim); }
 
-    /* ── REVEAL ───────────────────────────── */
-    .reveal { opacity:0; transform:translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    /* ── REVEAL ANIMATION ── */
+    .reveal { opacity:0; transform:translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .reveal.visible { opacity:1; transform:none; }
 
-    /* ── RESPONSIVE ───────────────────────── */
-    @media(max-width:760px) {
-      .hero { grid-template-columns:1fr; gap:28px; padding:60px 1.5rem 52px; }
-      .stat-tower { flex-direction:row; }
-      .stat-cell { flex:1; border-bottom:none; border-right:1px solid var(--border); padding:11px 12px; }
-      .stat-cell:last-child { border-right:none; }
-      .stat-n { font-size:20px; }
-      .about-inner { grid-template-columns:1fr; gap:36px; padding:40px 1.5rem; }
-      .footer-inner { flex-direction:column; align-items:flex-start; }
-      .pcard-header { grid-template-columns:1fr; }
-      .ph-price { text-align:left; }
-      .free-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-      .pillars-grid { grid-template-columns: 1fr; gap: 0; }
-      .placeholder-grid { grid-template-columns: repeat(2, 1fr); }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.25;transform:scale(0.55)} }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:720px) {
+      .pillar-card-header { grid-template-columns: 1fr; }
+      .pc-price { text-align: left; }
+      .about-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .planned-grid { grid-template-columns: repeat(2,1fr); }
     }
-    @media(max-width:520px) {
-      nav { padding:0 1.25rem; }
-      .section { padding:52px 1.5rem; }
-      .hero h1 { font-size:36px; }
-      .stat-tower { display:none; }
-      .pcard-header { padding:22px 18px; }
-      .pcard-body { padding:16px 18px; }
+    @media(max-width:560px) {
+      .nav-links { display: none; }
+      .hero-stats { display: none; }
+      .pillar-tabs { overflow-x: auto; }
       .free-grid { grid-template-columns: 1fr; }
-      .placeholder-grid { grid-template-columns: 1fr; }
-      .pillars-section { padding: 52px 1.5rem; }
-      .placeholder-panel { padding: 52px 1.5rem; }
+      .planned-grid { grid-template-columns: 1fr; }
+      .notify-row { flex-direction: column; }
+      .notify-btn { width: 100%; text-align: center; }
     }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav id="nav">
-  <div class="nav-brand"><strong>julius</strong><span class="dot">.</span>darang</div>
-  <div class="nav-links">
-    <a href="#pillars">Pillars</a>
-    <a href="#products">Mind</a>
-    <a href="#body">Body</a>
-    <a href="#soul">Soul</a>
-    <a href="#free">Free</a>
-    <a href="https://substack.com/@juliusdarang" target="_blank">Substack</a>
-    <a href="https://gumroad.com" target="_blank" class="nav-cta">Get on Gumroad ↗</a>
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">Julius Darang</span>
+    <ul class="nav-links">
+      <li><a href="#pillars">Pillars</a></li>
+      <li><a href="#free">Free</a></li>
+      <li><a href="https://substack.com/@juliusdarang" target="_blank">Substack</a></li>
+      <li><a href="https://gumroad.com" target="_blank" class="nav-cta">Gumroad ↗</a></li>
+    </ul>
   </div>
 </nav>
 
 <!-- HERO -->
-<div class="hero-wrap">
-  <div class="glow glow-1"></div>
-  <div class="glow glow-2"></div>
-  <div class="glow glow-3"></div>
-  <div class="hero">
-    <div>
-      <div class="hero-eyebrow"><span class="epulse"></span> Mind · Body · Soul</div>
-      <h1>Build things<br /><em>that actually work</em><span class="h1-dim">with AI.</span></h1>
-      <p class="hero-desc">A polymath approach to learning. Structured curricula on AI and code — with body and soul content coming. Visual PDF slides. No fluff. Hands-on from day one.</p>
-      <div class="hero-btns">
-        <a href="#pillars" class="btn btn-blue">Explore pillars ↓</a>
-        <a href="#free" class="btn btn-ghost">Start for free</a>
-      </div>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow"><span class="eyebrow-dot"></span> Mind · Body · Soul</div>
+    <h1>Build things that<br /><strong>actually work</strong><br /><em>with AI.</em></h1>
+    <p class="hero-sub">Structured curricula on AI and code — with body and soul content on the way. Visual PDF slides. No fluff. Hands-on from day one.</p>
+    <div class="hero-btns">
+      <a href="#pillars" class="btn btn-primary">Explore pillars ↓</a>
+      <a href="#free" class="btn btn-ghost">Start for free</a>
     </div>
-    <div class="stat-tower">
-      <div class="stat-cell"><span class="stat-n">72</span><span class="stat-l">Tutorials</span></div>
-      <div class="stat-cell"><span class="stat-n">3</span><span class="stat-l">Pillars</span></div>
-      <div class="stat-cell"><span class="stat-n">12+</span><span class="stat-l">Free</span></div>
-      <div class="stat-cell"><span class="stat-n">PDF</span><span class="stat-l">Format</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- MARQUEE -->
-<div class="marquee-bar">
-  <div class="marquee-track">
-    <div class="marquee-item"><b>Mind</b> Code &amp; AI</div>
-    <div class="marquee-item"><b>Body</b> Calisthenics &amp; Discipline</div>
-    <div class="marquee-item"><b>Soul</b> Philosophy &amp; Inner Work</div>
-    <div class="marquee-item">Terminal → Git → Web → Python</div>
-    <div class="marquee-item"><b>PDF</b> slide format</div>
-    <div class="marquee-item">Zero prerequisites required</div>
-    <div class="marquee-item">AI agents &amp; automations</div>
-    <div class="marquee-item"><b>12+</b> free tutorials</div>
-    <div class="marquee-item">Single · Pipeline · Multi-Agent · Teams</div>
-    <div class="marquee-item">One-time purchase · Gumroad</div>
-    <div class="marquee-item"><b>Mind</b> Code &amp; AI</div>
-    <div class="marquee-item"><b>Body</b> Calisthenics &amp; Discipline</div>
-    <div class="marquee-item"><b>Soul</b> Philosophy &amp; Inner Work</div>
-    <div class="marquee-item">Terminal → Git → Web → Python</div>
-    <div class="marquee-item"><b>PDF</b> slide format</div>
-    <div class="marquee-item">Zero prerequisites required</div>
-    <div class="marquee-item">AI agents &amp; automations</div>
-    <div class="marquee-item"><b>12+</b> free tutorials</div>
-    <div class="marquee-item">Single · Pipeline · Multi-Agent · Teams</div>
-    <div class="marquee-item">One-time purchase · Gumroad</div>
-  </div>
-</div>
-
-<!-- PILLARS -->
-<section class="pillars-section" id="pillars">
-  <div class="pillars-inner">
-    <div class="pillars-header reveal">
-      <div class="s-kicker">The Framework</div>
-      <h2 class="s-title">Three pillars.<br /><em>One full life.</em></h2>
-      <p class="s-desc">Everything I create lives inside one of three domains. Start with Mind — it's live. Body and Soul are being built.</p>
-    </div>
-    <div class="pillars-grid reveal">
-      <!-- MIND -->
-      <div class="pillar-card pillar-mind active">
-        <div class="pillar-icon">🧠</div>
-        <div class="pillar-kicker">Pillar 01</div>
-        <div class="pillar-title">Mind</div>
-        <p class="pillar-desc">Code, AI, agents, and building. Structured curricula taking you from terminal basics all the way to autonomous multi-agent systems. Visual PDF slides, zero fluff.</p>
-        <div class="pillar-tags">
-          <span class="pillar-tag">AI Agents</span>
-          <span class="pillar-tag">Python</span>
-          <span class="pillar-tag">Web Dev</span>
-          <span class="pillar-tag">Automations</span>
-        </div>
-        <div class="pillar-status pst-live"><span class="pst-dot"></span> Live now</div>
-      </div>
-      <!-- BODY -->
-      <div class="pillar-card pillar-body">
-        <span class="pillar-coming">Coming soon</span>
-        <div class="pillar-icon">💪</div>
-        <div class="pillar-kicker">Pillar 02</div>
-        <div class="pillar-title">Body</div>
-        <p class="pillar-desc">Calisthenics, strength, and the discipline of physical training. Tutorials and guides on building a body through consistent, principled work — not shortcuts.</p>
-        <div class="pillar-tags">
-          <span class="pillar-tag">Calisthenics</span>
-          <span class="pillar-tag">Strength</span>
-          <span class="pillar-tag">Discipline</span>
-          <span class="pillar-tag">Routine</span>
-        </div>
-        <div class="pillar-status pst-soon"><span class="pst-dot"></span> In progress</div>
-      </div>
-      <!-- SOUL -->
-      <div class="pillar-card pillar-soul">
-        <span class="pillar-coming">Coming soon</span>
-        <div class="pillar-icon">🔥</div>
-        <div class="pillar-kicker">Pillar 03</div>
-        <div class="pillar-title">Soul</div>
-        <p class="pillar-desc">Philosophy, psychology, and inner work. Essays and guides on Stoicism, self-knowledge, and learning how to learn. The interior architecture of a well-lived life.</p>
-        <div class="pillar-tags">
-          <span class="pillar-tag">Stoicism</span>
-          <span class="pillar-tag">Psychology</span>
-          <span class="pillar-tag">Habits</span>
-          <span class="pillar-tag">Essays</span>
-        </div>
-        <div class="pillar-status pst-soon"><span class="pst-dot"></span> In progress</div>
-      </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-n">72</span><span class="stat-l">Tutorials</span></div>
+      <div class="stat"><span class="stat-n">31</span><span class="stat-l">Free</span></div>
+      <div class="stat"><span class="stat-n">PDF</span><span class="stat-l">Format</span></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ MIND / PRODUCTS ═══════════════════════════════════════════════ -->
-<section class="section" id="products" style="background: var(--bg-2); border-bottom: 1px solid var(--border);">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <div class="s-kicker" style="color:var(--blue)">🧠 Mind — Code &amp; AI</div>
-      <h2 class="s-title">Two products.<br /><em>One clear path.</em></h2>
-      <p class="s-desc">Start with Zero to AI Builder if you're new. Graduate to AI Agents Levels when you're ready to go deep.</p>
+<!-- PILLARS -->
+<section class="section" id="pillars">
+  <div class="wrap">
+
+    <div class="section-head reveal">
+      <div class="section-label">The Framework</div>
+      <h2 class="section-title">Three pillars.<br><em>One full life.</em></h2>
+      <p class="section-desc">Everything I create lives inside one of three domains. Mind is live now — Body and Soul are in progress.</p>
     </div>
 
-    <div class="ptabs reveal">
-      <button class="ptab ab" onclick="sp('ztab')">Zero to AI Builder</button>
-      <button class="ptab" onclick="sp('aal')">AI Agents Levels</button>
+    <!-- TABS -->
+    <div class="pillar-tabs reveal" id="pillarTabs">
+      <button class="pillar-tab active-mind active" data-pillar="mind" onclick="switchPillar('mind')">
+        <span class="tab-emoji">🧠</span> Mind
+      </button>
+      <button class="pillar-tab" data-pillar="body" onclick="switchPillar('body')">
+        <span class="tab-emoji">💪</span> Body
+      </button>
+      <button class="pillar-tab" data-pillar="soul" onclick="switchPillar('soul')">
+        <span class="tab-emoji">🔥</span> Soul
+      </button>
     </div>
 
-    <!-- ZERO TO AI BUILDER -->
-    <div class="ppanel active" id="p-ztab">
-      <div class="pcard reveal">
-        <div class="pcard-header ph-blue">
-          <div>
-            <div class="ph-tag">Product 01 — Beginner to Intermediate</div>
-            <div class="ph-title">Zero to AI Builder</div>
-            <div class="ph-sub">Terminal &amp; Git → Web → Python → AI Agents &amp; Automations</div>
-            <div class="ph-pills">
-              <span class="ph-pill">56 tutorials</span>
-              <span class="ph-pill">8 phases + bonus</span>
-              <span class="ph-pill">PDF slides</span>
-              <span class="ph-pill">No prerequisite</span>
+    <!-- ═══ MIND PANEL ═══ -->
+    <div class="pillar-panel active" id="panel-mind">
+
+      <!-- Product sub-tabs -->
+      <div class="product-tabs">
+        <button class="product-tab active" id="ztab-btn" onclick="switchProduct('ztab')">Zero to AI Builder</button>
+        <button class="product-tab" id="aal-btn" onclick="switchProduct('aal')">AI Agents Levels</button>
+      </div>
+
+      <!-- Zero to AI Builder -->
+      <div id="product-ztab">
+        <div class="pillar-card reveal">
+          <div class="pillar-card-header ph-mind">
+            <div>
+              <div class="pc-tag">Product 01 — Beginner to Intermediate</div>
+              <div class="pc-title">Zero to AI Builder</div>
+              <div class="pc-sub">Terminal → Git → Web → Python → AI Agents</div>
+              <div class="pc-pills">
+                <span class="pc-pill">56 tutorials</span>
+                <span class="pc-pill">8 phases + bonus</span>
+                <span class="pc-pill">PDF slides</span>
+                <span class="pc-pill">No prerequisite</span>
+              </div>
+            </div>
+            <div class="pc-price">
+              <div class="pc-price-label">Full Bundle</div>
+              <div class="pc-price-val">$29</div>
+              <div class="pc-price-note">one-time · Gumroad</div>
             </div>
           </div>
-          <div class="ph-price">
-            <div class="ph-price-l">Full Bundle</div>
-            <div class="ph-price-v">$29</div>
-            <div class="ph-price-n">one-time · Gumroad</div>
-          </div>
-        </div>
-        <div class="pcard-body">
-          <span class="free-badge">Phases 1to 4 are completely free</span>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <a href="https://gumroad.com" target="_blank" class="btn btn-blue">Buy on Gumroad ↗</a>
-            <a href="#free" class="btn btn-ghost">Free tutorials</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="curriculum reveal">
-        <div class="phgroup open">
-          <div class="phhead" onclick="tp(this)">
-            <div class="phaccent" style="background:#5090f5"></div>
-            <span class="phname">Phase 1 — Terminal &amp; Development Tools</span>
-            <div class="phright"><span class="badge bf">free</span><span class="phcount">6 tutorials</span><span class="phchev">▼</span></div>
-          </div>
-          <div class="phbody">
-            <a href="#" class="trow tlink"><span class="tname">Mac Terminal</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Windows Terminal</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Install VS Code</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Markdown</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">What is a Browser</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">DevTools CSS Inspection</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-          </div>
-        </div>
-        <div class="phgroup">
-          <div class="phhead" onclick="tp(this)">
-            <div class="phaccent" style="background:#50ad7c"></div>
-            <span class="phname">Phase 2 — Git &amp; GitHub</span>
-            <div class="phright"><span class="badge bf">free</span><span class="phcount">5 tutorials</span><span class="phchev">▼</span></div>
-          </div>
-          <div class="phbody">
-            <a href="#" class="trow tlink"><span class="tname">Install Git</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Git vs GitHub</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Undo Mistakes in Git</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Good Commit Messages</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Collaborate on GitHub</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-          </div>
-        </div>
-        <div class="phgroup">
-          <div class="phhead" onclick="tp(this)">
-            <div class="phaccent" style="background:#e05a4f"></div>
-            <span class="phname">Phase 3 — Web Development</span>
-            <div class="phright"><span class="badge bf">free</span><span class="phcount">9 tutorials</span><span class="phchev">▼</span></div>
-          </div>
-          <div class="phbody">
-            <a href="#" class="trow tlink"><span class="tname">Basic Web Structure</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">CSS Flexbox</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">How to Pick Color</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Google Fonts</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Domain Names</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Responsive Design</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Image Optimization</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Favicon</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">What is an API</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-          </div>
-        </div>
-        <div class="phgroup">
-          <div class="phhead" onclick="tp(this)">
-            <div class="phaccent" style="background:#9d7fe0"></div>
-            <span class="phname">Phase 4 — Python Fundamentals</span>
-            <div class="phright"><span class="badge bf">free</span><span class="phcount">11 tutorials</span><span class="phchev">▼</span></div>
-          </div>
-          <div class="phbody">
-            <a href="#" class="trow tlink"><span class="tname">Mac Install Python</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Windows Install Python</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Virtual Environment</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Python Scripting</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">CSV Files</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Python APIs</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Pandas for Excel Users</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Web Scraping</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Send Email with Python</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Schedule Python Scripts</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Python Calculator with Tkinter</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-          </div>
-        </div>
-        <div class="phgroup">
-          <div class="phhead" onclick="tp(this)">
-            <div class="phaccent" style="background:#df9f35"></div>
-            <span class="phname">Phase 5 — AI Prompting</span>
-            <div class="phright"><span class="badge bb">paid</span><span class="phcount">5 tutorials</span><span class="phchev">▼</span></div>
-          </div>
-          <div class="phbody">
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Better AI Prompts</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">5 Prompt Frameworks</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">ChatGPT as Personal Assistant</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Prompting for Coding</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Structured AI Outputs</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-          </div>
-        </div>
-        <div class="phgroup">
-          <div class="phhead" onclick="tp(this)">
-            <div class="phaccent" style="background:#5090f5"></div>
-            <span class="phname">Phase 6 — AI Agents</span>
-            <div class="phright"><span class="badge bb">paid</span><span class="phcount">5 tutorials</span><span class="phchev">▼</span></div>
-          </div>
-          <div class="phbody">
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">What is an AI Agent</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Build First AI Agent</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">AI Agent Tools</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Single vs Multi Agent</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">AI Agent Memory</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-          </div>
-        </div>
-        <div class="phgroup">
-          <div class="phhead" onclick="tp(this)">
-            <div class="phaccent" style="background:#50ad7c"></div>
-            <span class="phname">Phase 7 — Agentic Coding</span>
-            <div class="phright"><span class="badge bb">paid</span><span class="phcount">5 tutorials</span><span class="phchev">▼</span></div>
-          </div>
-          <div class="phbody">
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">What is Agentic Coding</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Debug with AI</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Build Apps with AI</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Break Down Projects for AI</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Review AI Code</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-          </div>
-        </div>
-        <div class="phgroup">
-          <div class="phhead" onclick="tp(this)">
-            <div class="phaccent" style="background:#e05a4f"></div>
-            <span class="phname">Phase 8 — AI Automations</span>
-            <div class="phright"><span class="badge bb">paid</span><span class="phcount">5 tutorials</span><span class="phchev">▼</span></div>
-          </div>
-          <div class="phbody">
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Automate Daily Tasks</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Connect Apps with AI</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">AI Workflow</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Spreadsheets to Automations</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Schedule Automations</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-          </div>
-        </div>
-        <div class="phgroup">
-          <div class="phhead" onclick="tp(this)">
-            <div class="phaccent" style="background:#54504a"></div>
-            <span class="phname">Bonus — Career &amp; Content</span>
-            <div class="phright"><span class="badge bb">paid</span><span class="phcount">10 tutorials</span><span class="phchev">▼</span></div>
-          </div>
-          <div class="phbody">
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Build a Portfolio</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">LinkedIn for Developers</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Open Source First Contribution</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Learn Faster</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Document Projects</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Choose What to Learn</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Stay Consistent</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">10 AI Prompts That Save Hours</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Replaced 5 Hours with AI</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">5 AI Automations Today</span><span class="tarrow">↗</span><span class="badge bb">paid</span></a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- AI AGENTS LEVELS -->
-    <div class="ppanel" id="p-aal">
-      <div class="pcard reveal">
-        <div class="pcard-header ph-amber">
-          <div>
-            <div class="ph-tag">Product 02 — Intermediate to Advanced</div>
-            <div class="ph-title">AI Agents Levels</div>
-            <div class="ph-sub">Single Agents → Pipeline → Multi-Agent → Autonomous Teams</div>
-            <div class="ph-pills">
-              <span class="ph-pill">16 tutorials</span>
-              <span class="ph-pill">4 levels</span>
-              <span class="ph-pill">PDF slides</span>
-              <span class="ph-pill">Requires AI basics</span>
+          <div class="pillar-card-footer">
+            <span class="free-note free-note-mind">Phases 1–4 are completely free</span>
+            <div style="display:flex;gap:0.5rem;">
+              <a href="https://gumroad.com" target="_blank" class="btn btn-primary">Buy on Gumroad ↗</a>
+              <a href="#free" class="btn btn-ghost">Free tutorials</a>
             </div>
           </div>
-          <div class="ph-price">
-            <div class="ph-price-l">Full Bundle</div>
-            <div class="ph-price-v">$19</div>
-            <div class="ph-price-n">one-time · Gumroad</div>
+        </div>
+
+        <div class="curriculum reveal">
+          <div class="phase open">
+            <div class="phase-head" onclick="togglePhase(this)">
+              <div class="phase-accent" style="background:#5590f0"></div>
+              <span class="phase-name">Phase 1 — Terminal & Development Tools</span>
+              <div class="phase-meta"><span class="badge bf">free</span><span class="phase-count">6 lessons</span><span class="phase-chev">▾</span></div>
+            </div>
+            <div class="phase-body">
+              <a href="#" class="lesson is-link"><span class="lesson-name">Mac Terminal</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Windows Terminal</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Install VS Code</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Markdown</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">What is a Browser</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">DevTools CSS Inspection</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-head" onclick="togglePhase(this)">
+              <div class="phase-accent" style="background:#5590f0"></div>
+              <span class="phase-name">Phase 2 — Git & GitHub</span>
+              <div class="phase-meta"><span class="badge bf">free</span><span class="phase-count">5 lessons</span><span class="phase-chev">▾</span></div>
+            </div>
+            <div class="phase-body">
+              <a href="#" class="lesson is-link"><span class="lesson-name">Install Git</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Git vs GitHub</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Undo Mistakes in Git</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Good Commit Messages</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Collaborate on GitHub</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-head" onclick="togglePhase(this)">
+              <div class="phase-accent" style="background:#5590f0"></div>
+              <span class="phase-name">Phase 3 — Web Development</span>
+              <div class="phase-meta"><span class="badge bf">free</span><span class="phase-count">9 lessons</span><span class="phase-chev">▾</span></div>
+            </div>
+            <div class="phase-body">
+              <a href="#" class="lesson is-link"><span class="lesson-name">Basic Web Structure</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">CSS Flexbox</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">How to Pick Color</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Google Fonts</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Domain Names</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Responsive Design</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Image Optimization</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Favicon</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">What is an API</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-head" onclick="togglePhase(this)">
+              <div class="phase-accent" style="background:#5590f0"></div>
+              <span class="phase-name">Phase 4 — Python Fundamentals</span>
+              <div class="phase-meta"><span class="badge bf">free</span><span class="phase-count">11 lessons</span><span class="phase-chev">▾</span></div>
+            </div>
+            <div class="phase-body">
+              <a href="#" class="lesson is-link"><span class="lesson-name">Mac Install Python</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Windows Install Python</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Virtual Environment</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Python Scripting</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">CSV Files</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Python APIs</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Pandas for Excel Users</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Web Scraping</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Send Email with Python</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Schedule Python Scripts</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Python Calculator with Tkinter</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-head" onclick="togglePhase(this)">
+              <div class="phase-accent" style="background:#8c5af5"></div>
+              <span class="phase-name">Phase 5 — AI Prompting</span>
+              <div class="phase-meta"><span class="badge bb">paid</span><span class="phase-count">5 lessons</span><span class="phase-chev">▾</span></div>
+            </div>
+            <div class="phase-body">
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Better AI Prompts</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">5 Prompt Frameworks</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">ChatGPT as Personal Assistant</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Prompting for Coding</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Structured AI Outputs</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-head" onclick="togglePhase(this)">
+              <div class="phase-accent" style="background:#8c5af5"></div>
+              <span class="phase-name">Phase 6 — AI Agents</span>
+              <div class="phase-meta"><span class="badge bb">paid</span><span class="phase-count">5 lessons</span><span class="phase-chev">▾</span></div>
+            </div>
+            <div class="phase-body">
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">What is an AI Agent</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Build First AI Agent</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">AI Agent Tools</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Single vs Multi Agent</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">AI Agent Memory</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-head" onclick="togglePhase(this)">
+              <div class="phase-accent" style="background:#8c5af5"></div>
+              <span class="phase-name">Phase 7 — Agentic Coding</span>
+              <div class="phase-meta"><span class="badge bb">paid</span><span class="phase-count">5 lessons</span><span class="phase-chev">▾</span></div>
+            </div>
+            <div class="phase-body">
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">What is Agentic Coding</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Debug with AI</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Build Apps with AI</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Break Down Projects for AI</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Review AI Code</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-head" onclick="togglePhase(this)">
+              <div class="phase-accent" style="background:#8c5af5"></div>
+              <span class="phase-name">Phase 8 — AI Automations</span>
+              <div class="phase-meta"><span class="badge bb">paid</span><span class="phase-count">5 lessons</span><span class="phase-chev">▾</span></div>
+            </div>
+            <div class="phase-body">
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Automate Daily Tasks</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Connect Apps with AI</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">AI Workflow</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Spreadsheets to Automations</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Schedule Automations</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-head" onclick="togglePhase(this)">
+              <div class="phase-accent" style="background:#d77600"></div>
+              <span class="phase-name">Bonus — Career & Content</span>
+              <div class="phase-meta"><span class="badge bb">paid</span><span class="phase-count">10 lessons</span><span class="phase-chev">▾</span></div>
+            </div>
+            <div class="phase-body">
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Build a Portfolio</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">LinkedIn for Developers</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Open Source First Contribution</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Learn Faster</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Document Projects</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Choose What to Learn</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Stay Consistent</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">10 AI Prompts That Save Hours</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Replaced 5 Hours with AI</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">5 AI Automations Today</span><span class="lesson-arrow">↗</span><span class="badge bb">paid</span></a>
+            </div>
           </div>
         </div>
-        <div class="pcard-body">
-          <span class="free-badge">Level 1 is completely free</span>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <a href="https://gumroad.com" target="_blank" class="btn btn-amber">Buy on Gumroad ↗</a>
-            <a href="#free" class="btn btn-ghost">Free tutorials</a>
+      </div><!-- end product-ztab -->
+
+      <!-- AI Agents Levels -->
+      <div id="product-aal" style="display:none;">
+        <div class="pillar-card reveal">
+          <div class="pillar-card-header ph-aal">
+            <div>
+              <div class="pc-tag">Product 02 — Intermediate to Advanced</div>
+              <div class="pc-title">AI Agents Levels</div>
+              <div class="pc-sub">Single → Pipeline → Multi-Agent → Autonomous Teams</div>
+              <div class="pc-pills">
+                <span class="pc-pill">16 tutorials</span>
+                <span class="pc-pill">4 levels</span>
+                <span class="pc-pill">PDF slides</span>
+                <span class="pc-pill">Requires AI basics</span>
+              </div>
+            </div>
+            <div class="pc-price">
+              <div class="pc-price-label">Full Bundle</div>
+              <div class="pc-price-val">$19</div>
+              <div class="pc-price-note">one-time · Gumroad</div>
+            </div>
           </div>
+          <div class="pillar-card-footer">
+            <span class="free-note free-note-amber">Level 1 is completely free</span>
+            <div style="display:flex;gap:0.5rem;">
+              <a href="https://gumroad.com" target="_blank" class="btn btn-amber">Buy on Gumroad ↗</a>
+              <a href="#free" class="btn btn-ghost">Free tutorials</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="curriculum reveal">
+          <div class="phase open">
+            <div class="phase-head" onclick="togglePhase(this)">
+              <div class="phase-accent" style="background:#d99835"></div>
+              <span class="phase-name">Level 1 — Single Agent: Your First AI Worker</span>
+              <div class="phase-meta"><span class="badge bf">free</span><span class="phase-count">4 lessons</span><span class="phase-chev">▾</span></div>
+            </div>
+            <div class="phase-body">
+              <a href="#" class="lesson is-link"><span class="lesson-name">What Is an Agent</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Anatomy of an Agent</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Tools + ReAct Loop</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+              <a href="#" class="lesson is-link"><span class="lesson-name">Building Your First Agent</span><span class="lesson-arrow">↗</span><span class="badge bf">free</span></a>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-head" onclick="togglePhase(this)">
+              <div class="phase-accent" style="background:#d99835"></div>
+              <span class="phase-name">Level 2 — Pipeline Agent: Chaining Specialists</span>
+              <div class="phase-meta"><span class="badge ba">paid</span><span class="phase-count">4 lessons</span><span class="phase-chev">▾</span></div>
+            </div>
+            <div class="phase-body">
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">The Pipeline Mental Model</span><span class="lesson-arrow">↗</span><span class="badge ba">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">The Orchestrator</span><span class="lesson-arrow">↗</span><span class="badge ba">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Artifact Design</span><span class="lesson-arrow">↗</span><span class="badge ba">paid</span></a>
+              <a href="https://gumroad.com" target="_blank" class="lesson is-link"><span class="lesson-name paid">Error Handling + Debugging</span><span class="lesson-arrow">↗</span><span class="badge ba">paid</span></a>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-head" onclick="togglePhase(this)">
+              <div class="phase-accent" style="background:#4a4740"></div>
+              <span class="phase-name">Level 3 — Multi-Agent: Orchestrator + Specialists</span>
+              <div class="phase-meta"><span class="badge bw">in progress</span><span class="phase-count">4 lessons</span><span class="phase-chev">▾</span></div>
+            </div>
+            <div class="phase-body">
+              <div class="lesson"><span class="lesson-name" style="color:var(--dim)">The Orchestrator Mental Model</span><span class="badge bw">soon</span></div>
+              <div class="lesson"><span class="lesson-name" style="color:var(--dim)">Agent Selection Routing</span><span class="badge bw">soon</span></div>
+              <div class="lesson"><span class="lesson-name" style="color:var(--dim)">Result Handling + Synthesis</span><span class="badge bw">soon</span></div>
+              <div class="lesson"><span class="lesson-name" style="color:var(--dim)">Full Multi-Agent Build</span><span class="badge bw">soon</span></div>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-head" onclick="togglePhase(this)">
+              <div class="phase-accent" style="background:#4a4740"></div>
+              <span class="phase-name">Level 4 — Agent Teams: Full Autonomous Workflow</span>
+              <div class="phase-meta"><span class="badge bw">in progress</span><span class="phase-count">4 lessons</span><span class="phase-chev">▾</span></div>
+            </div>
+            <div class="phase-body">
+              <div class="lesson"><span class="lesson-name" style="color:var(--dim)">The Team Mental Model</span><span class="badge bw">soon</span></div>
+              <div class="lesson"><span class="lesson-name" style="color:var(--dim)">Building Teams (Content vs Engineering)</span><span class="badge bw">soon</span></div>
+              <div class="lesson"><span class="lesson-name" style="color:var(--dim)">Top-Level Orchestration</span><span class="badge bw">soon</span></div>
+              <div class="lesson"><span class="lesson-name" style="color:var(--dim)">Full Autonomous System</span><span class="badge bw">soon</span></div>
+            </div>
+          </div>
+        </div>
+      </div><!-- end product-aal -->
+
+    </div><!-- end panel-mind -->
+
+    <!-- ═══ BODY PANEL ═══ -->
+    <div class="pillar-panel" id="panel-body">
+      <div class="pillar-card reveal">
+        <div class="pillar-card-header ph-body">
+          <div>
+            <div class="pc-tag">Pillar 02 — In Progress</div>
+            <div class="pc-title">Body</div>
+            <div class="pc-sub">Calisthenics, strength, and the discipline of physical training.</div>
+            <div class="pc-pills">
+              <span class="pc-pill">Calisthenics</span>
+              <span class="pc-pill">Bodyweight Strength</span>
+              <span class="pc-pill">Discipline</span>
+            </div>
+          </div>
+          <div class="pc-price" style="display:flex;align-items:flex-start;">
+            <span class="badge bw" style="font-size:0.65rem;padding:0.3rem 0.75rem;">Coming soon</span>
+          </div>
+        </div>
+        <div class="pillar-card-footer" style="justify-content:flex-start;">
+          <p style="font-size:0.8rem;color:var(--dim);font-weight:300;">Tutorials and guides on building a body through consistent, principled work — no shortcuts, no gimmicks.</p>
         </div>
       </div>
-
-      <div class="curriculum reveal">
-        <div class="phgroup open">
-          <div class="phhead" onclick="tp(this)">
-            <div class="phaccent" style="background:#df9f35"></div>
-            <span class="phname">Level 1 — Single Agent: Your First AI Worker</span>
-            <div class="phright"><span class="badge bf">free</span><span class="phcount">4 tutorials</span><span class="phchev">▼</span></div>
-          </div>
-          <div class="phbody">
-            <a href="#" class="trow tlink"><span class="tname">What Is an Agent</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Anatomy of an Agent</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Tools + ReAct Loop</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-            <a href="#" class="trow tlink"><span class="tname">Building Your First Agent</span><span class="tarrow">↗</span><span class="badge bf">free</span></a>
-          </div>
-        </div>
-        <div class="phgroup">
-          <div class="phhead" onclick="tp(this)">
-            <div class="phaccent" style="background:#df9f35"></div>
-            <span class="phname">Level 2 — Pipeline Agent: Chaining Specialists</span>
-            <div class="phright"><span class="badge ba">paid</span><span class="phcount">4 tutorials</span><span class="phchev">▼</span></div>
-          </div>
-          <div class="phbody">
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">The Pipeline Mental Model</span><span class="tarrow">↗</span><span class="badge ba">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">The Orchestrator</span><span class="tarrow">↗</span><span class="badge ba">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Artifact Design</span><span class="tarrow">↗</span><span class="badge ba">paid</span></a>
-            <a href="https://gumroad.com" target="_blank" class="trow tlink"><span class="tname paid">Error Handling + Debugging</span><span class="tarrow">↗</span><span class="badge ba">paid</span></a>
-          </div>
-        </div>
-        <div class="phgroup">
-          <div class="phhead" onclick="tp(this)">
-            <div class="phaccent" style="background:#3a3835"></div>
-            <span class="phname">Level 3 — Multi-Agent: Orchestrator + Specialists</span>
-            <div class="phright"><span class="badge bw">in progress</span><span class="phcount">4 tutorials</span><span class="phchev">▼</span></div>
-          </div>
-          <div class="phbody">
-            <div class="trow"><span class="tname" style="color:var(--text-3)">The Orchestrator Mental Model</span><span class="badge bw">coming soon</span></div>
-            <div class="trow"><span class="tname" style="color:var(--text-3)">Agent Selection Routing</span><span class="badge bw">coming soon</span></div>
-            <div class="trow"><span class="tname" style="color:var(--text-3)">Result Handling + Synthesis</span><span class="badge bw">coming soon</span></div>
-            <div class="trow"><span class="tname" style="color:var(--text-3)">Full Multi-Agent Build</span><span class="badge bw">coming soon</span></div>
-          </div>
-        </div>
-        <div class="phgroup">
-          <div class="phhead" onclick="tp(this)">
-            <div class="phaccent" style="background:#3a3835"></div>
-            <span class="phname">Level 4 — Agent Teams: Full Autonomous Workflow</span>
-            <div class="phright"><span class="badge bw">in progress</span><span class="phcount">4 tutorials</span><span class="phchev">▼</span></div>
-          </div>
-          <div class="phbody">
-            <div class="trow"><span class="tname" style="color:var(--text-3)">The Team Mental Model</span><span class="badge bw">coming soon</span></div>
-            <div class="trow"><span class="tname" style="color:var(--text-3)">Building Teams (Content vs Engineering)</span><span class="badge bw">coming soon</span></div>
-            <div class="trow"><span class="tname" style="color:var(--text-3)">Top-Level Orchestration</span><span class="badge bw">coming soon</span></div>
-            <div class="trow"><span class="tname" style="color:var(--text-3)">Full Autonomous System</span><span class="badge bw">coming soon</span></div>
-          </div>
-        </div>
+      <div class="planned-grid reveal">
+        <div class="planned-card"><div class="planned-icon">🤸</div><div class="planned-title">Calisthenics Progressions</div><p class="planned-desc">From zero pull-ups to muscle-up — a structured progression for each movement.</p></div>
+        <div class="planned-card"><div class="planned-icon">🏋️</div><div class="planned-title">Bodyweight Strength</div><p class="planned-desc">Push, pull, squat, hinge, core. Functional strength with no equipment.</p></div>
+        <div class="planned-card"><div class="planned-icon">📅</div><div class="planned-title">Building the Habit</div><p class="planned-desc">How to structure your week and build a routine that actually sticks.</p></div>
+        <div class="planned-card"><div class="planned-icon">⚖️</div><div class="planned-title">Discipline as Identity</div><p class="planned-desc">The mindset shift separating consistent trainers from everyone else.</p></div>
+        <div class="planned-card"><div class="planned-icon">🔧</div><div class="planned-title">Manual Labor as Training</div><p class="planned-desc">How to leverage the physical work you already do.</p></div>
+        <div class="planned-card"><div class="planned-icon">📊</div><div class="planned-title">Progress Tracking</div><p class="planned-desc">Simple systems for tracking training data and adjusting over time.</p></div>
+      </div>
+      <div class="notify-row reveal">
+        <input type="email" class="notify-input" placeholder="your@email.com" id="body-email" />
+        <button class="notify-btn notify-btn-green" onclick="handleNotify(this,'body-email')">Notify me when Body launches 💪</button>
       </div>
     </div>
-  </div>
+
+    <!-- ═══ SOUL PANEL ═══ -->
+    <div class="pillar-panel" id="panel-soul">
+      <div class="pillar-card reveal">
+        <div class="pillar-card-header ph-soul">
+          <div>
+            <div class="pc-tag">Pillar 03 — In Progress</div>
+            <div class="pc-title">Soul</div>
+            <div class="pc-sub">Philosophy, psychology, and the interior architecture of a well-lived life.</div>
+            <div class="pc-pills">
+              <span class="pc-pill">Stoicism</span>
+              <span class="pc-pill">Self-Knowledge</span>
+              <span class="pc-pill">Essays</span>
+            </div>
+          </div>
+          <div class="pc-price" style="display:flex;align-items:flex-start;">
+            <span class="badge bw" style="font-size:0.65rem;padding:0.3rem 0.75rem;">Coming soon</span>
+          </div>
+        </div>
+        <div class="pillar-card-footer" style="justify-content:flex-start;">
+          <p style="font-size:0.8rem;color:var(--dim);font-weight:300;">Essays and guides on Stoicism, self-knowledge, and learning how to live with intention.</p>
+        </div>
+      </div>
+      <div class="planned-grid reveal">
+        <div class="planned-card"><div class="planned-icon">⚡</div><div class="planned-title">Stoicism for Builders</div><p class="planned-desc">Practical Stoic principles applied to building things under uncertainty.</p></div>
+        <div class="planned-card"><div class="planned-icon">🔍</div><div class="planned-title">Self-Knowledge First</div><p class="planned-desc">You can't build the life you want without knowing who you actually are.</p></div>
+        <div class="planned-card"><div class="planned-icon">🌱</div><div class="planned-title">Learning How to Learn</div><p class="planned-desc">The meta-skill — absorbing new domains faster and building knowledge that compounds.</p></div>
+        <div class="planned-card"><div class="planned-icon">🔄</div><div class="planned-title">Identity & Consistency</div><p class="planned-desc">The psychology of why some people stay consistent and others don't.</p></div>
+        <div class="planned-card"><div class="planned-icon">📖</div><div class="planned-title">Book Notes</div><p class="planned-desc">Distilled lessons from the books that changed how I think.</p></div>
+        <div class="planned-card"><div class="planned-icon">🧭</div><div class="planned-title">Inner Conquest</div><p class="planned-desc">On mastering your interior before taking on the exterior.</p></div>
+      </div>
+      <div class="notify-row reveal">
+        <input type="email" class="notify-input" placeholder="your@email.com" id="soul-email" />
+        <button class="notify-btn notify-btn-amber" onclick="handleNotify(this,'soul-email')">Notify me when Soul launches 🔥</button>
+      </div>
+    </div>
+
+  </div><!-- end .wrap -->
 </section>
 
 <!-- FREE TUTORIALS -->
-<section class="section free-s" id="free">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <div class="s-kicker" style="color:var(--green)">Free Access</div>
-      <h2 class="s-title">Start here.<br /><em>No credit card.</em></h2>
-      <p class="s-desc">First phases of each product are free. Download directly — no sign-up required.</p>
+<section class="section" id="free">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-label" style="color:var(--green)">Free Access</div>
+      <h2 class="section-title">Start here.<br><em>No credit card.</em></h2>
+      <p class="section-desc">The first phases of each product are free. Download directly — no sign-up required.</p>
     </div>
     <div class="free-grid reveal">
-      <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 1</span><span class="fcard-title">Mac Terminal</span><span class="fcard-meta">PDF · Foundation</span></a>
-      <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 1</span><span class="fcard-title">Windows Terminal</span><span class="fcard-meta">PDF · Foundation</span></a>
-      <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 1</span><span class="fcard-title">Install VS Code</span><span class="fcard-meta">PDF · Foundation</span></a>
-      <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 1</span><span class="fcard-title">Markdown</span><span class="fcard-meta">PDF · Foundation</span></a>
-      <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 1</span><span class="fcard-title">What is a Browser</span><span class="fcard-meta">PDF · Foundation</span></a>
-      <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 1</span><span class="fcard-title">DevTools CSS Inspection</span><span class="fcard-meta">PDF · Foundation</span></a>
-      <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 2</span><span class="fcard-title">Install Git</span><span class="fcard-meta">PDF · Git &amp; GitHub</span></a>
-      <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 2</span><span class="fcard-title">Git vs GitHub</span><span class="fcard-meta">PDF · Git &amp; GitHub</span></a>
-      <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 2</span><span class="fcard-title">Undo Mistakes in Git</span><span class="fcard-meta">PDF · Git &amp; GitHub</span></a>
-      <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 2</span><span class="fcard-title">Good Commit Messages</span><span class="fcard-meta">PDF · Git &amp; GitHub</span></a>
-      <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--blue)">Zero to AI Builder · Phase 2</span><span class="fcard-title">Collaborate on GitHub</span><span class="fcard-meta">PDF · Git &amp; GitHub</span></a>
-      <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--amber)">AI Agents Levels · Level 1</span><span class="fcard-title">What Is an Agent</span><span class="fcard-meta">PDF · Single Agent</span></a>
-      <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--amber)">AI Agents Levels · Level 1</span><span class="fcard-title">Anatomy of an Agent</span><span class="fcard-meta">PDF · Single Agent</span></a>
-      <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--amber)">AI Agents Levels · Level 1</span><span class="fcard-title">Tools + ReAct Loop</span><span class="fcard-meta">PDF · Single Agent</span></a>
-      <a href="#" class="fcard"><span class="fcard-kicker" style="color:var(--amber)">AI Agents Levels · Level 1</span><span class="fcard-title">Building Your First Agent</span><span class="fcard-meta">PDF · Single Agent</span></a>
-    </div>
-    <div style="display:flex;justify-content:center;margin-top:12px;" id="free-pagination-wrap">
-      <button id="free-next" class="btn btn-ghost" aria-label="Next free tutorials">Next</button>
+
+      <!-- Phase 1 -->
+      <div class="free-section-header" style="grid-column:1/-1; padding:0.6rem 1rem; background:var(--bg-2); border-bottom:1px solid var(--border); display:flex; align-items:center; gap:0.5rem;">
+        <span style="width:2px;height:14px;background:#5590f0;display:inline-block;flex-shrink:0;"></span>
+        <span style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);">Zero to AI Builder · Phase 1 — Terminal & Dev Tools</span>
+      </div>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 1</span><span class="fc-title">Mac Terminal</span><span class="fc-meta">PDF · Foundation</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 1</span><span class="fc-title">Windows Terminal</span><span class="fc-meta">PDF · Foundation</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 1</span><span class="fc-title">Install VS Code</span><span class="fc-meta">PDF · Foundation</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 1</span><span class="fc-title">Markdown</span><span class="fc-meta">PDF · Foundation</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 1</span><span class="fc-title">What is a Browser</span><span class="fc-meta">PDF · Foundation</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 1</span><span class="fc-title">DevTools CSS Inspection</span><span class="fc-meta">PDF · Foundation</span></a>
+
+      <!-- Phase 2 -->
+      <div class="free-section-header" style="grid-column:1/-1; padding:0.6rem 1rem; background:var(--bg-2); border-bottom:1px solid var(--border); border-top:1px solid var(--border); display:flex; align-items:center; gap:0.5rem;">
+        <span style="width:2px;height:14px;background:#5590f0;display:inline-block;flex-shrink:0;"></span>
+        <span style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);">Zero to AI Builder · Phase 2 — Git & GitHub</span>
+      </div>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 2</span><span class="fc-title">Install Git</span><span class="fc-meta">PDF · Git & GitHub</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 2</span><span class="fc-title">Git vs GitHub</span><span class="fc-meta">PDF · Git & GitHub</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 2</span><span class="fc-title">Undo Mistakes in Git</span><span class="fc-meta">PDF · Git & GitHub</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 2</span><span class="fc-title">Good Commit Messages</span><span class="fc-meta">PDF · Git & GitHub</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 2</span><span class="fc-title">Collaborate on GitHub</span><span class="fc-meta">PDF · Git & GitHub</span></a>
+
+      <!-- Phase 3 -->
+      <div class="free-section-header" style="grid-column:1/-1; padding:0.6rem 1rem; background:var(--bg-2); border-bottom:1px solid var(--border); border-top:1px solid var(--border); display:flex; align-items:center; gap:0.5rem;">
+        <span style="width:2px;height:14px;background:#5590f0;display:inline-block;flex-shrink:0;"></span>
+        <span style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);">Zero to AI Builder · Phase 3 — Web Development</span>
+      </div>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 3</span><span class="fc-title">Basic Web Structure</span><span class="fc-meta">PDF · Web Dev</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 3</span><span class="fc-title">CSS Flexbox</span><span class="fc-meta">PDF · Web Dev</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 3</span><span class="fc-title">How to Pick Color</span><span class="fc-meta">PDF · Web Dev</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 3</span><span class="fc-title">Google Fonts</span><span class="fc-meta">PDF · Web Dev</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 3</span><span class="fc-title">Domain Names</span><span class="fc-meta">PDF · Web Dev</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 3</span><span class="fc-title">Responsive Design</span><span class="fc-meta">PDF · Web Dev</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 3</span><span class="fc-title">Image Optimization</span><span class="fc-meta">PDF · Web Dev</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 3</span><span class="fc-title">Favicon</span><span class="fc-meta">PDF · Web Dev</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 3</span><span class="fc-title">What is an API</span><span class="fc-meta">PDF · Web Dev</span></a>
+
+      <!-- Phase 4 -->
+      <div class="free-section-header" style="grid-column:1/-1; padding:0.6rem 1rem; background:var(--bg-2); border-bottom:1px solid var(--border); border-top:1px solid var(--border); display:flex; align-items:center; gap:0.5rem;">
+        <span style="width:2px;height:14px;background:#5590f0;display:inline-block;flex-shrink:0;"></span>
+        <span style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);">Zero to AI Builder · Phase 4 — Python Fundamentals</span>
+      </div>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 4</span><span class="fc-title">Mac Install Python</span><span class="fc-meta">PDF · Python</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 4</span><span class="fc-title">Windows Install Python</span><span class="fc-meta">PDF · Python</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 4</span><span class="fc-title">Virtual Environment</span><span class="fc-meta">PDF · Python</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 4</span><span class="fc-title">Python Scripting</span><span class="fc-meta">PDF · Python</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 4</span><span class="fc-title">CSV Files</span><span class="fc-meta">PDF · Python</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 4</span><span class="fc-title">Python APIs</span><span class="fc-meta">PDF · Python</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 4</span><span class="fc-title">Pandas for Excel Users</span><span class="fc-meta">PDF · Python</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 4</span><span class="fc-title">Web Scraping</span><span class="fc-meta">PDF · Python</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 4</span><span class="fc-title">Send Email with Python</span><span class="fc-meta">PDF · Python</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 4</span><span class="fc-title">Schedule Python Scripts</span><span class="fc-meta">PDF · Python</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:var(--blue)">Phase 4</span><span class="fc-title">Python Calculator with Tkinter</span><span class="fc-meta">PDF · Python</span></a>
+
+      <!-- AI Agents Level 1 -->
+      <div class="free-section-header" style="grid-column:1/-1; padding:0.6rem 1rem; background:var(--bg-2); border-bottom:1px solid var(--border); border-top:1px solid var(--border); display:flex; align-items:center; gap:0.5rem;">
+        <span style="width:2px;height:14px;background:#8c5af5;display:inline-block;flex-shrink:0;"></span>
+        <span style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#8c5af5;">AI Agents Levels · Level 1 — Single Agent</span>
+      </div>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:#8c5af5">Level 1</span><span class="fc-title">What Is an Agent</span><span class="fc-meta">PDF · Single Agent</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:#8c5af5">Level 1</span><span class="fc-title">Anatomy of an Agent</span><span class="fc-meta">PDF · Single Agent</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:#8c5af5">Level 1</span><span class="fc-title">Tools + ReAct Loop</span><span class="fc-meta">PDF · Single Agent</span></a>
+      <a href="#" class="free-card"><span class="fc-arrow">↗</span><span class="fc-tag" style="color:#8c5af5">Level 1</span><span class="fc-title">Building Your First Agent</span><span class="fc-meta">PDF · Single Agent</span></a>
+
     </div>
   </div>
 </section>
 
-<!-- ═══ BODY PLACEHOLDER ════════════════════════════════════════════ -->
-<section class="body-section" id="body">
-  <div class="placeholder-panel">
-    <div class="section-header reveal">
-      <div class="s-kicker" style="color:var(--green)">💪 Body — Calisthenics &amp; Discipline</div>
-      <h2 class="s-title">Train what<br /><em>you control.</em></h2>
-      <p class="s-desc">Tutorials on calisthenics progressions, bodyweight strength, and the discipline of physical consistency. Being built now.</p>
-    </div>
-
-    <div class="pillar-divider reveal">
-      <div class="pillar-divider-line"></div>
-      <div class="pillar-divider-label">Planned content</div>
-      <div class="pillar-divider-line"></div>
-    </div>
-
-    <div class="placeholder-grid reveal">
-      <div class="placeholder-card">
-        <div class="ph-card-icon">🤸</div>
-        <div class="ph-card-title">Calisthenics Progressions</div>
-        <p class="ph-card-sub">From zero pull-ups to muscle-up. A structured progression guide for each movement pattern.</p>
-        <div class="ph-coming-label">Tutorial series</div>
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="about-inner">
+      <div class="reveal">
+        <h2 class="about-title">Built by someone who actually builds.</h2>
+        <p class="about-body">I'm Julius — a Registered Electrical Engineer from the Philippines specializing in Renewable Energy and Power Systems. I also write about philosophy, productivity, and solopreneurship on Substack. These tutorials are distilled from real work, not theory.</p>
+        <div class="about-tags">
+          <span class="about-tag">Renewable Energy</span>
+          <span class="about-tag">Python</span>
+          <span class="about-tag">AI Agents</span>
+          <span class="about-tag">Power Systems</span>
+          <span class="about-tag">Creator</span>
+        </div>
       </div>
-      <div class="placeholder-card">
-        <div class="ph-card-icon">🏋️</div>
-        <div class="ph-card-title">Bodyweight Strength</div>
-        <p class="ph-card-sub">Push, pull, squat, hinge, core. Building functional strength with no equipment required.</p>
-        <div class="ph-coming-label">Tutorial series</div>
+      <div class="about-rows reveal">
+        <div class="about-row"><span class="ar-l">Format</span><span class="ar-v">PDF slide decks (MARP)</span></div>
+        <div class="about-row"><span class="ar-l">Delivery</span><span class="ar-v">Instant download · Gumroad</span></div>
+        <div class="about-row"><span class="ar-l">Updates</span><span class="ar-v">Lifetime access</span></div>
+        <div class="about-row"><span class="ar-l">Prerequisite</span><span class="ar-v">None for Zero to AI Builder</span></div>
+        <div class="about-row"><span class="ar-l">Writing</span><span class="ar-v">Substack — Conquer Self</span></div>
       </div>
-      <div class="placeholder-card">
-        <div class="ph-card-icon">📅</div>
-        <div class="ph-card-title">Building the Habit</div>
-        <p class="ph-card-sub">How to structure your training week and build a sustainable routine that actually sticks.</p>
-        <div class="ph-coming-label">Guide</div>
-      </div>
-      <div class="placeholder-card">
-        <div class="ph-card-icon">⚖️</div>
-        <div class="ph-card-title">Discipline as Identity</div>
-        <p class="ph-card-sub">The mindset shift that separates people who train consistently from those who don't.</p>
-        <div class="ph-coming-label">Essay + Guide</div>
-      </div>
-      <div class="placeholder-card">
-        <div class="ph-card-icon">🔧</div>
-        <div class="ph-card-title">Manual Labor as Training</div>
-        <p class="ph-card-sub">Hard physical work builds more than just strength. How to leverage what you already do.</p>
-        <div class="ph-coming-label">Essay</div>
-      </div>
-      <div class="placeholder-card">
-        <div class="ph-card-icon">📊</div>
-        <div class="ph-card-title">Progress Tracking</div>
-        <p class="ph-card-sub">Simple systems for tracking training data, noting what's working, and adjusting over time.</p>
-        <div class="ph-coming-label">Tutorial</div>
-      </div>
-    </div>
-
-    <div class="notify-row reveal">
-      <input type="email" class="notify-input" placeholder="your@email.com — get notified when Body launches" />
-      <button class="notify-btn-green" onclick="handleNotify(this, 'body')">Notify me 💪</button>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ SOUL PLACEHOLDER ══════════════════════════════════════════ -->
-<section class="soul-section" id="soul">
-  <div class="placeholder-panel">
-    <div class="section-header reveal">
-      <div class="s-kicker" style="color:var(--amber)">🔥 Soul — Philosophy &amp; Inner Work</div>
-      <h2 class="s-title">Understand yourself<br /><em>first.</em></h2>
-      <p class="s-desc">Essays and guides on Stoicism, self-knowledge, and the interior architecture of a life lived with intention. Being written now.</p>
-    </div>
-
-    <div class="pillar-divider reveal">
-      <div class="pillar-divider-line"></div>
-      <div class="pillar-divider-label">Planned content</div>
-      <div class="pillar-divider-line"></div>
-    </div>
-
-    <div class="placeholder-grid reveal">
-      <div class="placeholder-card">
-        <div class="ph-card-icon">⚡</div>
-        <div class="ph-card-title">Stoicism for Builders</div>
-        <p class="ph-card-sub">Practical Stoic principles applied to the daily reality of building things under uncertainty.</p>
-        <div class="ph-coming-label">Essay series</div>
-      </div>
-      <div class="placeholder-card">
-        <div class="ph-card-icon">🔍</div>
-        <div class="ph-card-title">Self-Knowledge First</div>
-        <p class="ph-card-sub">You can't build the life you want without knowing who you actually are. A guide to honest introspection.</p>
-        <div class="ph-coming-label">Essay + Guide</div>
-      </div>
-      <div class="placeholder-card">
-        <div class="ph-card-icon">🌱</div>
-        <div class="ph-card-title">Learning How to Learn</div>
-        <p class="ph-card-sub">The meta-skill. How to absorb new domains faster, retain more, and build knowledge that compounds.</p>
-        <div class="ph-coming-label">Guide</div>
-      </div>
-      <div class="placeholder-card">
-        <div class="ph-card-icon">🔄</div>
-        <div class="ph-card-title">Identity &amp; Consistency</div>
-        <p class="ph-card-sub">The psychology of why some people stay consistent and others don't — and how to move between them.</p>
-        <div class="ph-coming-label">Essay</div>
-      </div>
-      <div class="placeholder-card">
-        <div class="ph-card-icon">📖</div>
-        <div class="ph-card-title">Book Notes</div>
-        <p class="ph-card-sub">Distilled lessons from the books that changed how I think — philosophy, psychology, biography.</p>
-        <div class="ph-coming-label">Reference library</div>
-      </div>
-      <div class="placeholder-card">
-        <div class="ph-card-icon">🧭</div>
-        <div class="ph-card-title">Inner Conquest</div>
-        <p class="ph-card-sub">The one battle worth fighting before all others. On mastering your interior before taking on the exterior.</p>
-        <div class="ph-coming-label">Essay</div>
-      </div>
-    </div>
-
-    <div class="notify-row reveal">
-      <input type="email" class="notify-input" placeholder="your@email.com — get notified when Soul launches" />
-      <button class="notify-btn-amber" onclick="handleNotify(this, 'soul')">Notify me 🔥</button>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT STRIP -->
-<section class="about-s">
-  <div class="about-inner">
-    <div class="reveal">
-      <div class="about-title">Built by someone who actually builds.</div>
-      <p class="about-body">I'm Julius — a Registered Electrical Engineer from the Philippines specializing in Renewable Energy and Power Systems. I also write about philosophy, productivity, and solopreneurship on Substack. These tutorials are distilled from real work, not theory.</p>
-      <div class="about-tags">
-        <span class="about-tag">Renewable Energy</span>
-        <span class="about-tag">Python</span>
-        <span class="about-tag">AI Agents</span>
-        <span class="about-tag">Power Systems</span>
-        <span class="about-tag">Creator</span>
-      </div>
-    </div>
-    <div class="about-rows reveal">
-      <div class="about-row"><span class="arow-l">Format</span><span class="arow-v">PDF slide decks (MARP)</span></div>
-      <div class="about-row"><span class="arow-l">Delivery</span><span class="arow-v">Instant download · Gumroad</span></div>
-      <div class="about-row"><span class="arow-l">Updates</span><span class="arow-v">Lifetime access</span></div>
-      <div class="about-row"><span class="arow-l">Prerequisite</span><span class="arow-v">None for Zero to AI Builder</span></div>
-      <div class="about-row"><span class="arow-l">Writing</span><span class="arow-v">Substack — Conquer Self</span></div>
     </div>
   </div>
 </section>
@@ -1172,13 +1049,12 @@
 <footer>
   <div class="footer-inner">
     <div>
-      <div class="footer-name">Julius Darang</div>
-      <div class="footer-sub">REE · Renewable Energy · Creator · Philippines · Mind · Body · Soul</div>
+      <div class="footer-brand">Julius Darang</div>
+      <div class="footer-sub">REE · Philippines · Mind · Body · Soul</div>
     </div>
     <div class="footer-links">
       <a href="https://substack.com/@juliusdarang" target="_blank">Substack</a>
       <a href="https://gumroad.com" target="_blank">Gumroad</a>
-      <a href="https://threads.net" target="_blank">Threads</a>
       <a href="https://instagram.com" target="_blank">Instagram</a>
       <a href="https://linkedin.com" target="_blank">LinkedIn</a>
     </div>
@@ -1187,69 +1063,57 @@
 </footer>
 
 <script>
-  // Nav scroll
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 20), {passive:true});
+  // Pillar toggle
+  function switchPillar(p) {
+    document.querySelectorAll('.pillar-panel').forEach(el => el.classList.remove('active'));
+    document.getElementById('panel-' + p).classList.add('active');
+    document.querySelectorAll('.pillar-tab').forEach(btn => {
+      btn.classList.remove('active', 'active-mind', 'active-body', 'active-soul');
+    });
+    const tab = document.querySelector(`[data-pillar="${p}"]`);
+    tab.classList.add('active', 'active-' + p);
+  }
+
+  // Product tab (within Mind)
+  function switchProduct(p) {
+    const ztab = document.getElementById('product-ztab');
+    const aal  = document.getElementById('product-aal');
+    const zBtn = document.getElementById('ztab-btn');
+    const aBtn = document.getElementById('aal-btn');
+    if (p === 'ztab') {
+      ztab.style.display = 'block'; aal.style.display = 'none';
+      zBtn.classList.add('active'); aBtn.classList.remove('active');
+    } else {
+      ztab.style.display = 'none'; aal.style.display = 'block';
+      zBtn.classList.remove('active'); aBtn.classList.add('active');
+    }
+  }
 
   // Phase toggle
-  function tp(h) { h.parentElement.classList.toggle('open'); }
-
-  // Product tab switch
-  function sp(p) {
-    document.querySelectorAll('.ppanel').forEach(el => el.classList.remove('active'));
-    document.getElementById('p-' + p).classList.add('active');
-    const tabs = document.querySelectorAll('.ptab');
-    tabs[0].className = 'ptab' + (p==='ztab' ? ' ab' : '');
-    tabs[1].className = 'ptab' + (p==='aal'  ? ' aa' : '');
-  }
+  function togglePhase(h) { h.parentElement.classList.toggle('open'); }
 
   // Scroll reveal
   const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, {threshold:0.06});
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.05 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // Free tutorials pagination
-  (function(){
-    const grid = document.querySelector('.free-grid');
-    if(!grid) return;
-    const cards = Array.from(grid.querySelectorAll('.fcard'));
-    const perPage = 9;
-    if(cards.length <= perPage) {
-      const wrap = document.getElementById('free-pagination-wrap');
-      if(wrap) wrap.style.display = 'none';
-      return;
-    }
-    let page = 0;
-    const pages = Math.ceil(cards.length / perPage);
-    const btn = document.getElementById('free-next');
-    function render(){
-      grid.innerHTML = '';
-      const slice = cards.slice(page * perPage, (page + 1) * perPage);
-      slice.forEach(c => grid.appendChild(c));
-      if(btn) btn.textContent = `Next (${page+1}/${pages})`;
-    }
-    if(btn){
-      btn.addEventListener('click', () => { page = (page + 1) % pages; render(); grid.scrollIntoView({behavior:'smooth', block:'start'}); });
-    }
-    render();
-  })();
-
-  // Notify form handler
-  function handleNotify(btn, pillar) {
-    const input = btn.previousElementSibling;
+  // Notify button
+  function handleNotify(btn, inputId) {
+    const input = document.getElementById(inputId);
     const val = input.value.trim();
-    if(!val || !val.includes('@')) {
-      input.style.borderColor = 'var(--red)';
+    if (!val || !val.includes('@')) {
+      input.style.borderColor = '#e05a4f';
       input.placeholder = 'Please enter a valid email';
-      setTimeout(() => { input.style.borderColor = ''; input.placeholder = 'your@email.com'; }, 2200);
+      setTimeout(() => { input.style.borderColor = ''; input.placeholder = 'your@email.com'; }, 2000);
       return;
     }
     btn.textContent = '✓ You\'re on the list';
     btn.disabled = true;
     input.disabled = true;
     input.value = '';
-    input.placeholder = 'We\'ll be in touch.';
   }
 </script>
 </body>
