@@ -3,7 +3,7 @@ marp: true
 theme: default
 paginate: true
 style: |
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap');
 
   :root {
     --blue: #2563eb;
@@ -25,10 +25,11 @@ style: |
     line-height: 1.6;
   }
 
+  /* Marp paginate override */
   section::after {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    color: var(--muted);
+    font-family: 'DM Mono', monospace !important;
+    font-size: 12px !important;
+    color: var(--muted) !important;
   }
 
   h1 {
@@ -83,25 +84,36 @@ style: |
     color: #1e40af;
     line-height: 1.6;
   }
-
   blockquote p { color: #1e40af; margin: 0; }
 
+  /* ── Cover slide ── */
   section.cover {
-    background: var(--text);
-    color: var(--white);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    background: var(--text) !important;
+    color: var(--white) !important;
+    justify-content: center !important;
   }
-
-  section.cover h1 { color: var(--white); font-size: 46px; }
-  section.cover h2 { color: #93c5fd; border-bottom-color: #374151; }
-  section.cover p  { color: #9ca3af; }
-  section.cover strong { color: #60a5fa; }
+  section.cover h1 { color: var(--white) !important; font-size: 46px; }
+  section.cover h2 { color: #93c5fd !important; border-bottom-color: #374151 !important; }
+  section.cover p  { color: #9ca3af !important; }
+  section.cover strong { color: #60a5fa !important; }
   section.cover code { background: #1e3a5f; color: #93c5fd; }
 
+  /* ── Step slides ── */
   section.step { background: var(--off-white); }
 
+  /* ── Final slide ── */
+  section.final {
+    background: var(--blue) !important;
+    color: white !important;
+    text-align: center;
+    justify-content: center !important;
+  }
+  section.final h1 { color: white !important; font-size: 40px; }
+  section.final p  { color: #bfdbfe !important; font-size: 18px; }
+  section.final strong { color: white !important; }
+  section.final em { color: #bfdbfe !important; }
+
+  /* ── Highlight box ── */
   .highlight {
     background: var(--blue-light);
     border: 1px solid var(--blue-mid);
@@ -110,24 +122,24 @@ style: |
     margin: 16px 0;
   }
 
+  /* ── Tool cards grid ── */
   .tools {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
     margin-top: 16px;
   }
-
   .tool-card {
     background: var(--off-white);
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 16px 20px;
   }
-
   .tool-card .icon  { font-size: 24px; margin-bottom: 6px; }
   .tool-card .name  { font-weight: 600; font-size: 15px; color: var(--text); }
   .tool-card .desc  { font-size: 13px; color: var(--muted); margin-top: 2px; }
 
+  /* ── Step badge ── */
   .step-badge {
     display: inline-block;
     background: var(--blue);
@@ -141,20 +153,6 @@ style: |
     letter-spacing: 0.05em;
   }
 
-  section.final {
-    background: var(--blue);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-  }
-
-  section.final h1 { color: white; font-size: 40px; }
-  section.final p  { color: #bfdbfe; font-size: 18px; }
-  section.final strong { color: white; }
-  section.final em { color: #bfdbfe; }
-
   /* ── Code block ── */
   .code-block {
     background: #111827;
@@ -164,7 +162,6 @@ style: |
     font-family: 'DM Mono', monospace;
     font-size: 13px;
   }
-
   .code-block .cb-bar {
     background: #1f2937;
     padding: 8px 16px;
@@ -172,12 +169,10 @@ style: |
     color: #6b7280;
     letter-spacing: 0.04em;
   }
-
   .code-block .cb-body {
     padding: 14px 20px;
     line-height: 2;
   }
-
   .cb-prop  { color: #93c5fd; }
   .cb-val   { color: #34d399; }
   .cb-sel   { color: #f9fafb; }
@@ -185,10 +180,7 @@ style: |
   .cb-punct { color: #6b7280; }
 
   /* ── Flex visual demo box ── */
-  .demo-wrap {
-    margin: 14px 0 6px;
-  }
-
+  .demo-wrap { margin: 14px 0 6px; }
   .demo-label {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
@@ -197,7 +189,6 @@ style: |
     letter-spacing: 0.08em;
     margin-bottom: 8px;
   }
-
   .demo-container {
     background: #dbeafe;
     border: 2px dashed #93c5fd;
@@ -208,7 +199,6 @@ style: |
     min-height: 64px;
     align-items: stretch;
   }
-
   .demo-item {
     background: #2563eb;
     color: white;
@@ -223,10 +213,6 @@ style: |
     padding: 0 10px;
     height: 40px;
   }
-
-  .demo-item.tall { height: 64px; }
-  .demo-item.short { height: 28px; }
-  .demo-item.grow { flex-grow: 1; }
   .demo-item.b { background: #1d4ed8; }
   .demo-item.c { background: #1e40af; }
 
@@ -237,14 +223,12 @@ style: |
     gap: 20px;
     margin-top: 16px;
   }
-
   .col-card {
     background: var(--off-white);
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 16px 20px;
   }
-
   .col-card .label {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
@@ -261,7 +245,6 @@ style: |
     gap: 10px;
     margin-top: 12px;
   }
-
   .cmd-row {
     background: #111827;
     border-radius: 8px;
@@ -270,7 +253,6 @@ style: |
     align-items: flex-start;
     gap: 14px;
   }
-
   .cmd-row .cmd-name {
     font-family: 'DM Mono', monospace;
     font-size: 13px;
@@ -278,14 +260,14 @@ style: |
     font-weight: 500;
     min-width: 110px;
     padding-top: 1px;
+    flex-shrink: 0;
   }
-
   .cmd-row .cmd-desc {
     font-size: 13px;
     color: #d1d5db;
     line-height: 1.5;
+    margin: 0;
   }
-
   .cmd-row .cmd-desc span {
     display: block;
     color: #6b7280;
@@ -294,14 +276,13 @@ style: |
     margin-top: 2px;
   }
 
-  /* ── Property demo card (side-by-side code + visual) ── */
+  /* ── Property demo card ── */
   .prop-demo {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
     margin: 14px 0;
   }
-
   .prop-demo .pd-code {
     background: #111827;
     border-radius: 10px;
@@ -315,13 +296,10 @@ style: |
     justify-content: center;
     white-space: pre;
   }
-
   .prop-demo .pd-code .t-sel   { color: #f9fafb; }
   .prop-demo .pd-code .t-punct { color: #6b7280; }
   .prop-demo .pd-code .t-prop  { color: #93c5fd; }
   .prop-demo .pd-code .t-val   { color: #34d399; }
-  .prop-demo .pd-code .t-ind   { color: transparent; user-select: none; }
-
   .prop-demo .pd-visual {
     background: #dbeafe;
     border: 2px dashed #93c5fd;
@@ -340,13 +318,11 @@ style: |
     gap: 14px;
     margin-top: 16px;
   }
-
   .layout-card {
     border: 1px solid var(--border);
     border-radius: 12px;
     overflow: hidden;
   }
-
   .layout-card .lc-preview {
     background: #f1f5f9;
     padding: 14px;
@@ -355,27 +331,22 @@ style: |
     flex-direction: column;
     justify-content: center;
   }
-
   .layout-card .lc-info {
     padding: 10px 14px;
     background: var(--white);
     border-top: 1px solid var(--border);
   }
-
   .layout-card .lc-name {
     font-weight: 600;
     font-size: 13.5px;
     color: var(--text);
   }
-
   .layout-card .lc-css {
     font-family: 'DM Mono', monospace;
     font-size: 10.5px;
     color: var(--blue);
     margin-top: 3px;
   }
-
-  /* mini flex items for layout previews */
   .mi {
     background: #2563eb;
     border-radius: 4px;
@@ -386,6 +357,8 @@ style: |
     align-items: center;
     justify-content: center;
   }
+  .mi.b { background: #1d4ed8; }
+  .mi.c { background: #1e40af; }
 
   /* ── Cheatsheet table ── */
   .cheat-table {
@@ -394,7 +367,6 @@ style: |
     font-size: 13.5px;
     margin: 12px 0;
   }
-
   .cheat-table th {
     background: var(--text);
     color: white;
@@ -405,34 +377,30 @@ style: |
     font-family: 'DM Mono', monospace;
     letter-spacing: 0.05em;
   }
-
   .cheat-table td {
     padding: 8px 14px;
     border-bottom: 1px solid var(--border);
     color: var(--text);
   }
-
   .cheat-table tr:nth-child(even) td { background: var(--off-white); }
-
   .cheat-table .mono {
     font-family: 'DM Mono', monospace;
     color: var(--blue);
     font-size: 12.5px;
   }
-
   .cheat-table .val {
     font-family: 'DM Mono', monospace;
     color: #059669;
     font-size: 12px;
   }
 
+  /* ── Step list ── */
   .step-list {
     counter-reset: steps;
     list-style: none;
     padding: 0;
     margin: 0;
   }
-
   .step-list li {
     counter-increment: steps;
     display: flex;
@@ -440,7 +408,6 @@ style: |
     gap: 14px;
     margin-bottom: 14px;
   }
-
   .step-list li::before {
     content: counter(steps);
     background: var(--blue);
@@ -457,6 +424,10 @@ style: |
     margin-top: 2px;
     flex-shrink: 0;
   }
+
+  /* ── Marp default overrides ── */
+  section > * { margin-top: 0; margin-bottom: 0; }
+  section h1 + p, section h2 + p { margin-top: 0.4em; }
 ---
 
 <!-- _class: cover -->
@@ -589,8 +560,8 @@ Controls how items are spaced **along the main axis** (horizontal by default).
 <span class="t-punct">}</span></div>
   <div class="pd-visual" style="justify-content: space-between;">
     <div class="mi" style="width:44px; height:40px;">A</div>
-    <div class="mi b" style="width:44px; height:40px; background:#1d4ed8;">B</div>
-    <div class="mi c" style="width:44px; height:40px; background:#1e40af;">C</div>
+    <div class="mi b" style="width:44px; height:40px;">B</div>
+    <div class="mi c" style="width:44px; height:40px;">C</div>
   </div>
 </div>
 
@@ -631,8 +602,8 @@ Controls how items align **perpendicular to the main axis** (vertical by default
 <span class="t-punct">}</span></div>
   <div class="pd-visual" style="align-items: center; height:100px;">
     <div class="mi" style="width:44px; height:64px;">A</div>
-    <div class="mi" style="width:44px; height:36px; background:#1d4ed8;">B</div>
-    <div class="mi" style="width:44px; height:50px; background:#1e40af;">C</div>
+    <div class="mi b" style="width:44px; height:36px;">B</div>
+    <div class="mi c" style="width:44px; height:50px;">C</div>
   </div>
 </div>
 
@@ -773,8 +744,8 @@ Two properties that make responsive layouts nearly effortless.
       <div style="display:flex; align-items:center; gap:8px; padding:8px;">
         <div class="mi" style="width:36px; height:36px; border-radius:50%; font-size:10px;">av</div>
         <div style="display:flex; flex-direction:column; gap:4px;">
-          <div class="mi" style="width:64px; height:12px; border-radius:3px; font-size:0px;"></div>
-          <div class="mi b" style="width:44px; height:10px; border-radius:3px; font-size:0px;"></div>
+          <div class="mi" style="width:64px; height:12px; border-radius:3px;"></div>
+          <div class="mi b" style="width:44px; height:10px; border-radius:3px;"></div>
         </div>
       </div>
     </div>

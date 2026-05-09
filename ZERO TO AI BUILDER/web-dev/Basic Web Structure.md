@@ -351,17 +351,17 @@ Every website is built from three distinct layers — just like a house.
 <div class="three-col">
   <div class="layer-card html-card">
     <div class="lang">HTML</div>
-    <div class="role">🏗️ Structure</div>
+    <div class="role">🏗️&nbsp; Structure</div>
     <div class="detail">The walls, floors, and rooms. Raw content with no decoration.</div>
   </div>
   <div class="layer-card css-card">
     <div class="lang">CSS</div>
-    <div class="role">🎨 Style</div>
+    <div class="role">🎨&nbsp; Style</div>
     <div class="detail">Paint, furniture, lighting. Controls how everything looks.</div>
   </div>
   <div class="layer-card js-card">
     <div class="lang">JavaScript</div>
-    <div class="role">⚡ Behavior</div>
+    <div class="role">⚡&nbsp; Behavior</div>
     <div class="detail">Electricity, plumbing, doors that open. Makes things interactive.</div>
   </div>
 </div>

@@ -162,7 +162,7 @@ style: |
 
 <div class="top-bar">
   <span class="brand">Zero to AI Builder</span>
-  <span class="pill">● 100% complete — 56 of 56 tutorials done</span>
+  <!-- <span class="pill">● 56 Presentation style tutorials</span> -->
 </div>
 
 <div class="title-block">
@@ -244,9 +244,9 @@ style: |
     <div class="lbl">Prerequisites</div>
   </div>
   <div class="footer-divider"></div>
-  <div class="footer-stat">
+  <!-- <div class="footer-stat">
     <div class="num green">100%</div>
     <div class="lbl">Complete</div>
-  </div>
+  </div> -->
   <div class="footer-note">PDF PRESENTATION STYLE v2.5</div>
 </div>
