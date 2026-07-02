@@ -267,6 +267,30 @@ def schedule_send(folder, days):
     return True
 
 
+def schedule_send_on_date(folder, date_str):
+    script = Path(__file__).resolve()
+    cmd = (
+        f'echo "cd {BASE_DIR} && {sys.executable} {script} --dir {folder}" '
+        f"| at 08:00 {date_str} 2>/dev/null"
+    )
+    try:
+        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+        if result.returncode == 0:
+            print(f"Scheduled: next '{folder}' email for 08:00 on {date_str}")
+            if result.stdout:
+                print(result.stdout.strip())
+        else:
+            print("WARNING: 'at' command failed. The 'atrun' daemon may be disabled.")
+            print(f"Fallback: add this to your crontab to run at 8am on {date_str}:")
+            print(f"  {sys.executable} {script} --dir {folder}")
+            return False
+    except FileNotFoundError:
+        print("WARNING: 'at' command not available on this system.")
+        print(f"Run manually on {date_str}: {sys.executable} {script} --dir {folder}")
+        return False
+    return True
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Email tutorials from any folder, one at a time."
@@ -295,6 +319,12 @@ def main():
         metavar="N",
         help="Schedule the next unsent tutorial N days from now via 'at'",
     )
+    parser.add_argument(
+        "--schedule-date",
+        type=str,
+        metavar="DATE",
+        help="Schedule the next unsent tutorial for a specific date via 'at' (e.g. 'Jul 5', '2026-07-05')",
+    )
     args = parser.parse_args()
 
     folder = args.dir
@@ -322,6 +352,14 @@ def main():
             print("All tutorials in this folder have been sent. Use --reset to start over.")
             return
         schedule_send(folder, args.schedule_days)
+        return
+
+    if args.schedule_date:
+        index = load_tracking(folder).get("current_index", 0)
+        if index >= len(tutorials):
+            print("All tutorials in this folder have been sent. Use --reset to start over.")
+            return
+        schedule_send_on_date(folder, args.schedule_date)
         return
 
     if args.file:
