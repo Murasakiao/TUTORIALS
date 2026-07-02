@@ -296,6 +296,10 @@ Use these titles and descriptions when uploading each phase to Gumroad.
 **Title:** How I Replaced 5 Hours with AI
 **Description:** A real case study of automation. What got automated, how, and the time savings. Proof that AI works.
 
+### Tutorial 61: 5 AI Automations Today
+**Title:** 5 AI Automations You Can Set Up Today
+**Description:** Five ready-to-implement AI automations for common tasks. From email filtering to data collection — set up and running in minutes.
+
 ---
 
 ## Summary
@@ -312,4 +316,4 @@ Use these titles and descriptions when uploading each phase to Gumroad.
 | Phase 8: Automations | 5 | $9 |
 | Bonus: Career & Content | 10 | $9 |
 
-**Full Bundle:** $29 (all 60 tutorials)
+**Full Bundle:** $29 (all 61 tutorials)

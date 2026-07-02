@@ -124,7 +124,7 @@ A structured mini-course from beginner to AI developer.
 
 | Phase | Topic | 🟢 | 🟡 | 🔴 | Total |
 |-------|-------|----|----|----|-------|
-| 1 | Foundation | 6 | 1 | 0 | 7 |
+| 1 | Foundation | 7 | 1 | 0 | 8 |
 | 2 | Git | 2 | 3 | 0 | 5 |
 | 3 | Web Dev | 5 | 4 | 0 | 9 |
 | 4 | Python | 3 | 7 | 1 | 11 |
@@ -134,7 +134,7 @@ A structured mini-course from beginner to AI developer.
 | 8 | Automations | 0 | 5 | 0 | 5 |
 | — | Bonus: Career | 6 | 1 | 0 | 7 |
 | — | Bonus: Content | 2 | 1 | 0 | 3 |
-| **Main Course Total** | | **20** | **30** | **2** | **52** |
+| **Main Course Total** | | **21** | **30** | **2** | **53** |
 
 ---
 
@@ -153,6 +153,5 @@ For total beginners who want the fastest path to building something:
 ---
 
 ## Created
-- 18 existing tutorials
-- 34 new placeholder tutorials
-- 52 main course tutorials (+ 10 bonus)
+- 53 main course tutorials (+ 10 bonus)
+- All tutorials are now complete

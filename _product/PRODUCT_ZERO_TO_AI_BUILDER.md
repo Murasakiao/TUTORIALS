@@ -18,7 +18,7 @@ A comprehensive curriculum taking you from zero (terminal, git, python basics) t
 
 ## Structure — 8 Phases + Bonus Content
 
-### Phase 1: Foundation (7 tutorials)
+### Phase 1: Foundation (6 tutorials)
 **Theme:** Terminal & Development Tools
 
 | Tutorial | Status |
@@ -51,7 +51,7 @@ A comprehensive curriculum taking you from zero (terminal, git, python basics) t
 | Tutorial | Status |
 |----------|--------|
 | Basic Web Structure | ✅ Complete |
-| CSS Flexbox | ⚠️ Placeholder |
+| CSS Flexbox | ✅ Complete |
 | How to Pick Color | ✅ Complete |
 | Google Fonts | ✅ Complete |
 | Domain Names | ✅ Complete |
@@ -149,7 +149,7 @@ A comprehensive curriculum taking you from zero (terminal, git, python basics) t
 |-------|-------|----------|------------|-------|
 | 1 | Foundation | 6 | 0 | 6 |
 | 2 | Git | 5 | 0 | 5 |
-| 3 | Web Dev | 8 | 1 | 9 |
+| 3 | Web Dev | 9 | 0 | 9 |
 | 4 | Python | 11 | 0 | 11 |
 | 5 | AI Prompting | 5 | 0 | 5 |
 | 6 | AI Agents | 5 | 0 | 5 |
@@ -157,9 +157,9 @@ A comprehensive curriculum taking you from zero (terminal, git, python basics) t
 | 8 | Automations | 5 | 0 | 5 |
 | — | Bonus: Career | 7 | 0 | 7 |
 | — | Bonus: Content | 3 | 0 | 3 |
-| **Total** | | **55** | **1** | **56** |
+| **Total** | | **56** | **0** | **56** |
 
-**55 complete tutorials / 56 planned = 98% complete**
+**56 complete tutorials / 56 planned = 100% complete**
 
 ---
 
@@ -225,11 +225,10 @@ Bonus         → Can grow a tech career + build audience
 
 ## What's Next
 
-1. **Finish Phase 3** — CSS Flexbox placeholder
-2. **Export pipeline** — Set up MARP CLI for PDF/images
-3. **Social images** — Create platform-specific image variants
-4. **Launch Gumroad** — Upload, set pricing, start audience building
-5. **Social posting** — Schedule content for Sun/Tue/Thu/Sat
+1. **Export pipeline** — Set up MARP CLI for PDF/images
+2. **Social images** — Create platform-specific image variants
+3. **Launch Gumroad** — Upload, set pricing, start audience building
+4. **Social posting** — Schedule content for Sun/Tue/Thu/Sat
 
 ---
 

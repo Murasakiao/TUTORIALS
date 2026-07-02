@@ -1,4 +1,4 @@
-# Gumroad Launch Plan: Beginner to AI Developer Course
+# Gumroad Launch Plan: Zero to AI Builder
 
 ---
 
@@ -6,11 +6,11 @@
 
 | Field | Value |
 |-------|-------|
-| **Product Name** | Beginner to AI Developer Course |
-| **Format** | PDF slides (52 tutorials) |
+| **Product Name** | Zero to AI Builder |
+| **Format** | PDF slides (51+10 tutorials) |
 | **Price** | $9 (Budget tier: $5-15) |
 | **Target** | Beginners who want to become AI-powered developers |
-| **Total Tutorials** | 52 across 8 phases |
+| **Total Tutorials** | 51 across 8 phases + 10 bonus |
 
 ---
 
@@ -32,7 +32,7 @@ npx @marp-team/marp-cli --pdf ./*.md
 
 **Recommended: Zip by Phase**
 ```
-beginner-ai-developer-course/
+zero-to-ai-builder/
 ├── Phase1_Foundation/
 │   ├── Mac Terminal.pdf
 │   ├── Windows Terminal.pdf
@@ -102,8 +102,8 @@ beginner-ai-developer-course/
 
 - **Dimensions**: 1080 x 1080 pixels (square)
 - **Content**:
-  - Course title: "Beginner to AI Developer"
-  - Subtitle: "52 Tutorials. Zero to AI-Powered Coding."
+  - Course title: "Zero to AI Builder"
+  - Subtitle: "51+10 Tutorials. Zero to AI-Powered Coding."
   - Your name: "@juliusdarang"
   - Price badge: "$9"
   - Visual: Clean, professional, tech-themed
@@ -135,16 +135,16 @@ beginner-ai-developer-course/
 2. Choose product type: "Digital product"
 3. Upload your zip file
 4. Fill in details:
-   - **Name**: Beginner to AI Developer Course
+   - **Name**: Zero to AI Builder
    - **Description**: See below
    - **Price**: $9
    - **Cover**: Upload your cover image
 
 **Product Description Template:**
 ```
-Beginner to AI Developer Course
+Zero to AI Builder
 
-52 tutorials. Go from zero to building AI-powered applications.
+51 tutorials across 8 phases + 10 bonus. Go from zero to building AI-powered applications.
 
 This is NOT another generic programming course. You'll learn the modern way to code — with AI as your coding partner.
 
@@ -244,7 +244,7 @@ Perfect for: Complete beginners, self-taught developers, anyone who wants to lev
 
 ## Step 5: Launch Checklist
 
-- [ ] Convert all 52 markdown files to PDF
+- [ ] Convert all markdown files to PDF
 - [ ] Organize PDFs into phase-based folders
 - [ ] Create zip package
 - [ ] Design cover image (1080x1080)
@@ -261,7 +261,7 @@ Perfect for: Complete beginners, self-taught developers, anyone who wants to lev
 
 | File | Description |
 |------|-------------|
-| `beginner-ai-developer-course.zip` | All PDFs organized by phase |
+| `zero-to-ai-builder.zip` | All PDFs organized by phase |
 | `cover-image.png` | 1080x1080 product cover |
 | `bonus-career-content.zip` | Separate free bonus (optional) |
 
@@ -288,4 +288,4 @@ Perfect for: Complete beginners, self-taught developers, anyone who wants to lev
 ---
 
 *Plan created: April 2026*
-*For: Beginner to AI Developer Course*
+*For: Zero to AI Builder*

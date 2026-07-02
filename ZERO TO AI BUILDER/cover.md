@@ -162,7 +162,7 @@ style: |
 
 <div class="top-bar">
   <span class="brand">Zero to AI Builder</span>
-  <!-- <span class="pill">● 56 Presentation style tutorials</span> -->
+  <!-- <span class="pill">● 50+10 Presentation style tutorials</span> -->
 </div>
 
 <div class="title-block">
@@ -185,11 +185,11 @@ style: |
     <div class="phase-title">Version Control</div>
     <div class="phase-count"><b>5</b> tutorials</div>
   </div>
-  <div class="phase-card wip">
+  <div class="phase-card">
     <div class="phase-num">Phase 3</div>
     <span class="phase-icon">🌐</span>
     <div class="phase-title">Web Dev</div>
-    <div class="phase-count"><b>8</b> tutorials</div>
+    <div class="phase-count"><b>9</b> tutorials</div>
   </div>
   <div class="phase-card">
     <div class="phase-num">Phase 4</div>
@@ -225,7 +225,7 @@ style: |
 
 <div class="footer">
   <div class="footer-stat">
-    <div class="num">56</div>
+    <div class="num">50</div>
     <div class="lbl">Tutorials</div>
   </div>
   <div class="footer-divider"></div>
@@ -248,5 +248,5 @@ style: |
     <div class="num green">100%</div>
     <div class="lbl">Complete</div>
   </div> -->
-  <div class="footer-note">PDF PRESENTATION STYLE v2.5</div>
+  <div class="footer-note">PDF PRESENTATION STYLE</div>
 </div>
