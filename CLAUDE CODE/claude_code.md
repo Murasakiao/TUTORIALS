@@ -4,26 +4,25 @@ paginate: true
 html: true
 size: 4:3
 style: |
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;1,300&family=Space+Mono:wght@400;700&display=swap');
 
   :root {
-    --amber:       #f59e0b;
-    --amber-dim:   #d97706;
-    --green:       #22c55e;
-    --blue:        #60a5fa;
-    --purple:      #c4b5fd;
-    --white:       #f1f5f9;
-    --off-white:   #cbd5e1;
-    --subtle:      #94a3b8;
-    --muted:       #64748b;
-    --faint:       #334155;
-    --bg:          #080808;
-    --card-bg:     #111111;
-    --card-border: #222222;
+    --accent:      #e5e5e5;
+    --accent-dim:  #a3a3a3;
+    --white:       #fafafa;
+    --off-white:   #d4d4d4;
+    --subtle:      #a3a3a3;
+    --muted:       #737373;
+    --faint:       #262626;
+    --bg:          #0a0a0a;
+    --card-bg:     #121212;
+    --card-border: #232323;
+    --good-border: #3f3f3f;
+    --bad-color:   #d4d4d4;
   }
 
   section {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     background: var(--bg);
     color: var(--white);
     padding: 44px 52px;
@@ -36,36 +35,37 @@ style: |
 
   h1 {
     font-size: 38px;
-    font-weight: 700;
+    font-weight: 400;
     line-height: 1.08;
     margin: 0 0 14px 0;
     color: var(--white);
-    letter-spacing: -1.5px;
+    letter-spacing: -1px;
   }
   h2 {
     font-size: 28px;
-    font-weight: 700;
+    font-weight: 400;
     line-height: 1.1;
     margin: 0 0 14px 0;
     color: var(--white);
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
     border: none;
   }
   p {
     font-size: 16px;
+    font-weight: 300;
     line-height: 1.6;
     color: var(--subtle);
     margin: 0 0 12px 0;
   }
-  strong { color: var(--white); font-weight: 600; }
+  strong { color: var(--white); font-weight: 500; }
   em     { color: var(--muted); font-style: normal; }
   code {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Space Mono', monospace;
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    color: var(--amber);
+    color: var(--white);
     padding: 1px 6px;
-    border-radius: 4px;
+    border-radius: 2px;
     font-size: 0.88em;
   }
 
@@ -74,11 +74,11 @@ style: |
     display: flex;
     align-items: center;
     gap: 12px;
-    font-family: 'DM Mono', monospace;
+    font-family: 'Space Mono', monospace;
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 3px;
-    color: var(--amber);
+    color: var(--accent-dim);
     text-transform: uppercase;
     margin-bottom: 18px;
   }
@@ -87,13 +87,13 @@ style: |
     display: block;
     width: 24px;
     height: 2px;
-    background: var(--amber);
+    background: var(--accent-dim);
     flex-shrink: 0;
   }
-  .tag.green  { color: var(--green); }
-  .tag.green::before { background: var(--green); }
-  .tag.blue   { color: var(--blue); }
-  .tag.blue::before  { background: var(--blue); }
+  .tag.green  { color: var(--accent-dim); }
+  .tag.green::before { background: var(--accent-dim); }
+  .tag.blue   { color: var(--accent-dim); }
+  .tag.blue::before  { background: var(--accent-dim); }
 
   /* ── HEADER ROW ── */
   .header-row {
@@ -103,14 +103,14 @@ style: |
     margin-bottom: 16px;
   }
   .page-num {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Space Mono', monospace;
     font-size: 10px;
-    color: var(--amber-dim);
+    color: var(--muted);
     letter-spacing: 2px;
     text-transform: uppercase;
   }
   .page-label {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Space Mono', monospace;
     font-size: 10px;
     color: var(--muted);
   }
@@ -125,13 +125,13 @@ style: |
   .card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 10px;
+    border-radius: 3px;
     padding: 14px;
   }
   .card-icon { font-size: 17px; margin-bottom: 6px; display: block; }
   .card h3 {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--white);
     margin: 0 0 4px;
   }
@@ -147,7 +147,7 @@ style: |
   .card-row {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 10px;
+    border-radius: 3px;
     padding: 12px 16px;
     display: flex;
     align-items: flex-start;
@@ -156,7 +156,7 @@ style: |
   .card-row-icon { font-size: 17px; flex-shrink: 0; margin-top: 1px; }
   .card-row-body h3 {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--white);
     margin: 0 0 3px;
   }
@@ -177,23 +177,23 @@ style: |
   .compare-col {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 10px;
+    border-radius: 3px;
     padding: 14px 16px;
   }
-  .compare-col.good { border-color: #14532d; }
+  .compare-col.good { border-color: var(--good-border); }
   .compare-label {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Space Mono', monospace;
     font-size: 9px;
     letter-spacing: 3px;
     text-transform: uppercase;
     margin-bottom: 6px;
     color: var(--muted);
   }
-  .compare-label.bad  { color: #ef4444; }
-  .compare-label.good { color: var(--green); }
+  .compare-label.bad  { color: var(--muted); }
+  .compare-label.good { color: var(--white); }
   .compare-col h3 {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--white);
     margin: 0 0 5px;
   }
@@ -212,13 +212,13 @@ style: |
     gap: 12px;
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 8px;
+    border-radius: 2px;
     padding: 10px 14px;
   }
   .list-num {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Space Mono', monospace;
     font-size: 11px;
-    color: var(--amber);
+    color: var(--accent-dim);
     flex-shrink: 0;
     margin-top: 1px;
     min-width: 18px;
@@ -231,23 +231,23 @@ style: |
     display: inline-block;
     background: #0a0a0a;
     border: 1px solid var(--card-border);
-    border-radius: 5px;
+    border-radius: 2px;
     padding: 2px 8px;
-    font-family: 'DM Mono', monospace;
+    font-family: 'Space Mono', monospace;
     font-size: 11px;
-    color: var(--amber);
+    color: var(--white);
   }
 
   /* ── INSIGHT BOX ── */
   .insight {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 10px;
+    border-radius: 3px;
     padding: 12px 18px;
     margin-top: auto;
   }
   .insight-label {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Space Mono', monospace;
     font-size: 9px;
     letter-spacing: 3px;
     color: var(--muted);
@@ -268,12 +268,12 @@ style: |
   /* ── VOLUME DIVIDER ── */
   section.vol-divider {
     justify-content: center;
-    border-left: 5px solid var(--amber);
+    border-left: 5px solid var(--faint);
     background: #0c0c0c;
   }
   section.vol-divider .tag { margin-bottom: 20px; }
-  section.vol-divider h1   { font-size: 44px; color: var(--amber); margin-bottom: 10px; }
-  section.vol-divider h2   { font-size: 24px; color: var(--white); border: none; margin: 0 0 16px; }
+  section.vol-divider h1   { font-size: 44px; color: var(--white); margin-bottom: 10px; }
+  section.vol-divider h2   { font-size: 24px; color: var(--off-white); border: none; margin: 0 0 16px; }
   section.vol-divider p    { font-size: 15px; color: var(--muted); }
 
   /* ── CTA ── */
@@ -281,15 +281,15 @@ style: |
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: var(--amber);
+    background: var(--white);
   }
-  section.cta h1 { color: #0F0F0F; font-size: 40px; letter-spacing: -1px; margin-bottom: 10px; }
-  section.cta h2 { color: #3a2e00; font-size: 22px; border: none; margin-bottom: 12px; }
-  section.cta p  { color: #5a4700; font-size: 16px; max-width: 540px; margin: 0; }
+  section.cta h1 { color: #0a0a0a; font-size: 40px; letter-spacing: -1px; margin-bottom: 10px; }
+  section.cta h2 { color: #404040; font-size: 22px; border: none; margin-bottom: 12px; }
+  section.cta p  { color: #525252; font-size: 16px; max-width: 540px; margin: 0; }
   section.cta .handle {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Space Mono', monospace;
     font-size: 13px;
-    color: #7a6000;
+    color: #737373;
     margin-top: 22px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -297,7 +297,7 @@ style: |
 
   /* ── FOOTER ── */
   section::after {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Space Mono', monospace;
     font-size: 9px;
     color: var(--muted);
     letter-spacing: 1px;
@@ -508,12 +508,12 @@ Claude Code has **no memory between sessions**. This file restores context insta
 
 <div class="compare">
   <div class="compare-col">
-    <div class="compare-label bad">❌ Vague</div>
+    <div class="compare-label bad">✕ Vague</div>
     <h3>"Fix the login bug"</h3>
     <p>No file, no symptom, no expected behavior. Claude guesses.</p>
   </div>
   <div class="compare-col good">
-    <div class="compare-label good">✅ Precise</div>
+    <div class="compare-label good">✓ Precise</div>
     <h3>"In auth/login.js, the token isn't being saved to localStorage after a successful POST to /api/login. Fix it."</h3>
     <p>File + symptom + expected outcome.</p>
   </div>
@@ -785,12 +785,12 @@ Claude plans and executes multi-step tasks without checking in between.
 
 <div class="compare">
   <div class="compare-col good">
-    <div class="compare-label good">✅ Use when</div>
+    <div class="compare-label good">✓ Use when</div>
     <h3>Safe to automate</h3>
     <p>Well-scoped task, clear success condition, bounded blast radius, reversible changes.</p>
   </div>
   <div class="compare-col">
-    <div class="compare-label bad">❌ Avoid when</div>
+    <div class="compare-label bad">✕ Avoid when</div>
     <h3>High stakes</h3>
     <p>Production data, irreversible actions, ambiguous success condition.</p>
   </div>

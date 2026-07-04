@@ -28,6 +28,7 @@ style: |
   }
 
   section::after {
+    content: '@juliusdarang · ' attr(data-marpit-pagination);
     font-family: 'DM Mono', monospace;
     font-size: 11px;
     color: var(--muted);
