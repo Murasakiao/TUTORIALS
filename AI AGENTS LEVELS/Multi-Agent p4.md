@@ -793,8 +793,7 @@ Both routing strategies live in the same file — `router.py` — but they look 
     <span class="kw">elif</span> <span class="bi">any</span>(<span class="va">k</span> <span class="kw">in</span> <span class="va">text</span> <span class="kw">for</span> <span class="va">k</span> <span class="kw">in</span> [<span class="st">"data"</span>, <span class="st">"csv"</span>, <span class="st">"analyse"</span>]):
         <span class="kw">return</span> <span class="va">RoutingDecision</span>(<span class="va">pipeline</span>=<span class="st">"data_pipeline"</span>, <span class="va">confidence</span>=<span class="st">"HIGH"</span>)
     <span class="kw">return</span> <span class="va">RoutingDecision</span>(<span class="va">pipeline</span>=<span class="st">"unknown"</span>, <span class="va">confidence</span>=<span class="st">"LOW"</span>)
-
-<span class="cm"># ── Strategy B: LLM routing ────────────────────────────────────</span>
+<!-- <span class="cm"># ── Strategy B: LLM routing ────────────────────────────────────</span>
 <span class="kw">def</span> <span class="fn">parse_intent_llm</span>(<span class="va">user_input</span>: <span class="va">str</span>) -> <span class="va">RoutingDecision</span>:
     <span class="va">raw</span> = <span class="va">client</span>.<span class="va">messages</span>.<span class="fn">create</span>(
         <span class="va">model</span>=<span class="st">"claude-haiku-4-5-20251001"</span>,   <span class="cm"># smallest, fastest model</span>
@@ -802,7 +801,7 @@ Both routing strategies live in the same file — `router.py` — but they look 
         <span class="va">system</span>=<span class="fn">load_prompt</span>(<span class="st">"prompts/orchestrator.txt"</span>),
         <span class="va">messages</span>=[{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="va">user_input</span>}]
     ).<span class="va">content</span>[<span class="nu">0</span>].<span class="va">text</span>
-    <span class="kw">return</span> <span class="fn">validate_routing</span>(<span class="va">json</span>.<span class="fn">loads</span>(<span class="va">raw</span>.<span class="bi">strip</span>()))</div>
+    <span class="kw">return</span> <span class="fn">validate_routing</span>(<span class="va">json</span>.<span class="fn">loads</span>(<span class="va">raw</span>.<span class="bi">strip</span>()))</div> -->
 </div>
 
 ---
@@ -827,11 +826,9 @@ Start with rules for known patterns. Fall through to LLM only when rules don't m
   <div class="cb-body"><span class="kw">def</span> <span class="fn">parse_intent</span>(<span class="va">user_input</span>: <span class="va">str</span>) -> <span class="va">RoutingDecision</span>:
     <span class="cm"># ── 1. Try rules first — zero API cost ─────────────────</span>
     <span class="va">rule_result</span> = <span class="fn">parse_intent_rules</span>(<span class="va">user_input</span>)
-
     <span class="kw">if</span> <span class="va">rule_result</span>.<span class="va">confidence</span> == <span class="st">"HIGH"</span>:
         <span class="fn">log_routing</span>(<span class="st">"rule"</span>, <span class="va">rule_result</span>)
         <span class="kw">return</span> <span class="va">rule_result</span>            <span class="cm"># matched — no LLM call needed</span>
-
     <span class="cm"># ── 2. Rules uncertain — fall through to LLM ───────────</span>
     <span class="fn">log_routing</span>(<span class="st">"llm_fallback"</span>, <span class="va">rule_result</span>)
     <span class="va">llm_result</span> = <span class="fn">parse_intent_llm</span>(<span class="va">user_input</span>)
@@ -987,7 +984,7 @@ The integration test is not the first test. Every specialist gets a unit test an
 
 ---
 
-<!-- _class: step -->
+<!-- _class: step
 
 <div class="step-badge">CONCEPT 04 — CONTINUED</div>
 
@@ -1042,7 +1039,7 @@ The integration test is not the first test. Every specialist gets a unit test an
   </div>
 </div>
 
----
+--- -->
 
 <!-- _class: step -->
 
@@ -1081,7 +1078,7 @@ Three failure modes account for most production issues in orchestrated systems. 
 
 ---
 
-<!-- _class: step -->
+<!-- _class: step
 
 <div class="step-badge">CONCEPT 05 — CONTINUED</div>
 
@@ -1103,22 +1100,17 @@ Three failure modes account for most production issues in orchestrated systems. 
     <span class="va">state</span>       = <span class="fn">RunState</span>.<span class="fn">new</span>(<span class="va">user_input</span>)
     <span class="va">clarify_ct</span>  = <span class="nu">0</span>
     <span class="va">current_input</span> = <span class="va">user_input</span>
-
     <span class="kw">while</span> <span class="nu">True</span>:
         <span class="va">decision</span> = <span class="fn">parse_intent</span>(<span class="va">current_input</span>)
-
         <span class="kw">if</span> <span class="va">decision</span>.<span class="va">pipeline</span> == <span class="st">"unknown"</span>:
             <span class="kw">return</span> {<span class="st">"status"</span>: <span class="st">"no_route"</span>}      <span class="cm"># can't route — stop immediately</span>
-
         <span class="va">response</span> = <span class="fn">dispatch</span>(<span class="va">decision</span>, <span class="va">state</span>)
-
         <span class="kw">if</span> <span class="va">response</span>[<span class="st">"status"</span>] == <span class="st">"needs_clarification"</span>:
             <span class="va">clarify_ct</span> += <span class="nu">1</span>
             <span class="kw">if</span> <span class="va">clarify_ct</span> > <span class="va">MAX_CLARIFICATION_TURNS</span>:
                 <span class="kw">return</span> {<span class="st">"status"</span>: <span class="st">"no_route"</span>, <span class="st">"reason"</span>: <span class="st">"clarification_limit_reached"</span>}
             <span class="va">current_input</span> = <span class="fn">ask_clarification</span>(<span class="va">response</span>[<span class="st">"question"</span>])
             <span class="kw">continue</span>                            <span class="cm"># re-enter loop with clarified input</span>
-
         <span class="kw">return</span> <span class="va">response</span>                         <span class="cm"># ok, flagged, or error — stop</span></div>
 </div>
 
@@ -1128,7 +1120,7 @@ Three failure modes account for most production issues in orchestrated systems. 
 
 </div>
 
----
+--- -->
 
 <!-- _class: cta -->
 
