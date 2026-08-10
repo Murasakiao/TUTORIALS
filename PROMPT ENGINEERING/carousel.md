@@ -7,23 +7,20 @@ style: |
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap');
 
   :root {
-    --amber:       #f59e0b;
-    --amber-dim:   #d97706;
-    --green:       #22c55e;
-    --blue:        #60a5fa;
-    --purple:      #c4b5fd;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'DM Mono', monospace;
     --white:       #f1f5f9;
     --off-white:   #cbd5e1;
     --subtle:      #94a3b8;
     --muted:       #64748b;
     --faint:       #334155;
-    --bg:          #080808;
-    --card-bg:     #111111;
-    --card-border: #222222;
+    --bg:          #0a0a0a;
+    --card-bg:     #131313;
+    --card-border: #242424;
   }
 
   section {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--sans);
     background: var(--bg);
     color: var(--white);
     padding: 44px 52px;
@@ -43,12 +40,12 @@ style: |
     letter-spacing: -1.5px;
   }
   h2 {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
     line-height: 1.1;
     margin: 0 0 14px 0;
     color: var(--white);
-    letter-spacing: -1px;
+    letter-spacing: -0.8px;
     border: none;
   }
   p {
@@ -60,30 +57,27 @@ style: |
   strong { color: var(--white); font-weight: 600; }
   em     { color: var(--muted); font-style: normal; }
   code {
-    font-family: 'DM Mono', monospace;
+    font-family: var(--mono);
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    color: var(--amber);
+    color: var(--white);
     padding: 1px 6px;
-    border-radius: 4px;
+    border-radius: 3px;
     font-size: 0.88em;
   }
 
-  .accent-amber  { color: var(--amber); }
-  .accent-green  { color: var(--green); }
-  .accent-blue   { color: var(--blue); }
-  .accent-purple { color: var(--purple); }
+  .accent-amber, .accent-green, .accent-blue, .accent-purple { color: var(--white); }
 
   /* ── TAG ── */
   .tag {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-family: 'DM Mono', monospace;
+    font-family: var(--mono);
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 3px;
-    color: var(--amber);
+    color: var(--off-white);
     text-transform: uppercase;
     margin-bottom: 18px;
   }
@@ -92,13 +86,11 @@ style: |
     display: block;
     width: 24px;
     height: 2px;
-    background: var(--amber);
+    background: var(--muted);
     flex-shrink: 0;
   }
-  .tag.green  { color: var(--green); }
-  .tag.green::before { background: var(--green); }
-  .tag.blue   { color: var(--blue); }
-  .tag.blue::before  { background: var(--blue); }
+  .tag.green, .tag.blue  { color: var(--off-white); }
+  .tag.green::before, .tag.blue::before { background: var(--muted); }
 
   /* ── HEADER ROW ── */
   .header-row {
@@ -108,14 +100,14 @@ style: |
     margin-bottom: 16px;
   }
   .page-num {
-    font-family: 'DM Mono', monospace;
+    font-family: var(--mono);
     font-size: 10px;
-    color: var(--amber-dim);
+    color: var(--muted);
     letter-spacing: 2px;
     text-transform: uppercase;
   }
   .page-label {
-    font-family: 'DM Mono', monospace;
+    font-family: var(--mono);
     font-size: 10px;
     color: var(--muted);
   }
@@ -130,7 +122,7 @@ style: |
   .card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 10px;
+    border-radius: 4px;
     padding: 14px;
   }
   .card-icon { font-size: 17px; margin-bottom: 6px; display: block; }
@@ -152,7 +144,7 @@ style: |
   .card-row {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 10px;
+    border-radius: 4px;
     padding: 12px 16px;
     display: flex;
     align-items: flex-start;
@@ -182,20 +174,20 @@ style: |
   .compare-col {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 10px;
+    border-radius: 4px;
     padding: 14px 16px;
   }
-  .compare-col.good { border-color: #14532d; }
+  .compare-col.good { border-color: var(--off-white); }
   .compare-label {
-    font-family: 'DM Mono', monospace;
+    font-family: var(--mono);
     font-size: 9px;
     letter-spacing: 3px;
     text-transform: uppercase;
     margin-bottom: 6px;
     color: var(--muted);
   }
-  .compare-label.bad  { color: #ef4444; }
-  .compare-label.good { color: var(--green); }
+  .compare-label.bad  { color: var(--muted); }
+  .compare-label.good { color: var(--white); }
   .compare-col h3 {
     font-size: 14px;
     font-weight: 600;
@@ -217,13 +209,13 @@ style: |
     gap: 12px;
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 8px;
+    border-radius: 3px;
     padding: 10px 14px;
   }
   .list-num {
-    font-family: 'DM Mono', monospace;
+    font-family: var(--mono);
     font-size: 11px;
-    color: var(--amber);
+    color: var(--muted);
     flex-shrink: 0;
     margin-top: 1px;
     min-width: 18px;
@@ -234,27 +226,26 @@ style: |
   /* ── PILL ── */
   .pill {
     display: inline-block;
-    background: #0a0a0a;
+    background: #050505;
     border: 1px solid var(--card-border);
-    border-radius: 5px;
+    border-radius: 3px;
     padding: 2px 8px;
-    font-family: 'DM Mono', monospace;
+    font-family: var(--mono);
     font-size: 11px;
-    color: var(--amber);
+    color: var(--off-white);
   }
-  .pill.green  { color: var(--green); border-color: #14532d; }
-  .pill.blue   { color: var(--blue);  border-color: #1e3a5f; }
+  .pill.green, .pill.blue  { color: var(--off-white); border-color: var(--faint); }
 
   /* ── INSIGHT BOX ── */
   .insight {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 10px;
+    border-radius: 4px;
     padding: 12px 18px;
     margin-top: auto;
   }
   .insight-label {
-    font-family: 'DM Mono', monospace;
+    font-family: var(--mono);
     font-size: 9px;
     letter-spacing: 3px;
     color: var(--muted);
@@ -269,17 +260,17 @@ style: |
     padding-bottom: 80px;
     background: #050505;
   }
-  section.cover h1 { font-size: 48px; }
+  section.cover h1 { font-size: 46px; }
   section.cover p  { font-size: 17px; color: var(--subtle); }
 
   /* ── VOLUME DIVIDER ── */
   section.vol-divider {
     justify-content: center;
-    border-left: 5px solid var(--amber);
-    background: #0c0c0c;
+    border-left: 5px solid var(--off-white);
+    background: #0d0d0d;
   }
   section.vol-divider .tag { margin-bottom: 20px; }
-  section.vol-divider h1   { font-size: 44px; color: var(--amber); margin-bottom: 10px; }
+  section.vol-divider h1   { font-size: 42px; color: var(--white); margin-bottom: 10px; }
   section.vol-divider h2   { font-size: 24px; color: var(--white); border: none; margin: 0 0 16px; }
   section.vol-divider p    { font-size: 15px; color: var(--muted); }
 
@@ -288,15 +279,15 @@ style: |
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: var(--amber);
+    background: #f1f5f9;
   }
-  section.cta h1 { color: #0F0F0F; font-size: 40px; letter-spacing: -1px; margin-bottom: 10px; }
-  section.cta h2 { color: #3a2e00; font-size: 22px; border: none; margin-bottom: 12px; }
-  section.cta p  { color: #5a4700; font-size: 16px; max-width: 540px; margin: 0; }
+  section.cta h1 { color: #0a0a0a; font-size: 38px; letter-spacing: -1px; margin-bottom: 10px; }
+  section.cta h2 { color: #1e293b; font-size: 20px; border: none; margin-bottom: 12px; }
+  section.cta p  { color: #475569; font-size: 15px; max-width: 540px; margin: 0; }
   section.cta .handle {
-    font-family: 'DM Mono', monospace;
+    font-family: var(--mono);
     font-size: 13px;
-    color: #7a6000;
+    color: #334155;
     margin-top: 22px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -304,11 +295,11 @@ style: |
 
   /* ── FOOTER ── */
   section::after {
-    font-family: 'DM Mono', monospace;
+    font-family: var(--mono);
     font-size: 9px;
     color: var(--muted);
     letter-spacing: 1px;
-    content: '@juliusdarang · ' attr(data-marpit-pagination) ' / ' attr(data-marpit-pagination-total);
+    content: 'PROMPT ENG 101 · ' attr(data-marpit-pagination) ' / ' attr(data-marpit-pagination-total);
     position: absolute;
     bottom: 20px;
     right: 40px;
@@ -326,7 +317,7 @@ style: |
 
 Get consistently better outputs from AI — from first principles to agentic systems.
 
-*The essential techniques only.*
+*The essential techniques, condensed.*
 
 ---
 
