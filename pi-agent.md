@@ -4,154 +4,103 @@ paginate: true
 html: true
 size: 4:3
 style: |
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
 
   :root {
-    --sans: 'DM Sans', system-ui, sans-serif;
-    --mono: 'DM Mono', monospace;
-    --white:       #f1f5f9;
-    --off-white:   #cbd5e1;
-    --subtle:      #94a3b8;
-    --muted:       #64748b;
-    --faint:       #334155;
-    --bg:          #0a0a0a;
-    --card-bg:     #131313;
-    --card-border: #242424;
+    --body: 'STIX Two Text', 'Latin Modern Roman', Georgia, serif;
+    --mono: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace;
+    --white:       #e8e7e3;
+    --off-white:   #c9c8c3;
+    --subtle:      #a7a6a1;
+    --muted:       #85847f;
+    --faint:       #4e4e4a;
+    --bg:          #121313;
+    --card-border: #2a2a28;
   }
 
   section {
-    font-family: var(--sans);
+    font-family: var(--body);
     background: var(--bg);
     color: var(--white);
-    padding: 44px 52px;
+    padding: 64px 88px 72px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
     position: relative;
   }
 
   h1 {
-    font-size: 38px;
-    font-weight: 700;
-    line-height: 1.08;
-    margin: 0 0 14px 0;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1.12;
+    margin: 0 0 16px 0;
     color: var(--white);
-    letter-spacing: -1.5px;
+    letter-spacing: 0;
   }
   h2 {
-    font-size: 26px;
-    font-weight: 700;
-    line-height: 1.1;
-    margin: 0 0 14px 0;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0 0 18px 0;
     color: var(--white);
-    letter-spacing: -0.8px;
+    letter-spacing: 0;
     border: none;
   }
   p {
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 17px;
+    line-height: 1.65;
     color: var(--subtle);
-    margin: 0 0 12px 0;
+    margin: 0 0 14px 0;
   }
   strong { color: var(--white); font-weight: 600; }
-  em     { color: var(--muted); font-style: normal; }
+  em     { color: var(--muted); font-style: italic; }
   code {
     font-family: var(--mono);
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
+    background: transparent;
+    border: none;
     color: var(--white);
-    padding: 1px 6px;
-    border-radius: 3px;
-    font-size: 0.88em;
+    padding: 0;
+    border-radius: 0;
+    font-size: 0.9em;
   }
-  pre {
-    font-family: var(--mono);
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    color: var(--off-white);
-    padding: 16px 18px;
-    border-radius: 4px;
-    font-size: 14px;
-    line-height: 1.6;
-    margin: 0;
-  }
-  pre code { background: none; border: none; padding: 0; color: var(--off-white); }
-
-  .tag {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 3px;
-    color: var(--off-white);
-    text-transform: uppercase;
-    margin-bottom: 18px;
-  }
-  .tag::before {
-    content: '';
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--muted);
-    flex-shrink: 0;
-  }
-
   .header-row {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
+    justify-content: flex-start;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+  .header-row h2 {
+    margin: 0;
   }
   .page-num {
     font-family: var(--mono);
-    font-size: 10px;
+    font-size: 28px;
+    line-height: 1.15;
     color: var(--muted);
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    letter-spacing: 0;
+    flex-shrink: 0;
   }
-  .page-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--muted);
-  }
-
-  .cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  .cards-col {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
-    margin-bottom: 12px;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto 16px;
   }
-  .card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 4px;
-    padding: 14px;
-  }
-  .card h3 {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--white);
-    margin: 0 0 4px;
-  }
-  .card p {
-    font-size: 13px;
-    color: var(--subtle);
-    line-height: 1.45;
-    margin: 0;
-  }
-
-  .cards-col { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
   .card-row {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 4px;
-    padding: 12px 16px;
+    background: transparent;
+    border: none;
+    border-left: 1px solid var(--card-border);
+    border-radius: 0;
+    padding: 0 0 0 18px;
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: 14px;
   }
   .card-row-letter {
     font-family: var(--mono);
@@ -174,50 +123,22 @@ style: |
     line-height: 1.45;
   }
 
-  .compare {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 10px;
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto 16px;
   }
-  .compare-col {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 4px;
-    padding: 14px 16px;
-  }
-  .compare-col.solid { border-color: var(--off-white); }
-  .compare-label {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-    color: var(--muted);
-  }
-  .compare-label.solid { color: var(--white); }
-  .compare-col h3 {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--white);
-    margin: 0 0 5px;
-  }
-  .compare-col p {
-    font-size: 13px;
-    color: var(--subtle);
-    line-height: 1.45;
-    margin: 0;
-  }
-
-  .list { display: flex; flex-direction: column; gap: 7px; margin-bottom: 12px; }
   .list-item {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 3px;
-    padding: 10px 14px;
+    gap: 16px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
   }
   .list-num {
     font-family: var(--mono);
@@ -230,67 +151,98 @@ style: |
   .list-text { font-size: 13.5px; color: var(--subtle); line-height: 1.45; }
   .list-text strong { color: var(--white); }
 
-  .pill {
-    display: inline-block;
-    background: #050505;
-    border: 1px solid var(--card-border);
-    border-radius: 3px;
-    padding: 2px 8px;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--off-white);
-  }
-
-  .insight {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 4px;
-    padding: 12px 18px;
-    margin-top: auto;
-  }
-  .insight-label {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 3px;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-  .insight p { font-size: 14px; color: var(--off-white); line-height: 1.5; margin: 0; }
-
   section.cover {
-    justify-content: flex-end;
-    padding-bottom: 80px;
-    background: #050505;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 72px;
+    background: #0f1010;
   }
-  section.cover h1 { font-size: 46px; }
-  section.cover p  { font-size: 17px; color: var(--subtle); }
+  .cover-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 720px;
+  }
+  .cover-kicker,
+  .cta-kicker {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  section.cover h1 {
+    font-size: 58px;
+    line-height: 1.05;
+    margin-bottom: 18px;
+  }
+  section.cover p {
+    max-width: 620px;
+    font-size: 20px;
+    color: var(--subtle);
+    margin-bottom: 20px;
+  }
+  .cover-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
 
   section.divider {
     justify-content: center;
     border-left: 5px solid var(--off-white);
-    background: #0d0d0d;
+    background: #171817;
   }
-  section.divider .tag { margin-bottom: 20px; }
-  section.divider h1   { font-size: 42px; color: var(--white); margin-bottom: 10px; }
-  section.divider p    { font-size: 15px; color: var(--muted); }
+  section.divider h1 { font-size: 42px; color: var(--white); margin-bottom: 10px; }
+  section.divider p  { font-size: 15px; color: var(--muted); }
 
   section.cta {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: #f1f5f9;
+    background: #e9e9e5;
   }
-  section.cta h1 { color: #0a0a0a; font-size: 38px; letter-spacing: -1px; margin-bottom: 10px; }
-  section.cta h2 { color: #1e293b; font-size: 20px; border: none; margin-bottom: 12px; }
-  section.cta p  { color: #475569; font-size: 15px; max-width: 540px; margin: 0; }
+  .cta-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 720px;
+  }
+  section.cta h1 {
+    color: #171716;
+    font-size: 44px;
+    line-height: 1.1;
+    letter-spacing: 0;
+    margin-bottom: 24px;
+  }
+  .cta-line {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: #65645f;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
   section.cta .handle {
     font-family: var(--mono);
     font-size: 13px;
-    color: #334155;
+    color: #555550;
     margin-top: 22px;
     letter-spacing: 2px;
     text-transform: uppercase;
+  }
+
+  section > .header-row,
+  section > h2 {
+    width: 100%;
+    max-width: 720px;
   }
 
   section::after {
@@ -308,45 +260,46 @@ style: |
 <!-- SLIDE 1 · COVER -->
 <!-- _class: cover -->
 
-<div class="tag">Minimal Guide</div>
-
-# Pi Coding Agent
-
-A provider-agnostic, MIT-licensed coding agent with a small core and everything else opt-in.
-
-*4 default tools. 15+ providers. No SaaS backend.*
+<div class="cover-content">
+  <div class="cover-kicker">PI CODING AGENT</div>
+  <h1>Pi Coding Agent</h1>
+  <p>A small, provider-agnostic coding agent.</p>
+  <div class="cover-meta">
+    <span>Four tools</span>
+    <span>Many providers</span>
+    <span>Runs locally</span>
+  </div>
+</div>
 
 ---
 
 <!-- SLIDE 2 · WHAT IT IS -->
 
 <div class="header-row">
-  <span class="page-num">— i · hook —</span>
-  <span class="page-label">what it is</span>
+  <span class="page-num">I.</span>
+  <h2>What Pi is</h2>
 </div>
-
-## What Pi actually is
 
 <div class="cards-col">
   <div class="card-row">
-    <span class="card-row-letter">A</span>
+    <span class="card-row-letter">01</span>
     <div class="card-row-body">
-      <h3>4 default tools only</h3>
-      <p>read, write, edit, bash. No plan mode, no sub-agents, no MCP out of the box.</p>
+      <h3>Four tools</h3>
+      <p><code>read</code> · <code>write</code> · <code>edit</code> · <code>bash</code></p>
     </div>
   </div>
   <div class="card-row">
-    <span class="card-row-letter">B</span>
+    <span class="card-row-letter">02</span>
     <div class="card-row-body">
-      <h3>Open source, MIT-licensed</h3>
-      <p>Built by Mario Zechner (<code>earendil-works/pi</code>). Runs locally — no SaaS backend.</p>
+      <h3>Open source</h3>
+      <p>MIT-licensed. Runs locally.</p>
     </div>
   </div>
   <div class="card-row">
-    <span class="card-row-letter">C</span>
+    <span class="card-row-letter">03</span>
     <div class="card-row-body">
-      <h3>15+ providers</h3>
-      <p>Anthropic, OpenAI, Google, Groq, and more — swappable at the API layer.</p>
+      <h3>Provider-agnostic</h3>
+      <p>Use Anthropic, OpenAI, Google, Groq, and more.</p>
     </div>
   </div>
 </div>
@@ -356,28 +309,23 @@ A provider-agnostic, MIT-licensed coding agent with a small core and everything 
 <!-- SLIDE 3 · WHY PI -->
 
 <div class="header-row">
-  <span class="page-num">— ii · why pi —</span>
-  <span class="page-label">control vs. convenience</span>
+  <span class="page-num">II.</span>
+  <h2>Why Pi</h2>
 </div>
 
-## Why choose Pi
-
-<div class="compare">
-  <div class="compare-col">
-    <div class="compare-label">Claude Code / Codex</div>
-    <h3>Opinionated, ready fast</h3>
-    <p>Decisions made for you. Great defaults, less to configure.</p>
+<div class="list">
+  <div class="list-item">
+    <span class="list-num">01</span>
+    <span class="list-text"><strong>Less built in</strong> — fewer defaults and less hidden behavior</span>
   </div>
-  <div class="compare-col solid">
-    <div class="compare-label solid">Pi</div>
-    <h3>Provider-agnostic, shaped by you</h3>
-    <p>No built-in permission system — you sandbox it yourself. That's the trade for flexibility.</p>
+  <div class="list-item">
+    <span class="list-num">02</span>
+    <span class="list-text"><strong>More control</strong> — choose the model, tools, and boundaries</span>
   </div>
-</div>
-
-<div class="insight">
-  <div class="insight-label">proof it's real</div>
-  <p>Powers OpenClaw. Used daily by engineers like Armin Ronacher, creator of Flask.</p>
+  <div class="list-item">
+    <span class="list-num">03</span>
+    <span class="list-text"><strong>More extensible</strong> — add capabilities only when needed</span>
+  </div>
 </div>
 
 ---
@@ -385,26 +333,23 @@ A provider-agnostic, MIT-licensed coding agent with a small core and everything 
 <!-- SLIDE 4 · PHILOSOPHY -->
 
 <div class="header-row">
-  <span class="page-num">— iii · philosophy —</span>
-  <span class="page-label">the core idea</span>
+  <span class="page-num">III.</span>
+  <h2>The philosophy</h2>
 </div>
 
-## Philosophy
-
-<div class="cards">
-  <div class="card">
-    <h3>Adapt Pi to your workflow</h3>
-    <p>Not the other way around. Pi bends to how you already build.</p>
+<div class="list">
+  <div class="list-item">
+    <span class="list-num">01</span>
+    <span class="list-text"><strong>Adapt the agent</strong> — fit Pi to the way you already work</span>
   </div>
-  <div class="card">
-    <h3>Small core, opt-in everything</h3>
-    <p>The base stays minimal. You add exactly what you need, nothing more.</p>
+  <div class="list-item">
+    <span class="list-num">02</span>
+    <span class="list-text"><strong>Keep the core small</strong> — add tools and features opt in</span>
   </div>
-</div>
-
-<div class="insight">
-  <div class="insight-label">the trade-off</div>
-  <p>Less handed to you out of the box — more control over what your agent actually does.</p>
+  <div class="list-item">
+    <span class="list-num">03</span>
+    <span class="list-text"><strong>Own the runtime</strong> — run locally and sandbox it yourself</span>
+  </div>
 </div>
 
 ---
@@ -412,28 +357,26 @@ A provider-agnostic, MIT-licensed coding agent with a small core and everything 
 <!-- SLIDE 5 · THE 4 PILLARS -->
 
 <div class="header-row">
-  <span class="page-num">— iv · architecture —</span>
-  <span class="page-label">the 4 pillars</span>
+  <span class="page-num">IV.</span>
+  <h2>Four building blocks</h2>
 </div>
-
-## The 4 pillars
 
 <div class="list">
   <div class="list-item">
-    <span class="list-num">A</span>
-    <span class="list-text"><strong>Context</strong> — <code>AGENTS.md</code> and <code>SYSTEM.md</code> load project instructions before Pi acts</span>
+    <span class="list-num">01</span>
+    <span class="list-text"><strong>Context</strong> — project instructions</span>
   </div>
   <div class="list-item">
-    <span class="list-num">B</span>
-    <span class="list-text"><strong>Extensions</strong> — TypeScript modules adding tools, commands, and missing features, shared as Pi packages</span>
+    <span class="list-num">02</span>
+    <span class="list-text"><strong>Extensions</strong> — tools and commands</span>
   </div>
   <div class="list-item">
-    <span class="list-num">C</span>
-    <span class="list-text"><strong>Skills</strong> — on-demand capability packages, loaded only when needed</span>
+    <span class="list-num">03</span>
+    <span class="list-text"><strong>Skills</strong> — on-demand capabilities</span>
   </div>
   <div class="list-item">
-    <span class="list-num">D</span>
-    <span class="list-text"><strong>Memory</strong> — auto-compaction plus extension-injected context for long sessions</span>
+    <span class="list-num">04</span>
+    <span class="list-text"><strong>Memory</strong> — long-session context</span>
   </div>
 </div>
 
@@ -442,34 +385,27 @@ A provider-agnostic, MIT-licensed coding agent with a small core and everything 
 <!-- SLIDE 6 · HOW IT RUNS -->
 
 <div class="header-row">
-  <span class="page-num">— v · runtime —</span>
-  <span class="page-label">how it runs</span>
+  <span class="page-num">V.</span>
+  <h2>Ways to run Pi</h2>
 </div>
 
-## How it runs
-
-<div class="cards">
-  <div class="card">
-    <h3>Interactive</h3>
-    <p>A conversational terminal session for hands-on work.</p>
+<div class="list">
+  <div class="list-item">
+    <span class="list-num">01</span>
+    <span class="list-text"><strong>Interactive</strong> — work in the terminal</span>
   </div>
-  <div class="card">
-    <h3>Print / JSON</h3>
-    <p>Single-shot output for scripting and piping.</p>
+  <div class="list-item">
+    <span class="list-num">02</span>
+    <span class="list-text"><strong>Print / JSON</strong> — script and pipe output</span>
   </div>
-  <div class="card">
-    <h3>RPC</h3>
-    <p>Drive Pi programmatically over a structured protocol.</p>
+  <div class="list-item">
+    <span class="list-num">03</span>
+    <span class="list-text"><strong>RPC</strong> — drive Pi programmatically</span>
   </div>
-  <div class="card">
-    <h3>SDK</h3>
-    <p>Embed Pi directly inside your own application.</p>
+  <div class="list-item">
+    <span class="list-num">04</span>
+    <span class="list-text"><strong>SDK</strong> — embed Pi in an application</span>
   </div>
-</div>
-
-<div class="insight">
-  <div class="insight-label">the point</div>
-  <p>Pi is a runtime you can build on — not just a chatbot.</p>
 </div>
 
 ---
@@ -477,36 +413,42 @@ A provider-agnostic, MIT-licensed coding agent with a small core and everything 
 <!-- SLIDE 7 · TRY IT -->
 
 <div class="header-row">
-  <span class="page-num">— vi · try it —</span>
-  <span class="page-label">install & run</span>
+  <span class="page-num">VI.</span>
+  <h2>Install</h2>
 </div>
 
-## Try it
-
-<pre><code>npm i -g @earendil-works/pi-coding-agent
-pi</code></pre>
-
-<div class="insight">
-  <div class="insight-label">that's it</div>
-  <p>One global install, one command. No account, no setup wizard.</p>
+<div class="list">
+  <div class="list-item">
+    <span class="list-num">01</span>
+    <span class="list-text"><strong>Install</strong> — <code>npm i -g @earendil-works/pi-coding-agent</code></span>
+  </div>
+  <div class="list-item">
+    <span class="list-num">02</span>
+    <span class="list-text"><strong>Run</strong> — <code>pi</code></span>
+  </div>
 </div>
 
 ---
 
 <!-- SLIDE 8 · TAKEAWAY -->
 
-<div style="display:flex;flex-direction:column;justify-content:center;height:100%;text-align:center;align-items:center;">
-  <div class="tag" style="justify-content:center;margin-bottom:24px;">vii · takeaway</div>
-  <h1 style="font-size:46px;line-height:1.15;letter-spacing:-1.5px;">Shape it,<br>don't wait for it<br>to fit you</h1>
-  <div class="compare" style="margin-top:24px;width:100%;">
-    <div class="compare-col solid">
-      <div class="compare-label solid">For</div>
-      <p>People who want to shape their own workflow.</p>
-    </div>
-    <div class="compare-col">
-      <div class="compare-label">Not for</div>
-      <p>People who want zero setup and fixed decisions made for them.</p>
-    </div>
+<div class="header-row">
+  <span class="page-num">VII.</span>
+  <h2>Takeaway</h2>
+</div>
+
+<div class="list">
+  <div class="list-item">
+    <span class="list-num">01</span>
+    <span class="list-text"><strong>Start with the core</strong> — four tools and a local runtime</span>
+  </div>
+  <div class="list-item">
+    <span class="list-num">02</span>
+    <span class="list-text"><strong>Choose your boundaries</strong> — sandbox what the agent can do</span>
+  </div>
+  <div class="list-item">
+    <span class="list-num">03</span>
+    <span class="list-text"><strong>Shape the rest</strong> — add extensions and skills as needed</span>
   </div>
 </div>
 
@@ -515,14 +457,9 @@ pi</code></pre>
 <!-- SLIDE 9 · CTA -->
 <!-- _class: cta -->
 
-<div class="tag" style="justify-content:center;color:#334155;margin-bottom:20px;">
-  Pi Coding Agent
+<div class="cta-content">
+  <div class="cta-kicker">PI CODING AGENT</div>
+  <h1>There are many coding agents.<br>This one is mine.</h1>
+  <div class="cta-line">Install. Sandbox. Shape.</div>
+  <div class="handle">earendil-works/pi</div>
 </div>
-
-# Small core. Your rules.
-
-## Install it, sandbox it, shape it.
-
-<p><code>npm i -g @earendil-works/pi-coding-agent</code></p>
-
-<div class="handle">earendil-works/pi</div>
