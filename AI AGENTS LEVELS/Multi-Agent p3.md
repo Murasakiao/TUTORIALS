@@ -894,14 +894,11 @@ Every specialist function opens the same way: validate input, return a structure
   </div>
   <div class="cb-body"><span class="kw">from</span> <span class="va">pydantic</span> <span class="kw">import</span> <span class="va">BaseModel, ValidationError</span>
 <span class="kw">from</span> <span class="va">contracts</span> <span class="kw">import</span> <span class="va">SpecialistResponse</span>
-
 <span class="kw">class</span> <span class="fn">ResearchInput</span>(<span class="va">BaseModel</span>):
     <span class="va">topic</span>:    <span class="va">str</span>
     <span class="va">audience</span>: <span class="va">str</span>
     <span class="va">depth</span>:    <span class="va">str</span> = <span class="st">"quick"</span>   <span class="cm"># default — safe to omit</span>
-
 <span class="kw">def</span> <span class="fn">run_research_specialist</span>(**<span class="va">params</span>) -> <span class="va">SpecialistResponse</span>:
-    <span class="cm"># ── 1. Validate input immediately ──────────────────────</span>
     <span class="kw">try</span>:
         <span class="va">inputs</span> = <span class="fn">ResearchInput</span>(**<span class="va">params</span>)
     <span class="kw">except</span> <span class="va">ValidationError</span> <span class="kw">as</span> <span class="va">e</span>:
@@ -910,10 +907,7 @@ Every specialist function opens the same way: validate input, return a structure
             <span class="va">error</span>=<span class="st">f"Invalid input: {e}"</span>,
             <span class="va">payload</span>=<span class="nu">None</span>
         )
-    <span class="cm"># ── 2. Do the work — only if input is valid ─────────────</span>
     <span class="va">result</span> = <span class="fn">_call_research_llm</span>(<span class="va">inputs</span>)
-
-    <span class="cm"># ── 3. Return in the standard envelope ─────────────────</span>
     <span class="kw">return</span> <span class="va">SpecialistResponse</span>(
         <span class="va">status</span>=<span class="st">"ok"</span>,
         <span class="va">payload</span>=<span class="va">result</span>,
@@ -989,30 +983,25 @@ The orchestrator's result-handling code is the same for every specialist — bec
     <span class="va">response</span>: <span class="va">SpecialistResponse</span>,
     <span class="va">specialist_name</span>: <span class="va">str</span>
 ) -> <span class="va">dict</span>:
-
     <span class="cm"># ── Log meta regardless of status ──────────────────────</span>
     <span class="fn">log_meta</span>(<span class="va">specialist_name</span>, <span class="va">response</span>.<span class="va">meta</span>)
-
     <span class="cm"># ── Branch on status — never on payload content ────────</span>
     <span class="kw">if</span> <span class="va">response</span>.<span class="va">status</span> == <span class="st">"ok"</span>:
         <span class="kw">return</span> <span class="fn">wrap_success</span>(<span class="va">response</span>.<span class="va">payload</span>)
-
     <span class="kw">elif</span> <span class="va">response</span>.<span class="va">status</span> == <span class="st">"flagged"</span>:
         <span class="kw">return</span> <span class="fn">wrap_flagged</span>(<span class="va">response</span>.<span class="va">payload</span>, <span class="va">response</span>.<span class="va">error</span>)
-
     <span class="kw">elif</span> <span class="va">response</span>.<span class="va">status</span> == <span class="st">"needs_clarification"</span>:
         <span class="kw">return</span> <span class="fn">wrap_clarification</span>(<span class="va">response</span>.<span class="va">error</span>)
-
     <span class="kw">else</span>:  <span class="cm"># "error"</span>
         <span class="fn">log_error</span>(<span class="va">specialist_name</span>, <span class="va">response</span>.<span class="va">error</span>)
         <span class="kw">raise</span> <span class="va">SpecialistError</span>(<span class="st">f"{specialist_name}: {response.error}"</span>)</div>
 </div>
 
-<div class="highlight">
+<!-- <div class="highlight">
 
-**The orchestrator never inspects payload content to decide what to do next.** It reads <code>status</code>. If it needs to branch based on what the research specialist found, that branching belongs in a downstream specialist — not in the orchestrator's result handler.
+**The orchestrator never inspects payload content to decide what to do next.** It reads <code>status</code>. The branching belongs in a downstream specialist — not in the orchestrator's result handler.
 
-</div>
+</div> -->
 
 ---
 
@@ -1143,7 +1132,7 @@ The orchestrator runs a sequence of specialist calls. Between calls, it must hol
       <div class="wrc-code">state.artifacts["research"] = response.payload; state.completed.append("research")</div>
     </div>
   </div>
-  <div class="wt-row">
+  <!-- <div class="wt-row">
     <div class="wr-num">3</div>
     <div class="wr-content">
       <div class="wrc-title">🔍 &nbsp;Before each specialist call — read state</div>
@@ -1156,7 +1145,7 @@ The orchestrator runs a sequence of specialist calls. Between calls, it must hol
     <div class="wr-content">
       <div class="wrc-title">💾 &nbsp;Persist state for resumability</div>
       <div class="wrc-desc">Save <code>RunState</code> to disk after every successful specialist call. If the run crashes at stage 4, load the last saved state and resume from <code>state.completed[-1] + 1</code>. Stages already in <code>completed</code> never re-run.</div>
-      <div class="wrc-code">save_state(f"runs/{state.run_id}.json", state)</div>
+      <div class="wrc-code">save_state(f"runs/{state.run_id}.json", state)</div> -->
     </div>
   </div>
 </div>
