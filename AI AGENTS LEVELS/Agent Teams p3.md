@@ -862,7 +862,6 @@ A checkpoint that blocks a thread while waiting for human input wastes resources
     <span class="cm"># ── Phase 1: content team runs autonomously ─────────────</span>
     <span class="va">content_result</span> = <span class="fn">run_content_team</span>(<span class="va">ctx</span>, **<span class="va">params</span>)
     <span class="fn">save_run_state</span>(<span class="va">ctx</span>.<span class="va">run_id</span>, <span class="st">"after_content"</span>, <span class="va">content_result</span>)
-
     <span class="cm"># ── Checkpoint: pause before irreversible action ─────────</span>
     <span class="fn">request_human_approval</span>(
         <span class="va">run_id</span>   = <span class="va">ctx</span>.<span class="va">run_id</span>,
