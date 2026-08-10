@@ -1122,15 +1122,15 @@ Context rot is the Level 4 failure mode where state from one run leaks into a su
   </div>
 </div>
 
-<div class="highlight">
+<!-- <div class="highlight">
 
 **The rule:** No team-level object survives a run boundary. Every team call starts with a fresh state, a frozen global context, and no assumptions about prior runs. If resuming a crashed run, load the last saved state explicitly — never rely on in-memory state from a previous execution.
 
-</div>
+</div> -->
 
 ---
 
-<!-- _class: step -->
+<!-- _class: step
 
 <div class="step-badge">CONCEPT 04 — CONTINUED</div>
 
@@ -1152,7 +1152,6 @@ Context rot is the Level 4 failure mode where state from one run leaks into a su
     <span class="va">run_id</span>:           <span class="va">str</span>
     <span class="va">completed_stages</span>: <span class="va">list</span>[<span class="va">str</span>] = []
     <span class="va">artifacts</span>:        <span class="va">dict</span>       = {}
-
     <span class="kw">@classmethod</span>
     <span class="kw">def</span> <span class="fn">new</span>(<span class="va">cls</span>, <span class="va">run_id</span>: <span class="va">str</span>) -> <span class="st">"ContentTeamState"</span>:
         <span class="kw">return</span> <span class="va">cls</span>(<span class="va">run_id</span>=<span class="va">run_id</span>)  <span class="cm"># always fresh — no defaults from prior runs</span>
@@ -1161,18 +1160,15 @@ Context rot is the Level 4 failure mode where state from one run leaks into a su
     <span class="va">ctx</span>: <span class="va">GlobalContext</span>,             <span class="cm"># frozen — read-only</span>
     **<span class="va">params</span>
 ) -> <span class="va">TeamResponse</span>:
-
     <span class="cm"># ── Always create state fresh — never reuse ─────────────</span>
     <span class="va">state</span> = <span class="va">ContentTeamState</span>.<span class="fn">new</span>(<span class="va">ctx</span>.<span class="va">run_id</span>)
-
     <span class="cm"># ── ctx is a frozen model — mutation raises immediately ──</span>
     <span class="cm"># ctx.session_prefs["tone"] = "casual"  ← raises FrozenInstanceError</span>
-
     <span class="cm"># ── Run the internal pipeline with isolated state ───────</span>
     <span class="kw">return</span> <span class="fn">_run_pipeline</span>(<span class="va">ctx</span>, <span class="va">state</span>, <span class="va">params</span>)</div>
 </div>
 
----
+--- -->
 
 <!-- _class: step -->
 
