@@ -75,10 +75,11 @@ style: |
   }
   .header-row h2 {
     margin: 0;
+    font-size: 30px;
   }
   .page-num {
     font-family: var(--mono);
-    font-size: 28px;
+    font-size: 30px;
     line-height: 1.15;
     color: var(--muted);
     letter-spacing: 0;
@@ -111,13 +112,13 @@ style: |
     min-width: 16px;
   }
   .card-row-body h3 {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     color: var(--white);
     margin: 0 0 3px;
   }
   .card-row-body p {
-    font-size: 13px;
+    font-size: 15px;
     color: var(--subtle);
     margin: 0;
     line-height: 1.45;
@@ -142,13 +143,13 @@ style: |
   }
   .list-num {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 12px;
     color: var(--muted);
     flex-shrink: 0;
     margin-top: 1px;
     min-width: 18px;
   }
-  .list-text { font-size: 13.5px; color: var(--subtle); line-height: 1.45; }
+  .list-text { font-size: 16px; color: var(--subtle); line-height: 1.45; }
   .list-text strong { color: var(--white); }
 
   section.cover {
@@ -208,6 +209,10 @@ style: |
     align-items: center;
     text-align: center;
     background: #e9e9e5;
+  }
+  section.cover::after,
+  section.cta::after {
+    display: none !important;
   }
   .cta-content {
     display: flex;
@@ -461,5 +466,5 @@ style: |
   <div class="cta-kicker">PI CODING AGENT</div>
   <h1>There are many coding agents.<br>This one is mine.</h1>
   <div class="cta-line">Install. Sandbox. Shape.</div>
-  <div class="handle">earendil-works/pi</div>
+  <!-- <div class="handle">earendil-works/pi</div> -->
 </div>
