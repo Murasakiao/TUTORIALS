@@ -267,8 +267,8 @@ style: |
 
 <div class="cover-content">
   <div class="cover-kicker">PI CODING AGENT</div>
-  <h1>Pi Coding Agent</h1>
-  <p>A small, provider-agnostic coding agent.</p>
+  <h1>Pi</h1>
+  <p>A minimal, highly-extensible, terminal-based coding agent.</p>
   <div class="cover-meta">
     <span>Four tools</span>
     <span>Many providers</span>

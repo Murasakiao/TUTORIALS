@@ -6,6 +6,7 @@ SOURCE="$ROOT/pi-agent-contents.md"
 PARTS="$ROOT/_pdf-parts.json"
 HEADER="$ROOT/_pdf-header.tex"
 OUTPUT="${1:-$ROOT/pi-agent-full.pdf}"
+SCRIPT="$ROOT/$(basename "${BASH_SOURCE[0]}")"
 
 if ! command -v pandoc >/dev/null 2>&1; then
   echo "pandoc is required: brew install pandoc" >&2
@@ -14,6 +15,35 @@ fi
 if ! command -v xelatex >/dev/null 2>&1; then
   echo "xelatex is required" >&2
   exit 1
+fi
+
+for required_file in "$SOURCE" "$PARTS" "$HEADER"; do
+  if [[ ! -f "$required_file" ]]; then
+    echo "Required file not found: $required_file" >&2
+    exit 1
+  fi
+done
+
+file_mtime() {
+  if [[ "$(uname -s)" == "Darwin" ]]; then
+    stat -f %m "$1"
+  else
+    stat -c %Y "$1"
+  fi
+}
+
+# Avoid paying for Pandoc/XeLaTeX when none of the build inputs changed.
+# Set FORCE=1 for an explicit rebuild (for example after changing installed fonts).
+if [[ -f "$OUTPUT" && "${FORCE:-}" != "1" ]]; then
+  newest_input=0
+  for input_file in "$SOURCE" "$PARTS" "$HEADER" "$SCRIPT"; do
+    input_mtime="$(file_mtime "$input_file")"
+    (( input_mtime > newest_input )) && newest_input="$input_mtime"
+  done
+  if (( $(file_mtime "$OUTPUT") >= newest_input )); then
+    echo "Up to date: $OUTPUT"
+    exit 0
+  fi
 fi
 
 TMP="$(mktemp -t pi-agent-contents.XXXXXX.md)"
@@ -45,6 +75,9 @@ for line in ["## About this tutorial", "", *body]:
         )
         output.append("")
         found.add(line)
+
+    # PT Sans lacks the arrow glyph, so normalize it only in this temporary
+    # PDF input. The canonical Markdown remains unchanged.
     output.append(line.replace("→", "->"))
 
 missing = set(by_heading) - found
@@ -58,6 +91,8 @@ pandoc "$TMP" \
   --from=markdown+raw_tex+pipe_tables+autolink_bare_uris+strikeout+task_lists+gfm_auto_identifiers \
   --to=pdf \
   --pdf-engine=xelatex \
+  --pdf-engine-opt=-interaction=nonstopmode \
+  --pdf-engine-opt=-halt-on-error \
   --include-in-header="$HEADER" \
   --metadata title="Pi Coding Agent" \
   --metadata author="Julius Darang" \
