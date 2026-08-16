@@ -1,0 +1,144 @@
+% Pi Coding Agent vertical tutorial PDF header.
+% Rendered with Pandoc + XeLaTeX.
+
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{framed}
+\usepackage{hyperref}
+
+% Keep the visual language aligned with the tutorial decks.
+\definecolor{piaccent}{HTML}{D77600}
+\definecolor{piblue}{HTML}{4A90D9}
+\definecolor{pimut}{HTML}{7A7A78}
+\definecolor{piblack}{HTML}{0A0A0A}
+\definecolor{pibody}{HTML}{242424}
+\definecolor{picode}{HTML}{F3F0EB}
+\definecolor{piline}{HTML}{DDD7CE}
+
+\geometry{
+  paperwidth=8.27in,
+  paperheight=11.69in,
+  top=0.78in,
+  bottom=0.72in,
+  inner=0.86in,
+  outer=0.72in,
+  headheight=15pt,
+  headsep=0.18in,
+  footskip=0.36in
+}
+
+\setmainfont{PT Sans}
+\setsansfont{PT Sans}
+\setmonofont{Andale Mono}[Scale=MatchLowercase]
+\renewcommand{\familydefault}{\sfdefault}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.56em}
+\linespread{1.08}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=piaccent,
+  urlcolor=piaccent,
+  citecolor=piaccent,
+  pdftitle={Pi Coding Agent},
+  pdfauthor={Julius Darang}
+}
+
+% Headings: restrained, orange chapter markers, no oversized slide typography.
+\titleformat{\section}
+  {\Large\sffamily\bfseries\color{piaccent}}
+  {}{0pt}{}
+\titleformat{\subsection}
+  {\large\sffamily\bfseries\color{pibody}}
+  {}{0pt}{}
+\titleformat{\subsubsection}
+  {\normalsize\sffamily\bfseries\color{pimut}}
+  {}{0pt}{}
+\titlespacing*{\section}{0pt}{1.5em}{0.65em}
+\titlespacing*{\subsection}{0pt}{1.05em}{0.35em}
+\titlespacing*{\subsubsection}{0pt}{0.8em}{0.2em}
+
+% Page furniture.
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize\sffamily\color{pimut}PI CODING AGENT}
+\fancyhead[R]{\footnotesize\sffamily\color{pimut}JULIUS DARANG}
+\fancyfoot[C]{\footnotesize\sffamily\color{pimut}\thepage}
+\renewcommand{\headrulewidth}{0.35pt}
+\renewcommand{\footrulewidth}{0pt}
+\makeatletter
+\renewcommand{\maketitle}{%
+  \begin{titlepage}
+    \newgeometry{margin=0.9in}
+    \pagecolor{piblack}\color{white}
+    \vspace*{1.2in}
+    {\sffamily\footnotesize\color{piaccent}\bfseries PI CODING AGENT\par}
+    \vspace{0.45in}
+    {\sffamily\fontsize{34}{40}\selectfont\bfseries\color{white}\@title\par}
+    \vspace{0.28in}
+    {\sffamily\Large\color{white!72}Build your coding workflow around a small terminal agent\par}
+    \vfill
+    {\sffamily\small\color{white!58}A practical guide to building a safe, project-aware terminal coding workflow.\par}
+    \vspace{0.18in}
+    {\sffamily\small\color{piaccent}\@author\par}
+    \restoregeometry
+  \end{titlepage}
+  \pagecolor{white}\color{pibody}
+  \pagestyle{fancy}
+}
+\makeatother
+
+% Full-page chapter dividers for the four-part tutorial structure.
+\newcommand{\partpage}[3]{%
+  \clearpage
+  \phantomsection
+  \addcontentsline{toc}{section}{Part #1 -- #2}
+  \pdfbookmark[1]{Part #1 -- #2}{part-#1}
+  \thispagestyle{empty}
+  \pagecolor{piblack}\color{white}
+  \begin{center}
+    \vspace*{1.35in}
+    {\sffamily\footnotesize\color{piaccent}\bfseries PART #1\par}
+    \vspace{0.42in}
+    {\sffamily\fontsize{30}{36}\selectfont\bfseries\color{white}#2\par}
+    \vspace{0.32in}
+    {\sffamily\large\color{white!70}#3\par}
+    \vfill
+    {\sffamily\footnotesize\color{white!45}PI CODING AGENT · JULIUS DARANG\par}
+  \end{center}
+  \clearpage
+  \pagecolor{white}\color{pibody}
+  \pagestyle{fancy}
+}
+
+% Code blocks are readable on paper and retain the terminal character.
+\definecolor{shadecolor}{HTML}{F3F0EB}
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{fontsize=\small,breaklines=true,breakanywhere=true,commandchars=\\\{\}}
+\setlength{\fboxsep}{8pt}
+
+% Lists should breathe without becoming slide-like.
+\setlist[itemize]{leftmargin=1.35em,itemsep=0.18em,topsep=0.2em}
+\setlist[enumerate]{leftmargin=1.55em,itemsep=0.18em,topsep=0.2em}
+
+% Make blockquotes read as practical callouts.
+\renewenvironment{quote}{%
+  \begin{leftbar}\small\color{pimut}
+}{%
+  \end{leftbar}
+}
+\renewcommand{\FrameCommand}{\hspace{0.4em}\textcolor{piaccent}{\vrule width 1.5pt}\hspace{0.8em}}
+
+% Keep the table of contents compact and usable.
+\renewcommand{\contentsname}{Contents}
+\setcounter{tocdepth}{2}
+\let\pioriginaltableofcontents\tableofcontents
+\renewcommand{\tableofcontents}{\pioriginaltableofcontents\clearpage}

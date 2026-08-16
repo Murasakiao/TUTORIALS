@@ -28,6 +28,7 @@ import json
 import smtplib
 import argparse
 import subprocess
+import shlex
 from pathlib import Path
 from email.mime.text import MIMEText
 
@@ -194,15 +195,21 @@ def build_email_body(filepath, title, folder):
 </html>"""
 
 
-def send_email(env, subject, body_html):
+def send_email(env, subject, body_html, smtp=None):
     msg = MIMEText(body_html, "html")
     msg["Subject"] = subject
     msg["From"] = env["GMAIL_SENDER"]
     msg["To"] = env["GMAIL_RECEIVER"]
+    message = msg.as_string()
 
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
-        smtp.login(env["GMAIL_SENDER"], env["GMAIL_APP_PW"])
-        smtp.sendmail(env["GMAIL_SENDER"], env["GMAIL_RECEIVER"], msg.as_string())
+    if smtp is None:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as connection:
+            connection.login(env["GMAIL_SENDER"], env["GMAIL_APP_PW"])
+            connection.sendmail(
+                env["GMAIL_SENDER"], env["GMAIL_RECEIVER"], message
+            )
+    else:
+        smtp.sendmail(env["GMAIL_SENDER"], env["GMAIL_RECEIVER"], message)
 
     print(f"Sent: {subject}")
 
@@ -224,7 +231,7 @@ def list_tutorials(folder):
     print(f"\n{sent_count}/{len(tutorials)} sent")
 
 
-def send_tutorial(folder, env, fname):
+def send_tutorial(folder, env, fname, smtp=None, tracking=None):
     fpath = BASE_DIR / folder / fname
     if not fpath.exists():
         print(f"ERROR: {fpath} not found")
@@ -234,47 +241,64 @@ def send_tutorial(folder, env, fname):
     body = build_email_body(fpath, title, folder)
     subject = f"Zero to AI Builder — {title}"
 
-    send_email(env, subject, body)
+    send_email(env, subject, body, smtp=smtp)
 
-    tracking = load_tracking(folder)
+    if tracking is None:
+        tracking = load_tracking(folder)
     if fname not in tracking["sent"]:
         tracking["sent"].append(fname)
     save_tracking(folder, tracking)
     return True
 
 
-def schedule_send(folder, days):
-    script = Path(__file__).resolve()
-    cmd = (
-        f'echo "cd {BASE_DIR} && {sys.executable} {script} --dir {folder}" '
-        f"| at now + {days} days 2>/dev/null"
+def scheduled_command(folder):
+    """Build a safely quoted command for the `at` job body."""
+    return "cd {} && exec {} {} --dir {}".format(
+        shlex.quote(str(BASE_DIR)),
+        shlex.quote(sys.executable),
+        shlex.quote(str(Path(__file__).resolve())),
+        shlex.quote(folder),
     )
+
+
+def schedule_send(folder, days):
     try:
-        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+        result = subprocess.run(
+            ["at", "now", "+", str(days), "days"],
+            input=scheduled_command(folder) + "\n",
+            capture_output=True,
+            text=True,
+        )
         if result.returncode == 0:
             print(f"Scheduled: next '{folder}' email in {days} day(s)")
             if result.stdout:
                 print(result.stdout.strip())
         else:
             print("WARNING: 'at' command failed. The 'atrun' daemon may be disabled.")
-            print(f"Fallback: add this to your crontab to run now:")
-            print(f"  {sys.executable} {script} --dir {folder}")
+            print("Fallback: add this to your crontab to run now:")
+            print(f"  {sys.executable} {Path(__file__).resolve()} --dir {folder}")
             return False
     except FileNotFoundError:
         print("WARNING: 'at' command not available on this system.")
-        print(f"Run manually: {sys.executable} {script} --dir {folder}")
+        print(f"Run manually: {sys.executable} {Path(__file__).resolve()} --dir {folder}")
         return False
     return True
 
 
 def schedule_send_on_date(folder, date_str):
-    script = Path(__file__).resolve()
-    cmd = (
-        f'echo "cd {BASE_DIR} && {sys.executable} {script} --dir {folder}" '
-        f"| at 08:00 {date_str} 2>/dev/null"
-    )
     try:
-        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+        date_args = shlex.split(date_str)
+    except ValueError as exc:
+        print(f"WARNING: invalid date {date_str!r}: {exc}")
+        return False
+
+    try:
+        result = subprocess.run(
+            ["at", "08:00", *date_args],
+            input=scheduled_command(folder) + "\n",
+            capture_output=True,
+            text=True,
+        )
         if result.returncode == 0:
             print(f"Scheduled: next '{folder}' email for 08:00 on {date_str}")
             if result.stdout:
@@ -282,11 +306,11 @@ def schedule_send_on_date(folder, date_str):
         else:
             print("WARNING: 'at' command failed. The 'atrun' daemon may be disabled.")
             print(f"Fallback: add this to your crontab to run at 8am on {date_str}:")
-            print(f"  {sys.executable} {script} --dir {folder}")
+            print(f"  {sys.executable} {Path(__file__).resolve()} --dir {folder}")
             return False
     except FileNotFoundError:
         print("WARNING: 'at' command not available on this system.")
-        print(f"Run manually on {date_str}: {sys.executable} {script} --dir {folder}")
+        print(f"Run manually on {date_str}: {sys.executable} {Path(__file__).resolve()} --dir {folder}")
         return False
     return True
 
@@ -368,12 +392,15 @@ def main():
 
     if args.all:
         tracking = load_tracking(folder)
-        for fname in tutorials:
-            if fname not in tracking["sent"]:
-                send_tutorial(folder, env, fname)
-            else:
-                print(f"Skipped (already sent): {fname}")
-        tracking = load_tracking(folder)
+        # Reuse one authenticated connection for the whole batch. A new TLS
+        # handshake and SMTP login for every tutorial dominates --all runtime.
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+            smtp.login(env["GMAIL_SENDER"], env["GMAIL_APP_PW"])
+            for fname in tutorials:
+                if fname not in tracking["sent"]:
+                    send_tutorial(folder, env, fname, smtp=smtp, tracking=tracking)
+                else:
+                    print(f"Skipped (already sent): {fname}")
         tracking["current_index"] = len(tracking["sent"])
         save_tracking(folder, tracking)
         remaining = len(tutorials) - tracking["current_index"]
