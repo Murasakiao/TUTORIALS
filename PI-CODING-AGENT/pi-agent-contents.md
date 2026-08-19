@@ -17,6 +17,8 @@ Pi is a terminal coding harness. It connects a language model to a local project
 
 From there, you can add project instructions, reusable skills, prompt templates, TypeScript extensions, themes, and complete Pi packages.
 
+\pimentalmodel
+
 This tutorial walks through the complete workflow: installation, authentication, your first repository task, project context, sessions, safety, automation, and customization.
 
 ---
@@ -136,11 +138,15 @@ A good first session usually follows this order:
 
 A coding agent is most useful when you give it a clear boundary. “Improve this project” is not a boundary. “Add validation to this importer, preserve the public function signature, and run the existing importer tests” is a boundary.
 
+\pifirstsession
+
 ---
 
 ## 4. Understand the four default tools
 
 Pi gives the model four default tools.
+
+\pitoolmap
 
 ### `read`
 
@@ -175,6 +181,8 @@ The small tool set is intentional. Pi does not try to hide all activity behind a
 The most reliable Pi workflow is:
 
 > Locate → understand → change → verify.
+
+\piinspectflow
 
 Start by asking Pi to find the relevant entry points and tests.
 
@@ -318,6 +326,8 @@ Trust controls whether Pi loads those project-local resources. It is useful prot
 
 But project trust is not a sandbox.
 
+\pitrust
+
 Once Pi is running, its tools use the permissions of your user account. The model can still read and write files and run commands that your account is allowed to run.
 
 For an untrusted repository, generated code you will not monitor closely, or unattended automation, use a real isolation boundary:
@@ -363,6 +373,8 @@ Read the diff yourself. Check that:
 - unrelated cleanup did not sneak into the patch
 
 Pi can make a commit if you explicitly ask it to, but you do not need to give it that responsibility. A useful default is to let Pi implement and verify, then let you decide whether to commit.
+
+\pigitcheckpoint
 
 ---
 
@@ -447,6 +459,8 @@ For example:
 
 Session history is useful, but it is not a replacement for project documentation. If a decision matters after the session ends, write it into a file, issue, or commit message.
 
+\pisessions
+
 ---
 
 ## 13. Manage a long context
@@ -482,6 +496,8 @@ A good long-session habit is to periodically write a durable checkpoint:
 ```
 
 Context management is partly an agent feature and partly an engineering discipline. Keep important knowledge in the repository.
+
+\picompaction
 
 ---
 
@@ -536,6 +552,8 @@ pi --tools read,grep,find,ls -p "Review this repository for risky patterns"
 
 Print mode is useful in scripts and CI, but model output is still untrusted input. If another program consumes the result, validate it before taking action.
 
+\piprintmode
+
 ---
 
 ## 16. Use JSON event mode for observability
@@ -567,6 +585,8 @@ Streaming message updates are deltas, not complete cumulative messages. Assemble
 
 Use JSON mode when you need structured output from a one-shot process but do not need to build a full interactive client.
 
+\pijsonmode
+
 ---
 
 ## 17. Integrate with RPC mode
@@ -597,6 +617,8 @@ RPC is a good fit when:
 - you want the agent to run as a separate process
 
 For a Node or TypeScript application in the same process, the SDK is usually more direct.
+
+\pioutputmode{RPC}{JSON over stdin and stdout}{Your application process}
 
 ---
 
@@ -635,6 +657,8 @@ You can invoke the skill explicitly:
 ```
 
 Use skills for reusable, on-demand procedures. Use `AGENTS.md` for rules that should apply to every task.
+
+\pistack
 
 ---
 
@@ -751,6 +775,8 @@ Other useful safety extensions can:
 
 The goal is not to create the illusion of safety. The goal is to make important boundaries explicit and observable.
 
+\pigate
+
 ---
 
 ## 22. Share a Pi package
@@ -842,6 +868,8 @@ Open `/model` after editing `models.json` to reload the model catalog.
 
 Custom model configuration is useful for local inference, private gateways, proxies, and providers not included in the built-in catalog. For an endpoint that does not speak one of the supported API styles or that needs a custom OAuth flow, register a custom provider from a TypeScript extension instead. You are responsible for understanding the compatibility and authentication behavior of the endpoint you connect.
 
+\pilocalmodel
+
 ---
 
 ## 24. Embed Pi with the SDK
@@ -897,6 +925,8 @@ The SDK gives you direct access to:
 
 Use RPC when you want a language-agnostic process boundary. Use the SDK when you want type-safe access inside a Node or TypeScript application.
 
+\pisdk
+
 ---
 
 ## 25. Sandbox untrusted work
@@ -935,6 +965,8 @@ docker run --rm -it \
 A mounted workspace can still write through to your host. Use read-only mounts when appropriate, and pass only the credentials and network access the task needs.
 
 For stronger isolation, use a VM, micro-VM, or policy-controlled sandbox.
+
+\pisandbox
 
 ---
 

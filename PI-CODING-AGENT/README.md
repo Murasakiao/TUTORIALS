@@ -2,7 +2,7 @@
 
 This directory is the main home for the Pi Coding Agent tutorial. It contains the same material in three publishing formats:
 
-1. A concise Marp presentation for social and introductory use.
+1. A progressive Marp presentation for social, live, and introductory use.
 2. An expanded Marp presentation for a visual walkthrough.
 3. A long-form Markdown source rendered as a vertical, book-like PDF tutorial.
 
@@ -16,37 +16,11 @@ PI-CODING-AGENT/
 ├── pi-agent.md
 ├── pi-agent-full.md
 ├── pi-agent-contents.md
+├── pi-agent.pdf              # generated; ignored by Git
 ├── pi-agent-full.pdf          # generated; ignored by Git
 ├── build-pdf.sh
 ├── _pdf-header.tex
 └── _pdf-parts.json
-```
-
-### `pi-agent.md`
-
-The concise Marp presentation. It is intended for:
-
-- LinkedIn and Instagram carousels
-- Short introductory PDFs
-- A quick explanation of Pi's purpose and core workflow
-- Social or top-of-funnel distribution
-
-Render it as a Marp PDF with:
-
-```bash
-marp --pdf pi-agent.md
-```
-
-### `pi-agent-full.md`
-
-The expanded Marp presentation. It covers more of the long-form tutorial, including sessions, automation modes, skills, extensions, packages, models, SDK integration, and sandboxing.
-
-It is still a slide deck: each slide has a fixed page, visual hierarchy, and intentionally limited text. It is not the source used to generate the vertical PDF.
-
-Render it with:
-
-```bash
-marp --pdf pi-agent-full.md
 ```
 
 ### `pi-agent-contents.md`
@@ -61,6 +35,26 @@ It contains the detailed explanations, commands, examples, safety guidance, trou
 - Captions and shorter derivative content
 
 Do not manually edit the generated PDF. Make content changes here and rebuild it.
+
+### `pi-agent.md`
+
+The progressive Marp presentation. Repeated slide states reveal the cards and list items one at a time while preserving the fixed-page Marp workflow. It contains 24 static pages and is useful for LinkedIn and Instagram carousels, live presenting, progressive PDFs, and screen recordings. It does not depend on CSS animation or JavaScript.
+
+Render it as a Marp PDF with:
+
+```bash
+marp --pdf pi-agent.md
+```
+
+### `pi-agent-full.md`
+
+The expanded Marp presentation. It covers more of the tutorial, including sessions, automation modes, skills, extensions, packages, models, SDK integration, and sandboxing. It is a fixed-page slide deck, not the source used to generate the vertical PDF.
+
+Render it with:
+
+```bash
+marp --pdf pi-agent-full.md
+```
 
 ### `pi-agent-full.pdf`
 

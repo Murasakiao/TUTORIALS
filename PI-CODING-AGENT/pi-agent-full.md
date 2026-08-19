@@ -302,6 +302,305 @@ style: |
   }
   .small { font-size: 14px; line-height: 1.45; }
 
+  /* Simple explanatory visuals */
+  .visual {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto 18px;
+  }
+  .diagram-node {
+    border: 1px solid var(--card-border);
+    padding: 12px 14px;
+    color: var(--subtle);
+    font-size: 13px;
+    line-height: 1.35;
+    box-sizing: border-box;
+  }
+  .diagram-node strong {
+    display: block;
+    color: var(--white);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .4px;
+    margin-bottom: 4px;
+  }
+  .diagram-node small {
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .mental-hub {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    gap: 8px;
+    align-items: stretch;
+  }
+  .mental-hub .core {
+    border-color: var(--off-white);
+    text-align: center;
+  }
+  .hub-arrow {
+    display: flex;
+    align-items: center;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 16px;
+  }
+  .mental-hub .resources {
+    grid-column: 3;
+    position: relative;
+    margin-top: 18px;
+    text-align: center;
+  }
+  .mental-hub .resources::before {
+    content: '↑';
+    position: absolute;
+    top: -23px;
+    left: 0;
+    right: 0;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 15px;
+  }
+
+  .mental-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr 1fr;
+    grid-template-areas: "project . model" ". core ." "tools . resources";
+    gap: 12px;
+    align-items: center;
+  }
+  .mental-grid .project { grid-area: project; }
+  .mental-grid .model { grid-area: model; }
+  .mental-grid .core {
+    grid-area: core;
+    text-align: center;
+    border-color: var(--off-white);
+    padding: 18px 14px;
+  }
+  .mental-grid .tools { grid-area: tools; }
+  .mental-grid .resources { grid-area: resources; }
+  .session-tree {
+    display: grid;
+    grid-template-columns: 1.1fr auto 1fr;
+    grid-template-rows: 1fr 1fr auto;
+    grid-template-areas: "root branch-a fork" "root branch-b clone" "recover recover recover";
+    gap: 10px;
+    align-items: center;
+  }
+  .session-tree .root { grid-area: root; }
+  .session-tree .branch-a { grid-area: branch-a; color: var(--muted); font-family: var(--mono); }
+  .session-tree .branch-b { grid-area: branch-b; color: var(--muted); font-family: var(--mono); }
+  .session-tree .fork { grid-area: fork; }
+  .session-tree .clone { grid-area: clone; }
+  .session-tree .recover {
+    grid-area: recover;
+    text-align: center;
+    border-top: 1px solid var(--card-border);
+    padding-top: 10px;
+  }
+  .flow-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    gap: 8px;
+    align-items: stretch;
+  }
+  .flow-step {
+    border-left: 1px solid var(--off-white);
+    padding: 10px 10px 10px 12px;
+    color: var(--subtle);
+    font-size: 13px;
+    line-height: 1.35;
+  }
+  .flow-step strong {
+    display: block;
+    color: var(--white);
+    font-family: var(--mono);
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+  .flow-step.human-gate {
+    border: 1px solid var(--off-white);
+    padding: 10px 12px;
+  }
+  .flow-step.human-gate::before {
+    content: 'HUMAN-OWNED GATE';
+    display: block;
+    color: var(--off-white);
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .5px;
+    margin-bottom: 7px;
+  }
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+  .session-loop .loop-return {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--card-border);
+    padding-top: 7px;
+    text-align: right;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 11px;
+  }
+  .tool-map {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: ". model ." "read core write" "edit . bash";
+    gap: 10px;
+    align-items: center;
+  }
+  .tool-map .model { grid-area: model; text-align: center; }
+  .tool-map .model::after {
+    content: '↓';
+    display: block;
+    color: var(--muted);
+    font-family: var(--mono);
+    margin-top: 6px;
+  }
+  .tool-map .core { grid-area: core; text-align: center; border-color: var(--off-white); }
+  .tool-map .read { grid-area: read; }
+  .tool-map .write { grid-area: write; }
+  .tool-map .edit { grid-area: edit; }
+  .tool-map .bash { grid-area: bash; }
+  .lane-diagram {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 0;
+    border-top: 1px solid var(--card-border);
+  }
+  .lane-diagram > div {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .lane-label {
+    color: var(--white);
+    font-family: var(--mono);
+    font-size: 11px;
+  }
+  .lane-text { color: var(--subtle); font-size: 14px; line-height: 1.4; }
+  .trust-contrast {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .trust-panel {
+    border: 1px solid var(--card-border);
+    padding: 14px;
+  }
+  .trust-panel strong {
+    display: block;
+    color: var(--white);
+    font-family: var(--mono);
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+  .trust-flow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--subtle);
+    font-size: 13px;
+    line-height: 1.35;
+  }
+  .trust-flow .arrow { color: var(--muted); font-family: var(--mono); }
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+  .timeline-step {
+    position: relative;
+    border-top: 1px solid var(--off-white);
+    padding-top: 10px;
+    color: var(--subtle);
+    font-size: 13px;
+    line-height: 1.35;
+  }
+  .timeline-step.change {
+    border-left: 2px solid var(--off-white);
+    padding-left: 14px;
+  }
+  .timeline-step.change::before {
+    content: 'SCOPE BOUNDARY';
+    position: absolute;
+    top: -25px;
+    left: 14px;
+    color: var(--off-white);
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .5px;
+  }
+  .timeline-step strong {
+    display: block;
+    color: var(--white);
+    font-family: var(--mono);
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+  .timeline-step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    top: -9px;
+    right: -15px;
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+  .context-diagram {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 14px;
+    align-items: center;
+  }
+  .context-window {
+    border: 1px solid var(--card-border);
+    padding: 14px;
+    min-height: 118px;
+    box-sizing: border-box;
+  }
+  .context-window h3 {
+    margin: 0 0 10px;
+    color: var(--white);
+    font-size: 15px;
+  }
+  .context-window p { font-size: 13px; margin: 0 0 8px; }
+  .context-window.durable {
+    grid-column: 1 / -1;
+    border-color: var(--off-white);
+    min-height: 0;
+  }
+  .context-arrow { text-align: center; color: var(--muted); font-family: var(--mono); }
+  .output-modes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .output-mode {
+    border-top: 1px solid var(--off-white);
+    padding-top: 10px;
+    min-height: 115px;
+  }
+  .output-mode h3 { margin: 0 0 8px; color: var(--white); font-size: 15px; }
+  .output-mode p { font-size: 13px; line-height: 1.4; margin: 0; }
+  .stack-diagram { display: flex; flex-direction: column; gap: 7px; max-width: 520px; margin: 0 auto; }
+  .stack-layer {
+    border: 1px solid var(--card-border);
+    padding: 9px 14px;
+    color: var(--subtle);
+    font-size: 13px;
+  }
+  .stack-layer strong { color: var(--white); font-family: var(--mono); font-size: 11px; margin-right: 10px; }
+  .gate-flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 10px; align-items: center; }
+  .gate { border: 1px solid var(--card-border); padding: 13px; text-align: center; color: var(--subtle); font-size: 13px; }
+  .gate strong { display: block; color: var(--white); font-family: var(--mono); font-size: 11px; margin-bottom: 4px; }
+  .gate.blocked { border-color: var(--off-white); }
+  .integration-diagram { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 10px; align-items: center; }
+  .integration-node { border: 1px solid var(--card-border); padding: 14px; text-align: center; color: var(--subtle); font-size: 13px; }
+  .integration-node strong { display: block; color: var(--white); font-family: var(--mono); font-size: 11px; margin-bottom: 4px; }
+  .integration-node.safe,
+  .integration-node.json-stream { border-color: var(--off-white); }
+  .integration-arrow { color: var(--muted); font-family: var(--mono); }
+
 ---
 <!-- SLIDE 1 · COVER -->
 <!-- _class: cover -->
@@ -360,11 +659,15 @@ style: |
   <h2>The mental model</h2>
 </div>
 
-<div class="two-col">
-  <div><h3>Project</h3><p class="small">The directory where Pi runs: files, Git history, tests, and instructions.</p></div>
-  <div><h3>Model</h3><p class="small">The provider and model that reason about your request.</p></div>
-  <div><h3>Tools</h3><p class="small">The actions the model can request: read, write, edit, and bash.</p></div>
-  <div><h3>Resources</h3><p class="small">Context files, skills, prompts, extensions, themes, and packages.</p></div>
+<div class="visual mental-hub">
+  <div class="diagram-node"><strong>MODEL</strong>Provider · reasoning<br><small>what thinks</small></div>
+  <div class="hub-arrow">→</div>
+  <div class="diagram-node core"><strong>PI</strong>minimal generic core<br><small>connects the workflow</small></div>
+  <div class="hub-arrow">→</div>
+  <div class="diagram-node"><strong>TOOLS</strong>read · write · edit · bash<br><small>what can act</small></div>
+  <div class="hub-arrow">→</div>
+  <div class="diagram-node"><strong>PROJECT</strong>Files · Git · tests<br><small>where Pi runs</small></div>
+  <div class="diagram-node resources"><strong>RESOURCES</strong>Rules · skills · prompts<br><small>shape how Pi works</small></div>
 </div>
 
 <div class="note"><strong>Core principle:</strong> keep Pi generic; put your team's rules and automation in the project or in a reusable package.</div>
@@ -434,14 +737,18 @@ pi</div><p class="small">Or use <code>/login</code> to store a key in Pi's auth 
   <h2>Run your first session</h2>
 </div>
 
-<div class="code-block">cd /path/to/your/project
-pi</div>
-
-<div class="list">
-  <div class="list-item"><span class="list-num">01</span><span class="list-text">Start with: <strong>“Summarize this repository and tell me how to run its checks.”</strong></span></div>
-  <div class="list-item"><span class="list-num">02</span><span class="list-text">Read the response and tool calls before asking for edits.</span></div>
-  <div class="list-item"><span class="list-num">03</span><span class="list-text">Give one bounded next action: inspect, implement, test, or review.</span></div>
+<div class="visual flow-row session-loop">
+  <div class="flow-step"><strong>01 · PROJECT</strong><code>cd /your/repo</code><br>Start in the right directory.</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step"><strong>02 · INSPECT</strong>Ask for a summary and the checks.</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step"><strong>03 · ACT</strong>Give one bounded next action.</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step"><strong>04 · VERIFY</strong>Read the response, tools, and result.</div>
+  <div class="loop-return">↺ next bounded task</div>
 </div>
+
+<div class="note"><code>cd /path/to/your/project</code> → <code>pi</code>. Start with understanding before asking for edits.</div>
 
 ---
 
@@ -452,11 +759,13 @@ pi</div>
   <h2>The four default tools</h2>
 </div>
 
-<div class="cards-col">
-  <div class="card-row"><span class="card-row-letter">01</span><div class="card-row-body"><h3><code>read</code></h3><p>Inspect text files and images before making decisions.</p></div></div>
-  <div class="card-row"><span class="card-row-letter">02</span><div class="card-row-body"><h3><code>write</code></h3><p>Create or completely replace a file. Use deliberately.</p></div></div>
-  <div class="card-row"><span class="card-row-letter">03</span><div class="card-row-body"><h3><code>edit</code></h3><p>Apply a precise patch to an existing file.</p></div></div>
-  <div class="card-row"><span class="card-row-letter">04</span><div class="card-row-body"><h3><code>bash</code></h3><p>Run tests, formatters, builds, and project commands.</p></div></div>
+<div class="visual tool-map">
+  <div class="diagram-node model"><strong>MODEL</strong>decides what to request</div>
+  <div class="diagram-node core"><strong>PI</strong>routes explicit actions<br><small>four focused capabilities</small></div>
+  <div class="diagram-node read"><strong>read</strong>inspect files and images</div>
+  <div class="diagram-node write"><strong>write</strong>create or replace deliberately</div>
+  <div class="diagram-node bash"><strong>bash</strong>run checks and commands</div>
+  <div class="diagram-node edit"><strong>edit</strong>apply the smallest precise patch</div>
 </div>
 
 <div class="note">The additional tools <code>grep</code>, <code>find</code>, and <code>ls</code> can be included in an explicit tool allowlist.</div>
@@ -470,15 +779,15 @@ pi</div>
   <h2>Inspect before you edit</h2>
 </div>
 
-<div class="list">
-  <div class="list-item"><span class="list-num">01</span><span class="list-text"><strong>Locate</strong> — find the relevant files and entry points.</span></div>
-  <div class="list-item"><span class="list-num">02</span><span class="list-text"><strong>Understand</strong> — explain current behavior, dependencies, and constraints.</span></div>
-  <div class="list-item"><span class="list-num">03</span><span class="list-text"><strong>Plan</strong> — write a short plan in the repository when the task has multiple steps.</span></div>
-  <div class="list-item"><span class="list-num">04</span><span class="list-text"><strong>Change</strong> — make the smallest useful patch.</span></div>
-  <div class="list-item"><span class="list-num">05</span><span class="list-text"><strong>Verify</strong> — run checks and inspect the diff.</span></div>
+<div class="visual timeline">
+  <div class="timeline-step"><strong>01 · LOCATE</strong>Find files and entry points.</div>
+  <div class="timeline-step"><strong>02 · UNDERSTAND</strong>Explain behavior and constraints.</div>
+  <div class="timeline-step"><strong>03 · PLAN</strong>Bound the work before editing.</div>
+  <div class="timeline-step change"><strong>04 · CHANGE</strong>Make the smallest useful patch.</div>
+  <div class="timeline-step"><strong>05 · VERIFY</strong>Run checks and inspect the diff.</div>
 </div>
 
-<div class="note">A coding agent is most reliable when the workflow separates discovery from modification.</div>
+<div class="note">A coding agent is most reliable when discovery is visibly separated from modification.</div>
 
 ---
 
@@ -554,14 +863,18 @@ Workflow:
   <h2>Trust is not a sandbox</h2>
 </div>
 
-<div class="list">
-  <div class="list-item"><span class="list-num">01</span><span class="list-text"><strong>Project trust</strong> controls whether Pi loads project-local settings, resources, packages, and extensions.</span></div>
-  <div class="list-item"><span class="list-num">02</span><span class="list-text"><strong>It does not restrict tools</strong> once work begins. Pi uses your user permissions.</span></div>
-  <div class="list-item"><span class="list-num">03</span><span class="list-text"><strong>Review untrusted repositories</strong> before loading their instructions or extensions.</span></div>
-  <div class="list-item"><span class="list-num">04</span><span class="list-text"><strong>Use a container or VM</strong> for unattended or untrusted work.</span></div>
+<div class="visual trust-contrast">
+  <div class="trust-panel">
+    <strong>PROJECT TRUST</strong>
+    <div class="trust-flow"><span>trust decision</span><span class="arrow">→</span><span>resources loaded</span></div>
+  </div>
+  <div class="trust-panel">
+    <strong>USER PERMISSIONS</strong>
+    <div class="trust-flow"><span>account access</span><span class="arrow">→</span><span>tools can execute</span></div>
+  </div>
 </div>
 
-<div class="note">The safe default is: narrow the task, protect credentials, keep a rollback path, and verify consequential changes.</div>
+<div class="note">Trust is a loading decision, not a security sandbox. Narrow the task, protect credentials, keep a rollback path, and verify consequential changes.</div>
 
 ---
 
@@ -572,18 +885,17 @@ Workflow:
   <h2>Use Git as your checkpoint</h2>
 </div>
 
-<div class="code-block">git status --short
-git switch -c pi/feature-name
+<div class="visual flow-row">
+  <div class="flow-step"><strong>01 · CHECKPOINT</strong><code>git switch -c ...</code><br>Start from a reversible branch.</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step"><strong>02 · PI WORKS</strong>Bound the task and let Pi change files.</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step"><strong>03 · EVIDENCE</strong><code>git diff</code> · tests · checks</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step human-gate"><strong>04 · HUMAN DECISION</strong>Review, then commit only what you understand.</div>
+</div>
 
-# Let Pi work on the bounded task
-pi "Implement the issue. Run the focused checks and stop before committing."
-
-# Review the result
-git diff
-git diff --check
-npm test</div>
-
-<div class="note">The agent can make changes. The diff, tests, and commit decision remain yours.</div>
+<div class="note"><code>git status --short</code> · <code>git diff --check</code> · <code>npm test</code>. The agent can make changes; the diff, tests, and commit decision remain yours.</div>
 
 ---
 
@@ -638,11 +950,16 @@ pi --no-session       # ephemeral session
 # Inside Pi
 /resume   /new   /tree   /fork   /clone   /export</div>
 
-<div class="list">
-  <div class="list-item"><span class="list-num">01</span><span class="list-text"><strong><code>/tree</code></strong> explores branches in the same session file.</span></div>
-  <div class="list-item"><span class="list-num">02</span><span class="list-text"><strong><code>/fork</code></strong> starts a session from an earlier user message.</span></div>
-  <div class="list-item"><span class="list-num">03</span><span class="list-text"><strong><code>/clone</code></strong> duplicates the active branch before a risky direction.</span></div>
+<div class="visual session-tree">
+  <div class="diagram-node root"><strong>SESSION</strong><code>release-audit</code><br><small>original path preserved</small></div>
+  <div class="branch-a">↗</div>
+  <div class="diagram-node fork"><strong>/fork</strong>branch A<br><small>start from an earlier message</small></div>
+  <div class="branch-b">↘</div>
+  <div class="diagram-node clone"><strong>/clone</strong>branch B<br><small>duplicate before a risky direction</small></div>
+  <div class="diagram-node recover"><strong>RECOVER</strong><code>/resume</code> · <code>/new</code> · <code>/tree</code> · <code>/export</code></div>
 </div>
+
+<div class="note"><code>pi -c</code> continues the latest session; <code>pi -r</code> browses previous sessions; <code>pi --no-session</code> stays ephemeral.</div>
 
 ---
 
@@ -653,12 +970,25 @@ pi --no-session       # ephemeral session
   <h2>Manage a long context</h2>
 </div>
 
-<div class="list">
-  <div class="list-item"><span class="list-num">01</span><span class="list-text">Automatic compaction summarizes older conversation near the context limit.</span></div>
-  <div class="list-item"><span class="list-num">02</span><span class="list-text">Run <code>/compact</code> before a new phase of work.</span></div>
-  <div class="list-item"><span class="list-num">03</span><span class="list-text">Focus it: <code>/compact Focus on decisions, modified files, and remaining tests</code>.</span></div>
-  <div class="list-item"><span class="list-num">04</span><span class="list-text">Important decisions belong in files, issues, or commits because compaction is lossy.</span></div>
+<div class="visual context-diagram">
+  <div class="context-window">
+    <h3>Active context</h3>
+    <p>Recent conversation, tool output, decisions, and open work fill the context window.</p>
+    <p><code>/compact</code> starts a new phase.</p>
+  </div>
+  <div class="context-arrow">→<br><small>/compact</small></div>
+  <div class="context-window">
+    <h3>Lossy summary</h3>
+    <p>Older conversation is compressed into what still matters.</p>
+    <p>Useful, but not the full history.</p>
+  </div>
+  <div class="context-window durable">
+    <h3>Durable memory outside the context</h3>
+    <p><strong>Decisions belong in files, issues, or commits.</strong> They survive compaction and remain available to the next phase.</p>
+  </div>
 </div>
+
+<div class="note">Focus compaction when needed: <code>/compact Focus on decisions, modified files, and remaining tests</code>.</div>
 
 ---
 
@@ -689,10 +1019,16 @@ pi --thinking high "Trace this difficult failure"</div>
   <h2>Use Pi non-interactively</h2>
 </div>
 
+<div class="visual integration-diagram">
+  <div class="integration-node"><strong>PROMPT</strong>one-shot request<br><small>no interactive UI</small></div>
+  <div class="integration-arrow">→</div>
+  <div class="integration-node safe"><strong>PI</strong>read-only allowlist<br><small><code>read,grep,find,ls</code></small></div>
+  <div class="integration-arrow">→</div>
+  <div class="integration-node"><strong>OUTPUT</strong>plain text<br><small>review before action</small></div>
+</div>
+
 <div class="code-block">pi -p "Summarize this codebase"
 cat README.md | pi -p "Suggest three documentation improvements"
-
-# The --tools option is an allowlist
 pi --tools read,grep,find,ls -p "Review risky patterns"</div>
 
 <div class="note">The read-only example excludes <code>bash</code>, <code>edit</code>, and <code>write</code>. Validate model output before automation acts on it.</div>
@@ -706,14 +1042,18 @@ pi --tools read,grep,find,ls -p "Review risky patterns"</div>
   <h2>Consume structured events</h2>
 </div>
 
+<div class="visual integration-diagram">
+  <div class="integration-node"><strong>PI</strong>emits streaming events</div>
+  <div class="integration-arrow">→</div>
+  <div class="integration-node json-stream"><strong>JSON STREAM</strong>deltas by content index<br><small><code>message_end</code> is final authority</small></div>
+  <div class="integration-arrow">→</div>
+  <div class="integration-node"><strong>JQ / APP</strong>assemble and consume<br><small>filter or observe</small></div>
+</div>
+
 <div class="code-block">pi --mode json "List the files in this project" 2&gt;/dev/null \
   | jq -c 'select(.type == "message_end")'</div>
 
-<div class="list">
-  <div class="list-item"><span class="list-num">01</span><span class="list-text">JSON lines describe session, agent, message, tool, queue, compaction, and retry events.</span></div>
-  <div class="list-item"><span class="list-num">02</span><span class="list-text">Streaming updates are deltas. Assemble them by content index.</span></div>
-  <div class="list-item"><span class="list-num">03</span><span class="list-text">Treat the final <code>message_end</code> event as authoritative.</span></div>
-</div>
+<div class="note">JSON lines include session, agent, message, tool, queue, compaction, and retry events. Streaming updates are deltas; the final <code>message_end</code> event is authoritative.</div>
 
 ---
 
@@ -724,16 +1064,18 @@ pi --tools read,grep,find,ls -p "Review risky patterns"</div>
   <h2>Integrate through RPC</h2>
 </div>
 
-<div class="code-block">pi --mode rpc --no-session
+<div class="visual integration-diagram">
+  <div class="integration-node"><strong>YOUR APP</strong>language-agnostic controller</div>
+  <div class="integration-arrow">⇄</div>
+  <div class="integration-node"><strong>PI RPC PROCESS</strong><code>stdin</code> / <code>stdout</code><br><small>one JSON object per line</small></div>
+  <div class="integration-arrow">⇄</div>
+  <div class="integration-node"><strong>PROJECT</strong>tools and session state</div>
+</div>
 
+<div class="code-block">pi --mode rpc --no-session
 {"id":"req-1","type":"prompt","message":"Summarize this repository"}</div>
 
-<div class="list">
-  <div class="list-item"><span class="list-num">01</span><span class="list-text">Send one JSON object per line to stdin.</span></div>
-  <div class="list-item"><span class="list-num">02</span><span class="list-text">Read response objects and streamed events from stdout.</span></div>
-  <div class="list-item"><span class="list-num">03</span><span class="list-text">Use <code>prompt</code>, <code>steer</code>, <code>follow_up</code>, and <code>abort</code>.</span></div>
-  <div class="list-item"><span class="list-num">04</span><span class="list-text">Frame records with LF only; do not split on Unicode line separators.</span></div>
-</div>
+<div class="note">Use <code>prompt</code>, <code>steer</code>, <code>follow_up</code>, and <code>abort</code>. Frame records with LF only; do not split on Unicode line separators.</div>
 
 ---
 
@@ -744,12 +1086,13 @@ pi --tools read,grep,find,ls -p "Review risky patterns"</div>
   <h2>Shape the workflow</h2>
 </div>
 
-<div class="cards-col">
-  <div class="card-row"><span class="card-row-letter">01</span><div class="card-row-body"><h3>Context files</h3><p>Rules that should always be present.</p></div></div>
-  <div class="card-row"><span class="card-row-letter">02</span><div class="card-row-body"><h3>Skills</h3><p>On-demand instructions for a reusable capability.</p></div></div>
-  <div class="card-row"><span class="card-row-letter">03</span><div class="card-row-body"><h3>Prompt templates</h3><p>Reusable prompts invoked as slash commands.</p></div></div>
-  <div class="card-row"><span class="card-row-letter">04</span><div class="card-row-body"><h3>Extensions</h3><p>TypeScript behavior: tools, commands, events, UI, and gates.</p></div></div>
-  <div class="card-row"><span class="card-row-letter">05</span><div class="card-row-body"><h3>Packages</h3><p>Share those resources through npm, Git, or a local path.</p></div></div>
+<div class="visual stack-diagram">
+  <div class="stack-layer"><strong>PACKAGES</strong>share resources through npm, Git, or a local path</div>
+  <div class="stack-layer"><strong>EXTENSIONS</strong>add tools, commands, events, UI, and gates</div>
+  <div class="stack-layer"><strong>PROMPT TEMPLATES</strong>turn repeatable prompts into slash commands</div>
+  <div class="stack-layer"><strong>SKILLS</strong>load on-demand instructions for a capability</div>
+  <div class="stack-layer"><strong>CONTEXT FILES</strong>keep project rules always present</div>
+  <div class="stack-layer"><strong>PI CORE</strong>small, generic, and reusable</div>
 </div>
 
 ---
@@ -839,6 +1182,14 @@ export default function (pi: ExtensionAPI) {
   <h2>Put a gate before danger</h2>
 </div>
 
+<div class="visual gate-flow">
+  <div class="gate"><strong>TOOL CALL</strong><code>bash</code><br>command requested</div>
+  <div class="flow-arrow">→</div>
+  <div class="gate"><strong>GATE</strong>inspect command<br>ask for confirmation</div>
+  <div class="flow-arrow">→</div>
+  <div class="gate blocked"><strong>ALLOW / BLOCK</strong>continue or stop<br>with a reason</div>
+</div>
+
 <div class="code-block">pi.on("tool_call", async (event, ctx) =&gt; {
   if (event.toolName !== "bash") return;
 
@@ -883,6 +1234,14 @@ pi install -l npm:@your-org/pi-tools</div>
   <h2>Connect a local model</h2>
 </div>
 
+<div class="visual integration-diagram">
+  <div class="integration-node"><strong>PI</strong><code>/model</code><br><small>same agent workflow</small></div>
+  <div class="integration-arrow">→</div>
+  <div class="integration-node"><strong>OPENAI-COMPATIBLE API</strong><code>localhost:11434/v1</code><br><small>provider route</small></div>
+  <div class="integration-arrow">→</div>
+  <div class="integration-node"><strong>OLLAMA</strong><code>qwen2.5-coder:7b</code><br><small>model runs locally</small></div>
+</div>
+
 <div class="code-block">~/.pi/agent/models.json
 
 {
@@ -896,11 +1255,7 @@ pi install -l npm:@your-org/pi-tools</div>
   }
 }</div>
 
-<div class="list">
-  <div class="list-item"><span class="list-num">01</span><span class="list-text">Supported API styles include OpenAI Completions, OpenAI Responses, Anthropic Messages, and Google Generative AI.</span></div>
-  <div class="list-item"><span class="list-num">02</span><span class="list-text">Open <code>/model</code> after editing <code>models.json</code>.</span></div>
-  <div class="list-item"><span class="list-num">03</span><span class="list-text">For custom APIs or OAuth, register a provider from a TypeScript extension.</span></div>
-</div>
+<div class="note">Supported API styles include OpenAI Completions, Responses, Anthropic Messages, and Google Generative AI. Edit <code>models.json</code>, then open <code>/model</code>.</div>
 
 ---
 
@@ -911,9 +1266,17 @@ pi install -l npm:@your-org/pi-tools</div>
   <h2>Embed Pi with the SDK</h2>
 </div>
 
-<div class="code-block">npm install @earendil-works/pi-coding-agent</div>
+<div class="visual integration-diagram">
+  <div class="integration-node"><strong>APPLICATION</strong>Node / TypeScript<br><small>your product boundary</small></div>
+  <div class="integration-arrow">→</div>
+  <div class="integration-node"><strong>SDK SESSION</strong>state · events · prompts<br><small><code>createAgentSession</code></small></div>
+  <div class="integration-arrow">→</div>
+  <div class="integration-node"><strong>PI WORKFLOW</strong>model · tools · project<br><small>direct integration</small></div>
+</div>
 
-<div class="code-block">import {
+<div class="code-block">npm install @earendil-works/pi-coding-agent
+
+import {
   createAgentSession,
   ModelRuntime,
   SessionManager,
@@ -927,7 +1290,7 @@ const { session } = await createAgentSession({
 
 await session.prompt("What files are in this project?");</div>
 
-<div class="note">Use the SDK for a Node or TypeScript application that needs direct session state, events, tools, or resource loading. Use RPC for a language-agnostic process boundary.</div>
+<div class="note">Use the SDK when a Node or TypeScript application needs direct session state, events, tools, or resource loading. Use RPC for a language-agnostic process boundary.</div>
 
 ---
 
@@ -938,6 +1301,15 @@ await session.prompt("What files are in this project?");</div>
   <h2>Sandbox untrusted work</h2>
 </div>
 
+<div class="visual lane-diagram">
+  <div class="lane-label">HOST</div>
+  <div class="lane-text">Your project and credentials remain outside the container boundary.</div>
+  <div class="lane-label">CONTAINER</div>
+  <div class="lane-text"><code>pi-sandbox</code> runs with only the workspace, credentials, and network access you pass in.</div>
+  <div class="lane-label">LIMIT</div>
+  <div class="lane-text"><strong>A mounted workspace can still write through to the host.</strong> Use a VM or stronger policy-controlled sandbox when needed.</div>
+</div>
+
 <div class="code-block">docker build -t pi-sandbox -f Dockerfile.pi .
 
 docker run --rm -it \
@@ -946,11 +1318,7 @@ docker run --rm -it \
   -v pi-agent-home:/root/.pi/agent \
   pi-sandbox</div>
 
-<div class="list">
-  <div class="list-item"><span class="list-num">01</span><span class="list-text">A mounted workspace can still write through to your host.</span></div>
-  <div class="list-item"><span class="list-num">02</span><span class="list-text">Pass only the credentials and network access the task requires.</span></div>
-  <div class="list-item"><span class="list-num">03</span><span class="list-text">For stronger isolation, use a VM, micro-VM, or policy-controlled sandbox.</span></div>
-</div>
+<div class="note">Pass only the credentials and network access the task requires. A container is a boundary, not automatically complete isolation.</div>
 
 ---
 
